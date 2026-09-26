@@ -28,29 +28,38 @@ def query(lat, lon):
  nwr{a}["crop"="rice"];
 );
 out center tags qt 400;"""
-    for attempt in range(6):
+    for attempt in range(3):
         url = MIRRORS[attempt % len(MIRRORS)]
         try:
-            r = requests.post(url, data={"data": q}, timeout=120, headers={"User-Agent": "vayu-lekha/1.0 (methane inventory research)"})
+            r = requests.post(url, data={"data": q}, timeout=75, headers={"User-Agent": "vayu-lekha/1.0 (methane inventory research)"})
             if r.status_code in (429, 504):
-                time.sleep(15 * (attempt + 1)); continue
+                time.sleep(10 * (attempt + 1)); continue
             r.raise_for_status()
             return [dict(type=e["type"], id=e["id"], lat=e.get("lat"), lon=e.get("lon"), center=e.get("center"), tags=e.get("tags", {}))
                     for e in r.json().get("elements", [])]
         except (requests.RequestException, ValueError):
-            time.sleep(10 * (attempt + 1))
+            time.sleep(5 * (attempt + 1))
     return None
 
 
-def main(sites_path, out_path):
+def main(sites_path, out_path, budget_s=900):
+    """Fetches sites not yet cached, saving after each one, within a time budget; the next run
+    continues where this one stopped (facilities change slowly, so each site is fetched once)."""
     sites = json.loads(Path(sites_path).read_text())
     out = json.loads(Path(out_path).read_text()) if Path(out_path).exists() else {}
-    for slug, s in sites.items():
-        if slug in out and out[slug] is not None:
-            continue                                     # facilities change slowly; fetch each site once
+    t0 = time.time()
+    # reference sites first: the EFA validation needs them
+    order = sorted(sites, key=lambda k: 0 if sites[k].get("kind") == "reference" else 1)
+    for slug in order:
+        if out.get(slug) is not None:
+            continue
+        if time.time() - t0 > budget_s:
+            print("time budget reached; remaining sites next run"); break
+        s = sites[slug]
         out[slug] = query(s["lat"], s["lon"])
         print(slug, None if out[slug] is None else len(out[slug]), flush=True)
-        time.sleep(2)
+        Path(out_path).write_text(json.dumps(out))
+        time.sleep(1)
     Path(out_path).write_text(json.dumps(out))
 
 
