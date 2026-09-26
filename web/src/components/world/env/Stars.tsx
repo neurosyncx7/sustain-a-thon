@@ -28,7 +28,7 @@ void main(){
   float ext = exp(-0.12*(airmass-1.0));                      // atmospheric extinction
   float flux = pow(10.0, -0.4*(aStar.z - 1.0));
   float tw = 1.0 + (0.18 + 0.5*(1.0-clamp(alt*3.0,0.0,1.0))) * sin(uTime*(3.0+fract(aStar.x*97.0)*6.0) + aStar.y*211.0);
-  vA = clamp(flux*1.8, 0.05, 1.0) * ext * smoothstep(-0.01, 0.06, alt) * tw;
+  vA = clamp(flux*2.4, 0.08, 1.0) * ext * smoothstep(-0.01, 0.06, alt) * tw;
   vCol = bvToRgb(aStar.w);
   vec4 mv = modelViewMatrix * vec4(dir*850.0, 1.0);
   gl_PointSize = uPx * clamp(0.9 + 2.2*sqrt(flux), 0.9, 5.0);
@@ -80,7 +80,7 @@ export function Stars() {
     pts.current?.position.copy(camera.position);
     mat.uniforms.uLst.value = lstFromHourAngle(e.hourAngle);
     mat.uniforms.uTime.value = clock.elapsedTime;
-    mat.uniforms.uPx.value = 1.6 * gl.getPixelRatio();
+    mat.uniforms.uPx.value = 2.0 * gl.getPixelRatio();
     const sunY = sunDirection(e.hourAngle, tmpSun).y;
     const dark = 1 - THREE.MathUtils.smoothstep(sunY, -0.28, -0.03); // civil -> astronomical twilight
     mat.uniforms.uOpacity.value = e.stars * dark * (1 - 0.9 * e.cloud);

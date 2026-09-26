@@ -35,7 +35,7 @@ const FIGURES: Fig[] = [
     stars: [[H(0, 9, 11), D(59, 9)], [H(0, 40, 30), D(56, 32)], [H(0, 56, 42), D(60, 43)], [H(1, 25, 49), D(60, 14)], [H(1, 54, 24), D(63, 40)]],
     lines: [[0, 1], [1, 2], [2, 3], [3, 4]], label: 2,
   },
-  { name: "Krittika", note: "the Pleiades", stars: [[H(3, 47, 24), D(24, 7)]], lines: [], label: 0 },
+  { name: "Krittika", note: "the Pleiades cluster", stars: [[H(3, 47, 24), D(24, 7)]], lines: [], label: 0 },
 ];
 
 const R = 820;
@@ -160,6 +160,68 @@ function Satellite({ dark }: { dark: React.MutableRefObject<number> }) {
   );
 }
 
+// Glows: Dhruva as the hero star (four-point diffraction flare, as a lens records it) and Krittika's
+// blue reflection nebulosity around its real stars. Canvas textures, generated once.
+function glowTexture(kind: "star" | "nebula") {
+  const c = document.createElement("canvas"); c.width = c.height = 256;
+  const g = c.getContext("2d")!;
+  const rg = g.createRadialGradient(128, 128, 0, 128, 128, 128);
+  if (kind === "star") {
+    rg.addColorStop(0, "rgba(255,255,255,1)"); rg.addColorStop(0.08, "rgba(220,235,255,0.9)");
+    rg.addColorStop(0.25, "rgba(150,190,255,0.22)"); rg.addColorStop(1, "rgba(120,160,255,0)");
+    g.fillStyle = rg; g.fillRect(0, 0, 256, 256);
+    g.globalCompositeOperation = "lighter";
+    for (const [w, h] of [[256, 3], [3, 256]]) {
+      const lg = g.createLinearGradient(128 - w / 2, 128 - h / 2, 128 + w / 2, 128 + h / 2);
+      lg.addColorStop(0, "rgba(200,225,255,0)"); lg.addColorStop(0.5, "rgba(230,240,255,0.85)"); lg.addColorStop(1, "rgba(200,225,255,0)");
+      g.fillStyle = lg; g.fillRect(128 - w / 2, 128 - h / 2, w, h);
+    }
+  } else {
+    rg.addColorStop(0, "rgba(140,200,255,0.55)"); rg.addColorStop(0.35, "rgba(80,170,210,0.25)");
+    rg.addColorStop(0.7, "rgba(90,80,200,0.08)"); rg.addColorStop(1, "rgba(60,60,160,0)");
+    g.fillStyle = rg; g.fillRect(0, 0, 256, 256);
+  }
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace;
+  return t;
+}
+
+const PLEIADES: [number, number, number][] = [   // RA, Dec, relative brightness (Alcyone brightest)
+  [H(3, 47, 29), D(24, 6, 18), 1], [H(3, 49, 9), D(24, 3, 12), 0.7], [H(3, 44, 52), D(24, 6, 48), 0.65],
+  [H(3, 45, 49), D(24, 22, 4), 0.55], [H(3, 49, 11), D(24, 8, 12), 0.45], [H(3, 44, 35), D(24, 33, 17), 0.45], [H(3, 46, 19), D(23, 56, 54), 0.4],
+];
+const POLARIS: [number, number] = [H(2, 31, 49), D(89, 15, 51)];
+
+function Glows({ dark }: { dark: React.MutableRefObject<number> }) {
+  const { star, neb } = useMemo(() => ({ star: glowTexture("star"), neb: glowTexture("nebula") }), []);
+  const mk = (map: THREE.Texture) => new THREE.SpriteMaterial({ map, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, fog: false, toneMapped: false });
+  const polaris = useRef<THREE.Sprite>(null), nebula = useRef<THREE.Sprite>(null);
+  const cluster = useRef<(THREE.Sprite | null)[]>([]);
+  const mats = useMemo(() => ({ p: mk(star), n: mk(neb), c: PLEIADES.map(() => mk(star)) }), [star, neb]);
+  useFrame(() => {
+    const lst = lstFromHourAngle(frame.env.hourAngle), d = dark.current;
+    celestialDirection(POLARIS[0], POLARIS[1], lst, tmp);
+    polaris.current?.position.copy(tmp).multiplyScalar(R * 0.98);
+    mats.p.opacity = d * 0.95;
+    PLEIADES.forEach(([ra, dec, b], i) => {
+      celestialDirection(ra, dec, lst, tmp);
+      cluster.current[i]?.position.copy(tmp).multiplyScalar(R * 0.98);
+      mats.c[i].opacity = d * (0.55 + 0.45 * b) * (tmp.y > 0 ? 1 : 0);
+    });
+    celestialDirection(PLEIADES[0][0], PLEIADES[0][1], lst, tmp);
+    nebula.current?.position.copy(tmp).multiplyScalar(R * 0.985);
+    mats.n.opacity = d * 0.9 * (tmp.y > 0 ? 1 : 0);
+  });
+  return (
+    <>
+      <sprite ref={polaris} material={mats.p} scale={[46, 46, 1]} renderOrder={-7} />
+      <sprite ref={nebula} material={mats.n} scale={[70, 70, 1]} renderOrder={-8} />
+      {PLEIADES.map(([, , b], i) => (
+        <sprite key={i} ref={(el) => { cluster.current[i] = el; }} material={mats.c[i]} scale={[10 + 12 * b, 10 + 12 * b, 1]} renderOrder={-7} />
+      ))}
+    </>
+  );
+}
+
 export function SkyLore() {
   const root = useRef<THREE.Group>(null);
   const dark = useRef(0);
@@ -175,6 +237,7 @@ export function SkyLore() {
     <>
       <group ref={root}>
         {FIGURES.map((f) => <Figure key={f.name} f={f} mat={mat} />)}
+        <Glows dark={dark} />
       </group>
       <Meteors dark={dark} />
       <Satellite dark={dark} />

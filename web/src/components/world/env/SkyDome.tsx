@@ -44,7 +44,7 @@ void main(){
   // --- base gradient by regime
   vec3 dayZen = mix(vec3(0.28,0.46,0.74), vec3(0.55,0.60,0.68), uHaze*0.6);
   vec3 dayHor = mix(vec3(0.80,0.82,0.84), vec3(0.98,0.82,0.62), uHaze);
-  vec3 nZen = vec3(0.012,0.018,0.04), nHor = vec3(0.035,0.045,0.08);
+  vec3 nZen = vec3(0.008,0.009,0.035), nHor = vec3(0.06,0.045,0.12);   // indigo zenith, violet horizon
   float hz = pow(1.0 - up, 3.0);
   vec3 col = mix(nZen, nHor, hz);
   col = mix(col, mix(dayZen, dayHor, hz), day);
@@ -66,18 +66,31 @@ void main(){
   // stars + Milky Way in the celestial frame
   vec3 c = uCel * d;
   float starVis = uStars * night * smoothstep(-0.02, 0.18, d.y) * (1.0 - uCloud*0.9);
-  float band = exp(-pow(dot(d, uGal)/0.17, 2.0));     // real galactic plane
+  float gz = dot(d, uGal);
+  float band = exp(-pow(gz/0.17, 2.0));                // real galactic plane
+  float halo = exp(-pow(gz/0.34, 2.0));                // its faint wide glow
   float dust = fbm(c*6.0);
   float lanes = smoothstep(0.35, 0.75, fbm(c*11.0+3.0));
-  float grain = smoothstep(0.62, 0.95, fbm(c*48.0));                 // unresolved star clouds
-  vec3 armCol = mix(vec3(0.46,0.54,0.86), vec3(0.92,0.78,0.62), smoothstep(0.2,0.9,dust)); // blue arms, warm dust
-  vec3 milky = armCol*band*(0.35+0.65*dust)*(1.0-0.75*lanes*band) + vec3(0.75,0.8,1.0)*band*grain*0.35;
-  col += milky * 0.36 * starVis;   // point stars come from the real catalogue (Stars.tsx)
+  float grain = smoothstep(0.62, 0.95, fbm(c*48.0));   // unresolved star clouds
+  vec3 armCol = mix(vec3(0.42,0.46,0.95), vec3(1.0,0.74,0.5), smoothstep(0.35,0.95,dust));
+  float lane = 1.0 - 0.92*lanes*band;                    // dark dust lanes cut deep, as in a long exposure
+  vec3 milky = armCol*band*pow(0.25+0.9*dust, 1.6)*lane + vec3(0.85,0.9,1.0)*band*grain*0.9*lane;
+  // emission and reflection nebulae along the plane, as a long exposure records them
+  float nA = smoothstep(0.48, 0.82, fbm(c*3.1+11.0)), nB = smoothstep(0.5, 0.86, fbm(c*4.3+27.0));
+  vec3 neb = (vec3(0.95,0.18,0.62)*nA + vec3(0.05,0.62,0.78)*nB) * (0.3*halo + 0.7*band) * lane;
+  // faint unresolved field stars (the catalogue in Stars.tsx carries every star to magnitude 7)
+  vec3 sc = c*340.0; vec3 cell = floor(sc); float hs = h13(cell);
+  vec3 jit = vec3(h13(cell+1.3), h13(cell+2.7), h13(cell+4.1));
+  float sd = length(fract(sc)-jit);
+  float field = step(0.962 - 0.03*band, hs) * smoothstep(0.26, 0.0, sd) * (0.35 + 0.65*pow(h13(cell+9.0), 2.0));
+  vec3 fieldCol = mix(vec3(0.7,0.8,1.0), vec3(1.0,0.86,0.7), h13(cell+5.0));
+  col += (milky*0.55 + neb*0.62 + fieldCol*field*1.3) * starVis;
+  col += vec3(0.035,0.02,0.08) * halo * starVis;       // violet wash under the band
   // airglow: the faint green-violet oxygen glow a few degrees above a dark horizon
-  col += (vec3(0.05,0.11,0.07) + vec3(0.05,0.02,0.09)*smoothstep(0.02,0.25,up)) * starVis * exp(-pow((up-0.12)/0.09, 2.0)) * 0.7;
+  col += (vec3(0.05,0.12,0.09) + vec3(0.06,0.02,0.11)*smoothstep(0.02,0.25,up)) * starVis * exp(-pow((up-0.12)/0.1, 2.0)) * 0.9;
 
-  // city glow on the night horizon (Jaipur is a city of 4 million)
-  col += vec3(0.20,0.10,0.04) * night * exp(-up*9.0) * 0.55;
+  // city glow on the night horizon (Jaipur is a city of 4 million), kept low so the sky stays dark
+  col += vec3(0.20,0.10,0.06) * night * exp(-up*12.0) * 0.35;
 
   // monsoon cloud deck
   if (d.y > 0.0 && uCloud > 0.001){
@@ -153,7 +166,7 @@ export function horizonColor(sunY: number, haze: number, out: THREE.Color) {
   };
   const day = ss(-0.05, 0.3, sunY);
   const twi = Math.exp(-Math.pow((sunY + 0.02) * 7, 2));
-  const n = [0.035, 0.045, 0.08];
+  const n = [0.06, 0.045, 0.12];
   const dh = [0.8 + (0.98 - 0.8) * haze, 0.82 + (0.82 - 0.82) * haze, 0.84 + (0.62 - 0.84) * haze];
   const r = n[0] + (dh[0] - n[0]) * day + 0.45 * twi;
   const g = n[1] + (dh[1] - n[1]) * day + 0.22 * twi;

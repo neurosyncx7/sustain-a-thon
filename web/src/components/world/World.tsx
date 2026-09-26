@@ -10,6 +10,7 @@ import { PostFX } from "./PostFX";
 import { SkyDome } from "./env/SkyDome";
 import { Stars } from "./env/Stars";
 import { SkyLore } from "./env/SkyLore";
+import { NightLife } from "./env/NightLife";
 import { SunRig } from "./env/SunRig";
 import { Dust } from "./env/Atmosphere";
 import { Courtyard } from "./instruments/Courtyard";
@@ -90,6 +91,7 @@ export function World() {
         <Ledger />
         <LazyLedgerProps />
         <Dust />
+        <NightLife />
         <CameraRig />
         <PostFX />
         <Ready />

@@ -41,8 +41,8 @@ export const STAGES: Stage[] = [
       "Methane traps over 80 times more heat than CO₂ across twenty years. Most of India's is diffuse, from paddy and livestock; the part that can be fixed fastest comes from concentrated sources such as landfills, coal fields and oil fields. Vāyu Lekha reads every clear pass of ESA's Sentinel-5P over India, finds the persistent sources, tests each against its own statistical null, and ranks them by warming avoided per rupee. The instruments Sawai Jai Singh II built to read the sky carry the pipeline, one stage each.",
     algorithms: [],
     link: { href: "/ledger", label: "Skip to the inventory" },
-    camera: { pos: [9, 1.7, 36], target: [0, 17, -10], fov: 52 },
-    env: { hourAngle: -210, stars: 1, fog: 0.006, groundFog: 1, haze: 0.2, cloud: 0, lamps: 1, exposure: 1.0 },
+    camera: { pos: [9, 1.7, 36], target: [-1, 21, -10], fov: 56 },
+    env: { hourAngle: -210, stars: 1, fog: 0.0035, groundFog: 0.55, haze: 0.12, cloud: 0, lamps: 1, exposure: 1.0 },
   },
   {
     slug: "ingest",
