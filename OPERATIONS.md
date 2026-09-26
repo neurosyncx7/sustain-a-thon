@@ -77,8 +77,7 @@ result and a link to the result file in the repository. Only algorithms that pas
 | DiverSR (footprint drizzle) | Stage **Attribution** (ladder row "Combined") | z jumps when footprints are used |
 | KPW phase weighting | Stage **Attribution** (ladder row "+KPW") | mean z 4.06 → 4.37, floor down again |
 | OBC injection-recovery | Site dossier "Injection-recovery slope"; `/ledger#algorithms` | Recovers 99% of an injected plume; 50% detection near 10 t/h |
-| MSFD CO leg + EIV-CRF | Site dossier "What process it looks like" | Jharia: CO/CH₄ ≈ 2.2, combustion-influenced (its coal fires); Deonar ≈ 0.46, decay |
-| EFA land-use attribution | Site dossier "What is nearby" | OpenStreetMap facilities that voted for the sector |
+| MSFD CO leg + EIV-CRF | Site dossier "What process it looks like" | Jharia: CO/CH₄ ≈ 2.2, combustion-influenced (its coal fires); Ghazipur ≈ 0.54 and Deonar ≈ 0.50, decay |
 | BY-FDR + corroboration gate | `/ledger` tiers and check boxes; `/responsible` §2 | Confirmed = q ≤ 0.05 AND an independent check; false-pass rates measured each run |
 | WRPI priority | `/ledger` last two columns; site dossier "Priority" | t CO₂e₂₀ avoided per ₹ lakh, with cited cost sources |
 | VOIT tasking | Site dossier banner "Recommended for a high-resolution overpass" | The top 5 unconfirmed sites by value of information |

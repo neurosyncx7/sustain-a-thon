@@ -190,8 +190,12 @@ def main():
             sector, basis = SECTOR[slug], "cited facility (reference site)"
         elif efa_ok and efa and efa["attributed"]:
             sector, basis = efa["attributed"], f"EFA: OpenStreetMap facilities within 25 km (posterior {efa['posterior'][efa['attributed']]:.2f})"
-        else:
+        elif efa_ok:
             sector, basis = "unattributed", ("EFA: no sector reaches posterior 0.6 from mapped facilities" if efa else "no facility data yet")
+        else:
+            sector, basis = "unattributed", "not attributed: land-use attribution (EFA) has not passed its validation test yet"
+        if not efa_ok:
+            efa = None                               # an unvalidated method's output is not shown
         p_real = float(max(0.0, 1.0 - qq)) if status != "not detected" else 0.0
         w = wrpi_mc(rate_t_h, sector, p_real, a.fx, seed=zlib.crc32(slug.encode()))
         inv.append(dict(
