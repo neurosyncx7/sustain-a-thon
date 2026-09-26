@@ -1,0 +1,57 @@
+{
+  "mcpServers": {
+    "playwright": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@playwright/mcp@latest",
+        "--headless",
+        "--no-sandbox",
+        "--isolated"
+      ],
+      "env": {}
+    },
+    "context7": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp"
+      ],
+      "env": {
+        "NODE_USE_ENV_PROXY": "1"
+      }
+    },
+    "github": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-github"
+      ],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "proxy-injected",
+        "NODE_USE_ENV_PROXY": "1"
+      }
+    },
+    "gsap-master": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@vinhnguyen/gsap-mcp"
+      ],
+      "env": {}
+    },
+    "ui-layouts": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@ui-layouts/mcp"
+      ],
+      "env": {}
+    }
+  }
+}
