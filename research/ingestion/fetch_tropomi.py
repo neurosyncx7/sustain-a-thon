@@ -149,9 +149,12 @@ def subset_granule(local_path: Path, species: str) -> pd.DataFrame:
         "scanline": scanline_idx[mask],
     }
     df = pd.DataFrame(rows)
-    # delta_time is per-scanline (ms since time_ref); broadcast to each kept pixel by its
-    # scanline index.
-    per_scanline_time = pd.to_datetime(time_ref) + pd.to_timedelta(dt, unit="ms")
+    # delta_time is per-scanline; xarray auto-decodes its CF "milliseconds since <time_ref>"
+    # units into absolute datetime64 already, so use it directly (no manual timedelta math).
+    if np.issubdtype(np.asarray(dt).dtype, np.datetime64):
+        per_scanline_time = pd.to_datetime(dt)
+    else:
+        per_scanline_time = pd.to_datetime(time_ref) + pd.to_timedelta(dt, unit="ms")
     df["timestamp_utc"] = per_scanline_time[df["scanline"].values]
 
     # Dry-air subcolumns: (scanline, ground_pixel, layer) -> sum over layer = total dry-air
