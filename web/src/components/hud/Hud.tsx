@@ -93,7 +93,7 @@ function SolarClock() {
   }, []);
   return (
     <div className="pointer-events-none fixed bottom-6 right-5 z-30 hidden text-right md:block md:right-8">
-      <div className="num text-[22px] leading-none text-paper"><span ref={t}>02:00</span></div>
+      <div className="num text-[22px] leading-none text-paper"><span ref={t}>22:00</span></div>
       <div className="mt-1.5 text-[11px] text-paper/50">Jaipur solar time · sun <span ref={e} className="num" /></div>
     </div>
   );
@@ -118,28 +118,50 @@ function StagePanel() {
   const mode = useWorld((s) => s.mode);
   const reduce = useReducedMotion();
   const st = STAGES[idx];
+  const hero = st.slug === "prologue";
   const item = {
     hidden: { opacity: 0, y: reduce ? 0 : 18, filter: reduce ? "none" : "blur(8px)" },
     show: { opacity: 1, y: 0, filter: "blur(0px)" },
   };
   return (
-    <div className="pointer-events-none fixed bottom-20 left-5 right-5 z-20 md:bottom-16 md:left-8 md:right-auto md:w-[min(560px,46vw)]">
-      <div className="absolute -inset-x-10 -inset-y-12 -z-10 bg-[radial-gradient(closest-side,rgb(7_8_13/0.72),transparent)]" />
+    <div className={`pointer-events-none fixed left-5 right-5 z-20 md:left-8 md:right-auto ${hero ? "bottom-20 md:bottom-14 md:w-[min(680px,52vw)]" : "bottom-20 md:bottom-16 md:w-[min(580px,46vw)]"}`}>
+      <div className="absolute -inset-x-10 -inset-y-14 -z-10 bg-[radial-gradient(closest-side,rgb(7_8_13/0.78),transparent)]" />
       <AnimatePresence mode="wait">
         <motion.div key={st.slug} initial="hidden" animate="show" exit="hidden"
           transition={{ staggerChildren: reduce ? 0 : 0.07 }} className="pointer-events-auto">
-          <motion.div variants={item} transition={{ duration: 0.7, ease }} className="text-[12px] text-flame/90">
-            {st.instrument}
+          <motion.div variants={item} transition={{ duration: 0.7, ease }} className="flex flex-wrap items-baseline gap-x-3 text-[12px]">
+            <span className="text-flame/90">{st.step}</span>
+            {!hero && <span className="text-paper/45">{st.instrument}</span>}
           </motion.div>
           <motion.h1 variants={item} transition={{ duration: 0.8, ease }}
-            className="mt-2 text-[28px] font-medium leading-[1.08] tracking-tight text-paper md:text-[40px]">
+            className={`mt-2 font-medium tracking-tight text-paper ${hero ? "text-[30px] leading-[1.04] md:text-[48px]" : "text-[26px] leading-[1.08] md:text-[36px]"}`}>
             {st.title}
           </motion.h1>
-          <motion.p variants={item} transition={{ duration: 0.8, ease }} className="mt-3 max-w-[52ch] text-[15px] leading-relaxed text-paper/70">
+          <motion.p variants={item} transition={{ duration: 0.8, ease }} className={`mt-3 max-w-[60ch] leading-relaxed text-paper/72 ${hero ? "text-[14.5px] md:text-[15.5px]" : "text-[14px] md:text-[14.5px]"}`}>
             {st.story}
           </motion.p>
-          <motion.div variants={item} transition={{ duration: 0.8, ease }} className="mt-5">
+          {st.algorithms.length > 0 && (
+            <motion.ul variants={item} transition={{ duration: 0.8, ease }} className="mt-3 flex flex-wrap gap-1.5" aria-label="Running at this step">
+              {st.algorithms.map((a) => (
+                <li key={a} className="rounded-full bg-flame/[0.08] px-2.5 py-1 text-[11px] text-[#bcd9ff] ring-1 ring-flame/25">{a}</li>
+              ))}
+            </motion.ul>
+          )}
+          <motion.div variants={item} transition={{ duration: 0.8, ease }} className="mt-4">
             <StageEvidence slug={st.slug} expanded={mode === "evidence"} />
+          </motion.div>
+          <motion.div variants={item} transition={{ duration: 0.8, ease }} className="mt-4 flex flex-wrap items-center gap-2">
+            {hero && (
+              <button onClick={() => goToStage(1)}
+                className="rounded-full bg-paper px-4 py-2 text-[13px] font-medium text-ink transition hover:bg-white active:scale-[0.98]">
+                Begin the reading
+              </button>
+            )}
+            <Link href={st.link.href}
+              className="group inline-flex items-center gap-1.5 rounded-full px-3.5 py-2 text-[13px] text-paper/80 ring-1 ring-paper/20 transition hover:bg-paper/10 hover:text-paper active:scale-[0.98]">
+              {st.link.label}
+              <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
+            </Link>
           </motion.div>
         </motion.div>
       </AnimatePresence>

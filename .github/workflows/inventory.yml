@@ -49,6 +49,7 @@ jobs:
         run: |
           python research/screening/national_screen.py databranch data-pipeline/web web/public/data
           python research/screening/label_candidates.py data-pipeline/web/candidates.json research/screening/ne_min
+          python research/pipeline/extraction_summary.py databranch
       - name: Grow the tested family with new screen leads (stable ids)
         id: fam
         run: |

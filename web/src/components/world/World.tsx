@@ -9,6 +9,7 @@ import { CameraRig } from "./CameraRig";
 import { PostFX } from "./PostFX";
 import { SkyDome } from "./env/SkyDome";
 import { Stars } from "./env/Stars";
+import { SkyLore } from "./env/SkyLore";
 import { SunRig } from "./env/SunRig";
 import { Dust } from "./env/Atmosphere";
 import { Courtyard } from "./instruments/Courtyard";
@@ -77,6 +78,7 @@ export function World() {
       <Suspense fallback={null}>
         <SkyDome />
         <Stars />
+        <SkyLore />
         <SunRig />
         <Courtyard />
         <SamratYantra />

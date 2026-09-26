@@ -2,10 +2,12 @@
 
 import Link from "next/link";
 import { useApi } from "@/lib/useData";
+import { useAgo, useLive } from "@/components/live/useLive";
 import type { Stage } from "@/content/stages";
 
 const int = (n: number) => n.toLocaleString("en-IN");
 const tph = (kg: number) => (kg / 1000).toFixed(1);
+const mega = (x: number) => (x >= 1e6 ? `${(x / 1e6).toFixed(1)} M` : int(Math.round(x)));
 const MONTHS = ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"];
 
 function Figures({ items }: { items: [string, string][] }) {
@@ -45,21 +47,21 @@ export function StageEvidence({ slug, expanded }: { slug: Stage["slug"]; expande
     case "prologue": {
       if (ov.error) return <Failure error={ov.error} />;
       if (!ov.data) return <Skeleton />;
-      const d = ov.data;
+      const d = ov.data, v = d.inventory;
       return (
         <>
-          <Figures items={[["Record", "2023-24"], ["Orbits read", int(d.granules)], ["Clear pixels", int(d.pixels)]]} />
-          {expanded && <Note>{d.product}. Source: {d.provenance.tropomi}. {d.failed_granules} granules failed to open and are logged, not dropped silently.</Note>}
+          <Figures items={[
+            ["Confirmed in India", `${v.n_confirmed_india} of ${v.n_tested_india} tested`],
+            ["Clear pixels read", mega(v.n_pixels)],
+            ["Record", `${v.data_span.first.slice(0, 4)} to today`],
+          ]} />
+          <LiveLine />
+          {expanded && <Note>Real Sentinel-5P TROPOMI data from {v.data_span.first} to {v.data_span.last} (monsoon months excluded), refreshed daily; another {v.n_confirmed - v.n_confirmed_india} confirmed sources lie across the border in Pakistan and Bangladesh. {d.algorithms.running.length} of our algorithms run on it, each validated against a pass mark set before the test.</Note>}
         </>
       );
     }
     case "ingest":
-      return (
-        <>
-          <Figures items={[["Sample orbit", "32417"], ["Date", "15 Jan 2024"], ["Sun at 13:30", "37.2°"]]} />
-          {expanded && <Note>The shadow is computed, not painted: a solar ephemeris for 2024-01-15 (declination −21.19°) drives the scene's sun, and the gnomon is inclined at Jaipur's latitude, so its edge reads true solar time on the dial.</Note>}
-        </>
-      );
+      return <IngestEvidence expanded={expanded} />;
     case "observe": {
       if (maps.error) return <Failure error={maps.error} />;
       if (!maps.data || !ov.data) return <Skeleton />;
@@ -71,7 +73,12 @@ export function StageEvidence({ slug, expanded }: { slug: Stage["slug"]; expande
             <span className="h-2 w-48 rounded-full" style={{ background: "linear-gradient(90deg,#122142,#2e70d1,#70b5ff,#ebf6ff)" }} />
             <span className="num text-[12px] text-paper/60">{m.hi.toFixed(0)} ppb</span>
           </div>
-          <p className="mt-2 text-[12px] text-paper/55">Mean column methane, {int(ov.data.pixels)} pixels, 0.1° grid</p>
+          <p className="mt-2 text-[12px] text-paper/55">Mean column methane, {mega(ov.data.inventory.n_pixels)} clear pixels, 0.1° grid</p>
+          {ov.data.ablation_floor_t_h && (() => {
+            const f = ov.data.ablation_floor_t_h as Record<string, number>;
+            const k = Object.keys(f);
+            return <Figures items={[["Detection floor, raw", `${f[k[0]].toFixed(1)} t/h`], ["After ABD", `${f["6_+ABD"]?.toFixed(1) ?? "–"} t/h`], ["Full method", `${f[k[k.length - 1]].toFixed(1)} t/h`]]} />;
+          })()}
           {expanded && <Note>Bias-corrected XCH4 (qa ≥ 0.5). Bright Indo-Gangetic plain and Bangladesh, low Himalaya: real features of the record, not styling. Colour stretch spans the 1st to 99th percentile.</Note>}
         </>
       );
@@ -138,6 +145,9 @@ export function StageEvidence({ slug, expanded }: { slug: Stage["slug"]; expande
               ))}
             </tbody>
           </table>
+          {e?.chemistry?.ratio != null && (
+            <p className="mt-2 text-[12px] text-paper/60">CO/CH₄ ratio <span className="num text-paper/85">{e.chemistry.ratio.toFixed(2)}</span>{e.chemistry.process ? `: ${e.chemistry.process.split(":")[0]}` : " (inconclusive)"} · {e.corroboration.n_passed} of 4 independent checks passed</p>
+          )}
           {expanded && e && <Note>Jawaharnagar area, 20 km cluster. {e.rate_t_h.p16.toFixed(1)} to {e.rate_t_h.p84.toFixed(1)} t/h (68%) after the transport-wind factor ({e.gamma.value.toFixed(2)}, ERA5) and the injection-recovery slope ({e.obc_slope.toFixed(3)}). Ablation: z against a pseudo-site null, one component added per row.</Note>}
         </>
       );
@@ -167,4 +177,37 @@ export function StageEvidence({ slug, expanded }: { slug: Stage["slug"]; expande
       );
     }
   }
+}
+
+function LiveLine() {
+  const { data } = useLive();
+  const pass = data?.latest_pass?.ok ? data.latest_pass.data : null;
+  const ago = useAgo(pass?.sensing_end ?? null);
+  if (!pass) return null;
+  return (
+    <p className="mt-3 flex items-center gap-2 text-[12px] text-paper/65">
+      <span className="relative flex h-1.5 w-1.5"><span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-flame/60" /><span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-flame" /></span>
+      Newest pass processed: orbit{pass.orbits.length > 1 ? "s" : ""} {pass.orbits.join(", ")}, sensed {ago}
+    </p>
+  );
+}
+
+function IngestEvidence({ expanded }: { expanded: boolean }) {
+  const { data, error } = useLive();
+  const pass = data?.latest_pass?.ok ? data.latest_pass.data : null;
+  const ago = useAgo(pass?.sensing_end ?? null);
+  if (error && !data) return <Failure error={error} />;
+  if (!data) return <Skeleton />;
+  if (!pass) return <p className="text-[12px] text-paper/60">The 3-hourly live pass has not published yet.</p>;
+  const i = pass.integrity ?? {};
+  return (
+    <>
+      <Figures items={[
+        ["Newest pass", `${pass.day} · ${ago}`],
+        ["Files checked vs Copernicus", i.verified != null ? `${i.verified} verified` : "–"],
+        ["Clear pixels", int(pass.pixels)],
+      ]} />
+      {expanded && <Note>{pass.source}. Orbits {pass.orbits.join(", ")}. The sundial&apos;s shadow is computed, not painted: a solar ephemeris drives the scene&apos;s sun, and the gnomon is inclined at Jaipur&apos;s latitude, so its edge reads true solar time.</Note>}
+    </>
+  );
 }

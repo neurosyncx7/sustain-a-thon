@@ -141,7 +141,7 @@ export default async function LedgerPage() {
         </dl>
       </section>
 
-      <section className="mt-24">
+      <section id="algorithms" className="mt-24 scroll-mt-24">
         <h2 className="text-xl font-medium tracking-tight">The algorithms running in this inventory</h2>
         <p className="mt-2 max-w-[66ch] text-[14px] text-paper/60">
           Each one passed a test on the real satellite record, against a pass mark written down before the run, and now runs on every refresh of the inventory above.
@@ -161,7 +161,7 @@ export default async function LedgerPage() {
         </div>
       </section>
 
-      <section className="mt-24">
+      <section id="leads" className="mt-24 scroll-mt-24">
         <h2 className="text-xl font-medium tracking-tight">National screen: {leads.length} leads inside India</h2>
         <p className="mt-2 max-w-[64ch] text-[14px] text-paper/60">Local maxima of the mean flux divergence above three robust sigma, found with no site list. A lead becomes an inventory entry only after its own stack and null test.</p>
         <div className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-paper/10 bg-paper/10 sm:grid-cols-2 lg:grid-cols-3 [&>*:last-child]:lg:col-span-1">

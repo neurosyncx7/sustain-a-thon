@@ -80,7 +80,7 @@ export function Stars() {
     pts.current?.position.copy(camera.position);
     mat.uniforms.uLst.value = lstFromHourAngle(e.hourAngle);
     mat.uniforms.uTime.value = clock.elapsedTime;
-    mat.uniforms.uPx.value = 1.35 * gl.getPixelRatio();
+    mat.uniforms.uPx.value = 1.6 * gl.getPixelRatio();
     const sunY = sunDirection(e.hourAngle, tmpSun).y;
     const dark = 1 - THREE.MathUtils.smoothstep(sunY, -0.28, -0.03); // civil -> astronomical twilight
     mat.uniforms.uOpacity.value = e.stars * dark * (1 - 0.9 * e.cloud);
