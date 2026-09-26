@@ -11,6 +11,17 @@
  "sensing_end": "2026-09-26 08:26:21",
  "mean_xch4_ppb": 1961.5089111328125,
  "observed_cells": 992,
+ "method_steps": [
+  "qa >= 0.5",
+  "Copernicus checksum",
+  "plane background (60-140 km)",
+  "ABD albedo/aerosol correction",
+  "wind rotation",
+  "footprint drizzle",
+  "noise weight",
+  "KPW phase weight",
+  "flux divergence (20 km)"
+ ],
  "texture": {
   "file": "latest.png",
   "lo": 1896.9419311523438,
@@ -29,6 +40,7 @@
   "c03": {
    "name": "38 km from Dibrugarh",
    "pixels": 1,
+   "method": null,
    "xch4_ppb": 2007.730224609375,
    "enhancement_ppb": null,
    "wind_ms": 1.6979506015777588,
@@ -38,6 +50,7 @@
   "c24": {
    "name": "near Pyay",
    "pixels": 1,
+   "method": null,
    "xch4_ppb": 1867.2528076171875,
    "enhancement_ppb": null,
    "wind_ms": 2.1532793045043945,
@@ -47,6 +60,15 @@
   "c26": {
    "name": "26 km from Shwebo",
    "pixels": 33,
+   "method": {
+    "rate_kg_h_gamma1": 28213.118760982412,
+    "single_pass_sigma_kg_h": 42737.111011611676,
+    "z_single": 0.6601550290406131,
+    "wind_ms": 2.4557691564778263,
+    "orbits": [
+     "46391"
+    ]
+   },
    "xch4_ppb": 2035.1610107421875,
    "enhancement_ppb": 36.1534423828125,
    "wind_ms": 2.4557690620422363,
@@ -56,6 +78,15 @@
   "c43": {
    "name": "82 km from Shwebo",
    "pixels": 21,
+   "method": {
+    "rate_kg_h_gamma1": -4870.238830805323,
+    "single_pass_sigma_kg_h": 78517.10646288196,
+    "z_single": -0.062027742108755266,
+    "wind_ms": 1.4113202678256143,
+    "orbits": [
+     "46391"
+    ]
+   },
    "xch4_ppb": 2022.197509765625,
    "enhancement_ppb": 15.3692626953125,
    "wind_ms": 1.4113202095031738,
@@ -372,6 +403,6 @@
   "download_failed": 0,
   "policy": "each granule's MD5 is checked against the Copernicus Data Space catalogue; mismatches are rejected, unverifiable granules are accepted only when the mirror ETag matches"
  },
- "processed_utc": "2026-09-26T18:10:00",
+ "processed_utc": "2026-09-26T21:01:52",
  "source": "Copernicus Sentinel-5P TROPOMI NRTI L2 CH4, s3://meeo-s5p (public mirror)"
 }
