@@ -36,3 +36,12 @@ for c in doc["candidates"][:30]:
     print(f"{c['lat']:6.2f} {c['lon']:6.2f} z={c['z']:5.1f} {c['rate_kg_h_gamma1']/1000:5.1f}t/h days={c['valid_days']:3d} "
           f"{'IN ' if c['in_india'] else 'out'} {c['nearest_place']['name']} ({c['nearest_place']['km']} km) / "
           f"{c['nearest_city_300k']['name']}, {c['nearest_city_300k']['state']} ({c['nearest_city_300k']['km']} km)")
+
+# Blind recovery: how close does the screen (given no site list) come to each documented emitter?
+rec = {}
+for slug, s in BLIND_REFERENCES.items():
+    d = [(km(c["lat"], c["lon"], s["lat"], s["lon"]), i) for i, c in enumerate(doc["candidates"])]
+    dm, i = min(d)
+    rec[slug] = dict(name=s["name"], nearest_candidate_km=round(dm, 1), candidate_rank=i + 1,
+                     candidate_z=round(doc["candidates"][i]["z"], 1), recovered=bool(dm <= 25))
+Path(cand_path).with_name("blind_recovery.json").write_text(json.dumps(rec, indent=1))
