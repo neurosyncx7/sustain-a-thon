@@ -51,7 +51,8 @@ export function useAgo(iso?: string | null) {
   const [, tick] = useState(0);
   useEffect(() => { const t = setInterval(() => tick((n) => n + 1), 30_000); return () => clearInterval(t); }, []);
   if (!iso) return null;
-  const t = Date.parse(iso.endsWith("Z") || iso.includes("+") ? iso : iso + "Z");
+  const s = iso.replace(" ", "T");
+  const t = Date.parse(s.endsWith("Z") || s.includes("+") ? s : s + "Z");
   if (!Number.isFinite(t)) return null;
   const m = Math.max(0, Math.round((Date.now() - t) / 60000));
   if (m < 1) return "just now";
