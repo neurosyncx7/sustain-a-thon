@@ -93,7 +93,7 @@ export const STAGES: Stage[] = [
     step: "Step 4 · Find the leads",
     title: "What remains once the seasons are gone.",
     story:
-      "The bowl inverts the sky onto the ground. It holds the flux divergence, where more methane leaves a place than arrives: the fingerprint of a source. With no list of known sites given, this national screen still lands next to Ghazipur, Jharia, Jawaharnagar and Pirana. A lead is only a lead: each one next gets its own stack and its own test.",
+      "The bowl inverts the sky onto the ground. It holds the flux divergence, where more methane leaves a place than arrives: the fingerprint of a source. Given no list of known sites, this national screen still lands next to documented landfills and coal fields, named below. A lead is only a lead: each one next gets its own stack and its own test.",
     algorithms: ["Flux divergence (continuity equation)", "Blind national screen"],
     link: { href: "/ledger#leads", label: "All screen leads" },
     camera: { pos: [-44, 17, 38], target: [-58, -3, 21], fov: 48 },

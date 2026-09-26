@@ -38,8 +38,8 @@ Nothing is mocked or synthetic.
   at ~10 t/h over the stacked record.
 - **Integrated inventory** (`/ledger`, `/api/inventory`, `/api/export`): every tested site with calibrated
   t/h (Monte Carlo 68%), BY-FDR q-value (<= 5% false entries in the confirmed tier) and warming avoided per rupee.
-- **Blind national screen** recovered Ghazipur (Delhi), Jharia, Jawaharnagar and Pirana without being told
-  where to look.
+- **Blind national screen** lands within 25 km of documented emitters (Ghazipur, Jharia, Deonar, Pirana on the
+  3.4-year record) without being told where to look; the list is regenerated with every refresh.
 
 ## Live operation (what to show a jury)
 | Every | Workflow | What happens |

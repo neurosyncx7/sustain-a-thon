@@ -114,6 +114,7 @@ export function StageEvidence({ slug, expanded }: { slug: Stage["slug"]; expande
       return (
         <>
           <Figures items={[["Candidates in India", String(cands.data.count)], ["Known sites found blind", `${rec} of ${Object.keys(cands.data.blind_recovery).length}`], ["Threshold", "3σ robust"]]} />
+          <p className="mt-2 text-[12px] text-paper/65">Found with no list given: {Object.values(cands.data.blind_recovery).filter((b: any) => b.recovered).map((b: any) => `${b.name.split(",")[0]} (${b.nearest_candidate_km} km)`).join(", ")}</p>
           <ul className="mt-3 grid grid-cols-2 gap-x-6 gap-y-1 text-[12px]">
             {top.map((c: any, i: number) => (
               <li key={i} className="flex justify-between gap-3 text-paper/75">
