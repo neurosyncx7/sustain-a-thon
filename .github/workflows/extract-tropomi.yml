@@ -1,0 +1,72 @@
+name: extract-tropomi
+
+# Real Sentinel-5P/TROPOMI CH4 extraction over India, one job per month, on GitHub's runners.
+# Output lands on the orphan `data` branch (never main) so the code history stays light.
+on:
+  workflow_dispatch:
+    inputs:
+      months:
+        description: "JSON list of YYYY-MM months"
+        required: true
+        default: '["2023-01","2023-02","2023-03","2023-04","2023-05","2023-06","2023-07","2023-08","2023-09","2023-10","2023-11","2023-12","2024-01","2024-02","2024-03","2024-04","2024-05","2024-06","2024-07","2024-08","2024-09","2024-10","2024-11","2024-12"]'
+  push:
+    paths: [".github/extract-request.json"]
+
+permissions:
+  contents: write
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      months: ${{ steps.m.outputs.months }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: m
+        run: |
+          if [ -n "${{ github.event.inputs.months }}" ]; then
+            echo 'months=${{ github.event.inputs.months }}' >> "$GITHUB_OUTPUT"
+          else
+            echo "months=$(jq -c .months .github/extract-request.json)" >> "$GITHUB_OUTPUT"
+          fi
+
+  extract:
+    needs: plan
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        month: ${{ fromJson(needs.plan.outputs.months) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: pip install -q "xarray>=2024.1" h5netcdf netCDF4 pandas pyarrow requests numpy
+      - run: python research/ingestion/extract_month.py --month ${{ matrix.month }} --out out
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tropomi-${{ matrix.month }}
+          path: out
+          retention-days: 30
+
+  publish:
+    needs: extract
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with: { path: artifacts, pattern: "tropomi-*", merge-multiple: true }
+      - name: Commit to data branch
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git clone --depth 1 --branch data "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}" data \
+            || (mkdir data && cd data && git init -b data && git remote add origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}")
+          mkdir -p data/tropomi
+          cp -r artifacts/* data/tropomi/
+          cd data
+          git add -A
+          git commit -m "data: TROPOMI CH4 India extraction (run ${{ github.run_id }})" || echo "nothing new"
+          git push origin data
