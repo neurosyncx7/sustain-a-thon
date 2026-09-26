@@ -37,12 +37,12 @@ jobs:
           if [ ! -f $f ] || [ "$last" -lt $(( $(date +%s) - 604800 )) ]; then
             mkdir -p data-pipeline/inventory && python research/pipeline/fetch_gamma.py research/pipeline/inventory_sites.json $f
           fi
-      - name: USD/INR (ECB reference via frankfurter.app)
+      - name: USD/INR (ECB reference via frankfurter.dev)
         id: fx
         run: |
-          r=$(curl -s --max-time 20 "https://api.frankfurter.app/latest?from=USD&to=INR" || true)
-          rate=$(echo "$r" | jq -r '.rates.INR // empty'); d=$(echo "$r" | jq -r '.date // empty')
-          if [ -n "$rate" ]; then echo "fx=$rate" >> "$GITHUB_OUTPUT"; echo "src=ECB reference rate via frankfurter.app, $d" >> "$GITHUB_OUTPUT";
+          r=$(curl -sL --max-time 20 "https://api.frankfurter.dev/v1/latest?base=USD&symbols=INR" || true)
+          rate=$(echo "$r" | jq -r '.rates.INR // empty' 2>/dev/null || true); d=$(echo "$r" | jq -r '.date // empty' 2>/dev/null || true)
+          if [ -n "$rate" ]; then echo "fx=$rate" >> "$GITHUB_OUTPUT"; echo "src=ECB reference rate via frankfurter.dev, $d" >> "$GITHUB_OUTPUT";
           else echo "fx=83.7" >> "$GITHUB_OUTPUT"; echo "src=RBI reference rate, 2024 annual average (fallback)" >> "$GITHUB_OUTPUT"; fi
       - name: National screen + labels
         run: |

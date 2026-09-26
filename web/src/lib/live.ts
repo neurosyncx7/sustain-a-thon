@@ -74,7 +74,7 @@ export async function currentWinds(sites: { slug: string; lat: number; lon: numb
 }
 
 export async function fxUsdInr() {
-  return get<{ date: string; rates: { INR: number } }>("https://api.frankfurter.app/latest?from=USD&to=INR", { revalidate: 3600 });
+  return get<{ date: string; rates: { INR: number } }>("https://api.frankfurter.dev/v1/latest?base=USD&symbols=INR", { revalidate: 3600 });
 }
 
 const WORKFLOWS = ["live.yml", "inventory.yml", "extract-sites.yml", "extract-tropomi.yml"] as const;
