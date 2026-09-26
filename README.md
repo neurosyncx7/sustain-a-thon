@@ -25,16 +25,33 @@ Nothing is mocked or synthetic.
 | Ledger | steles + book | known-site results and the national candidate list | `/ledger`, `/api/export` |
 
 ## Headline results (details and caveats: `research/findings.md`)
-- **Final method** (wind-rotated, footprint-drizzled stacking; monsoon exclusion; noise weighting; flux
-  divergence) detects **all five known landfill/coal emitters above 3 sigma** against a 24-pseudo-site
-  local null: Mumbai/Deonar, Jharia, Jawaharnagar, Pirana, Khajod. Korba is null, consistent with the
-  published finding that Indian coal is over-counted in inventories.
-- **Controlled ablation** (raw -> detrend -> monsoon-aware -> wind -> combined): wind rotation is the
-  largest single gain; only the combined method puts every known emitter above 3 sigma.
-- **Blind national screen** recovered Ghazipur (Delhi), Jharia, Jawaharnagar and Pirana without being
-  told where to look.
-- **Honest limits:** 3-sigma detection floor is roughly 10-20 t/h per 20 km cluster over two years; rates
-  are cluster rates at the 10 m wind (calibration and facility attribution are the next steps).
+- **Final method** (wind-rotated, footprint-drizzled stacking; monsoon exclusion; noise weighting;
+  albedo/aerosol bias removal; flux divergence) detects **all five known landfill/coal emitters above
+  3 sigma** against a 24-pseudo-site local null. Korba is null, consistent with the published finding that
+  Indian coal is over-counted in inventories.
+- **Controlled ablation**: the detection floor falls at every step, 7.3 -> 5.0 t/h; wind rotation is the
+  largest single gain.
+- **18 algorithms designed, each tested on real data against a pass mark written before the run**:
+  5 validated and running in the pipeline, 2 partly built, 3 failed (kept on the page), 8 not built
+  (`/api/algorithms`, `data-pipeline/inventory/algorithms.json`).
+- **Injection-recovery on real backgrounds**: the method recovers 98.9% of an injected plume; 50% detection
+  at ~10 t/h over the stacked record.
+- **Integrated inventory** (`/ledger`, `/api/inventory`, `/api/export`): every tested site with calibrated
+  t/h (Monte Carlo 68%), BY-FDR q-value (<= 5% false entries in the confirmed tier) and warming avoided per rupee.
+- **Blind national screen** recovered Ghazipur (Delhi), Jharia, Jawaharnagar and Pirana without being told
+  where to look.
+
+## Live operation (what to show a jury)
+| Every | Workflow | What happens |
+|---|---|---|
+| 3 h | `.github/workflows/live.yml` | newest real TROPOMI pass over India (NRTI, ~3 h after sensing) -> `data` branch `live/` |
+| day | `live.yml` (02:41 UTC) | newly published OFFL days appended to the archive |
+| day | `.github/workflows/inventory.yml` | national screen + inventory re-run on the whole archive, committed to `main` (redeploys) |
+
+On the site: the header dot shows when the satellite last saw India; `/ledger#live` shows that pass on the
+map, what it saw at each inventory site, current winds (Open-Meteo), the exchange rate used by the priority
+index (ECB), and the state of every pipeline run with links to its GitHub Actions log. With
+`GITHUB_DISPATCH_TOKEN` set in the deployment, a "Fetch the newest pass now" button starts a real run.
 
 ## Repository map
 ```
@@ -44,11 +61,15 @@ research/
   algorithms/site_stack.py             stacking engine + IME / cross-sectional flux / divergence
   validation/r3_known_sites.py         quantifier comparison with pseudo-site null
   validation/r4_ablation.py            controlled ablation
+  algorithms/{wit,obc,eiv_crf,by_fdr,wrpi}.py  invented algorithms (status in each docstring)
   screening/national_screen.py         national divergence screen + map products
   findings.md                          the source of truth for every claim
 data-pipeline/                         outputs the website reads (large raw extraction on the `data` branch)
 web/                                   Next.js + React Three Fiber world, HUD, ledger, dossiers, API
-.github/workflows/extract-tropomi.yml  reproducible 24-month extraction
+research/validation/r5_algorithms.py  the invented algorithms, each tested on real data
+research/pipeline/run_inventory.py     R6: the integrated inventory (validated algorithms only)
+research/ingestion/live_quicklook.py   the 3-hourly live pass
+.github/workflows/                     extraction, live pass, daily ingest, inventory refresh
 ```
 
 ## Run it
