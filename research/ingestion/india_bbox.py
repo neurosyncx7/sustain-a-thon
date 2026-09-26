@@ -29,3 +29,7 @@ BLIND_REFERENCES = {
     "ghazipur": dict(lat=28.6230, lon=77.3260, name="Ghazipur landfill, Delhi",
                      source="GHGSat observation of Ghazipur landfill plume, 2022"),
 }
+
+# Facility sector of each reference site, from the cited sources above (used for WRPI costs).
+SECTOR = dict(jawaharnagar="landfill", pirana="landfill", khajod="landfill", deonar="landfill",
+              ghazipur="landfill", jharia="coal", korba="coal")

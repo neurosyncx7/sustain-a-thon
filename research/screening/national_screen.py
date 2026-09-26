@@ -71,12 +71,20 @@ def compute_fields(files, wind_fn=None, log=True):
             sumD[g] += D[g]; nD[g] += 1
             r = np.isfinite(res)
             sumR[r] += res[r]; sumX[ok] += x[ok]; nX[ok] += 1
-        month = Path(f).stem
-        months.append(dict(month=month, days=int(X.shape[0]), pixels=int(C.sum()),
-                           mean_observed_cells=float(np.mean(obs_cells)) if obs_cells else 0.0,
-                           mean_xch4=float(np.nanmean(X)) if np.isfinite(X).any() else None))
+        month = Path(f).stem[:7]          # month files (YYYY-MM) and live day files (YYYY-MM-DD)
+        rec = dict(month=month, days=int(X.shape[0]), pixels=int(C.sum()),
+                   obs_sum=float(np.sum(obs_cells)), x_sum=float(np.nansum(X)), x_n=int(np.isfinite(X).sum()))
+        if months and months[-1]["month"] == month:
+            for k in ("days", "pixels", "obs_sum", "x_sum", "x_n"):
+                months[-1][k] += rec[k]
+        else:
+            months.append(rec)
         if log:
-            print(month, months[-1], flush=True)
+            print(Path(f).stem, rec["pixels"], flush=True)
+    for m in months:
+        m["mean_observed_cells"] = m.pop("obs_sum") / m["days"] if m["days"] else 0.0
+        xs, xn = m.pop("x_sum"), m.pop("x_n")
+        m["mean_xch4"] = xs / xn if xn else None
 
     with np.errstate(invalid="ignore", divide="ignore"):
         meanD = np.where(nD >= 20, sumD / nD, np.nan)

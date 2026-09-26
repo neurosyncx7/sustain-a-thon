@@ -1,0 +1,69 @@
+name: live
+
+# The live half of the pipeline. Every 3 h: newest real TROPOMI pass over India (NRTI quicklook).
+# Daily: ingest newly published OFFL days into the archive, then the inventory workflow re-runs on it.
+on:
+  schedule:
+    - cron: "17 */3 * * *"   # quicklook
+    - cron: "41 2 * * *"     # daily OFFL ingest
+  workflow_dispatch:
+    inputs:
+      ingest:
+        description: "also run the OFFL ingest"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: live-data-branch
+  cancel-in-progress: false
+
+jobs:
+  quicklook:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: pip install -q "xarray>=2024.1" h5netcdf netCDF4 pandas pyarrow requests numpy pillow
+      - run: git clone --depth 1 --branch data --filter=blob:none --sparse "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}" data && git -C data sparse-checkout set live
+      - run: mkdir -p out && cp -r data/live out/ 2>/dev/null || true
+      - run: python research/ingestion/live_quicklook.py out research/pipeline/inventory_sites.json
+      - name: Commit to data branch
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          mkdir -p data/live && cp -r out/live/* data/live/
+          cd data && git add live && (git commit -q -m "data: live quicklook $(date -u +%FT%H:%MZ)" || exit 0)
+          for i in 1 2 3 4 5; do git pull --rebase -q origin data && git push -q origin data && break; sleep $((i*7)); done
+
+  ingest:
+    if: github.event.schedule == '41 2 * * *' || inputs.ingest
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: pip install -q "xarray>=2024.1" h5netcdf netCDF4 pandas pyarrow requests numpy
+      - run: git clone --depth 1 --branch data --filter=blob:none --sparse "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}" data && git -C data sparse-checkout set tropomi/grids
+      - id: plan
+        run: echo "plan=$(python research/ingestion/live_plan.py data/tropomi/grids)" >> "$GITHUB_OUTPUT"
+      - name: Extract new days (grids + inventory site windows)
+        run: |
+          echo '${{ steps.plan.outputs.plan }}' | jq -c '.[]' | while read g; do
+            m=$(echo "$g" | jq -r .month); d=$(echo "$g" | jq -r .days); n=$(echo "$g" | jq -r .name)
+            python research/ingestion/extract_month.py --month "$m" --days "$d" --name "$n" --out out \
+              --sites-file research/pipeline/inventory_sites.json --tag inv
+          done
+      - name: Commit to data branch
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          [ -d out ] || { echo "nothing new"; exit 0; }
+          mkdir -p data/tropomi && cp -r out/* data/tropomi/
+          cd data && git add --sparse -A tropomi && (git commit -q -m "data: live OFFL ingest ${{ steps.plan.outputs.plan }}" || exit 0)
+          for i in 1 2 3 4 5; do git pull --rebase -q origin data && git push -q origin data && break; sleep $((i*7)); done

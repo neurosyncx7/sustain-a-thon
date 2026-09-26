@@ -233,7 +233,7 @@ def pseudo_sites(lat0, lon0, n=8, ring_km=(60.0, 90.0), seed=0):
     return list(zip(lat0 + dlat, lon0 + dlon))
 
 
-def bootstrap(stack: dict, n_boot: int = 300, R_km: float = 20.0, seed: int = 1) -> dict:
+def bootstrap(stack: dict, n_boot: int = 300, R_km: float = 20.0, seed: int = 1, samples: bool = False) -> dict:
     """Resample overpasses with replacement -> sampling uncertainty of each quantifier."""
     ops = stack["overpasses"]
     if len(ops) < 3:
@@ -248,4 +248,6 @@ def bootstrap(stack: dict, n_boot: int = 300, R_km: float = 20.0, seed: int = 1)
         q = quantify({**stack, "phi": ph}, R_km)
         for k in out:
             out[k].append(q[k])
+    if samples:
+        return {k: np.asarray(v, float) for k, v in out.items()}
     return {k: (float(np.nanpercentile(v, 16)), float(np.nanpercentile(v, 84))) for k, v in out.items()}

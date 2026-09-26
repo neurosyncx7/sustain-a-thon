@@ -307,7 +307,33 @@ def t_pwhhp(data_dir):
                 status="validated" if ok else "failed")
 
 
-TESTS = dict(abd=t_abd, obc=t_obc, wit=t_wit, eiv=t_eiv)
+def t_byfdr_site(df):
+    """Site-family BY-FDR (the form the inventory uses). Size: fake candidates = 6 fresh pseudo-sites per
+    window (different ring/seed), each scored against the standard 24-site null exactly like a real
+    site -> BY at 5% must declare <= 1 of them. Power: the 5 detected references in the same family
+    must mostly (>= 4) survive. PASS iff both."""
+    from scipy import stats as st_
+    rows = []
+    for k, s in KNOWN_SITES.items():
+        pix = df[df.site == k]
+        m, sd = null_stats(pix, s, FINAL)
+        def score(la, lo):
+            z = (quantify(stack_site(pix, la, lo, FINAL))["DIV"] - m) / sd
+            return z, float(st_.t.sf(z / np.sqrt(1 + 1 / N_NULL), N_NULL - 1))
+        z, p = score(s["lat"], s["lon"]); rows.append(dict(site=k, fake=False, z=z, p=p))
+        for la, lo in pseudo_sites(s["lat"], s["lon"], n=6, ring_km=(40.0, 110.0), seed=101):
+            z, p = score(la, lo); rows.append(dict(site=k, fake=True, lat=la, lon=lo, z=z, p=p))
+    r = pd.DataFrame(rows)
+    r["q"] = benjamini_yekutieli(r.p.values)
+    fake_disc = int(((r.q <= 0.05) & r.fake).sum()); real_disc = [x for x in r[~r.fake & (r.q <= 0.05)].site]
+    ok = fake_disc <= 1 and len([x for x in real_disc if x in DETECTED]) >= 4
+    return dict(criterion="<= 1 of 36 fake candidates discovered; >= 4 of 5 references survive",
+                fake_discoveries=fake_disc, n_fake=int(r.fake.sum()), real_discoveries=real_disc,
+                fake_p_ks_uniform=float(st_.kstest(r[r.fake].p, "uniform").pvalue),
+                rows=r.to_dict("records"), status="validated" if ok else "failed")
+
+
+TESTS = dict(abd=t_abd, obc=t_obc, wit=t_wit, eiv=t_eiv, byfdr_site=t_byfdr_site)
 FIELD_TESTS = dict(byfdr=t_byfdr, diversr=t_diversr, pwhhp=t_pwhhp)
 
 

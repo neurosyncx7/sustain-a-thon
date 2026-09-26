@@ -161,9 +161,11 @@ def main() -> None:
     ap.add_argument("--tag", default="", help="suffix for the sites folder, e.g. 'inv' -> sites_inv/")
     ap.add_argument("--no-grids", action="store_true", help="skip the national 0.1 deg grids")
     ap.add_argument("--days", default=None, help="explicit comma-separated YYYY-MM-DD list (live mode)")
+    ap.add_argument("--name", default=None, help="output file stem (default: --month); must start with YYYY-MM")
     a = ap.parse_args()
     sites = json.loads(Path(a.sites_file).read_text()) if a.sites_file else KNOWN_SITES
     site_dir = f"sites_{a.tag}" if a.tag else "sites"
+    stem = a.name or a.month
     y, m = map(int, a.month.split("-"))
     out = Path(a.out)
     (out / "grids").mkdir(parents=True, exist_ok=True)
@@ -225,15 +227,15 @@ def main() -> None:
 
     if days_out and not a.no_grids:
         np.savez_compressed(
-            out / "grids" / f"{a.month}.npz",
+            out / "grids" / f"{stem}.npz",
             days=np.array(days_out), lat_edges=LAT_EDGES, lon_edges=LON_EDGES,
             **{k: np.stack(v) for k, v in grids.items()},
         )
     if site_rows:
         pd.concat(site_rows, ignore_index=True).to_parquet(
-            out / site_dir / f"{a.month}.parquet", index=False, compression="zstd")
+            out / site_dir / f"{stem}.parquet", index=False, compression="zstd")
     (out / "logs").mkdir(exist_ok=True)
-    (out / "logs" / f"{a.month}{'_' + a.tag if a.tag else ''}.json").write_text(json.dumps(log, indent=0))
+    (out / "logs" / f"{stem}{'_' + a.tag if a.tag else ''}.json").write_text(json.dumps(log, indent=0))
     print(f"DONE {a.month}: {len(days_out)} days with India coverage")
 
 
