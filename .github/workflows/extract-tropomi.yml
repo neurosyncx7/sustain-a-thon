@@ -69,4 +69,4 @@ jobs:
           cd data
           git add -A
           git commit -m "data: TROPOMI CH4 India extraction (run ${{ github.run_id }})" || echo "nothing new"
-          git push origin data
+          for i in 1 2 3 4 5; do git pull --rebase -q origin data && git push origin data && break; sleep $((i*7)); done

@@ -54,7 +54,7 @@ class StackConfig:
     drizzle: bool = True            # spread each pixel over its real footprint
     season_mask: tuple = (6, 7, 8, 9)  # final method (R4): exclude monsoon months from stacks
     quality_weight: bool = True     # final method (R4): weight overpasses by 1/sigma^2 of background residual
-    albedo_correct: bool = False    # ABD: remove the part of XCH4 explained by SWIR albedo + AOT (fit on annulus)
+    albedo_correct: bool = True     # ABD (validated R5: mean z 3.7->4.1, floor 5.4->5.0 t/h): remove the part of XCH4 explained by SWIR albedo + AOT (fit on annulus)
     field: str = "xch4"             # "xch4" (ppb) or "xco_col" (mol m^-2, co-retrieved CO) for EIV-CRF
     inject: object = None           # OBC: callable(g, x_km, y_km, u10, v10) -> ppb to ADD (validation only)
 

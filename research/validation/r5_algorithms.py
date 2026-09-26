@@ -141,15 +141,22 @@ def t_wit(df):
 def t_eiv(df):
     """CO/CH4 molar emission ratio from the co-retrieved CO column, same overpasses.
     Sector boundary: CO/CH4 = 1 (crop/biomass burning ~10; landfill decay/coal/gas << 1).
-    PASS iff the 68% interval lies entirely on one side of 1 for >= 3 of the 5 detected sites."""
+    PASS iff the 68% interval lies entirely on one side of 1 for >= 3 of the 5 detected sites, where a
+    ratio above 1 additionally requires the CO rate itself to beat its own pseudo-site null (z > 2)."""
     out = {}
     for k in DETECTED:
         s = KNOWN_SITES[k]
-        out[k] = co_ch4_ratio(df[df.site == k], s["lat"], s["lon"], FINAL)
+        pix = df[df.site == k]
+        out[k] = co_ch4_ratio(pix, s["lat"], s["lon"], FINAL)
+        co_cfg = replace(FINAL, field="xco_col")
+        q_co = quantify(stack_site(pix, s["lat"], s["lon"], co_cfg))["DIV"]
+        m, sd = null_stats(pix, s, co_cfg)
+        out[k]["co_z_vs_null"] = float((q_co - m) / sd)
         print("eiv", k, out[k].get("ratio_ci68"), flush=True)
     inf = [k for k, v in out.items() if v.get("status") == "ok" and np.all(np.isfinite(v["ratio_ci68"]))
+           and (v["ratio_ci68"][1] < 1 or v["co_z_vs_null"] > 2)
            and (v["ratio_ci68"][1] < 1 or v["ratio_ci68"][0] > 1)]
-    return dict(criterion="68% CI of CO/CH4 excludes 1 at >= 3 of 5 detected sites",
+    return dict(criterion="68% CI of CO/CH4 excludes 1 (and CO z>2 when above 1) at >= 3 of 5 detected sites",
                 informative_sites=inf, sites=out, status="validated" if len(inf) >= 3 else "failed")
 
 
