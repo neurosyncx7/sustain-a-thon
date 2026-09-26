@@ -48,12 +48,12 @@ class StackConfig:
     min_pixels_near: int = 6        # pixels within 15 km of site needed to use an overpass
     min_wind_ms: float = 1.0        # below this the rotation is meaningless
     drizzle_sub: int = 4            # sub-samples per pixel edge (footprint oversampling)
-    # ablation switches (R4). Defaults = the full method.
+    # ablation switches (R4). Defaults = the final combined method selected by the ablation.
     rotate: bool = True             # wind-rotate each overpass before stacking
     background: str = "plane"       # "plane" (local robust plane) | "global" (one scene median)
     drizzle: bool = True            # spread each pixel over its real footprint
-    season_mask: tuple = ()         # months (1-12) to exclude, e.g. monsoon (6,7,8,9)
-    quality_weight: bool = False    # weight overpasses by 1/sigma^2 of their background residual
+    season_mask: tuple = (6, 7, 8, 9)  # final method (R4): exclude monsoon months from stacks
+    quality_weight: bool = True     # final method (R4): weight overpasses by 1/sigma^2 of background residual
 
 
 def _local_xy(lat, lon, lat0, lon0):

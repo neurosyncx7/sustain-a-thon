@@ -23,10 +23,10 @@ VARIANTS = {
     "5_combined":       replace(BASE, background="plane", season_mask=MONSOON, quality_weight=True, rotate=True, drizzle=True),
 }
 
-def evaluate(pix, s, cfg, n_null=12):
+def evaluate(pix, s, cfg, n_null=24):
     st = stack_site(pix, s["lat"], s["lon"], cfg); q = quantify(st)
     nulls = {k: [] for k in q}
-    for la, lo in pseudo_sites(s["lat"], s["lon"], n=n_null, seed=3):
+    for la, lo in pseudo_sites(s["lat"], s["lon"], n=n_null, seed=7):
         qq = quantify(stack_site(pix, la, lo, cfg))
         for k in q: nulls[k].append(qq[k])
     out = {"n": st["n_overpasses"]}

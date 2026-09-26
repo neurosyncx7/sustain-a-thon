@@ -16,7 +16,7 @@ export type StageEnv = {
 };
 
 export type Stage = {
-  slug: "prologue" | "ingest" | "seasons" | "anomalies" | "attribution" | "ledger";
+  slug: "prologue" | "ingest" | "observe" | "seasons" | "anomalies" | "attribution" | "ledger";
   nav: string;
   instrument: string;
   title: string;
@@ -40,7 +40,7 @@ export const STAGES: Stage[] = [
   },
   {
     slug: "ingest",
-    nav: "Observe",
+    nav: "13:30",
     instrument: "Samrat Yantra",
     title: "13:30. Now the sky reads us.",
     story:
@@ -50,14 +50,25 @@ export const STAGES: Stage[] = [
     env: { hourAngle: 22.5, stars: 0, fog: 0.0028, groundFog: 0.15, haze: 0.55, cloud: 0, lamps: 0, exposure: 1.0 },
   },
   {
+    slug: "observe",
+    nav: "Observe",
+    instrument: "Sentinel-5P / TROPOMI",
+    title: "Two years, 9.6 million clear looks at India.",
+    story:
+      "Every afternoon pass adds a strip of measurements. Stacked over 2023 and 2024, they draw India's methane: the Indo-Gangetic plain glows, the Himalaya goes quiet.",
+    camera: { pos: [30, 62, -26], target: [0, 0, -112], fov: 50 },
+    approach: [32, 40, 6],
+    env: { hourAngle: 30, stars: 0, fog: 0.0022, groundFog: 0.08, haze: 0.5, cloud: 0.05, lamps: 0, exposure: 1.0 },
+  },
+  {
     slug: "seasons",
     nav: "Seasons",
     instrument: "Rashivalaya Yantra",
     title: "Twelve instruments, twelve months of background.",
     story:
       "Paddy flooding, monsoon cloud and livestock set India's diffuse methane rhythm. Each of the twelve dials shows one month: how much of India was actually observed, and the background we must remove.",
-    camera: { pos: [60, 11, 48], target: [55, 3, 8], fov: 46 },
-    approach: [62, 30, 40],
+    camera: { pos: [70, 16, 40], target: [70, 2, -4], fov: 58 },
+    approach: [70, 40, -20],
     env: { hourAngle: 45, stars: 0, fog: 0.0035, groundFog: 0.1, haze: 0.8, cloud: 0.55, lamps: 0, exposure: 1.02 },
   },
   {
@@ -67,8 +78,8 @@ export const STAGES: Stage[] = [
     title: "What remains once the seasons are gone.",
     story:
       "The bowl inverts the sky onto the ground. Here it holds the residual field: persistent excess methane that the seasonal background cannot explain.",
-    camera: { pos: [-44, 20, 4], target: [-50, -1, 26], fov: 48 },
-    approach: [0, 40, 30],
+    camera: { pos: [-44, 17, 38], target: [-58, -3, 21], fov: 48 },
+    approach: [10, 38, 40],
     env: { hourAngle: 62, stars: 0, fog: 0.004, groundFog: 0.2, haze: 0.7, cloud: 0.2, lamps: 0, exposure: 1.02 },
   },
   {
@@ -78,8 +89,8 @@ export const STAGES: Stage[] = [
     title: "Follow the wind back to the source.",
     story:
       "Every overpass is turned to face its own wind, then stacked. A real source stays fixed while noise averages away, and the flux through the column gives its emission rate.",
-    camera: { pos: [-28, 8, -14], target: [-52, 3, -34], fov: 46 },
-    approach: [-60, 24, 0],
+    camera: { pos: [-36, 10, 82], target: [-60, 4, 55], fov: 46 },
+    approach: [-30, 26, 50],
     env: { hourAngle: 82, stars: 0.35, fog: 0.005, groundFog: 0.55, haze: 0.5, cloud: 0.1, lamps: 0.4, exposure: 1.05 },
   },
   {
@@ -89,8 +100,8 @@ export const STAGES: Stage[] = [
     title: "The reading, written down.",
     story:
       "Back on the ground, each site becomes an entry: where it is, what it emits, how sure we are, and what fixing it buys per rupee.",
-    camera: { pos: [25.5, 2.1, 64], target: [20, 1.0, 55.5], fov: 40 },
-    approach: [0, 22, 40],
+    camera: { pos: [27.9, 2.05, 64.9], target: [25.7, 0.95, 61.0], fov: 44 },
+    approach: [-5, 20, 80],
     env: { hourAngle: 132, stars: 1, fog: 0.007, groundFog: 0.9, haze: 0.15, cloud: 0, lamps: 1, exposure: 1.0 },
   },
 ];

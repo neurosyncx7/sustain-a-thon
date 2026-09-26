@@ -3,6 +3,7 @@
 import { useMemo } from "react";
 import * as THREE from "three";
 import { makeMarking, makePlaster } from "../materials/plaster";
+import { JP } from "./JaiPrakash";
 
 // Courtyard floor (compacted sandstone dust with paving), the observatory's boundary wall with
 // crenellations, and the Aravalli ridge on the northern horizon (Nahargarh sits on it) so the
@@ -57,20 +58,27 @@ export function Courtyard() {
   const wall = useMemo(() => makePlaster({ base: "#c07a62", grime: 0.8 }), []);
   const lime = useMemo(() => makeMarking(), []);
   const ridge = useMemo(() => ridgeGeometry(), []);
+  // ground with a circular opening where the Jai Prakash bowl is sunk into the earth
+  const groundGeo = useMemo(() => {
+    const s = new THREE.Shape();
+    s.moveTo(-450, -450); s.lineTo(450, -450); s.lineTo(450, 450); s.lineTo(-450, 450); s.lineTo(-450, -450);
+    const hole = new THREE.Path();
+    hole.absarc(JP.x, -JP.z, JP.r + 0.95, 0, Math.PI * 2, true);
+    s.holes.push(hole);
+    return new THREE.ShapeGeometry(s, 64);
+  }, []);
   const ridgeMat = useMemo(() => new THREE.MeshStandardMaterial({ color: "#5c4a44", roughness: 1 }), []);
 
   return (
     <group>
-      <mesh rotation-x={-Math.PI / 2} material={ground} receiveShadow>
-        <planeGeometry args={[900, 900]} />
-      </mesh>
+      <mesh rotation-x={-Math.PI / 2} geometry={groundGeo} material={ground} receiveShadow />
       {/* processional paths linking the instruments */}
       {[
-        [0, 44, 8, 60, 0],
-        [30, 12, 60, 7, 0.35],
-        [-28, 24, 50, 7, -0.25],
-        [-20, 55, 60, 7, 0.9],
-        [18, 58, 26, 7, -0.6],
+        [0, 58, 8, 60, 0],
+        [14, 62, 7, 18, Math.PI / 2],
+        [-24, 62, 7, 30, Math.PI / 2],
+        [-32, 29, 6, 24, 1.3],
+        [36, 8, 6, 34, 1.45],
       ].map(([x, z, l, w, r], i) => (
         <mesh key={i} rotation={[-Math.PI / 2, 0, r]} position={[x, 0.02, z]} material={paving} receiveShadow>
           <planeGeometry args={[w, l]} />

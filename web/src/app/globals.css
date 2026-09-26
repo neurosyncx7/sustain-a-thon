@@ -1,18 +1,29 @@
 @import "tailwindcss";
 
 :root {
-  --background: #08070a;
-  --foreground: #e8e4dc;
+  --ink: #07080d;
+  --paper: #ece4d8;
+  --muted: rgb(236 228 216 / 0.62);
+  --line: rgb(236 228 216 / 0.14);
+  --flame: #6fb4ff;       /* the one accent: methane burns blue */
+  --stone: #c58067;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-flame: var(--flame);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+
+::selection { background: rgb(111 180 255 / 0.35); }
+
+.num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }

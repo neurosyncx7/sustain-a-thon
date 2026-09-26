@@ -12,6 +12,20 @@ import { SunRig } from "./env/SunRig";
 import { Dust } from "./env/Atmosphere";
 import { Courtyard } from "./instruments/Courtyard";
 import { SamratYantra } from "./instruments/SamratYantra";
+import { FloorMap, Satellite } from "./instruments/FloorMap";
+import { Rashivalaya } from "./instruments/Rashivalaya";
+import { JaiPrakash } from "./instruments/JaiPrakash";
+import { Attribution } from "./instruments/Attribution";
+import { Ledger } from "./instruments/Ledger";
+import { STAGE_INDEX } from "@/content/stages";
+import { lazy } from "react";
+
+// Rapier's WASM loads only when the viewer approaches the ledger.
+const LedgerProps = lazy(() => import("./instruments/LedgerProps").then((m) => ({ default: m.LedgerProps })));
+function LazyLedgerProps() {
+  const near = useWorld((s) => s.stageIndex >= STAGE_INDEX.ledger - 1);
+  return near ? <Suspense fallback={null}><LedgerProps /></Suspense> : null;
+}
 
 function Ready() {
   // Pre-compile every shader before the loader leaves, so the first flight never stutters.
@@ -42,6 +56,13 @@ export function World() {
         <SunRig />
         <Courtyard />
         <SamratYantra />
+        <FloorMap />
+        <Satellite />
+        <Rashivalaya />
+        <JaiPrakash />
+        <Attribution />
+        <Ledger />
+        <LazyLedgerProps />
         <Dust />
         <CameraRig />
         <PostFX />

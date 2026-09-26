@@ -8,6 +8,7 @@ import * as THREE from "three";
 import { frame } from "@/lib/timeline";
 import { sunDirection } from "@/lib/astro";
 import { HeightFogEffect } from "./effects/HeightFog";
+import { GradeEffect } from "./effects/Grade";
 import { horizonColor } from "./env/SkyDome";
 
 // "The look" is lighting and material; post finishes it. Order: AO (contact weight) -> height fog
@@ -18,6 +19,7 @@ const tmpV = new THREE.Vector3(), nightFog = new THREE.Color("#3a4666"), tmpC = 
 export function PostFX() {
   const dof = useRef<any>(null);
   const fog = useMemo(() => new HeightFogEffect(), []);
+  const grade = useMemo(() => new GradeEffect(), []);
 
   useFrame(({ camera, clock }) => {
     const e = frame.env;
@@ -35,6 +37,16 @@ export function PostFX() {
     u.get("uDensity")!.value = 0.004 + 0.045 * e.groundFog;
     u.get("uFalloff")!.value = 0.28;
     if (dof.current) dof.current.bokehScale = 0.4 + frame.flight * 4;
+    // grade: night = cool shadows, warm lamp highlights; day = warm dusty highlights, deep shadows
+    const g = grade.uniforms;
+    const night = 1 - day;
+    (g.get("uLift")!.value as THREE.Vector3).set(0.0, 0.004 * night, 0.018 * night);
+    (g.get("uGain")!.value as THREE.Vector3).set(1.03 + 0.03 * day, 1.0, 0.97 - 0.03 * day);
+    (g.get("uGamma")!.value as THREE.Vector3).set(1.0, 1.0, 1.0 + 0.04 * night);
+    (g.get("uShadowTint")!.value as THREE.Vector3).set(-0.03, 0.0, 0.06 * (0.4 + night));
+    (g.get("uHighTint")!.value as THREE.Vector3).set(0.07, 0.03, -0.04);
+    g.get("uContrast")!.value = 1.1 + 0.08 * day;
+    g.get("uSat")!.value = 1.02 + 0.08 * day;
   });
 
   return (
@@ -44,6 +56,7 @@ export function PostFX() {
       <DepthOfField ref={dof} focusDistance={0.02} focalLength={0.08} bokehScale={0.4} />
       <Bloom luminanceThreshold={0.92} luminanceSmoothing={0.2} intensity={0.5} mipmapBlur />
       <ToneMapping mode={ToneMappingMode.AGX} />
+      <primitive object={grade} />
       <Noise opacity={0.04} blendFunction={BlendFunction.SOFT_LIGHT} />
       <Vignette offset={0.26} darkness={0.64} />
     </EffectComposer>

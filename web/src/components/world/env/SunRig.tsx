@@ -42,7 +42,7 @@ export function SunRig() {
     const dayK = THREE.MathUtils.smoothstep(elev, -0.03, 0.2);
     if (sun.current) {
       sun.current.position.copy(sunV).multiplyScalar(300);
-      sun.current.intensity = 3.2 * dayK * (1 - 0.35 * e.haze) * (1 - 0.6 * e.cloud);
+      sun.current.intensity = 3.6 * dayK * (1 - 0.25 * e.haze) * (1 - 0.45 * e.cloud);
       sun.current.color.copy(warm).lerp(white, THREE.MathUtils.smoothstep(elev, 0.02, 0.45));
       sun.current.castShadow = dayK > 0.01;
     }
@@ -51,12 +51,12 @@ export function SunRig() {
       horizonColor(elev, e.haze, tmpC);
       hemi.current.color.copy(tmpC).multiplyScalar(1.1);
       hemi.current.groundColor.set("#5a3528").multiplyScalar(0.35 + 0.65 * dayK);
-      hemi.current.intensity = 0.25 + 0.9 * dayK;
+      hemi.current.intensity = 0.16 + 0.48 * dayK;
     }
     const fog = scene.fog as THREE.FogExp2 | null;
     if (fog) {
       horizonColor(elev, e.haze, fog.color);
-      fog.density = e.fog;
+      fog.density = e.fog * 0.7;
     }
   });
 

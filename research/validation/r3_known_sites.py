@@ -14,6 +14,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "algorithms"))
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "ingestion"))
 from site_stack import StackConfig, stack_site, quantify, bootstrap, pseudo_sites  # noqa
 from india_bbox import KNOWN_SITES  # noqa
+NULL_N, NULL_SEED = 24, 7   # one shared pseudo-site null for R3 and R4 (8-12 was too few: z itself was noisy)
 
 def load(data_dir: str) -> pd.DataFrame:
     fs = sorted(glob.glob(f"{data_dir}/tropomi/sites/*.parquet"))
@@ -30,7 +31,7 @@ def main(data_dir: str, out: str, only: str | None = None):
         q = quantify(st)
         ci = bootstrap(st, n_boot=200)
         nulls = {"IME": [], "CSF": [], "DIV": []}
-        for (la, lo) in pseudo_sites(s["lat"], s["lon"], n=8):
+        for (la, lo) in pseudo_sites(s["lat"], s["lon"], n=NULL_N, seed=NULL_SEED):
             # pseudo-site pixels: same window rows, re-centred (windows are 150 km around the site)
             sp = stack_site(pix, la, lo, cfg, seed_label="null")
             qq = quantify(sp)
