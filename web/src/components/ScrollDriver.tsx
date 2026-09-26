@@ -17,18 +17,29 @@ export function ScrollDriver() {
     const lenis = new Lenis({ duration: reduce ? 0 : 1.35, smoothWheel: !reduce, wheelMultiplier: 0.8 });
     lenisRef.current = lenis;
     let settleTimer: ReturnType<typeof setTimeout> | undefined;
+    let guard: ReturnType<typeof setTimeout> | undefined;
     let programmatic = false;
 
     const ease = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
     const toStage = (i: number, duration = 2.6) => {
       programmatic = true;
+      clearTimeout(settleTimer); clearTimeout(guard);
+      // a flight longer than the section it crosses reads as lag; scale with the distance travelled
+      const from = lenis.limit > 0 ? (lenis.animatedScroll / lenis.limit) * (N - 1) : 0;
+      const d = reduce ? 0 : Math.min(duration, 1.1 + 0.9 * Math.abs(i - from));
       lenis.scrollTo((i / (N - 1)) * lenis.limit, {
-        duration: reduce ? 0 : duration,
+        duration: d,
         easing: ease,
+        lock: false,
         onComplete: () => { programmatic = false; },
       });
+      // if the user takes over mid-flight Lenis never calls onComplete; never leave settling disabled
+      guard = setTimeout(() => { programmatic = false; }, d * 1000 + 250);
     };
     registerScrollToStage((i) => toStage(Math.max(0, Math.min(N - 1, i))));
+
+    // Any real wheel/touch input hands control back to the user immediately.
+    lenis.on("virtual-scroll", () => { if (programmatic) { programmatic = false; clearTimeout(guard); } });
 
     lenis.on("scroll", (l: Lenis) => {
       useWorld.getState().setProgress(l.limit > 0 ? l.animatedScroll / l.limit : 0);
@@ -68,7 +79,7 @@ export function ScrollDriver() {
     window.addEventListener("keydown", onKey);
     return () => {
       cancelAnimationFrame(raf);
-      clearTimeout(settleTimer);
+      clearTimeout(settleTimer); clearTimeout(guard);
       window.removeEventListener("keydown", onKey);
       unsub();
       lenis.destroy();

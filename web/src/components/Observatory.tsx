@@ -25,7 +25,7 @@ function canRun3D() {
 export function Observatory() {
   const [mode, setMode] = useState<"pending" | "3d" | "static">("pending");
   useEffect(() => {
-    prefetch(["/api/overview", "/api/months", "/api/maps", "/api/candidates", "/api/sites", "/api/sites/jawaharnagar"]);
+    prefetch(["/api/overview", "/api/months", "/api/maps", "/api/candidates", "/api/inventory", "/api/sites/jawaharnagar"]);
     const forced = new URLSearchParams(location.search).get("render");
     setMode(forced === "static" ? "static" : forced === "3d" ? "3d" : canRun3D() ? "3d" : "static");
   }, []);

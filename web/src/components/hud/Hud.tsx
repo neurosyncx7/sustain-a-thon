@@ -8,6 +8,7 @@ import { formatSolarTime, sunDirection } from "@/lib/astro";
 import { goToStage, useWorld } from "@/lib/store";
 import { frame } from "@/lib/timeline";
 import { StageEvidence } from "./StageEvidence";
+import { LiveDot } from "@/components/live/LiveDot";
 import * as THREE from "three";
 
 const ease = [0.16, 1, 0.3, 1] as const;
@@ -42,9 +43,12 @@ function Nav() {
           </button>
         ))}
       </nav>
-      <Link href="/ledger" className="pointer-events-auto rounded-full px-3.5 py-1.5 text-[13px] text-paper/80 ring-1 ring-paper/20 transition hover:bg-paper/10 hover:text-paper active:scale-[0.98]">
-        Open inventory
-      </Link>
+      <div className="pointer-events-auto flex items-center gap-2">
+        <LiveDot className="bg-ink/40 backdrop-blur-md" />
+        <Link href="/ledger" className="rounded-full px-3.5 py-1.5 text-[13px] text-paper/80 ring-1 ring-paper/20 transition hover:bg-paper/10 hover:text-paper active:scale-[0.98]">
+          Open inventory
+        </Link>
+      </div>
     </header>
   );
 }

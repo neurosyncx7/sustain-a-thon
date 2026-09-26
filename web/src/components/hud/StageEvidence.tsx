@@ -39,7 +39,7 @@ export function StageEvidence({ slug, expanded }: { slug: Stage["slug"]; expande
   const maps = useApi("/api/maps");
   const cands = useApi("/api/candidates");
   const site = useApi("/api/sites/jawaharnagar");
-  const sites = useApi("/api/sites");
+  const inv = useApi("/api/inventory");
 
   switch (slug) {
     case "prologue": {
@@ -122,46 +122,47 @@ export function StageEvidence({ slug, expanded }: { slug: Stage["slug"]; expande
     case "attribution": {
       if (site.error) return <Failure error={site.error} />;
       if (!site.data) return <Skeleton />;
-      const s = site.data;
-      const g = s.era5?.gamma_100_over_10;
-      const ab = s.ablation as Record<string, any>;
+      const s = site.data.r3, e = site.data.inventory;
+      const ab = site.data.ablation as Record<string, any>;
+      const keys = Object.keys(ab);
       return (
         <>
-          <Figures items={[["Overpasses stacked", String(s.n_overpasses)], ["Divergence rate", `${tph(s.rate_kg_h.DIV)} t/h`], ["Significance", `z ${s.z.DIV.toFixed(1)}`]]} />
+          <Figures items={[["Overpasses stacked", String(e?.evidence.n_overpasses ?? s.n_overpasses)], ["Calibrated rate", e ? `${e.rate_t_h.p50.toFixed(1)} t/h` : `${tph(s.rate_kg_h.DIV)} t/h`], ["Significance", `z ${(e?.z ?? s.z.DIV).toFixed(1)}`]]} />
           <table className="mt-3 text-[12px]">
             <tbody>
-              {Object.entries(ab).map(([k, v]) => (
+              {keys.map((k) => (
                 <tr key={k} className="text-paper/70">
                   <td className="pr-6 capitalize">{k.split("_").slice(1).join(" ").replace("+", "+ ")}</td>
-                  <td className={`num text-right ${k.startsWith("5") ? "text-flame" : ""}`}>z {v.DIV.z?.toFixed(1)}</td>
+                  <td className={`num text-right ${k === keys.at(-1) ? "text-flame" : ""}`}>z {ab[k].DIV.z?.toFixed(1)}</td>
                 </tr>
               ))}
             </tbody>
           </table>
-          {expanded && <Note>Jawaharnagar area, 20 km cluster. 68% interval {tph(s.ci68.DIV[0])} to {tph(s.ci68.DIV[1])} t/h at the 10 m wind; ERA5 suggests transport winds about {g}x stronger, so the calibrated rate is higher (R6 pending). Ablation: z against a pseudo-site null, one component added per row.</Note>}
+          {expanded && e && <Note>Jawaharnagar area, 20 km cluster. {e.rate_t_h.p16.toFixed(1)} to {e.rate_t_h.p84.toFixed(1)} t/h (68%) after the transport-wind factor ({e.gamma.value.toFixed(2)}, ERA5) and the injection-recovery slope ({e.obc_slope.toFixed(3)}). Ablation: z against a pseudo-site null, one component added per row.</Note>}
         </>
       );
     }
     case "ledger": {
-      if (sites.error) return <Failure error={sites.error} />;
-      if (!sites.data) return <Skeleton />;
-      const rows = [...sites.data.sites].sort((a: any, b: any) => (b.z.DIV ?? -9) - (a.z.DIV ?? -9));
+      if (inv.error) return <Failure error={inv.error} />;
+      if (!inv.data) return <Skeleton />;
+      const rows = inv.data.sites.filter((r: any) => r.status !== "not detected").slice(0, 7);
       return (
         <>
           <table className="w-full text-[12.5px]">
             <tbody>
               {rows.map((r: any) => (
                 <tr key={r.slug} className="group">
+                  <td className="num py-1 pr-3 text-paper/45">{String(r.priority_rank).padStart(2, "0")}</td>
                   <td className="py-1 pr-4">
                     <Link href={`/site/${r.slug}`} className="text-paper/85 underline-offset-4 transition group-hover:text-paper group-hover:underline">{r.name}</Link>
                   </td>
-                  <td className="num py-1 pr-4 text-right text-paper/80">{tph(r.rate_kg_h.DIV)} t/h</td>
-                  <td className={`num py-1 text-right ${(r.z.DIV ?? 0) >= 3 ? "text-flame" : "text-paper/45"}`}>z {r.z.DIV?.toFixed(1)}</td>
+                  <td className="num py-1 pr-4 text-right text-paper/80">{r.rate_t_h.p50.toFixed(1)} t/h</td>
+                  <td className={`py-1 text-right text-[11px] ${r.status === "confirmed" ? "text-flame" : "text-paper/55"}`}>{r.status}</td>
                 </tr>
               ))}
             </tbody>
           </table>
-          {expanded && <Note>Known-site stacks (R3). Rates at the 10 m wind, before calibration. Full national candidate list and downloads are in the inventory.</Note>}
+          {expanded && <Note>Ranked by warming avoided per rupee, weighted by the chance the source is real. {inv.data.fdr.statement} TROPOMI {inv.data.data_span.first} to {inv.data.data_span.last}.</Note>}
         </>
       );
     }

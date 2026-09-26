@@ -1,7 +1,8 @@
 "use client";
 
 import { Canvas, useThree } from "@react-three/fiber";
-import { Suspense, useEffect } from "react";
+import { PerformanceMonitor } from "@react-three/drei";
+import { Suspense, useEffect, useState } from "react";
 import * as THREE from "three";
 import { useWorld } from "@/lib/store";
 import { CameraRig } from "./CameraRig";
@@ -41,15 +42,38 @@ function Ready() {
   return null;
 }
 
+// Quality tiers keep the frame rate, not the feature list, constant: when the GPU falls behind we
+// shed resolution first, then ambient occlusion, then depth of field. Three flip-flops at most, so
+// the scene never oscillates.
+const DPR = (q: number) => [1, 1.25, Math.min(1.75, typeof window === "undefined" ? 1.5 : window.devicePixelRatio)][q];
+
+function Quality() {
+  const setQ = useWorld((s) => s.setQuality);
+  return (
+    <PerformanceMonitor flipflops={3} bounds={() => [45, 58]}
+      onDecline={() => setQ(Math.max(0, useWorld.getState().quality - 1) as 0 | 1 | 2)}
+      onIncline={() => setQ(Math.min(2, useWorld.getState().quality + 1) as 0 | 1 | 2)}
+      onFallback={() => setQ(0)} />
+  );
+}
+
 export function World() {
+  const quality = useWorld((s) => s.quality);
+  const [dpr, setDpr] = useState(1.25);
+  useEffect(() => {
+    const weak = window.matchMedia("(max-width: 900px)").matches || ((navigator as any).deviceMemory ?? 8) <= 4;
+    if (weak) useWorld.getState().setQuality(1);
+  }, []);
+  useEffect(() => setDpr(DPR(quality)), [quality]);
   return (
     <Canvas
       shadows="soft"
-      dpr={[1, 1.75]}
+      dpr={dpr}
       gl={{ antialias: false, powerPreference: "high-performance", toneMapping: THREE.NoToneMapping }}
       camera={{ fov: 52, near: 0.3, far: 3000, position: [9, 1.7, 36] }}
       className="!fixed inset-0"
     >
+      <Quality />
       <Suspense fallback={null}>
         <SkyDome />
         <Stars />

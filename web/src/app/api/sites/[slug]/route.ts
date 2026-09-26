@@ -1,18 +1,17 @@
 import { NextResponse } from "next/server";
-import { PROVENANCE, readJson, type SiteResult } from "@/lib/data";
+import { PROVENANCE, readJson } from "@/lib/data";
 
 export async function GET(_req: Request, { params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const r3 = await readJson<Record<string, SiteResult>>("r3/known_sites.json");
-  if (!r3[slug]) return NextResponse.json({ error: "unknown site", known: Object.keys(r3) }, { status: 404 });
+  const inv = await readJson("inventory/inventory.json");
+  const r3 = await readJson("r3/known_sites.json");
+  const entry = inv.sites.find((s: any) => s.slug === slug);
+  if (!entry && !r3[slug]) return NextResponse.json({ error: "unknown site", known: inv.sites.map((s: any) => s.slug) }, { status: 404 });
   const ablation = await readJson("r3/ablation.json");
-  const stacks = await readJson("web/stacks.json");
-  const gamma = await readJson("web/era5_gamma.json");
   const blind = await readJson("web/blind_recovery.json");
   return NextResponse.json({
-    slug, ...r3[slug],
-    ablation: Object.fromEntries(Object.entries(ablation).map(([v, s]: any) => [v, s[slug]])),
-    stack: stacks[slug] ?? null, era5: gamma[slug] ?? null, blind_recovery: blind[slug] ?? null,
-    provenance: PROVENANCE,
+    slug, inventory: entry ?? null, r3: r3[slug] ?? null,
+    ablation: r3[slug] ? Object.fromEntries(Object.entries(ablation).map(([v, s]: any) => [v, s[slug]])) : null,
+    blind_recovery: blind[slug] ?? null, method: inv.method, provenance: PROVENANCE,
   });
 }

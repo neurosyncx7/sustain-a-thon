@@ -10,6 +10,7 @@ import { sunDirection } from "@/lib/astro";
 import { HeightFogEffect } from "./effects/HeightFog";
 import { GradeEffect } from "./effects/Grade";
 import { horizonColor } from "./env/SkyDome";
+import { useWorld } from "@/lib/store";
 
 // "The look" is lighting and material; post finishes it. Order: AO (contact weight) -> height fog
 // (mist pools in the courtyard) -> depth of field (opens only in flight) -> bloom (data emissives
@@ -20,6 +21,7 @@ export function PostFX() {
   const dof = useRef<any>(null);
   const fog = useMemo(() => new HeightFogEffect(), []);
   const grade = useMemo(() => new GradeEffect(), []);
+  const q = useWorld((s) => s.quality);
 
   useFrame(({ camera, clock }) => {
     const e = frame.env;
@@ -51,9 +53,9 @@ export function PostFX() {
 
   return (
     <EffectComposer multisampling={0} enableNormalPass={false}>
-      <N8AO aoRadius={2.5} intensity={2.2} distanceFalloff={1.2} quality="medium" halfRes />
+      {q >= 2 ? <N8AO aoRadius={2.5} intensity={2.2} distanceFalloff={1.2} quality="medium" halfRes /> : <></>}
       <primitive object={fog} />
-      <DepthOfField ref={dof} focusDistance={0.02} focalLength={0.08} bokehScale={0.4} />
+      {q >= 1 ? <DepthOfField ref={dof} focusDistance={0.02} focalLength={0.08} bokehScale={0.4} /> : <></>}
       <Bloom luminanceThreshold={0.92} luminanceSmoothing={0.2} intensity={0.5} mipmapBlur />
       <ToneMapping mode={ToneMappingMode.AGX} />
       <primitive object={grade} />

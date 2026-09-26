@@ -1,0 +1,194 @@
+{
+ "generated_from": [
+  "data-pipeline/r3/ablation.json",
+  "data-pipeline/r5/*.json"
+ ],
+ "counts": {
+  "validated": 5,
+  "partial": 2,
+  "failed": 3,
+  "not_implemented": 8
+ },
+ "algorithms": [
+  {
+   "code": "A1",
+   "name": "SRECE (noise-covariance weighting)",
+   "stage": "data quality",
+   "status": "validated",
+   "in_inventory": true,
+   "result": "lite form (per-overpass background-annulus noise -> 1/sigma^2 weights, with monsoon exclusion): part of the combined method that lifts every known emitter above 3 sigma (R4: +wind 5.9 -> combined 5.4 t/h floor). Variogram/correlation-length form not built.",
+   "evidence": "data-pipeline/r3/ablation.json",
+   "novelty": "new (lite form)"
+  },
+  {
+   "code": "A2",
+   "name": "ABD (albedo/aerosol bias decorrelation)",
+   "stage": "data quality",
+   "status": "validated",
+   "in_inventory": true,
+   "result": "mean z over 5 emitters 3.74 -> 4.06; floor 5.4 -> 5.0 t/h",
+   "evidence": "data-pipeline/r5/abd.json",
+   "novelty": "new for this use"
+  },
+  {
+   "code": "B1",
+   "name": "PW-HHP (Helmholtz projection of winds)",
+   "stage": "transport",
+   "status": "failed",
+   "in_inventory": false,
+   "result": "national noise fell 29% but blind recovery fell 4 -> 3 of 4 (Jawaharnagar lost). Unweighted variant: the gridded product has no column-mass per wind.",
+   "evidence": "data-pipeline/r5/pwhhp.json",
+   "novelty": "adapted"
+  },
+  {
+   "code": "B2",
+   "name": "NDC (null-divergence wind calibration)",
+   "stage": "transport",
+   "status": "not_implemented",
+   "in_inventory": false,
+   "result": "replaced by per-site ERA5 100 m/10 m transport factor (gamma) + OBC slope, which are independently measurable",
+   "evidence": null,
+   "novelty": "new"
+  },
+  {
+   "code": "C1",
+   "name": "MSFD (multi-species flux divergence)",
+   "stage": "flux",
+   "status": "partial",
+   "in_inventory": false,
+   "result": "CO leg built (same pixels, winds, operator; CO detected above its own null at all 5 emitters); NO2 not ingested",
+   "evidence": "data-pipeline/r5/eiv.json",
+   "novelty": "new combination"
+  },
+  {
+   "code": "C2",
+   "name": "KPW (Kuttaka phase-weighted stacking)",
+   "stage": "flux",
+   "status": "not_implemented",
+   "in_inventory": false,
+   "result": "superseded: footprint drizzle samples every sub-pixel phase directly, so phase re-weighting has nothing left to fix",
+   "evidence": null,
+   "novelty": "new (Aryabhata's kuttaka)"
+  },
+  {
+   "code": "D1",
+   "name": "PSSI (sparse + smooth physics-prior inversion)",
+   "stage": "separation",
+   "status": "not_implemented",
+   "in_inventory": false,
+   "result": "needs paddy (Sentinel-1 SAR/EVI) and livestock priors that are not ingested; the local plane background + monsoon exclusion does the separation in the current method",
+   "evidence": null,
+   "novelty": "new"
+  },
+  {
+   "code": "D2",
+   "name": "DiverSR (divergence super-resolution)",
+   "stage": "separation",
+   "status": "partial",
+   "in_inventory": true,
+   "result": "core (footprint-drizzled super-resolved stacking) validated in R4 (combined vs +wind); off-grid peak refinement FAILED: mean blind distance 7.9 -> 8.7 km",
+   "evidence": "data-pipeline/r5/diversr.json",
+   "novelty": "adapted solver, new kernel"
+  },
+  {
+   "code": "D3",
+   "name": "WIT (wind-invariance test)",
+   "stage": "separation",
+   "status": "failed",
+   "in_inventory": false,
+   "result": "false-reject rate 21% on centred injections (needs <= 15%); power 8% against a neighbour at the disk edge (needs >= 50%). Divergence within a disk is already nearly wind-invariant.",
+   "evidence": "data-pipeline/r5/wit.json",
+   "novelty": "new"
+  },
+  {
+   "code": "D4",
+   "name": "MRI (monsoon residual imputation)",
+   "stage": "separation",
+   "status": "not_implemented",
+   "in_inventory": false,
+   "result": "policy adopted without the imputation: monsoon months are reported as unobserved, never filled",
+   "evidence": null,
+   "novelty": "new"
+  },
+  {
+   "code": "E1",
+   "name": "MC-FOD (moisture-coupled landfill decay)",
+   "stage": "time",
+   "status": "not_implemented",
+   "in_inventory": false,
+   "result": "needs soil-moisture and waste-input series per landfill",
+   "evidence": null,
+   "novelty": "new variant"
+  },
+  {
+   "code": "E2",
+   "name": "PKTD (process-kernel temporal decomposition)",
+   "stage": "time",
+   "status": "not_implemented",
+   "in_inventory": false,
+   "result": "per-site monthly series are too sparse after monsoon exclusion (0-12 overpasses/month)",
+   "evidence": null,
+   "novelty": "new"
+  },
+  {
+   "code": "F1",
+   "name": "EIV-CRF (CO/CH4 ratio fingerprint)",
+   "stage": "attribution",
+   "status": "failed",
+   "in_inventory": false,
+   "result": "ratio separated from the combustion boundary at 2 of 5 emitters (deonar, jharia); gate needs 3",
+   "evidence": "data-pipeline/r5/eiv.json",
+   "novelty": "new"
+  },
+  {
+   "code": "F2",
+   "name": "EFA (evidence-fusion attribution)",
+   "stage": "attribution",
+   "status": "not_implemented",
+   "in_inventory": false,
+   "result": "no facility registry ingested yet; sectors are given only for cited reference facilities",
+   "evidence": null,
+   "novelty": "new"
+  },
+  {
+   "code": "G1",
+   "name": "OBC (injection-recovery calibration)",
+   "stage": "quantification",
+   "status": "validated",
+   "in_inventory": true,
+   "result": "recovery slope 0.989 (R^2 0.9998, site CV 0.5%); detection probability 5 t/h: 8%, 10 t/h: 46%, 20 t/h: 100%, 40 t/h: 100%",
+   "evidence": "data-pipeline/r5/obc.json",
+   "novelty": "new"
+  },
+  {
+   "code": "G2",
+   "name": "BY-FDR inventory gate",
+   "stage": "quantification",
+   "status": "validated",
+   "in_inventory": true,
+   "result": "site form: 0 of 36 fake candidates admitted (size OK, p-values uniform KS p=0.43); conservative power: 2 of 5 emitters confirmed in a 42-site family. National-grid form: 0 discoveries (local minima are as deep as maxima, so the screen is a lead list, not an inventory).",
+   "evidence": "data-pipeline/r5/byfdr_site.json",
+   "novelty": "adapted"
+  },
+  {
+   "code": "G3",
+   "name": "WRPI (warming-per-rupee priority)",
+   "stage": "priority",
+   "status": "validated",
+   "in_inventory": true,
+   "result": "transparent accounting over cited constants (AR6 GWP20, EPA landfill MAC, IEA fossil MAC) with Monte Carlo; x P(real)",
+   "evidence": "research/algorithms/wrpi.py",
+   "novelty": "new"
+  },
+  {
+   "code": "H1",
+   "name": "VOIT (value-of-information tasking)",
+   "stage": "closing the loop",
+   "status": "not_implemented",
+   "in_inventory": false,
+   "result": "planned: rank tentative sites by how much a high-resolution overpass would change the priority order",
+   "evidence": null,
+   "novelty": "new"
+  }
+ ]
+}

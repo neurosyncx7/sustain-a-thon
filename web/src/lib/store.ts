@@ -11,6 +11,8 @@ interface WorldState {
   mode: Mode;
   ready: boolean;            // scene assets compiled, loader may leave
   hovered: string | null;    // hovered instrument slug
+  quality: 0 | 1 | 2;        // render tier chosen by the performance monitor (2 = full)
+  setQuality: (q: 0 | 1 | 2) => void;
   setProgress: (p: number) => void;
   setMode: (m: Mode) => void;
   setReady: (r: boolean) => void;
@@ -25,6 +27,8 @@ export const useWorld = create<WorldState>((set, get) => ({
   mode: "story",
   ready: false,
   hovered: null,
+  quality: 2,
+  setQuality: (quality) => set({ quality }),
   setProgress: (p) => {
     const stageIndex = Math.round(p * (N - 1));
     if (stageIndex !== get().stageIndex) set({ progress: p, stageIndex });
