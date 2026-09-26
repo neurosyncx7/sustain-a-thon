@@ -75,6 +75,19 @@ Conclusions (what earns its keep):
 - Limitation: the extended coastal Mumbai cluster loses significance under drizzle+rotation
   (7.5 raw -> 3.8), likely land/sea retrieval contrast and a non-point source. Flagged, not hidden.
 
+## National blind screen (done, 2026-09-26)
+`research/screening/national_screen.py`: per-day flux divergence on the real 0.1 deg grids
+(daily 160 km Gaussian background removed, product ECMWF winds), averaged over 2023-2024; candidates
+= local maxima above 3 robust sigma with >= 40 valid days (`data-pipeline/web/candidates.json`,
+labelled by country and nearest place from Natural Earth; no facility attribution yet).
+**Blind recovery with no site list given** (`data-pipeline/web/blind_recovery.json`):
+Ghazipur landfill, Delhi 3.6 km (rank 4); Jawaharnagar 5.8 km (rank 28); Jharia/Dhanbad 6.6 km
+(rank 9); Pirana/Ahmedabad 15.3 km (rank 19). Not recovered: Khajod (also insignificant in R3),
+Korba (null in R3), Mumbai/Deonar (coastal: divergence needs observed neighbours, lost over sea).
+Top candidates also include documented hotspots outside India (Dhaka, Lahore), and in India the
+Upper Assam oil fields near Dibrugarh (z 6.6), Lucknow, Ranchi, Guwahati, Aligarh, Shivamogga.
+Candidates in paddy regions (e.g. Bahraich) and coastal Kutch need attribution/artifact checks (R5).
+
 ## What's implemented but not yet validated (candidate status)
 - `research/algorithms/quantifiers.py`: IME and cross-sectional mass-balance methods, real
   code, not yet run against a known site to compare against the divergence method (R3 — next).
