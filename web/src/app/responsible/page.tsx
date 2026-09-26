@@ -99,7 +99,7 @@ export default async function Responsible() {
         <p>Every satellite file is checked against the checksum the official Copernicus Data Space catalogue publishes for it. A mismatch is rejected
           before a single pixel is read; a file the catalogue cannot vouch for is accepted only if the mirror's own checksum matches, and is flagged.</p>
         <dl>
-          <Row k="Newest pass: files verified against Copernicus" v={integ ? integ.verified : "no live pass yet"} tone="text-flame" />
+          <Row k="Newest pass: files verified against Copernicus" v={integ ? integ.verified : pass.ok ? "counted from the next 3-hourly pass" : "no live pass yet"} tone="text-flame" />
           <Row k="Accepted on mirror checksum only" v={integ ? integ.unverifiable : "–"} />
           <Row k="Rejected (checksum mismatch)" v={integ ? integ.mismatch : "–"} />
         </dl>
