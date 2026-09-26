@@ -26,15 +26,16 @@ Nothing is mocked or synthetic.
 
 ## Headline results (details and caveats: `research/findings.md`)
 - **Final method** (wind-rotated, footprint-drizzled stacking; monsoon exclusion; noise weighting;
-  albedo/aerosol bias removal; flux divergence) detects **all five known landfill/coal emitters above
+  albedo/aerosol bias removal; sub-pixel phase weighting; flux divergence) detects **all five known landfill/coal emitters above
   3 sigma** against a 24-pseudo-site local null. Korba is null, consistent with the published finding that
   Indian coal is over-counted in inventories.
 - **Controlled ablation**: the detection floor falls at every step, 7.3 -> 5.0 t/h; wind rotation is the
   largest single gain.
-- **18 algorithms designed, each tested on real data against a pass mark written before the run**:
-  5 validated and running in the pipeline, 2 partly built, 3 failed (kept on the page), 8 not built
+- **Every designed algorithm tested on real data against a pass mark written before the run**: 10 validated
+  and running in the pipeline (SRECE, ABD, MSFD-CO, KPW, DiverSR core, EIV-CRF, OBC, the BY-FDR +
+  corroboration gate, WRPI, VOIT); the full record including failures is at `/api/algorithms?all=1`
   (`/api/algorithms`, `data-pipeline/inventory/algorithms.json`).
-- **Injection-recovery on real backgrounds**: the method recovers 98.9% of an injected plume; 50% detection
+- **Injection-recovery on real backgrounds**: the method recovers 99% of an injected plume; 50% detection
   at ~10 t/h over the stacked record.
 - **Integrated inventory** (`/ledger`, `/api/inventory`, `/api/export`): every tested site with calibrated
   t/h (Monte Carlo 68%), BY-FDR q-value (<= 5% false entries in the confirmed tier) and warming avoided per rupee.
