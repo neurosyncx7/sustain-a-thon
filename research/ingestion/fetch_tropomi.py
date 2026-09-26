@@ -30,6 +30,7 @@ from __future__ import annotations
 
 import argparse
 import io
+import re
 import sys
 from dataclasses import dataclass
 from datetime import date, timedelta
@@ -167,8 +168,11 @@ def subset_granule(local_path: Path, species: str) -> pd.DataFrame:
         # Averaging kernel: (scanline, gp, layer). Keep the layer-summed "total AK weight" as
         # a compact diagnostic here; the full profile is re-read on demand by the continuity
         # operator directly from the source granule (kept, not re-downloaded, under raw/).
-        ak = detail["column_averaging_kernel"].values[0]
-        df["ak_mean"] = np.nanmean(ak, axis=-1)[mask]
+        # Mask *before* nanmean: unmasked pixels can be all-NaN (no retrieval), which would
+        # otherwise raise a spurious "mean of empty slice" warning for rows we discard anyway.
+        ak = detail["column_averaging_kernel"].values[0][mask]
+        with np.errstate(invalid="ignore"):
+            df["ak_mean"] = np.nanmean(ak, axis=-1)
         df["dofs_ch4"] = detail["degrees_of_freedom_methane"].values[0][mask]
 
     df = df[df["qa_value"] >= 0.5].reset_index(drop=True)
@@ -212,7 +216,8 @@ def main() -> None:
                 local.unlink(missing_ok=True)
             if len(df) == 0:
                 continue
-            orbit = Path(g.key).name.split("_")[-3]
+            m = re.search(r"_(\d{5})_\d{2}_\d{6}_\d{8}T\d{6}\.nc$", g.key)
+            orbit = m.group(1) if m else Path(g.key).stem
             out_dir = out_root / f"{day:%Y-%m-%d}"
             out_dir.mkdir(parents=True, exist_ok=True)
             out_path = out_dir / f"{orbit}.parquet"
