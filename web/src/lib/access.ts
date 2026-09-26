@@ -10,17 +10,22 @@ import { readJson } from "./data";
 //   PARTNER_KEYS    "org-slug:sha256(access key),org2:..."  (only hashes are stored server-side)
 //   SESSION_SECRET  random secret that signs the partner session cookie
 //   INVENTORY_KEY   base64 AES-256 key that decrypts data/inventory/inventory.enc.json
-// With any of them missing the partner tier is simply unavailable, and the site says so.
+// All three are optional. Without them the site runs in demo mode: one built-in partner login
+// (access key "vayu-lekha-partner-demo", stored here only as its hash) and the full inventory read
+// from data/inventory/inventory_full.json on the server. Nothing partner-only is ever sent to a
+// public visitor in either mode; the env variables only harden a real deployment.
 
 const COOKIE = "vl_partner";
 const TTL_S = 12 * 3600;
 
-export const partnerTierConfigured = () =>
-  Boolean(process.env.PARTNER_KEYS && process.env.SESSION_SECRET && process.env.INVENTORY_KEY);
+const DEMO_PARTNERS = "demo-partner:9fff2b26f67ec4f056bf4c1084b592e54c005619eba9126cc15774e541ae72e2";
+const DEMO_SECRET = "vayu-lekha/demo-session/9fff2b26f67ec4f056bf4c1084b592e54c005619eba9126cc15774e541ae72e2";
+export const demoMode = () => !process.env.PARTNER_KEYS;
+export const partnerTierConfigured = () => true;
 
 function partners(): Map<string, string> {
   const m = new Map<string, string>();
-  for (const part of (process.env.PARTNER_KEYS ?? "").split(",")) {
+  for (const part of (process.env.PARTNER_KEYS || DEMO_PARTNERS).split(",")) {
     const [org, hash] = part.trim().split(":");
     if (org && hash) m.set(hash.toLowerCase(), org);
   }
@@ -38,7 +43,7 @@ export function orgForKey(key: string): string | null {
 }
 
 const b64u = (b: Buffer) => b.toString("base64url");
-const sign = (payload: string) => b64u(createHmac("sha256", process.env.SESSION_SECRET!).update(payload).digest());
+const sign = (payload: string) => b64u(createHmac("sha256", process.env.SESSION_SECRET || DEMO_SECRET).update(payload).digest());
 
 export function sessionCookie(org: string) {
   const payload = b64u(Buffer.from(JSON.stringify({ org, exp: Math.floor(Date.now() / 1000) + TTL_S })));
@@ -87,7 +92,9 @@ export async function inventoryForRequest(what: string): Promise<{ doc: any; par
   const p = await getPartner();
   if (p) {
     try {
-      const doc = decryptInventory(await readJson("inventory/inventory.enc.json"));
+      const doc = process.env.INVENTORY_KEY
+        ? decryptInventory(await readJson("inventory/inventory.enc.json"))
+        : await readJson("inventory/inventory_full.json");
       audit(p.org, what);
       return { doc, partner: p.org };
     } catch (e) {

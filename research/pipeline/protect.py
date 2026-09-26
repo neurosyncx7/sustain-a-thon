@@ -6,10 +6,10 @@ help someone misuse them. So the pipeline writes two products:
   inventory_public.json   everything needed to see the scale of the problem and the ranking: rates,
                           uncertainty, tiers, q-values, corroboration, priority, review state; locations
                           rounded to 0.25 deg (~25 km), no plume images, no orbit lists.
-  inventory.enc.json      the full evidence package (exact coordinates, plume stacks as PNG, orbits,
-                          per-month coverage), AES-256-GCM encrypted with INVENTORY_KEY. The repository is
-                          public, so the full product never lands in it in clear text. The web server
-                          decrypts it only for signed-in verified partners (web/src/lib/access.ts).
+  inventory_full.json     the full evidence package (exact coordinates, plume stacks as PNG, orbits,
+                          per-month coverage). The web server releases it only to signed-in partners
+                          (web/src/lib/access.ts). Hardened option: with INVENTORY_KEY set it is written
+                          instead as inventory.enc.json (AES-256-GCM), so it is not readable in the repo.
 
 The satellite data and the code are public, so a determined actor could rebuild the screen; the gate
 controls our curated, ranked, evidence-packaged product, the same way coordinated vulnerability

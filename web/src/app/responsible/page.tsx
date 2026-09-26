@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { readJson } from "@/lib/data";
 import { latestPass } from "@/lib/live";
-import { partnerTierConfigured } from "@/lib/access";
+import { demoMode } from "@/lib/access";
 import { SmoothScroll } from "@/components/SmoothScroll";
 
 export const metadata = { title: "Safeguards · Vāyu Lekha" };
@@ -87,8 +87,8 @@ export default async function Responsible() {
         <dl>
           <Row k="Public location precision" v={`${inv.access.location_precision_deg}° (about 25 km)`} />
           <Row k="Withheld from the public" v={inv.access.withheld.join(", ")} />
-          <Row k="Full package at rest" v="AES-256-GCM encrypted in the public repository" />
-          <Row k="Partner tier on this deployment" v={partnerTierConfigured() ? "enabled" : "not enabled"} />
+          <Row k="Full package" v="served only after partner sign-in" />
+          <Row k="Partner sign-in" v={demoMode() ? "demo login for the presentation" : "per-organisation access keys"} />
         </dl>
         <p>Disclosure sequence for a newly confirmed site: the partner regulator receives the full evidence first and decides on contact with the operator;
           the public entry appears at the coarse precision above. The satellite data and our code are open, so a determined party could rebuild the

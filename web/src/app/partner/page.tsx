@@ -18,9 +18,9 @@ export default async function PartnerPage() {
       </nav>
       <h1 className="mt-14 text-4xl font-medium leading-[1.05] tracking-tight md:text-5xl">Partner access</h1>
       <p className="mt-5 max-w-[62ch] text-[15px] leading-relaxed text-paper/65">
-        Pollution control boards, regulators and accredited researchers receive the full evidence package: exact coordinates,
-        the wind-rotated plume stack for each site, every orbit used, and the complete CSV. Access keys are issued per organisation;
-        the server keeps only their hashes, sessions last 12 hours, and every view is logged.
+        Everything else on this site is public. Pollution control boards, regulators and accredited researchers additionally see exact
+        coordinates, the wind-rotated plume stack for each site, every orbit used, and the full CSV. Access keys are issued per
+        organisation; the server keeps only their hashes, sessions last 12 hours, and every view is logged.
       </p>
       {configured
         ? <PartnerSignIn partner={p ? { org: p.org, expires_utc: new Date(p.exp * 1000).toISOString() } : null} />

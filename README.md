@@ -53,6 +53,14 @@ map, what it saw at each inventory site, current winds (Open-Meteo), the exchang
 index (ECB), and the state of every pipeline run with links to its GitHub Actions log. With
 `GITHUB_DISPATCH_TOKEN` set in the deployment, a "Fetch the newest pass now" button starts a real run.
 
+## Public vs partner view
+Everything is public except site-level location evidence. Public visitors see the ranking, rates,
+uncertainty, checks and review state with locations rounded to 0.25 deg; exact coordinates, plume stacks
+and orbit lists appear only after partner sign-in at `/partner` (demo access key for the presentation:
+`vayu-lekha-partner-demo`). Safeguards are explained, with live numbers, at `/responsible`.
+For a real deployment set `PARTNER_KEYS` (issue keys with `node tools/partner-key.mjs <org>`),
+`SESSION_SECRET` and optionally `INVENTORY_KEY` (encrypts the full package in the repository).
+
 ## Repository map
 ```
 research/

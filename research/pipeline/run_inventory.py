@@ -210,9 +210,13 @@ def main():
     (out / "inventory_public.json").write_text(json.dumps(pub, indent=1, default=float))
     if key:
         (out / "inventory.enc.json").write_text(json.dumps(encrypt(doc, key)))
+        (out / "inventory_full.json").unlink(missing_ok=True)
     else:
-        (out / "inventory.enc.json").unlink(missing_ok=True)   # never leave a stale package behind
-        print("INVENTORY_KEY not set: only the public tier was written (partner package unavailable)")
+        # demo mode (no key configured): the full package is kept as a server-side file that the web
+        # app releases only after partner sign-in; it is never served to public visitors.
+        (out / "inventory.enc.json").unlink(missing_ok=True)
+        (out / "inventory_full.json").write_text(json.dumps(doc, indent=1, default=float))
+        print("INVENTORY_KEY not set: full package written unencrypted for the sign-in gated partner view")
     if a.plain_out:
         Path(a.plain_out).write_text(json.dumps(doc, indent=1, default=float))
     stale = out / "inventory.json"
