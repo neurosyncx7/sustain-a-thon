@@ -127,6 +127,46 @@ Output: `data-pipeline/inventory/inventory.json` with, for every site, the orbit
 first/last overpass, wind, the stack image, z/p/q, calibrated t/h (16/50/84%), and the priority numbers.
 Tiers: confirmed (q <= 0.05), detected (z >= 3), tentative (2 <= z < 3), not detected (upper limit).
 
+<!-- R6-TABLE -->
+Generated 2026-09-26T17:51 UTC from TROPOMI 2023-01-01..2026-05-31, 11,597,789 pixels, 33 sites tested: 11 confirmed, 12 at z >= 3.
+
+| # | Site | Tier | t CH4/h [68%] | z | q (BY) | Sector | t CO2e20 per INR lakh |
+|---|---|---|---|---|---|---|---|
+| 1 | Ghazipur landfill, Delhi | confirmed | 31.5 [27.0, 36.4] | 9.4 | 0.000 | landfill | 633 |
+| 2 | Deonar/Mumbai landfill | confirmed | 65.9 [53.1, 79.4] | 6.0 | 0.000 | landfill | 625 |
+| 3 | Jawaharnagar landfill, Hyderabad | confirmed | 17.6 [12.9, 22.7] | 4.1 | 0.005 | landfill | 625 |
+| 4 | Pirana landfill, Ahmedabad | confirmed | 14.6 [10.9, 18.6] | 4.4 | 0.003 | landfill | 623 |
+| 5 | Khajod landfill, Surat | confirmed | 20.6 [14.5, 26.8] | 3.6 | 0.012 | landfill | 621 |
+| 6 | near Lahore | confirmed | 36.1 [30.4, 42.3] | 7.9 | 0.000 | unattributed | 617 |
+| 7 | near Dhaka | confirmed | 79.7 [69.1, 90.5] | 10.1 | 0.000 | unattributed | 613 |
+| 8 | 48 km from Sadiqabad | confirmed | 19.8 [16.3, 23.7] | 8.4 | 0.000 | unattributed | 601 |
+| 9 | 129 km from Rajkot | confirmed | 13.5 [9.0, 18.5] | 3.2 | 0.033 | unattributed | 588 |
+| 10 | near Nawabganj | confirmed | 13.7 [8.9, 18.9] | 3.0 | 0.050 | unattributed | 573 |
+| 11 | Jharia coal field, Jharkhand | confirmed | 21.3 [15.8, 26.9] | 4.2 | 0.004 | coal | 334 |
+| 12 | 38 km from Dibrugarh | detected | 29.0 [19.4, 39.4] | 3.2 | 0.057 | unattributed | 591 |
+| 13 | 133 km from Bhuj | tentative | 28.3 [14.6, 42.1] | 2.4 | 0.133 | unattributed | 529 |
+| 14 | 187 km from Bhuj | tentative | 12.9 [5.3, 20.6] | 2.3 | 0.142 | unattributed | 513 |
+| 15 | near Lucknow | tentative | 13.9 [7.8, 20.3] | 2.5 | 0.122 | unattributed | 511 |
+| 16 | 26 km from Shwebo | tentative | 9.6 [5.2, 14.2] | 2.3 | 0.142 | unattributed | 510 |
+| 17 | near Shivamogga | tentative | 21.9 [12.2, 31.6] | 2.3 | 0.142 | unattributed | 510 |
+| 18 | 59 km from Proddatur | tentative | 16.6 [8.1, 25.4] | 2.2 | 0.166 | unattributed | 501 |
+| 19 | 81 km from Nawabganj | tentative | 13.3 [6.2, 20.5] | 2.1 | 0.199 | unattributed | 478 |
+| 20 | 65 km from Ranchi | not detected | < 28.2 | 2.0 | 0.215 | unattributed | - |
+| 21 | 30 km from Davangere | not detected | < 26.3 | 1.7 | 0.342 | unattributed | - |
+| 22 | 43 km from Guwahati | not detected | < 24.8 | 1.4 | 0.449 | unattributed | - |
+| 23 | 49 km from Bahraich | not detected | < 25.3 | 1.4 | 0.443 | unattributed | - |
+| 24 | 40 km from Phyarpon | not detected | < 22.9 | 1.4 | 0.443 | unattributed | - |
+| 25 | 127 km from Dera Ghazi Khan | not detected | < 24.9 | 0.9 | 0.912 | unattributed | - |
+| 26 | 49 km from Taungoo | not detected | < 17.7 | 2.0 | 0.216 | unattributed | - |
+| 27 | 152 km from Bilaspur | not detected | < 17.2 | 1.8 | 0.305 | unattributed | - |
+| 28 | near Dera Ghazi Khan | not detected | < 14.7 | 1.5 | 0.442 | unattributed | - |
+| 29 | near Ranchi | not detected | < 13.8 | 0.9 | 0.912 | unattributed | - |
+| 30 | 55 km from Hosapete | not detected | < 11.5 | 1.1 | 0.689 | unattributed | - |
+| 31 | near Aligarh | not detected | < 9.6 | 0.4 | 1.000 | unattributed | - |
+| 32 | Korba coalfield, Chhattisgarh | not detected | < -1.8 | -1.4 | 1.000 | coal | - |
+| 33 | near Pyay | not detected | < 3.1 | -0.5 | 1.000 | unattributed | - |
+<!-- /R6-TABLE -->
+
 ## Live operation
 - Every 3 h (`live.yml`): newest real TROPOMI pass over India (NRTI stream, ~3 h latency; OFFL fallback) ->
   `data` branch `live/latest.json` + texture, read at request time by `/api/live`.
