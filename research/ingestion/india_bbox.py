@@ -21,3 +21,11 @@ KNOWN_SITES = {
     "korba": dict(lat=22.3595, lon=82.7501, name="Korba coalfield, Chhattisgarh",
                    source="EGU 2025 Bayesian inversion coal clusters"),
 }
+
+# Extra documented emitters used ONLY as blind-recovery references for the national screen
+# (never given to the screen). Ghazipur: Delhi's largest landfill, plume imaged by GHGSat (2022).
+BLIND_REFERENCES = {
+    **KNOWN_SITES,
+    "ghazipur": dict(lat=28.6230, lon=77.3260, name="Ghazipur landfill, Delhi",
+                     source="GHGSat observation of Ghazipur landfill plume, 2022"),
+}

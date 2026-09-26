@@ -33,8 +33,9 @@ def nan_gauss(a, sigma):
         return np.where(den > 0.15, num / den, np.nan)
 
 
-def main(data_dir: str, out_dir: str, tex_dir: str):
-    files = sorted(glob.glob(f"{data_dir}/tropomi/grids/*.npz"))
+def compute_fields(files, wind_fn=None, log=True):
+    """Mean daily flux divergence over all grid files. wind_fn(u, v, lat_c, dx, dy) -> (u, v) lets R5
+    test wind pre-processing (e.g. PW-HHP Helmholtz projection) with everything else identical."""
     first = np.load(files[0])
     lat_e, lon_e = first["lat_edges"], first["lon_edges"]
     lat_c = (lat_e[:-1] + lat_e[1:]) / 2; lon_c = (lon_e[:-1] + lon_e[1:]) / 2
@@ -56,10 +57,13 @@ def main(data_dir: str, out_dir: str, tex_dir: str):
             obs_cells.append(int(ok.sum()))
             if ok.sum() < 500:
                 continue
+            u, v = U[d].astype(float), V[d].astype(float)
+            if wind_fn is not None:
+                u, v = wind_fn(u, v, lat_c, dx, dy)
             bg = nan_gauss(x, 15)
             res = x - bg
             dO = res * 1e-9 * A[d]
-            Fx, Fy = dO * U[d], dO * V[d]
+            Fx, Fy = dO * u, dO * v
             D = np.full((NY, NX), np.nan)
             D[1:-1, 1:-1] = ((Fx[1:-1, 2:] - Fx[1:-1, :-2]) / (2 * dx[1:-1]) +
                              (Fy[2:, 1:-1] - Fy[:-2, 1:-1]) / (2 * dy))
@@ -71,17 +75,22 @@ def main(data_dir: str, out_dir: str, tex_dir: str):
         months.append(dict(month=month, days=int(X.shape[0]), pixels=int(C.sum()),
                            mean_observed_cells=float(np.mean(obs_cells)) if obs_cells else 0.0,
                            mean_xch4=float(np.nanmean(X)) if np.isfinite(X).any() else None))
-        print(month, months[-1], flush=True)
+        if log:
+            print(month, months[-1], flush=True)
 
     with np.errstate(invalid="ignore", divide="ignore"):
         meanD = np.where(nD >= 20, sumD / nD, np.nan)
         meanX = np.where(nX >= 20, sumX / nX, np.nan)
         meanR = np.where(nX >= 20, sumR / nX, np.nan)
+    return dict(meanD=meanD, meanX=meanX, meanR=meanR, nD=nD, lat_c=lat_c, lon_c=lon_c,
+                lat_e=lat_e, lon_e=lon_e, dx=dx, dy=dy, months=months)
 
-    # candidates
+
+def find_candidates(meanD, nD, lat_c, lon_c, dx, dy, z_min=3.0):
+    NX = len(lon_c)
     sm = nan_gauss(meanD, 1.0)
     med = np.nanmedian(sm); mad = 1.4826 * np.nanmedian(np.abs(sm - med))
-    thresh = med + 3 * mad
+    thresh = med + z_min * mad
     mx = ndimage.maximum_filter(np.nan_to_num(sm, nan=-1e9), size=9)
     peaks = np.argwhere((sm == mx) & (sm > thresh) & (nD >= 40))
     cands = []
@@ -93,8 +102,25 @@ def main(data_dir: str, out_dir: str, tex_dir: str):
         area = (dx * dy * np.ones((1, NX)))[disk]
         rate = float(np.sum(meanD[disk] * area) * M * 3600)
         cands.append(dict(lat=round(la, 2), lon=round(lo, 2), z=float((sm[iy, ix] - med) / mad),
-                          rate_kg_h_gamma1=rate, valid_days=int(nD[iy, ix]), status="candidate"))
+                          rate_kg_h_gamma1=rate, valid_days=int(nD[iy, ix]), status="candidate",
+                          _iy=int(iy), _ix=int(ix)))
     cands.sort(key=lambda c: -c["z"])
+    return cands, sm, float(med), float(mad), float(thresh)
+
+
+def main(data_dir: str, out_dir: str, tex_dir: str):
+    files = sorted(glob.glob(f"{data_dir}/tropomi/grids/*.npz"))
+    F = compute_fields(files)
+    meanD, meanX, meanR, nD = F["meanD"], F["meanX"], F["meanR"], F["nD"]
+    lat_c, lon_c, lat_e, lon_e, dx, dy, months = (F[k] for k in ("lat_c", "lon_c", "lat_e", "lon_e", "dx", "dy", "months"))
+
+    # fields kept for the R5 BY-FDR gate (research-only; not read by the web)
+    fdir = Path(out_dir).parent / "screen"; fdir.mkdir(parents=True, exist_ok=True)
+    np.savez_compressed(fdir / "fields.npz", meanD=meanD, nD=nD, lat_c=lat_c, lon_c=lon_c)
+
+    cands, sm, med, mad, thresh = find_candidates(meanD, nD, lat_c, lon_c, dx, dy)
+    for c in cands:
+        c.pop("_iy"); c.pop("_ix")
 
     out = Path(out_dir); out.mkdir(parents=True, exist_ok=True)
     (out / "months.json").write_text(json.dumps(months, indent=1))

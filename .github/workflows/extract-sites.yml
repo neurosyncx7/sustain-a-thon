@@ -1,0 +1,68 @@
+name: extract-sites
+
+# Real TROPOMI pixel windows (150 km) around the inventory's tested family (every national-screen
+# candidate + reference sites), 2023-2024, so each candidate is stacked with the full site method.
+on:
+  workflow_dispatch:
+  push:
+    paths: [".github/extract-sites-request.json"]
+
+permissions:
+  contents: write
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      months: ${{ steps.m.outputs.months }}
+      tag: ${{ steps.m.outputs.tag }}
+      sites: ${{ steps.m.outputs.sites }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: m
+        run: |
+          echo "months=$(jq -c .months .github/extract-sites-request.json)" >> "$GITHUB_OUTPUT"
+          echo "tag=$(jq -r .tag .github/extract-sites-request.json)" >> "$GITHUB_OUTPUT"
+          echo "sites=$(jq -r .sites_file .github/extract-sites-request.json)" >> "$GITHUB_OUTPUT"
+
+  extract:
+    needs: plan
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        month: ${{ fromJson(needs.plan.outputs.months) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: pip install -q "xarray>=2024.1" h5netcdf netCDF4 pandas pyarrow requests numpy
+      - run: >
+          python research/ingestion/extract_month.py --month ${{ matrix.month }} --out out
+          --sites-file ${{ needs.plan.outputs.sites }} --tag ${{ needs.plan.outputs.tag }} --no-grids
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sites-${{ needs.plan.outputs.tag }}-${{ matrix.month }}
+          path: out
+          retention-days: 30
+
+  publish:
+    needs: [plan, extract]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with: { path: artifacts, pattern: "sites-*", merge-multiple: true }
+      - name: Commit to data branch
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git clone --depth 1 --branch data "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}" data
+          mkdir -p data/tropomi
+          cp -r artifacts/* data/tropomi/
+          cd data
+          git add -A
+          git commit -m "data: TROPOMI site windows (${{ needs.plan.outputs.tag }}, run ${{ github.run_id }})" || echo "nothing new"
+          git push origin data

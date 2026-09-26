@@ -54,6 +54,9 @@ class StackConfig:
     drizzle: bool = True            # spread each pixel over its real footprint
     season_mask: tuple = (6, 7, 8, 9)  # final method (R4): exclude monsoon months from stacks
     quality_weight: bool = True     # final method (R4): weight overpasses by 1/sigma^2 of background residual
+    albedo_correct: bool = False    # ABD: remove the part of XCH4 explained by SWIR albedo + AOT (fit on annulus)
+    field: str = "xch4"             # "xch4" (ppb) or "xco_col" (mol m^-2, co-retrieved CO) for EIV-CRF
+    inject: object = None           # OBC: callable(g, x_km, y_km, u10, v10) -> ppb to ADD (validation only)
 
 
 def _local_xy(lat, lon, lat0, lon0):
@@ -78,6 +81,30 @@ def _plane_background(x, y, val, r, inner, outer):
             break
         coef = np.linalg.lstsq(A[keep], v[keep], rcond=None)[0]
     return lambda xx, yy: coef[0] + coef[1] * xx + coef[2] * yy
+
+
+def _albedo_bias(dX, g, r, cfg):
+    """ABD: robust regression of the background-annulus residual on SWIR albedo and AOT, returning
+    the predicted bias for every pixel (covariates centred on the annulus, so it removes only the
+    part that co-varies with surface brightness/aerosol, not the regional level)."""
+    m = (r >= cfg.bg_inner_km) & (r <= cfg.bg_outer_km) & np.isfinite(dX)
+    a, t = g.albedo.values.astype(float), g.aot.values.astype(float)
+    ok = m & np.isfinite(a) & np.isfinite(t)
+    if ok.sum() < 40:
+        return np.zeros_like(dX)
+    ma, mt = np.nanmean(a[ok]), np.nanmean(t[ok])
+    A = np.c_[a[ok] - ma, t[ok] - mt]
+    v = dX[ok]
+    coef = np.linalg.lstsq(A, v, rcond=None)[0]
+    for _ in range(2):
+        res = v - A @ coef
+        sd = 1.4826 * np.median(np.abs(res - np.median(res)))
+        keep = np.abs(res) < 2.5 * max(sd, 1e-12)
+        if keep.sum() < 30:
+            break
+        coef = np.linalg.lstsq(A[keep], v[keep], rcond=None)[0]
+    pred = coef[0] * (np.nan_to_num(a, nan=ma) - ma) + coef[1] * (np.nan_to_num(t, nan=mt) - mt)
+    return pred
 
 
 def _drizzle_points(df, lat0, lon0, sub):
@@ -117,15 +144,23 @@ def stack_site(pix: pd.DataFrame, lat0: float, lon0: float, cfg: StackConfig = S
         U = float(np.hypot(u10, v10))
         if not np.isfinite(U) or U < cfg.min_wind_ms:
             continue
+        val = g[cfg.field].values.astype(float)
+        if cfg.inject is not None:
+            val = val + cfg.inject(g, x, y, u10, v10)             # synthetic plume (OBC validation only)
         if cfg.background == "plane":
-            bg = _plane_background(x, y, g.xch4.values.astype(float), r, cfg.bg_inner_km, cfg.bg_outer_km)
+            bg = _plane_background(x, y, val, r, cfg.bg_inner_km, cfg.bg_outer_km)
             if bg is None:
                 continue
         else:
-            med = float(np.nanmedian(g.xch4.values))
+            med = float(np.nanmedian(val))
             bg = lambda xx, yy, m=med: np.full_like(xx, m, dtype=float)  # noqa: E731
-        dX = g.xch4.values - bg(x, y)                              # ppb
-        dOmega = dX * PPB * g.dry_air.values                        # mol/m^2
+        dX = val - bg(x, y)
+        if cfg.albedo_correct:
+            dX = dX - _albedo_bias(dX, g, r, cfg)
+        if cfg.field == "xch4":
+            dOmega = dX * PPB * g.dry_air.values                    # ppb -> mol/m^2
+        else:
+            dOmega = dX                                             # already a column, mol/m^2
         phi = dOmega * U                                            # mol m^-1 s^-1
 
         if cfg.drizzle:

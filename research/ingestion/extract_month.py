@@ -156,16 +156,24 @@ def main() -> None:
     ap.add_argument("--month", required=True, help="YYYY-MM")
     ap.add_argument("--out", default="out")
     ap.add_argument("--max-days", type=int, default=None)
+    ap.add_argument("--sites-file", default=None,
+                    help="JSON {slug: {lat, lon, ...}}: extract windows for these sites instead of KNOWN_SITES")
+    ap.add_argument("--tag", default="", help="suffix for the sites folder, e.g. 'inv' -> sites_inv/")
+    ap.add_argument("--no-grids", action="store_true", help="skip the national 0.1 deg grids")
+    ap.add_argument("--days", default=None, help="explicit comma-separated YYYY-MM-DD list (live mode)")
     a = ap.parse_args()
+    sites = json.loads(Path(a.sites_file).read_text()) if a.sites_file else KNOWN_SITES
+    site_dir = f"sites_{a.tag}" if a.tag else "sites"
     y, m = map(int, a.month.split("-"))
     out = Path(a.out)
     (out / "grids").mkdir(parents=True, exist_ok=True)
-    (out / "sites").mkdir(parents=True, exist_ok=True)
+    (out / site_dir).mkdir(parents=True, exist_ok=True)
 
     days_out, grids, site_rows, log = [], {v: [] for v in GRID_VARS + ["count"]}, [], []
     ndays = calendar.monthrange(y, m)[1]
-    for d in range(1, (a.max_days or ndays) + 1):
-        day = date(y, m, d)
+    day_list = ([date.fromisoformat(x) for x in a.days.split(",")] if a.days else
+                [date(y, m, d) for d in range(1, (a.max_days or ndays) + 1)])
+    for day in day_list:
         try:
             keys = [k for k in list_day(day) if 3 <= utc_hour(k) <= 11]
         except RuntimeError as e:
@@ -201,11 +209,12 @@ def main() -> None:
         if not frames:
             continue
         day_df = pd.concat(frames, ignore_index=True)
-        gd = grid_day(day_df)
         days_out.append(str(day))
-        for k, arr in gd.items():
-            grids[k].append(arr)
-        for slug, s in KNOWN_SITES.items():
+        if not a.no_grids:
+            gd = grid_day(day_df)
+            for k, arr in gd.items():
+                grids[k].append(arr)
+        for slug, s in sites.items():
             dist = haversine_km(day_df.lat.values, day_df.lon.values, s["lat"], s["lon"])
             sel = day_df[dist <= SITE_RADIUS_KM].copy()
             if len(sel):
@@ -214,7 +223,7 @@ def main() -> None:
                 site_rows.append(sel)
         print(f"{day}: {len(keys)} granules, {len(day_df)} India pixels", flush=True)
 
-    if days_out:
+    if days_out and not a.no_grids:
         np.savez_compressed(
             out / "grids" / f"{a.month}.npz",
             days=np.array(days_out), lat_edges=LAT_EDGES, lon_edges=LON_EDGES,
@@ -222,9 +231,9 @@ def main() -> None:
         )
     if site_rows:
         pd.concat(site_rows, ignore_index=True).to_parquet(
-            out / "sites" / f"{a.month}.parquet", index=False, compression="zstd")
+            out / site_dir / f"{a.month}.parquet", index=False, compression="zstd")
     (out / "logs").mkdir(exist_ok=True)
-    (out / "logs" / f"{a.month}.json").write_text(json.dumps(log, indent=0))
+    (out / "logs" / f"{a.month}{'_' + a.tag if a.tag else ''}.json").write_text(json.dumps(log, indent=0))
     print(f"DONE {a.month}: {len(days_out)} days with India coverage")
 
 
