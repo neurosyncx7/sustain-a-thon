@@ -3,10 +3,13 @@ import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 
+const site = process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "http://localhost:3311";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(site),
   title: "Vāyu Lekha · India's methane super-emitters, read from orbit",
   description:
-    "Two years of Sentinel-5P/TROPOMI over India, screened for persistent point sources and separated from the agricultural background. Built as the Jantar Mantar of methane.",
+    "Every clear Sentinel-5P/TROPOMI pass over India since 2023, screened for persistent point sources and separated from the agricultural background. Built as the Jantar Mantar of methane.",
   openGraph: { images: ["/og.jpg"] },
 };
 
