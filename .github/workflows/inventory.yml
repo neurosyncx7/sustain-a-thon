@@ -52,7 +52,7 @@ jobs:
         run: >
           python research/pipeline/run_inventory.py databranch data-pipeline/inventory
           --gamma data-pipeline/inventory/gamma.json --fx "${{ steps.fx.outputs.fx }}" --fx-source "${{ steps.fx.outputs.src }}"
-      - run: python research/pipeline/algorithms_registry.py
+      - run: python research/pipeline/algorithms_registry.py && python research/pipeline/findings_inventory.py
       - name: Record the run
         run: |
           jq -n --arg id "${{ github.run_id }}" --arg ev "${{ github.event_name }}" --arg t "$(date -u +%FT%TZ)" \
@@ -61,7 +61,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data-pipeline web/public/data
+          git add data-pipeline web/public/data research/findings.md
           git diff --cached --quiet && { echo "no change"; exit 0; }
           git commit -q -m "data: inventory refresh (run ${{ github.run_id }})"
           for i in 1 2 3 4 5; do git pull --rebase -q origin main && git push -q origin main && break; sleep $((i*7)); done
