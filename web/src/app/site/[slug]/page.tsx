@@ -3,6 +3,8 @@ import { SmoothScroll } from "@/components/SmoothScroll";
 import { notFound } from "next/navigation";
 import { readJson } from "@/lib/data";
 import { StackImage } from "./StackImage";
+import { AccessBanner } from "@/components/access/AccessBanner";
+import { inventoryForRequest, partnerTierConfigured } from "@/lib/access";
 
 const t1 = (x: number) => x.toFixed(1);
 const tph = (kg: number) => (kg / 1000).toFixed(1);
@@ -10,26 +12,23 @@ const big = (x: number) => (x >= 1e6 ? `${(x / 1e6).toFixed(1)} M` : x >= 1e3 ? 
 const METHOD: Record<string, string> = { IME: "Integrated mass enhancement", CSF: "Cross-sectional flux", DIV: "Flux divergence" };
 const MON = ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"];
 const TIER: Record<string, string> = {
-  confirmed: "Confirmed: passes the family-wide false-discovery gate",
-  detected: "Detected above 3 sigma against its own null",
+  confirmed: "Confirmed: passes the family-wide false-discovery gate and an independent check",
+  detected: "Detected: significant, still awaiting an independent check",
   tentative: "Tentative: between 2 and 3 sigma",
   "not detected": "Not detected: an upper limit is reported",
 };
 
-export async function generateStaticParams() {
-  const inv = await readJson("inventory/inventory.json");
-  return inv.sites.map((s: any) => ({ slug: s.slug }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const inv = await readJson("inventory/inventory.json");
+  const inv = await readJson("inventory/inventory_public.json");
   return { title: `${inv.sites.find((s: any) => s.slug === slug)?.name ?? "Site"} · Vāyu Lekha` };
 }
 
 export default async function SitePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const inv = await readJson("inventory/inventory.json");
+  const { doc: inv, partner } = await inventoryForRequest(`site/${slug}`);
   const e = inv.sites.find((s: any) => s.slug === slug);
   if (!e) notFound();
   const r3 = (await readJson("r3/known_sites.json"))[slug];
@@ -57,9 +56,20 @@ export default async function SitePage({ params }: { params: Promise<{ slug: str
         {e.source_reference && <> Reference: {e.source_reference}.</>}
         {e.kind === "screen_candidate" && <> Found by the national screen with no site list (screen rank {e.screen.rank}).</>}
       </p>
+      <p className="num mt-2 text-[12px] text-paper/45">{e.lat.toFixed(2)}°N {e.lon.toFixed(2)}°E{partner ? "" : " (rounded to 0.25° in the public view)"}</p>
+      <AccessBanner partner={partner} configured={partnerTierConfigured()} />
 
       <section className="mt-12 grid gap-10 md:grid-cols-[1.15fr_1fr]">
-        <StackImage src={ev.stack.file} xkm={ev.stack.x_km} ykm={ev.stack.y_km} />
+        {partner && ev.stack
+          ? <StackImage src={`/api/partner/stack/${slug}`} xkm={ev.stack.x_km} ykm={ev.stack.y_km} />
+          : (
+            <figure className="grid aspect-[140/100] place-items-center rounded-xl bg-paper/[0.03] p-8 text-center ring-1 ring-paper/10">
+              <div>
+                <p className="text-[15px] text-paper/80">Plume stack withheld in the public view</p>
+                <p className="mx-auto mt-2 max-w-[40ch] text-[12.5px] leading-relaxed text-paper/50">It shows where the source sits and which way its methane goes, so it goes to verified partners. The rate, uncertainty and every check below are public.</p>
+              </div>
+            </figure>
+          )}
         <div>
           <h2 className="text-lg font-medium">Emission rate</h2>
           <p className="num mt-3 text-4xl tracking-tight">
@@ -109,10 +119,42 @@ export default async function SitePage({ params }: { params: Promise<{ slug: str
             ))}
           </div>
           <p className="mt-3 text-[11.5px] text-paper/45">June to September are excluded by design (monsoon cloud and paddy background); they are unobserved, not zero.</p>
-          <details className="group mt-6">
-            <summary className="cursor-pointer text-[13px] text-paper/70 transition hover:text-paper">{ev.orbits.length} orbit numbers used</summary>
-            <p className="num mt-2 max-h-40 overflow-y-auto text-[11px] leading-relaxed text-paper/50">{ev.orbits.join(" ")}</p>
-          </details>
+          {ev.orbits ? (
+            <details className="group mt-6">
+              <summary className="cursor-pointer text-[13px] text-paper/70 transition hover:text-paper">{ev.orbits.length} orbit numbers used</summary>
+              <p className="num mt-2 max-h-40 overflow-y-auto text-[11px] leading-relaxed text-paper/50">{ev.orbits.join(" ")}</p>
+            </details>
+          ) : <p className="mt-6 text-[12px] text-paper/45">{ev.n_overpasses} overpasses; the orbit list is in the partner package.</p>}
+        </div>
+      </section>
+
+      <section className="mt-16 grid gap-10 md:grid-cols-2">
+        <div>
+          <h2 className="text-lg font-medium">Independent checks</h2>
+          <p className="mt-2 text-[12.5px] text-paper/55">{e.corroboration.n_passed} of 4 passed. Each check&apos;s false-pass rate is measured on this site&apos;s own 24 pseudo-sites.</p>
+          <dl className="mt-3 divide-y divide-paper/10 text-[13.5px]">
+            {(["temporal", "second_method", "co", "blind_screen"] as const).map((k) => {
+              const c = e.corroboration[k];
+              const detail = k === "temporal" ? (c.z_early == null || c.z_late == null ? "not enough data in one period" : `z ${c.z_early.toFixed(1)} then ${c.z_late.toFixed(1)}`)
+                : k === "blind_screen" ? (c.km == null ? "–" : `${c.km.toFixed(1)} km`) : (c.z == null ? "–" : `z ${c.z.toFixed(1)}`);
+              return (
+                <div key={k} className="flex items-baseline justify-between gap-4 py-2.5">
+                  <dt className="text-paper/70">{c.check}<span className="block text-[11px] text-paper/40">{c.independence}{c.false_pass_rate != null ? ` · false pass ${(c.false_pass_rate * 100).toFixed(0)}%` : ""}</span></dt>
+                  <dd className={`num text-right ${c.passed ? "text-flame" : "text-paper/45"}`}>{c.passed ? "passed" : "not passed"}<span className="block text-[11px] text-paper/45">{detail}</span></dd>
+                </div>
+              );
+            })}
+          </dl>
+          <ul className="mt-4 space-y-1.5 text-[11.5px] text-paper/45">
+            {Object.values(e.corroboration.not_used as Record<string, string>).map((t) => <li key={t}>{t.charAt(0).toUpperCase() + t.slice(1)}.</li>)}
+          </ul>
+        </div>
+        <div>
+          <h2 className="text-lg font-medium">Human review</h2>
+          <p className={`mt-3 text-[15px] ${e.review.state === "partner_verified" ? "text-flame" : "text-paper/85"}`}>{e.review.label}</p>
+          {e.review.state === "machine_candidate"
+            ? <p className="mt-2 text-[13px] leading-relaxed text-paper/55">This entry is a candidate for an analyst, not a finding against anyone. It stays in this state until a reviewer records a decision, which is kept with its author and date in the repository.</p>
+            : <p className="mt-2 text-[13px] text-paper/55">{e.review.organisation ?? e.review.last?.organisation} · {e.review.date ?? e.review.last?.date}{partner && e.review.last?.note ? ` · ${e.review.last.note}` : ""}</p>}
         </div>
       </section>
 

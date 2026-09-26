@@ -1,0 +1,809 @@
+{
+ "generated_utc": "2026-09-26T17:46:29.588169+00:00",
+ "code_version": "7327cba",
+ "runtime_s": 130.9,
+ "data_span": {
+  "first": "2023-01-01",
+  "last": "2024-12-31"
+ },
+ "n_pixels": 926451,
+ "n_tested": 6,
+ "n_confirmed": 4,
+ "n_detected": 5,
+ "tiers": {
+  "confirmed": "BY-FDR q <= 0.05 across the whole tested family AND an independent corroboration (re-detected in disjoint years, or a second estimator agrees)",
+  "detected": "BY-FDR q <= 0.05 without corroboration yet, or z >= 3 against the site's own 24 pseudo-site null",
+  "tentative": "2 <= z < 3",
+  "not detected": "z < 2; an 84th-percentile upper limit is reported"
+ },
+ "fdr": {
+  "method": "Benjamini-Yekutieli",
+  "level": 0.05,
+  "statement": "Among confirmed sites, the expected share of false entries is <= 5% (Benjamini-Yekutieli, valid under arbitrary dependence)."
+ },
+ "oversight": {
+  "statement": "Entries are machine candidates for human review, not accusations. An analyst or a regulatory partner records every decision (data-pipeline/review/decisions.json).",
+  "n_reviewed": 0
+ },
+ "fx": {
+  "inr_per_usd": 83.7,
+  "source": "RBI reference rate, 2024 annual average (fallback)"
+ },
+ "method": {
+  "stack": "wind-rotated, footprint-drizzled, plane background, monsoon (Jun-Sep) excluded, noise-weighted, albedo/AOT bias removed (ABD)",
+  "quantifier": "flux divergence within 20 km",
+  "null": "24 pseudo-sites 60-90 km, same overpasses",
+  "calibration": "x gamma (ERA5 100 m / 10 m wind) / OBC slope 0.989",
+  "uncertainty": "Monte Carlo 4000: overpass bootstrap + null structure + gamma"
+ },
+ "sites": [
+  {
+   "slug": "deonar",
+   "name": "Deonar/Mumbai landfill",
+   "lat": 19.0,
+   "lon": 73.0,
+   "kind": "reference",
+   "source_reference": "UCLA STOP Methane Project 2026 (~4.9 t CH4/hr)",
+   "in_india": true,
+   "screen": {
+    "rank": null,
+    "z": null,
+    "hits": [],
+    "nearest_km": 434.4802043147166
+   },
+   "corroboration": {
+    "second_method": {
+     "check": "cross-sectional flux agrees (z > 2)",
+     "z": 3.8101213750700897,
+     "passed": true,
+     "false_pass_rate": 0.045454545454545456,
+     "independence": "same data, different estimator"
+    },
+    "temporal": {
+     "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
+     "z_early": 4.965123337238039,
+     "z_late": null,
+     "passed": false,
+     "status": "insufficient data in one period",
+     "false_pass_rate": null,
+     "independence": "independent data"
+    },
+    "co": {
+     "check": "co-emitted CO detected (z > 2)",
+     "z": 3.433202765365723,
+     "passed": true,
+     "false_pass_rate": 0.045454545454545456,
+     "independence": "independent species, same overpasses"
+    },
+    "blind_screen": {
+     "check": "found by the national screen with no site list (<= 25 km)",
+     "km": 434.4802043147166,
+     "passed": false,
+     "false_pass_rate": null,
+     "independence": "independent algorithm, daily grids"
+    },
+    "not_used": {
+     "wind_invariance": "not used: the wind-direction test failed validation on real data (R5: 21% false rejects, 8% power)",
+     "chemical_fingerprint": "not used for attribution: the CO/CH4 ratio separated only 2 of 5 known emitters (R5)"
+    },
+    "n_passed": 2,
+    "confirming": true
+   },
+   "review": {
+    "state": "machine_candidate",
+    "label": "Machine candidate: awaiting analyst review",
+    "date": null,
+    "organisation": null
+   },
+   "status": "confirmed",
+   "z": 4.965123337238039,
+   "p": 4.213653653157554e-05,
+   "q": 0.0003097035435070802,
+   "rate_gamma1_kg_h": 52763.259175576364,
+   "null_floor_1sigma_kg_h": 11225.639239302598,
+   "rate_t_h": {
+    "p16": 52.557445048474634,
+    "p50": 69.09774063023062,
+    "p84": 88.56682695436784,
+    "upper_limit_p84": null
+   },
+   "gamma": {
+    "value": 1.25,
+    "sd": 0.15,
+    "source": "mean of sites / prior"
+   },
+   "obc_slope": 0.9889746229450166,
+   "sector": "landfill",
+   "sector_basis": "cited facility (reference site)",
+   "priority": {
+    "avoidable_tco2e20_per_yr": [
+     21416567.69819881,
+     31836089.00903412,
+     44576472.15767588
+    ],
+    "abatement_cost_inr_per_yr": [
+     2750704961.455906,
+     4313783559.888571,
+     6518451648.224247
+    ],
+    "wrpi_tco2e20_per_lakh_inr": [
+     503.88731832184686,
+     715.9135724834753,
+     1079.6200578788653
+    ],
+    "p_real": 0.9996902964564929,
+    "sector": "landfill",
+    "fx_inr_per_usd": 83.7
+   },
+   "evidence": {
+    "n_overpasses": 164,
+    "first_overpass": "2023-03-19",
+    "last_overpass": "2024-12-31",
+    "overpasses_per_month": {
+     "2023-03": 9,
+     "2023-04": 10,
+     "2023-05": 10,
+     "2023-10": 9,
+     "2023-11": 7,
+     "2023-12": 7,
+     "2024-01": 19,
+     "2024-02": 17,
+     "2024-03": 18,
+     "2024-04": 15,
+     "2024-05": 10,
+     "2024-10": 4,
+     "2024-11": 14,
+     "2024-12": 15
+    },
+    "mean_wind10_ms": 3.90122809790703
+   },
+   "priority_rank": 1
+  },
+  {
+   "slug": "khajod",
+   "name": "Khajod landfill, Surat",
+   "lat": 21.0,
+   "lon": 73.0,
+   "kind": "reference",
+   "source_reference": "ISRO EMIT+TROPOMI urban hotspot study, Feb 2024",
+   "in_india": true,
+   "screen": {
+    "rank": null,
+    "z": null,
+    "hits": [],
+    "nearest_km": 205.638507354964
+   },
+   "corroboration": {
+    "second_method": {
+     "check": "cross-sectional flux agrees (z > 2)",
+     "z": 3.3498801547538632,
+     "passed": true,
+     "false_pass_rate": 0.041666666666666664,
+     "independence": "same data, different estimator"
+    },
+    "temporal": {
+     "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
+     "z_early": 3.2522231804495916,
+     "z_late": null,
+     "passed": false,
+     "status": "insufficient data in one period",
+     "false_pass_rate": null,
+     "independence": "independent data"
+    },
+    "co": {
+     "check": "co-emitted CO detected (z > 2)",
+     "z": 2.3221116631662713,
+     "passed": true,
+     "false_pass_rate": 0.041666666666666664,
+     "independence": "independent species, same overpasses"
+    },
+    "blind_screen": {
+     "check": "found by the national screen with no site list (<= 25 km)",
+     "km": 205.638507354964,
+     "passed": false,
+     "false_pass_rate": null,
+     "independence": "independent algorithm, daily grids"
+    },
+    "not_used": {
+     "wind_invariance": "not used: the wind-direction test failed validation on real data (R5: 21% false rejects, 8% power)",
+     "chemical_fingerprint": "not used for attribution: the CO/CH4 ratio separated only 2 of 5 known emitters (R5)"
+    },
+    "n_passed": 2,
+    "confirming": true
+   },
+   "review": {
+    "state": "machine_candidate",
+    "label": "Machine candidate: awaiting analyst review",
+    "date": null,
+    "organisation": null
+   },
+   "status": "confirmed",
+   "z": 3.2522231804495916,
+   "p": 0.0020544439194816857,
+   "q": 0.006889456818558823,
+   "rate_gamma1_kg_h": 14094.890262084451,
+   "null_floor_1sigma_kg_h": 5385.739584593497,
+   "rate_t_h": {
+    "p16": 14.579836467462098,
+    "p50": 22.109704331392408,
+    "p84": 30.13856108841329,
+    "upper_limit_p84": null
+   },
+   "gamma": {
+    "value": 1.25,
+    "sd": 0.15,
+    "source": "mean of sites / prior"
+   },
+   "obc_slope": 0.9889746229450166,
+   "sector": "landfill",
+   "sector_basis": "cited facility (reference site)",
+   "priority": {
+    "avoidable_tco2e20_per_yr": [
+     6062162.762362059,
+     9967921.932802364,
+     14945302.257791787
+    ],
+    "abatement_cost_inr_per_yr": [
+     785767818.4374981,
+     1330448233.706341,
+     2134982538.2962441
+    ],
+    "wrpi_tco2e20_per_lakh_inr": [
+     505.30119407216256,
+     715.3156944767343,
+     1106.1320884825732
+    ],
+    "p_real": 0.9931105431814412,
+    "sector": "landfill",
+    "fx_inr_per_usd": 83.7
+   },
+   "evidence": {
+    "n_overpasses": 193,
+    "first_overpass": "2023-01-04",
+    "last_overpass": "2024-12-31",
+    "overpasses_per_month": {
+     "2023-01": 15,
+     "2023-02": 12,
+     "2023-03": 5,
+     "2023-04": 12,
+     "2023-05": 14,
+     "2023-10": 10,
+     "2023-11": 8,
+     "2023-12": 13,
+     "2024-01": 19,
+     "2024-02": 13,
+     "2024-03": 12,
+     "2024-04": 11,
+     "2024-05": 9,
+     "2024-10": 5,
+     "2024-11": 20,
+     "2024-12": 15
+    },
+    "mean_wind10_ms": 3.120652097444286
+   },
+   "priority_rank": 2
+  },
+  {
+   "slug": "pirana",
+   "name": "Pirana landfill, Ahmedabad",
+   "lat": 23.0,
+   "lon": 72.75,
+   "kind": "reference",
+   "source_reference": "ISRO EMIT+TROPOMI urban hotspot study, Feb 2024",
+   "in_india": true,
+   "screen": {
+    "rank": null,
+    "z": null,
+    "hits": [
+     {
+      "rank": 19,
+      "z": 3.7114034081803196
+     }
+    ],
+    "nearest_km": 15.290933057890955
+   },
+   "corroboration": {
+    "second_method": {
+     "check": "cross-sectional flux agrees (z > 2)",
+     "z": 4.1272540320350535,
+     "passed": true,
+     "false_pass_rate": 0.041666666666666664,
+     "independence": "same data, different estimator"
+    },
+    "temporal": {
+     "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
+     "z_early": 3.601230745897127,
+     "z_late": null,
+     "passed": false,
+     "status": "insufficient data in one period",
+     "false_pass_rate": null,
+     "independence": "independent data"
+    },
+    "co": {
+     "check": "co-emitted CO detected (z > 2)",
+     "z": 8.125349850584602,
+     "passed": true,
+     "false_pass_rate": 0.0,
+     "independence": "independent species, same overpasses"
+    },
+    "blind_screen": {
+     "check": "found by the national screen with no site list (<= 25 km)",
+     "km": 15.290933057890955,
+     "passed": true,
+     "false_pass_rate": null,
+     "independence": "independent algorithm, daily grids"
+    },
+    "not_used": {
+     "wind_invariance": "not used: the wind-direction test failed validation on real data (R5: 21% false rejects, 8% power)",
+     "chemical_fingerprint": "not used for attribution: the CO/CH4 ratio separated only 2 of 5 known emitters (R5)"
+    },
+    "n_passed": 3,
+    "confirming": true
+   },
+   "review": {
+    "state": "machine_candidate",
+    "label": "Machine candidate: awaiting analyst review",
+    "date": null,
+    "organisation": null
+   },
+   "status": "confirmed",
+   "z": 3.601230745897127,
+   "p": 0.0008993519538610487,
+   "q": 0.004406824573919138,
+   "rate_gamma1_kg_h": 9281.762566424915,
+   "null_floor_1sigma_kg_h": 2912.5057528426214,
+   "rate_t_h": {
+    "p16": 9.091898843379207,
+    "p50": 13.182173088994663,
+    "p84": 17.80341348907487,
+    "upper_limit_p84": null
+   },
+   "gamma": {
+    "value": 1.25,
+    "sd": 0.15,
+    "source": "mean of sites / prior"
+   },
+   "obc_slope": 0.9889746229450166,
+   "sector": "landfill",
+   "sector_basis": "cited facility (reference site)",
+   "priority": {
+    "avoidable_tco2e20_per_yr": [
+     3741400.2861377033,
+     6033879.377263036,
+     8768725.104129618
+    ],
+    "abatement_cost_inr_per_yr": [
+     487282623.78705484,
+     812204486.3596213,
+     1279474251.0537653
+    ],
+    "wrpi_tco2e20_per_lakh_inr": [
+     507.11256066705806,
+     711.6617945654986,
+     1074.842581211564
+    ],
+    "p_real": 0.9955931754260808,
+    "sector": "landfill",
+    "fx_inr_per_usd": 83.7
+   },
+   "evidence": {
+    "n_overpasses": 206,
+    "first_overpass": "2023-01-01",
+    "last_overpass": "2024-12-31",
+    "overpasses_per_month": {
+     "2023-01": 22,
+     "2023-02": 18,
+     "2023-03": 8,
+     "2023-04": 11,
+     "2023-05": 11,
+     "2023-10": 15,
+     "2023-11": 10,
+     "2023-12": 9,
+     "2024-01": 13,
+     "2024-02": 12,
+     "2024-03": 15,
+     "2024-04": 12,
+     "2024-05": 7,
+     "2024-10": 4,
+     "2024-11": 21,
+     "2024-12": 18
+    },
+    "mean_wind10_ms": 2.6297221149341006
+   },
+   "priority_rank": 3
+  },
+  {
+   "slug": "jharia",
+   "name": "Jharia coal field, Jharkhand",
+   "lat": 23.75,
+   "lon": 86.5,
+   "kind": "reference",
+   "source_reference": "EGU 2025 Bayesian inversion coal clusters",
+   "in_india": true,
+   "screen": {
+    "rank": null,
+    "z": null,
+    "hits": [
+     {
+      "rank": 9,
+      "z": 4.617826459999301
+     }
+    ],
+    "nearest_km": 6.600457550330169
+   },
+   "corroboration": {
+    "second_method": {
+     "check": "cross-sectional flux agrees (z > 2)",
+     "z": 3.7388371115251275,
+     "passed": true,
+     "false_pass_rate": 0.0,
+     "independence": "same data, different estimator"
+    },
+    "temporal": {
+     "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
+     "z_early": 5.3013718638804,
+     "z_late": null,
+     "passed": false,
+     "status": "insufficient data in one period",
+     "false_pass_rate": null,
+     "independence": "independent data"
+    },
+    "co": {
+     "check": "co-emitted CO detected (z > 2)",
+     "z": 6.43697228870075,
+     "passed": true,
+     "false_pass_rate": 0.125,
+     "independence": "independent species, same overpasses"
+    },
+    "blind_screen": {
+     "check": "found by the national screen with no site list (<= 25 km)",
+     "km": 6.600457550330169,
+     "passed": true,
+     "false_pass_rate": null,
+     "independence": "independent algorithm, daily grids"
+    },
+    "not_used": {
+     "wind_invariance": "not used: the wind-direction test failed validation on real data (R5: 21% false rejects, 8% power)",
+     "chemical_fingerprint": "not used for attribution: the CO/CH4 ratio separated only 2 of 5 known emitters (R5)"
+    },
+    "n_passed": 3,
+    "confirming": true
+   },
+   "review": {
+    "state": "machine_candidate",
+    "label": "Machine candidate: awaiting analyst review",
+    "date": null,
+    "organisation": null
+   },
+   "status": "confirmed",
+   "z": 5.3013718638804,
+   "p": 1.4423909862230362e-05,
+   "q": 0.00021203147497478628,
+   "rate_gamma1_kg_h": 17169.715685596846,
+   "null_floor_1sigma_kg_h": 3379.8981145862876,
+   "rate_t_h": {
+    "p16": 17.10092384977631,
+    "p50": 22.371513361049868,
+    "p84": 28.03909889875283,
+    "upper_limit_p84": null
+   },
+   "gamma": {
+    "value": 1.25,
+    "sd": 0.15,
+    "source": "mean of sites / prior"
+   },
+   "obc_slope": 0.9889746229450166,
+   "sector": "coal",
+   "sector_basis": "cited facility (reference site)",
+   "priority": {
+    "avoidable_tco2e20_per_yr": [
+     6669840.169380591,
+     9429558.43488831,
+     12862794.956720412
+    ],
+    "abatement_cost_inr_per_yr": [
+     108633787.12562725,
+     2374976045.022312,
+     4820290891.371476
+    ],
+    "wrpi_tco2e20_per_lakh_inr": [
+     198.8451374670249,
+     383.7005800611639,
+     7842.845396774584
+    ],
+    "p_real": 0.9997879685250252,
+    "sector": "coal",
+    "fx_inr_per_usd": 83.7
+   },
+   "evidence": {
+    "n_overpasses": 101,
+    "first_overpass": "2023-01-06",
+    "last_overpass": "2024-12-18",
+    "overpasses_per_month": {
+     "2023-01": 7,
+     "2023-02": 11,
+     "2023-03": 8,
+     "2023-04": 7,
+     "2023-05": 3,
+     "2023-10": 3,
+     "2023-11": 2,
+     "2023-12": 9,
+     "2024-01": 10,
+     "2024-02": 5,
+     "2024-03": 10,
+     "2024-04": 5,
+     "2024-05": 4,
+     "2024-10": 1,
+     "2024-11": 6,
+     "2024-12": 10
+    },
+    "mean_wind10_ms": 2.7094548394126523
+   },
+   "priority_rank": 4
+  },
+  {
+   "slug": "jawaharnagar",
+   "name": "Jawaharnagar landfill, Hyderabad",
+   "lat": 17.5,
+   "lon": 78.5,
+   "kind": "reference",
+   "source_reference": "UCLA STOP Methane / Carbon Mapper, 2026 (~5.9 t CH4/hr)",
+   "in_india": true,
+   "screen": {
+    "rank": null,
+    "z": null,
+    "hits": [
+     {
+      "rank": 28,
+      "z": 3.031454834894076
+     }
+    ],
+    "nearest_km": 5.757873000002667
+   },
+   "corroboration": {
+    "second_method": {
+     "check": "cross-sectional flux agrees (z > 2)",
+     "z": 1.6978765172423353,
+     "passed": false,
+     "false_pass_rate": 0.0,
+     "independence": "same data, different estimator"
+    },
+    "temporal": {
+     "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
+     "z_early": 3.195832456732462,
+     "z_late": null,
+     "passed": false,
+     "status": "insufficient data in one period",
+     "false_pass_rate": null,
+     "independence": "independent data"
+    },
+    "co": {
+     "check": "co-emitted CO detected (z > 2)",
+     "z": 3.59764545343653,
+     "passed": true,
+     "false_pass_rate": 0.0,
+     "independence": "independent species, same overpasses"
+    },
+    "blind_screen": {
+     "check": "found by the national screen with no site list (<= 25 km)",
+     "km": 5.757873000002667,
+     "passed": true,
+     "false_pass_rate": null,
+     "independence": "independent algorithm, daily grids"
+    },
+    "not_used": {
+     "wind_invariance": "not used: the wind-direction test failed validation on real data (R5: 21% false rejects, 8% power)",
+     "chemical_fingerprint": "not used for attribution: the CO/CH4 ratio separated only 2 of 5 known emitters (R5)"
+    },
+    "n_passed": 2,
+    "confirming": false
+   },
+   "review": {
+    "state": "machine_candidate",
+    "label": "Machine candidate: awaiting analyst review",
+    "date": null,
+    "organisation": null
+   },
+   "status": "detected",
+   "z": 3.195832456732462,
+   "p": 0.0023433526593737495,
+   "q": 0.006889456818558823,
+   "rate_gamma1_kg_h": 11068.359494890803,
+   "null_floor_1sigma_kg_h": 3807.773856567051,
+   "rate_t_h": {
+    "p16": 9.559032470099675,
+    "p50": 15.068367345665258,
+    "p84": 21.01236126773605,
+    "upper_limit_p84": null
+   },
+   "gamma": {
+    "value": 1.25,
+    "sd": 0.15,
+    "source": "mean of sites / prior"
+   },
+   "obc_slope": 0.9889746229450166,
+   "sector": "landfill",
+   "sector_basis": "cited facility (reference site)",
+   "priority": {
+    "avoidable_tco2e20_per_yr": [
+     4053366.3383633913,
+     6885962.494635643,
+     10388829.171419548
+    ],
+    "abatement_cost_inr_per_yr": [
+     505420954.8593241,
+     910786302.348212,
+     1499503782.8832328
+    ],
+    "wrpi_tco2e20_per_lakh_inr": [
+     508.0744960136884,
+     713.8861251410862,
+     1102.6514108178417
+    ],
+    "p_real": 0.9931105431814412,
+    "sector": "landfill",
+    "fx_inr_per_usd": 83.7
+   },
+   "evidence": {
+    "n_overpasses": 80,
+    "first_overpass": "2023-01-07",
+    "last_overpass": "2024-12-29",
+    "overpasses_per_month": {
+     "2023-01": 13,
+     "2023-02": 13,
+     "2023-03": 6,
+     "2023-05": 1,
+     "2023-10": 3,
+     "2023-11": 5,
+     "2023-12": 9,
+     "2024-01": 6,
+     "2024-02": 3,
+     "2024-03": 4,
+     "2024-04": 2,
+     "2024-05": 1,
+     "2024-11": 9,
+     "2024-12": 5
+    },
+    "mean_wind10_ms": 2.815715749891086
+   },
+   "priority_rank": 5
+  },
+  {
+   "slug": "korba",
+   "name": "Korba coalfield, Chhattisgarh",
+   "lat": 22.25,
+   "lon": 82.75,
+   "kind": "reference",
+   "source_reference": "EGU 2025 Bayesian inversion coal clusters",
+   "in_india": true,
+   "screen": {
+    "rank": null,
+    "z": null,
+    "hits": [],
+    "nearest_km": 127.77164814663699
+   },
+   "corroboration": {
+    "second_method": {
+     "check": "cross-sectional flux agrees (z > 2)",
+     "z": -0.4393513439496435,
+     "passed": false,
+     "false_pass_rate": 0.08333333333333333,
+     "independence": "same data, different estimator"
+    },
+    "temporal": {
+     "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
+     "z_early": -0.7850563397460305,
+     "z_late": null,
+     "passed": false,
+     "status": "insufficient data in one period",
+     "false_pass_rate": null,
+     "independence": "independent data"
+    },
+    "co": {
+     "check": "co-emitted CO detected (z > 2)",
+     "z": 0.23841845241698173,
+     "passed": false,
+     "false_pass_rate": 0.041666666666666664,
+     "independence": "independent species, same overpasses"
+    },
+    "blind_screen": {
+     "check": "found by the national screen with no site list (<= 25 km)",
+     "km": 127.77164814663699,
+     "passed": false,
+     "false_pass_rate": null,
+     "independence": "independent algorithm, daily grids"
+    },
+    "not_used": {
+     "wind_invariance": "not used: the wind-direction test failed validation on real data (R5: 21% false rejects, 8% power)",
+     "chemical_fingerprint": "not used for attribution: the CO/CH4 ratio separated only 2 of 5 known emitters (R5)"
+    },
+    "n_passed": 0,
+    "confirming": false
+   },
+   "review": {
+    "state": "machine_candidate",
+    "label": "Machine candidate: awaiting analyst review",
+    "date": null,
+    "organisation": null
+   },
+   "status": "not detected",
+   "z": -0.7850563397460305,
+   "p": 0.7751974410796285,
+   "q": 1.0,
+   "rate_gamma1_kg_h": -2893.214177660957,
+   "null_floor_1sigma_kg_h": 3053.7421588735747,
+   "rate_t_h": {
+    "p16": -7.559000439055116,
+    "p50": -2.9114791585313844,
+    "p84": 1.3104826681604629,
+    "upper_limit_p84": 1.3104826681604629
+   },
+   "gamma": {
+    "value": 1.25,
+    "sd": 0.15,
+    "source": "mean of sites / prior"
+   },
+   "obc_slope": 0.9889746229450166,
+   "sector": "coal",
+   "sector_basis": "cited facility (reference site)",
+   "priority": {
+    "avoidable_tco2e20_per_yr": [
+     0.0,
+     0.0,
+     545632.1761741876
+    ],
+    "abatement_cost_inr_per_yr": [
+     0.0,
+     0.0,
+     70381663.6198338
+    ],
+    "wrpi_tco2e20_per_lakh_inr": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "p_real": 0.0,
+    "sector": "coal",
+    "fx_inr_per_usd": 83.7
+   },
+   "evidence": {
+    "n_overpasses": 84,
+    "first_overpass": "2023-01-06",
+    "last_overpass": "2024-12-31",
+    "overpasses_per_month": {
+     "2023-01": 12,
+     "2023-02": 14,
+     "2023-03": 3,
+     "2023-04": 1,
+     "2023-05": 1,
+     "2023-10": 4,
+     "2023-11": 4,
+     "2023-12": 2,
+     "2024-01": 7,
+     "2024-02": 8,
+     "2024-03": 6,
+     "2024-04": 2,
+     "2024-05": 3,
+     "2024-10": 1,
+     "2024-11": 7,
+     "2024-12": 9
+    },
+    "mean_wind10_ms": 2.199385097680135
+   },
+   "priority_rank": 6
+  }
+ ],
+ "access": {
+  "tier": "public",
+  "location_precision_deg": 0.25,
+  "withheld": [
+   "exact coordinates",
+   "plume stack images",
+   "orbit lists",
+   "screen hit coordinates",
+   "review notes"
+  ],
+  "how_to_get_full": "Verified partners (pollution control boards, regulators, accredited researchers) receive the full evidence package after sign-in.",
+  "full_package_available": true
+ }
+}

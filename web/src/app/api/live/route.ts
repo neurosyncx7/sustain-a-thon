@@ -9,7 +9,7 @@ export const dynamic = "force-dynamic";
 // priority index depends on, and the state of the pipeline's own runs. Each source carries its
 // own status and fetch time; nothing is substituted when a source is down.
 export async function GET() {
-  const inv = await readJson("inventory/inventory.json");
+  const inv = await readJson("inventory/inventory_public.json");
   const top = inv.sites.filter((s: any) => s.status !== "not detected").slice(0, 8)
     .map((s: any) => ({ slug: s.slug, lat: s.lat, lon: s.lon }));
   const [pass, history, nrti, winds, fx, runs] = await Promise.all([

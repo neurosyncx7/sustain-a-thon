@@ -12,6 +12,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: inventory
@@ -27,7 +28,7 @@ jobs:
         with: { ref: main, fetch-depth: 0 }
       - uses: actions/setup-python@v5
         with: { python-version: "3.11" }
-      - run: pip install -q pandas pyarrow numpy scipy pillow shapely requests
+      - run: pip install -q pandas pyarrow numpy scipy pillow shapely requests cryptography
       - name: Fetch the archive (data branch)
         run: git clone --depth 1 --branch data "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}" databranch
       - name: ERA5 transport factor per site (weekly refresh)
@@ -48,7 +49,18 @@ jobs:
         run: |
           python research/screening/national_screen.py databranch data-pipeline/web web/public/data
           python research/screening/label_candidates.py data-pipeline/web/candidates.json research/screening/ne_min
+      - name: Grow the tested family with new screen leads (stable ids)
+        id: fam
+        run: |
+          f=research/pipeline/new_sites/$(date -u +%Y%m%d).json
+          n=$(python research/pipeline/make_inventory_sites.py --new-out $f)
+          echo "added=$n" >> "$GITHUB_OUTPUT"
+          if [ "$n" -gt 0 ]; then
+            python -c "import json,datetime as d;t=d.date.today();m=[f'{y}-{k:02d}' for y in range(2023,t.year+1) for k in range(1,13) if (y,k)<=(t.year,t.month)];json.dump(dict(months=m,tag='inv-'+t.strftime('%Y%m%d'),sites_file='$f',note='new screen leads added to the tested family'),open('.github/extract-sites-request.json','w'),indent=1)"
+          else rm -f $f; fi
       - name: Inventory (validated algorithms only)
+        env:
+          INVENTORY_KEY: ${{ secrets.INVENTORY_KEY }}
         run: >
           python research/pipeline/run_inventory.py databranch data-pipeline/inventory
           --gamma data-pipeline/inventory/gamma.json --fx "${{ steps.fx.outputs.fx }}" --fx-source "${{ steps.fx.outputs.src }}"
@@ -61,7 +73,12 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data-pipeline web/public/data research/findings.md
+          git add -A data-pipeline web/public/data research/findings.md research/pipeline .github/extract-sites-request.json
           git diff --cached --quiet && { echo "no change"; exit 0; }
           git commit -q -m "data: inventory refresh (run ${{ github.run_id }})"
           for i in 1 2 3 4 5; do git pull --rebase -q origin main && git push -q origin main && break; sleep $((i*7)); done
+      - name: Extract windows for new leads (they join the next inventory run)
+        if: steps.fam.outputs.added != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run extract-sites.yml --ref main

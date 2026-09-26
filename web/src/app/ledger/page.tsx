@@ -2,8 +2,11 @@ import Link from "next/link";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { readJson } from "@/lib/data";
 import { LivePanel } from "@/components/live/LivePanel";
+import { AccessBanner } from "@/components/access/AccessBanner";
+import { coarse, inventoryForRequest, partnerTierConfigured } from "@/lib/access";
 
 export const metadata = { title: "The ledger · Vāyu Lekha" };
+export const dynamic = "force-dynamic";
 
 const t1 = (x: number) => x.toFixed(1);
 const big = (x: number) => (x >= 1e6 ? `${(x / 1e6).toFixed(1)} M` : x >= 1e3 ? `${(x / 1e3).toFixed(0)} k` : x.toFixed(0));
@@ -22,16 +25,33 @@ const ALG: Record<string, [string, string]> = {
   not_implemented: ["Designed, not built", "text-paper/40"],
 };
 
+const CHECKS: [string, string][] = [["temporal", "Y"], ["second_method", "M"], ["co", "C"], ["blind_screen", "B"]];
+const CHECK_NAMES: Record<string, string> = { temporal: "re-detected in disjoint years", second_method: "second estimator agrees", co: "co-emitted CO detected", blind_screen: "found by the blind screen" };
+
+function Checks({ c }: { c: any }) {
+  return (
+    <span className="flex gap-1" aria-label={`${c.n_passed} of 4 corroborating checks passed`}>
+      {CHECKS.map(([k, l]) => (
+        <span key={k} title={`${CHECK_NAMES[k]}: ${c[k].passed ? "passed" : c[k].status === "insufficient data in one period" ? "not enough data in one period" : "not passed"}`}
+          className={`num grid h-5 w-5 place-items-center rounded-[5px] text-[10px] ring-1 ${c[k].passed ? "bg-flame/15 text-flame ring-flame/40" : "text-paper/30 ring-paper/10"}`}>{l}</span>
+      ))}
+    </span>
+  );
+}
+
 function Tier({ s }: { s: string }) {
   return <span className={`inline-block whitespace-nowrap rounded-full px-2 py-0.5 text-[11px] ring-1 ${TIER[s]}`}>{s}</span>;
 }
 
 export default async function LedgerPage() {
-  const inv = await readJson("inventory/inventory.json");
+  const { doc: inv, partner } = await inventoryForRequest("ledger");
   const alg = await readJson("inventory/algorithms.json");
   const c = await readJson("web/candidates.json");
-  const tested = new Set(inv.sites.map((s: any) => `${s.lat},${s.lon}`));
-  const leads = c.candidates.filter((x: any) => x.in_india);
+  // A lead counts as tested when a site of the inventory family (exact coordinates, server-side only) lies within 10 km.
+  const family = Object.values(await readJson("inventory/family.json")) as any[];
+  const km = (a: any, b: any) => 111 * Math.hypot(a.lat - b.lat, (a.lon - b.lon) * Math.cos((a.lat * Math.PI) / 180));
+  const leads = c.candidates.map((x: any, i: number) => ({ ...x, rank: i + 1, tested: family.some((f) => km(f, x) <= 10),
+    lat: partner ? x.lat : coarse(x.lat), lon: partner ? x.lon : coarse(x.lon) })).filter((x: any) => x.in_india);
   const sites = inv.sites.map((s: any) => ({ slug: s.slug, name: s.name, lat: s.lat, lon: s.lon, status: s.status }));
   const total = inv.sites.filter((s: any) => s.status !== "not detected").reduce((a: number, s: any) => a + s.priority.avoidable_tco2e20_per_yr[1], 0);
 
@@ -41,6 +61,7 @@ export default async function LedgerPage() {
       <nav className="flex items-center justify-between gap-3">
         <Link href="/?at=ledger" className="text-[14px] text-paper/70 transition hover:text-paper">← Back to the observatory</Link>
         <div className="flex gap-2">
+          <Link href="/responsible" className="hidden rounded-full px-3.5 py-1.5 text-[13px] text-paper/70 ring-1 ring-paper/10 transition hover:bg-paper/10 sm:inline-block">Safeguards</Link>
           <a href="/api/export" className="rounded-full px-3.5 py-1.5 text-[13px] ring-1 ring-paper/20 transition hover:bg-paper/10 active:scale-[0.98]">Download CSV</a>
           <a href="/api/inventory" className="rounded-full px-3.5 py-1.5 text-[13px] text-paper/70 ring-1 ring-paper/10 transition hover:bg-paper/10">JSON</a>
         </div>
@@ -52,6 +73,7 @@ export default async function LedgerPage() {
         ({inv.n_pixels.toLocaleString("en-IN")} pixels). {inv.n_confirmed} pass the family-wide false-discovery gate, {inv.n_detected} clear three sigma on their own.
         Together the sources above the noise could avoid about <span className="num text-paper">{big(total)}</span> tonnes CO₂e (20-year) a year if abated.
       </p>
+      <AccessBanner partner={partner} configured={partnerTierConfigured()} />
 
       <LivePanel sites={sites} />
 
@@ -65,10 +87,10 @@ export default async function LedgerPage() {
         </div>
 
         <div className="mt-8 hidden overflow-x-auto md:block">
-          <table className="w-full min-w-[900px] text-[14px]">
+          <table className="w-full min-w-[980px] text-[14px]">
             <thead className="text-left text-[12px] text-paper/50">
               <tr>
-                <th className="pb-3 font-normal">#</th><th className="pb-3 font-normal">Site</th><th className="pb-3 font-normal">Tier</th>
+                <th className="pb-3 font-normal">#</th><th className="pb-3 font-normal">Site</th><th className="pb-3 font-normal">Tier</th><th className="pb-3 font-normal">Checks</th>
                 <th className="pb-3 text-right font-normal">t CH₄/h [68%]</th><th className="pb-3 text-right font-normal">z</th><th className="pb-3 text-right font-normal">q</th>
                 <th className="pb-3 pl-6 font-normal">Sector</th><th className="pb-3 text-right font-normal">t CO₂e₂₀/yr avoidable</th><th className="pb-3 text-right font-normal">t CO₂e₂₀ per ₹ lakh</th>
               </tr>
@@ -81,7 +103,8 @@ export default async function LedgerPage() {
                     <Link href={`/site/${s.slug}`} className="underline-offset-4 group-hover:underline">{s.name}</Link>
                     <span className="num block text-[11px] text-paper/45">{s.lat.toFixed(2)}°N {s.lon.toFixed(2)}°E · {s.evidence.n_overpasses} overpasses</span>
                   </td>
-                  <td className="py-3"><Tier s={s.status} /></td>
+                  <td className="py-3"><Tier s={s.status} /><span className="mt-1 block text-[10.5px] text-paper/45">{s.review.state === "machine_candidate" ? "awaiting review" : s.review.label}</span></td>
+                  <td className="py-3"><Checks c={s.corroboration} /></td>
                   <td className="num py-3 text-right">
                     {s.status === "not detected" ? <span className="text-paper/50">&lt; {t1(s.rate_t_h.p84)}</span> : <>{t1(s.rate_t_h.p50)} <span className="text-paper/45">[{t1(s.rate_t_h.p16)}, {t1(s.rate_t_h.p84)}]</span></>}
                   </td>
@@ -110,7 +133,8 @@ export default async function LedgerPage() {
           ))}
         </ul>
 
-        <dl className="mt-6 grid gap-x-8 gap-y-2 text-[12px] text-paper/55 sm:grid-cols-2">
+        <p className="mt-6 text-[12px] text-paper/55">Checks: <span className="num text-paper/75">Y</span> re-detected in disjoint years · <span className="num text-paper/75">M</span> second estimator agrees · <span className="num text-paper/75">C</span> co-emitted CO · <span className="num text-paper/75">B</span> found by the blind screen. Each check&apos;s false-pass rate is measured on pseudo-sites every run (<Link href="/responsible" className="underline underline-offset-4 hover:text-paper">safeguards</Link>).</p>
+        <dl className="mt-4 grid gap-x-8 gap-y-2 text-[12px] text-paper/55 sm:grid-cols-2">
           {Object.entries(inv.tiers).map(([k, v]: any) => (
             <div key={k} className="flex items-baseline gap-3"><dt><Tier s={k} /></dt><dd>{v}</dd></div>
           ))}
@@ -149,7 +173,7 @@ export default async function LedgerPage() {
               </div>
               <h3 className="mt-3 text-[16px] font-medium tracking-tight">{x.known_site_match ? x.known_site_match.name : x.place_label.charAt(0).toUpperCase() + x.place_label.slice(1)}</h3>
               <p className="num mt-1 text-[12px] text-paper/55">{x.lat.toFixed(2)}°N {x.lon.toFixed(2)}°E · {x.valid_days} valid days</p>
-              <p className="mt-3 text-[12px] text-paper/55">{x.known_site_match ? `Found blind, ${x.known_site_match.km} km from the documented site` : tested.has(`${x.lat},${x.lon}`) ? "Stacked and tested in the inventory" : "Awaiting its site stack"}</p>
+              <p className="mt-3 text-[12px] text-paper/55">{x.known_site_match ? `Found blind, ${x.known_site_match.km} km from the documented site` : x.tested ? "Stacked and tested in the inventory" : "New lead: enters the inventory at the next site extraction"}</p>
             </article>
           ))}
         </div>

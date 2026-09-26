@@ -1,9 +1,9 @@
 """Writes the current inventory table into research/findings.md (between the R6 markers), so the
-prose never drifts from data-pipeline/inventory/inventory.json. Run from the repo root."""
+prose never drifts from data-pipeline/inventory/inventory_public.json. Run from the repo root."""
 import json
 from pathlib import Path
 
-inv = json.loads(Path("data-pipeline/inventory/inventory.json").read_text())
+inv = json.loads(Path("data-pipeline/inventory/inventory_public.json").read_text())
 rows = ["| # | Site | Tier | t CH4/h [68%] | z | q (BY) | Sector | t CO2e20 per INR lakh |", "|---|---|---|---|---|---|---|---|"]
 for s in inv["sites"]:
     r = s["rate_t_h"]

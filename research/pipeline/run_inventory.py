@@ -13,7 +13,7 @@ usage: python run_inventory.py <data_dir> <out_dir> [--gamma gamma.json] [--fx 8
 """
 from __future__ import annotations
 
-import argparse, glob, json, subprocess, sys, time, zlib
+import argparse, glob, json, os, subprocess, sys, time, zlib
 from pathlib import Path
 
 import numpy as np
@@ -28,6 +28,9 @@ from site_stack import StackConfig, stack_site, quantify, bootstrap, pseudo_site
 from by_fdr import benjamini_yekutieli  # noqa: E402
 from wrpi import wrpi_mc  # noqa: E402
 from india_bbox import SECTOR  # noqa: E402
+from corroborate import corroborate  # noqa: E402
+sys.path.insert(0, str(ROOT / "pipeline"))
+from protect import encrypt, load_reviews, redact, review_state  # noqa: E402
 
 N_NULL, NULL_SEED, N_BOOT, N_MC = 24, 7, 300, 4000
 CFG = StackConfig()   # defaults ARE the validated final method (R4 + R5 ABD)
@@ -35,7 +38,7 @@ CFG = StackConfig()   # defaults ARE the validated final method (R4 + R5 ABD)
 
 def load_windows(data_dir: str, slugs: set[str]) -> pd.DataFrame:
     frames = []
-    inv = sorted(glob.glob(f"{data_dir}/tropomi/sites_inv/*.parquet"))
+    inv = sorted(glob.glob(f"{data_dir}/tropomi/sites_inv*/*.parquet"))   # sites_inv/, sites_inv-YYYYMMDD/ ...
     for f in inv:
         frames.append(pd.read_parquet(f))
     have = set(pd.concat(frames).site.unique()) if frames else set()
@@ -63,9 +66,10 @@ def analyse_site(pix: pd.DataFrame, s: dict) -> dict | None:
     st = stack_site(pix, s["lat"], s["lon"], CFG)
     if st["n_overpasses"] < 10:
         return None
-    q = quantify(st)["DIV"]
-    nulls = np.array([quantify(stack_site(pix, la, lo, CFG))["DIV"]
-                      for la, lo in pseudo_sites(s["lat"], s["lon"], n=N_NULL, seed=NULL_SEED)])
+    site_q = quantify(st)
+    q = site_q["DIV"]
+    null_q = [quantify(stack_site(pix, la, lo, CFG)) for la, lo in pseudo_sites(s["lat"], s["lon"], n=N_NULL, seed=NULL_SEED)]
+    nulls = np.array([d["DIV"] for d in null_q])
     nulls = nulls[np.isfinite(nulls)]
     m, sd = float(nulls.mean()), float(nulls.std(ddof=1))
     z = (q - m) / sd
@@ -74,20 +78,24 @@ def analyse_site(pix: pd.DataFrame, s: dict) -> dict | None:
     ops = st["overpasses"]
     times = pd.to_datetime([o["time"] for o in ops]).tz_localize(None) if pd.to_datetime([o["time"] for o in ops]).tz is not None else pd.to_datetime([o["time"] for o in ops])
     months = pd.Series(1, index=times.to_period("M").astype(str)).groupby(level=0).sum()
-    return dict(stack=st, rate_div_kg_h=float(q), null_mean=m, null_sd=sd, z=float(z), p=p, boot=boot,
+    corr = corroborate(pix, s["lat"], s["lon"], CFG, site_q, null_q, s.get("_screen_km"), N_NULL, NULL_SEED)
+    return dict(stack=st, corroboration=corr, rate_div_kg_h=float(q), null_mean=m, null_sd=sd, z=float(z), p=p, boot=boot,
                 n_overpasses=len(ops), orbits=[str(o["orbit"]) for o in ops],
                 first=str(times.min().date()), last=str(times.max().date()),
                 overpasses_per_month=months.to_dict(),
                 mean_wind10_ms=float(np.mean([o["U10"] for o in ops])))
 
 
-def export_stack(st: dict, slug: str, tex_dir: Path) -> dict:
+def export_stack(st: dict) -> dict:
+    """Plume stack as an embedded 8-bit PNG (128 = zero flux). Partner tier only: it travels inside
+    the encrypted inventory, never as a public file."""
+    import base64, io
     from PIL import Image
     phi = st["phi"]
     sc = float(np.nanpercentile(np.abs(phi), 99)) or 1.0
     img = np.where(np.isfinite(phi), np.clip(128 + 127 * phi / sc, 1, 255), 0).astype(np.uint8)[::-1]
-    Image.fromarray(img, "L").save(tex_dir / f"{slug}.png")
-    return dict(file=f"/data/inv/{slug}.png", scale_mol_m_s=sc, x_km=[float(st["xc"][0]), float(st["xc"][-1])],
+    buf = io.BytesIO(); Image.fromarray(img, "L").save(buf, format="PNG", optimize=True)
+    return dict(png_b64=base64.b64encode(buf.getvalue()).decode(), scale_mol_m_s=sc, x_km=[float(st["xc"][0]), float(st["xc"][-1])],
                 y_km=[float(st["yc"][0]), float(st["yc"][-1])], frame="wind-rotated: +x downwind")
 
 
@@ -97,14 +105,18 @@ def main():
     ap.add_argument("--gamma", default=None)
     ap.add_argument("--fx", type=float, default=83.7)
     ap.add_argument("--fx-source", default="RBI reference rate, 2024 annual average (fallback)")
-    ap.add_argument("--tex", default=str(REPO / "web/public/data/inv"))
+    ap.add_argument("--plain-out", default=None, help="also write the unencrypted full inventory here (never inside the repo)")
     a = ap.parse_args()
     t0 = time.time()
     out = Path(a.out_dir); out.mkdir(parents=True, exist_ok=True)
-    tex = Path(a.tex); tex.mkdir(parents=True, exist_ok=True)
+    reviews = load_reviews(REPO / "data-pipeline/review/decisions.json")
 
     sites = json.loads((ROOT / "pipeline/inventory_sites.json").read_text())
     fam = family(sites)
+    cands = json.loads((REPO / "data-pipeline/web/candidates.json").read_text())["candidates"]
+    kmf = lambda a, b, c, d: 111.0 * np.hypot(a - c, (b - d) * np.cos(np.radians((a + c) / 2)))  # noqa: E731
+    for slug, s in fam.items():
+        s["_screen_km"] = 0.0 if s["kind"] == "screen_candidate" else float(min(kmf(s["lat"], s["lon"], c["lat"], c["lon"]) for c in cands))
     df = load_windows(a.data_dir, set(fam))
     gam = json.loads(Path(a.gamma).read_text()) if a.gamma and Path(a.gamma).exists() else {}
     g_all = [v["gamma"] for v in gam.values() if v.get("gamma")]
@@ -136,7 +148,8 @@ def main():
         b = rng.choice(boot, N_MC) + rng.normal(0, r["null_sd"], N_MC) - r["null_mean"]
         rate_t_h = b / 1000.0 * rng.normal(g_mu, g_sd, N_MC) / slope
         pct = [float(np.percentile(rate_t_h, k)) for k in (16, 50, 84)]
-        status = ("confirmed" if qq <= 0.05 else "detected" if r["z"] >= 3 else
+        corr = r["corroboration"]
+        status = ("confirmed" if qq <= 0.05 and corr["confirming"] else "detected" if (qq <= 0.05 or r["z"] >= 3) else
                   "tentative" if r["z"] >= 2 else "not detected")
         sector = SECTOR.get(slug, "unattributed")
         p_real = float(max(0.0, 1.0 - qq)) if status != "not detected" else 0.0
@@ -144,7 +157,8 @@ def main():
         inv.append(dict(
             slug=slug, name=s["name"], lat=s["lat"], lon=s["lon"], kind=s["kind"],
             source_reference=s.get("source"), in_india=s.get("in_india", True),
-            screen=dict(rank=s.get("screen_rank"), z=s.get("screen_z"), hits=s.get("screen_hits", [])),
+            screen=dict(rank=s.get("screen_rank"), z=s.get("screen_z"), hits=s.get("screen_hits", []), nearest_km=s["_screen_km"]),
+            corroboration=corr, review=review_state(slug, reviews),
             status=status, z=r["z"], p=r["p"], q=float(qq),
             rate_gamma1_kg_h=r["rate_div_kg_h"], null_floor_1sigma_kg_h=r["null_sd"],
             rate_t_h=dict(p16=pct[0], p50=pct[1], p84=pct[2], upper_limit_p84=pct[2] if status == "not detected" else None),
@@ -153,7 +167,7 @@ def main():
             "not attributed: no facility registry match yet", priority=w,
             evidence=dict(n_overpasses=r["n_overpasses"], first_overpass=r["first"], last_overpass=r["last"],
                           orbits=r["orbits"], overpasses_per_month=r["overpasses_per_month"],
-                          mean_wind10_ms=r["mean_wind10_ms"], stack=export_stack(r["stack"], slug, tex))))
+                          mean_wind10_ms=r["mean_wind10_ms"], stack=export_stack(r["stack"]))))
 
     # rank: detected first, then by median WRPI, then by median avoidable warming
     order = {"confirmed": 0, "detected": 1, "tentative": 2, "not detected": 3}
@@ -173,11 +187,15 @@ def main():
         n_pixels=int(len(df)), n_tested=len(inv),
         n_confirmed=sum(d["status"] == "confirmed" for d in inv),
         n_detected=sum(d["status"] in ("confirmed", "detected") for d in inv),
-        tiers=dict(confirmed="BY-FDR q <= 0.05 across the whole tested family (the citable tier)",
-                   detected="z >= 3 against the site's own 24 pseudo-site null (single-site test)",
+        tiers=dict(confirmed="BY-FDR q <= 0.05 across the whole tested family AND an independent corroboration "
+                             "(re-detected in disjoint years, or a second estimator agrees)",
+                   detected="BY-FDR q <= 0.05 without corroboration yet, or z >= 3 against the site's own 24 pseudo-site null",
                    tentative="2 <= z < 3", **{"not detected": "z < 2; an 84th-percentile upper limit is reported"}),
         fdr=dict(method="Benjamini-Yekutieli", level=0.05,
-                 statement="Among sites marked detected, the expected share of false entries is <= 5% under arbitrary dependence."),
+                 statement="Among confirmed sites, the expected share of false entries is <= 5% (Benjamini-Yekutieli, valid under arbitrary dependence)."),
+        oversight=dict(statement="Entries are machine candidates for human review, not accusations. An analyst or a "
+                                 "regulatory partner records every decision (data-pipeline/review/decisions.json).",
+                       n_reviewed=sum(d["review"]["state"] != "machine_candidate" for d in inv)),
         fx=dict(inr_per_usd=a.fx, source=a.fx_source),
         method=dict(stack="wind-rotated, footprint-drizzled, plane background, monsoon (Jun-Sep) excluded, "
                           "noise-weighted, albedo/AOT bias removed (ABD)",
@@ -185,8 +203,22 @@ def main():
                     calibration=f"x gamma (ERA5 100 m / 10 m wind) / OBC slope {slope:.3f}",
                     uncertainty=f"Monte Carlo {N_MC}: overpass bootstrap + null structure + gamma"),
         sites=inv)
-    (out / "inventory.json").write_text(json.dumps(doc, indent=1, default=float))
-    print(f"inventory: {len(inv)} sites, {doc['n_detected']} detected, {doc['runtime_s']} s")
+    key = os.environ.get("INVENTORY_KEY")
+    doc["access"] = dict(tier="partner")
+    pub = redact(doc)
+    pub["access"]["full_package_available"] = bool(key)
+    (out / "inventory_public.json").write_text(json.dumps(pub, indent=1, default=float))
+    if key:
+        (out / "inventory.enc.json").write_text(json.dumps(encrypt(doc, key)))
+    else:
+        (out / "inventory.enc.json").unlink(missing_ok=True)   # never leave a stale package behind
+        print("INVENTORY_KEY not set: only the public tier was written (partner package unavailable)")
+    if a.plain_out:
+        Path(a.plain_out).write_text(json.dumps(doc, indent=1, default=float))
+    stale = out / "inventory.json"
+    if stale.exists():
+        stale.unlink()        # the unredacted file must never sit in the public repository
+    print(f"inventory: {len(inv)} sites, {doc['n_confirmed']} confirmed, {doc['n_detected']} detected, {doc['runtime_s']} s")
 
 
 if __name__ == "__main__":

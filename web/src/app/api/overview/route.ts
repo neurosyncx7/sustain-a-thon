@@ -5,7 +5,7 @@ export async function GET() {
   const ex = await readJson("web/extraction.json");
   const cands = await readJson("web/candidates.json");
   const blind = await readJson("web/blind_recovery.json");
-  const inv = await readJson("inventory/inventory.json");
+  const inv = await readJson("inventory/inventory_public.json");
   const alg = await readJson("inventory/algorithms.json");
   const inIndia = cands.candidates.filter((c: any) => c.in_india).length;
   const recovered = Object.values(blind).filter((b: any) => b.recovered).length;

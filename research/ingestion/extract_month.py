@@ -71,6 +71,60 @@ def list_day(day: date) -> list[str]:
             return [k for k in keys if k.endswith(".nc")]
 
 
+CDSE = "https://catalogue.dataspace.copernicus.eu/odata/v1/Products"
+
+
+def catalogue_md5(name: str) -> str | None:
+    """MD5 the Copernicus Data Space Ecosystem catalogue publishes for this product (keyless OData)."""
+    for attempt in range(3):
+        try:
+            r = requests.get(CDSE, params={"$filter": f"Name eq '{name}'", "$select": "Name,Checksum"}, timeout=30)
+            r.raise_for_status()
+            for v in r.json().get("value", []):
+                for c in v.get("Checksum") or []:
+                    if str(c.get("Algorithm", "")).upper() == "MD5" and c.get("Value"):
+                        return c["Value"].lower()
+            return None
+        except (requests.RequestException, ValueError):
+            time.sleep(2 ** attempt)
+    return None
+
+
+def download_verified(key: str, path: Path) -> dict:
+    """Stream a granule from the mirror to `path`, hashing as it arrives, then check it against the
+    official Copernicus catalogue checksum. Returns an integrity record:
+      verified      MD5 equals the catalogue's  -> trusted
+      mismatch      MD5 differs                 -> caller must reject the granule
+      unverifiable  catalogue has no checksum or is unreachable -> accepted only if the mirror's own
+                    ETag (an MD5 for single-part objects) matches the bytes received, and flagged."""
+    import hashlib
+    md5, sha = hashlib.md5(), hashlib.sha256()
+    for attempt in range(4):
+        try:
+            md5, sha = hashlib.md5(), hashlib.sha256()
+            with requests.get(f"{BUCKET}/{key}", stream=True, timeout=300) as r:
+                r.raise_for_status()
+                etag = (r.headers.get("ETag") or "").strip('"').lower()
+                with open(path, "wb") as f:
+                    for chunk in r.iter_content(1 << 22):
+                        f.write(chunk); md5.update(chunk); sha.update(chunk)
+            break
+        except requests.RequestException:
+            time.sleep(2 ** attempt)
+    else:
+        return dict(status="download_failed")
+    got = md5.hexdigest()
+    ref = catalogue_md5(key.rsplit("/", 1)[-1])
+    rec = dict(md5=got, sha256=sha.hexdigest(), catalogue_md5=ref, mirror_etag=etag or None)
+    if ref:
+        rec["status"] = "verified" if ref == got else "mismatch"
+    elif etag and "-" not in etag:
+        rec["status"] = "unverifiable" if etag == got else "mismatch"
+    else:
+        rec["status"] = "unverifiable"
+    return rec
+
+
 def utc_hour(key: str) -> int:
     m = re.search(r"CH4____\d{8}T(\d{2})", key)
     return int(m.group(1)) if m else -1
@@ -185,18 +239,12 @@ def main() -> None:
         for key in keys:
             with tempfile.TemporaryDirectory() as td:
                 p = Path(td) / "g.nc"
-                for attempt in range(4):
-                    try:
-                        with requests.get(f"{BUCKET}/{key}", stream=True, timeout=300) as r:
-                            r.raise_for_status()
-                            with open(p, "wb") as f:
-                                for chunk in r.iter_content(1 << 22):
-                                    f.write(chunk)
-                        break
-                    except requests.RequestException:
-                        time.sleep(2 ** attempt)
-                else:
+                integ = download_verified(key, p)
+                if integ["status"] == "download_failed":
                     log.append({"key": key, "error": "download failed"})
+                    continue
+                if integ["status"] == "mismatch":
+                    log.append({"key": key, "error": "integrity mismatch: rejected", "integrity": integ})
                     continue
                 try:
                     df = read_granule(p)
@@ -207,7 +255,7 @@ def main() -> None:
                 continue
             df["orbit"] = orbit_of(key)
             frames.append(df)
-            log.append({"key": key, "pixels": len(df)})
+            log.append({"key": key, "pixels": len(df), "integrity": integ["status"], "md5": integ["md5"]})
         if not frames:
             continue
         day_df = pd.concat(frames, ignore_index=True)

@@ -55,23 +55,22 @@ def main(out_dir, sites_path):
     stream, day, keys = newest_india_granules()
     if not keys:
         print("no granules found"); return
-    frames, orbits, log = [], [], []
+    frames, orbits, log, integrity = [], [], [], []
     for key in keys:
         with tempfile.TemporaryDirectory() as td:
             p = Path(td) / "g.nc"
-            with requests.get(f"{em.BUCKET}/{key}", stream=True, timeout=300) as r:
-                r.raise_for_status()
-                with open(p, "wb") as f:
-                    for chunk in r.iter_content(1 << 22):
-                        f.write(chunk)
+            integ = em.download_verified(key, p)
+            integrity.append(integ["status"])
+            if integ["status"] in ("download_failed", "mismatch"):
+                log.append(dict(key=key, error=f"integrity: {integ['status']}", integrity=integ)); continue
             try:
                 df = em.read_granule(p)
             except Exception as e:
                 log.append(dict(key=key, error=repr(e)[:200])); continue
         if df is None:
-            log.append(dict(key=key, pixels=0)); continue
+            log.append(dict(key=key, pixels=0, integrity=integ["status"])); continue
         df["orbit"] = em.orbit_of(key)
-        orbits.append(em.orbit_of(key)); frames.append(df); log.append(dict(key=key, pixels=len(df)))
+        orbits.append(em.orbit_of(key)); frames.append(df); log.append(dict(key=key, pixels=len(df), integrity=integ["status"]))
     if not frames:
         summary = dict(stream=stream, day=str(day), granules=len(keys), pixels=0, orbits=[], note="no qa>=0.5 pixels over India (cloud/monsoon)", log=log)
     else:
@@ -103,6 +102,9 @@ def main(out_dir, sites_path):
                                     lat_edges=[float(em.LAT_EDGES[0]), float(em.LAT_EDGES[-1])],
                                     lon_edges=[float(em.LON_EDGES[0]), float(em.LON_EDGES[-1])]),
                        sites=per_site, log=log)
+    summary["integrity"] = {k: integrity.count(k) for k in ("verified", "unverifiable", "mismatch", "download_failed")}
+    summary["integrity"]["policy"] = ("each granule's MD5 is checked against the Copernicus Data Space catalogue; "
+                                      "mismatches are rejected, unverifiable granules are accepted only when the mirror ETag matches")
     summary["processed_utc"] = datetime.now(timezone.utc).isoformat()[:19]
     summary["source"] = f"Copernicus Sentinel-5P TROPOMI {stream} L2 CH4, s3://meeo-s5p (public mirror)"
     (out / "latest.json").write_text(json.dumps(summary, indent=1))
