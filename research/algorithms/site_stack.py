@@ -48,6 +48,12 @@ class StackConfig:
     min_pixels_near: int = 6        # pixels within 15 km of site needed to use an overpass
     min_wind_ms: float = 1.0        # below this the rotation is meaningless
     drizzle_sub: int = 4            # sub-samples per pixel edge (footprint oversampling)
+    # ablation switches (R4). Defaults = the full method.
+    rotate: bool = True             # wind-rotate each overpass before stacking
+    background: str = "plane"       # "plane" (local robust plane) | "global" (one scene median)
+    drizzle: bool = True            # spread each pixel over its real footprint
+    season_mask: tuple = ()         # months (1-12) to exclude, e.g. monsoon (6,7,8,9)
+    quality_weight: bool = False    # weight overpasses by 1/sigma^2 of their background residual
 
 
 def _local_xy(lat, lon, lat0, lon0):
@@ -100,6 +106,8 @@ def stack_site(pix: pd.DataFrame, lat0: float, lon0: float, cfg: StackConfig = S
     per_overpass = []
 
     for orbit, g in pix.groupby("orbit"):
+        if cfg.season_mask and pd.Timestamp(g.time.iloc[0]).month in cfg.season_mask:
+            continue
         x, y = _local_xy(g.lat.values, g.lon.values, lat0, lon0)
         r = np.hypot(x, y)
         if (r < 15).sum() < cfg.min_pixels_near:
@@ -109,21 +117,35 @@ def stack_site(pix: pd.DataFrame, lat0: float, lon0: float, cfg: StackConfig = S
         U = float(np.hypot(u10, v10))
         if not np.isfinite(U) or U < cfg.min_wind_ms:
             continue
-        bg = _plane_background(x, y, g.xch4.values.astype(float), r, cfg.bg_inner_km, cfg.bg_outer_km)
-        if bg is None:
-            continue
+        if cfg.background == "plane":
+            bg = _plane_background(x, y, g.xch4.values.astype(float), r, cfg.bg_inner_km, cfg.bg_outer_km)
+            if bg is None:
+                continue
+        else:
+            med = float(np.nanmedian(g.xch4.values))
+            bg = lambda xx, yy, m=med: np.full_like(xx, m, dtype=float)  # noqa: E731
         dX = g.xch4.values - bg(x, y)                              # ppb
         dOmega = dX * PPB * g.dry_air.values                        # mol/m^2
         phi = dOmega * U                                            # mol m^-1 s^-1
 
-        X, Y = _drizzle_points(g, lat0, lon0, cfg.drizzle_sub)
-        th = np.arctan2(v10, u10)
+        if cfg.drizzle:
+            X, Y = _drizzle_points(g, lat0, lon0, cfg.drizzle_sub)
+        else:
+            X, Y = x[:, None], y[:, None]
+        th = np.arctan2(v10, u10) if cfg.rotate else 0.0
         Xr = X * np.cos(th) + Y * np.sin(th)
         Yr = -X * np.sin(th) + Y * np.cos(th)
         ix = np.floor((Xr - cfg.x_range[0]) / cfg.cell_km).astype(int)
         iy = np.floor((Yr - cfg.y_range[0]) / cfg.cell_km).astype(int)
         ok = (ix >= 0) & (ix < nx) & (iy >= 0) & (iy < ny) & np.isfinite(phi)[:, None]
         w = 1.0 / X.shape[1]
+        if cfg.quality_weight:
+            ann = (r >= cfg.bg_inner_km) & (r <= cfg.bg_outer_km)
+            res = dX[ann]
+            sig = 1.4826 * np.nanmedian(np.abs(res - np.nanmedian(res))) if ann.sum() > 10 else np.nan
+            if not np.isfinite(sig) or sig <= 0:
+                continue
+            w = w / (sig * sig) * 100.0
         vals = np.broadcast_to(phi[:, None], X.shape)
         op_phi = np.zeros((ny, nx)); op_w = np.zeros((ny, nx))
         np.add.at(op_phi, (iy[ok], ix[ok]), vals[ok] * w)
