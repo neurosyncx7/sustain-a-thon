@@ -155,6 +155,44 @@ export default async function SitePage({ params }: { params: Promise<{ slug: str
           {e.review.state === "machine_candidate"
             ? <p className="mt-2 text-[13px] leading-relaxed text-paper/55">This entry is a candidate for an analyst, not a finding against anyone. It stays in this state until a reviewer records a decision, which is kept with its author and date in the repository.</p>
             : <p className="mt-2 text-[13px] text-paper/55">{e.review.organisation ?? e.review.last?.organisation} · {e.review.date ?? e.review.last?.date}{partner && e.review.last?.note ? ` · ${e.review.last.note}` : ""}</p>}
+          {e.tasking?.recommend && (
+            <p className="mt-5 rounded-xl bg-flame/[0.07] px-4 py-3 text-[13px] leading-relaxed text-paper/80 ring-1 ring-flame/25">
+              Recommended for a high-resolution overpass (Carbon Mapper, EMIT or GHGSat): rank {e.tasking.rank} by value of information.
+              One targeted look here would change the priority list more than anywhere else still unconfirmed.
+            </p>
+          )}
+        </div>
+      </section>
+
+      <section className="mt-16 grid gap-10 md:grid-cols-2">
+        <div>
+          <h2 className="text-lg font-medium">What process it looks like</h2>
+          {e.chemistry?.status === "classified" ? (
+            <>
+              <p className="mt-3 text-[15px] text-paper/85">{e.chemistry.process.charAt(0).toUpperCase() + e.chemistry.process.slice(1)}.</p>
+              <p className="num mt-2 text-[12.5px] text-paper/55">CO/CH₄ emission ratio {e.chemistry.ratio.toFixed(2)} [{e.chemistry.ci68[0].toFixed(2)}, {e.chemistry.ci68[1].toFixed(2)}] from {e.chemistry.n_overpasses} paired overpasses</p>
+            </>
+          ) : (
+            <p className="mt-3 text-[14px] text-paper/60">
+              {e.chemistry ? `Inconclusive: the CO/CH₄ ratio${e.chemistry.ratio != null ? ` (${e.chemistry.ratio.toFixed(2)})` : ""} does not clear the combustion boundary.` : "Not assessed: the site is not significant."}
+            </p>
+          )}
+          <p className="mt-3 text-[11.5px] leading-relaxed text-paper/45">Carbon monoxide is measured in the same pixels at the same moment. Burning makes much more CO than methane; landfill decay, coal seams and gas leaks make almost none.</p>
+        </div>
+        <div>
+          <h2 className="text-lg font-medium">What is nearby</h2>
+          <p className="mt-3 text-[14px] text-paper/75">{e.sector_basis}</p>
+          {e.attribution && e.attribution.voters?.length > 0 && (
+            <ul className="mt-3 space-y-1 text-[12.5px] text-paper/60">
+              {e.attribution.voters.slice(0, 5).map((v: any, i: number) => (
+                <li key={i} className="flex justify-between gap-4">
+                  <span className="capitalize">{v.sector.replace("_", " & ")}{partner && v.name ? `: ${v.name}` : ""}</span>
+                  <span className="num">{v.km} km</span>
+                </li>
+              ))}
+            </ul>
+          )}
+          <p className="mt-3 text-[11.5px] leading-relaxed text-paper/45">Mapped facilities within 25 km vote for a sector, nearer ones counting more. A sector is named only when the vote is clear.</p>
         </div>
       </section>
 

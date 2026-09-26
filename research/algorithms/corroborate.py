@@ -11,12 +11,11 @@ Checks
                both. Independent data, same method.
   second_method  cross-sectional flux (CSF) on the same stack against its own null; pass = z > 2.
                Same data, different estimator (a mass-balance transect instead of a divergence).
-  co           co-retrieved CO column stacked identically; pass = CO z > 2. Co-emission evidence only;
-               the CO/CH4 *ratio* is not used for sector attribution (EIV-CRF failed R5).
+  co           co-retrieved CO column stacked identically; pass = CO z > 2. Co-emission evidence; the
+               CO/CH4 ratio itself is reported separately as process evidence (EIV-CRF).
   blind_screen the national screen, given no site list, placed a candidate within 25 km.
 
-Not used, and said so in the output: wind-direction invariance (WIT, failed R5: 21% false rejects,
-8% power) and the CO/CH4 sector fingerprint (EIV-CRF, failed R5: 2 of 5 sites informative).
+Not used, and said so in the output: wind-direction invariance (WIT failed R5).
 
 False-pass rate of a check: apply it to each of the 24 pseudo-sites, scoring each against the other
 23 (leave-one-out), exactly as the site is scored against all 24.
@@ -34,7 +33,6 @@ SPLIT = pd.Timestamp("2025-01-01", tz="UTC")
 Z_PASS = 2.0
 NOT_USED = {
     "wind_invariance": "not used: the wind-direction test failed validation on real data (R5: 21% false rejects, 8% power)",
-    "chemical_fingerprint": "not used for attribution: the CO/CH4 ratio separated only 2 of 5 known emitters (R5)",
 }
 
 

@@ -162,18 +162,28 @@ export function LivePanel({ sites }: { sites: any[] }) {
                 <div className="mt-7">
                   <h3 className="text-[13px] font-medium text-paper/80">What this pass saw at inventory sites</h3>
                   <table className="mt-2 w-full text-[12.5px]">
-                    <thead className="text-left text-[11px] text-paper/45"><tr><th className="pb-1.5 font-normal">Site</th><th className="pb-1.5 text-right font-normal">Pixels ≤30 km</th><th className="pb-1.5 text-right font-normal">vs 60 to 140 km ring</th><th className="pb-1.5 text-right font-normal">Wind</th></tr></thead>
+                    <thead className="text-left text-[11px] text-paper/45"><tr><th className="pb-1.5 font-normal">Site</th><th className="pb-1.5 text-right font-normal">Pixels ≤30 km</th><th className="pb-1.5 text-right font-normal">vs 60 to 140 km ring</th><th className="pb-1.5 text-right font-normal">This pass, full method</th><th className="pb-1.5 text-right font-normal">Wind</th></tr></thead>
                     <tbody className="divide-y divide-paper/10">
-                      {perSite.slice(0, 8).map(([slug, v]: any) => (
+                      {[...perSite].sort((a: any, b: any) => (b[1].method?.rate_kg_h_gamma1 != null ? 1 : 0) - (a[1].method?.rate_kg_h_gamma1 != null ? 1 : 0)).slice(0, 10).map(([slug, v]: any) => (
                         <tr key={slug}>
                           <td className="py-1.5 pr-3 text-paper/80">{names[slug] ?? v.name}</td>
                           <td className="num py-1.5 text-right text-paper/70">{v.pixels}</td>
                           <td className={`num py-1.5 text-right ${(v.enhancement_ppb ?? 0) > 10 ? "text-flame" : "text-paper/70"}`}>{v.enhancement_ppb == null ? "no ring" : `${v.enhancement_ppb > 0 ? "+" : ""}${v.enhancement_ppb.toFixed(1)} ppb`}</td>
+                          <td className="num py-1.5 text-right text-paper/70">
+                            {v.method?.rate_kg_h_gamma1 != null
+                              ? <>{(v.method.rate_kg_h_gamma1 / 1000).toFixed(1)} t/h{v.method.z_single != null && <span className="text-paper/45"> · {v.method.z_single >= 0 ? "+" : ""}{v.method.z_single.toFixed(1)}σ</span>}</>
+                              : <span className="text-paper/40">too few pixels</span>}
+                          </td>
                           <td className="num py-1.5 text-right text-paper/60">{v.wind_ms.toFixed(1)} m/s</td>
                         </tr>
                       ))}
                     </tbody>
                   </table>
+                  {pass.method_steps && (
+                    <p className="mt-3 text-[11px] leading-relaxed text-paper/50">
+                      Run on this pass: {pass.method_steps.join(" → ")}. σ is the single-pass noise (the site&apos;s stacked floor × √overpasses).
+                    </p>
+                  )}
                   <p className="mt-2 text-[11px] text-paper/45">One pass is a snapshot, not a detection: the inventory needs the stacked record. Clouds and the monsoon often leave sites unobserved.</p>
                 </div>
               )}

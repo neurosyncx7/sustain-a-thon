@@ -67,6 +67,8 @@ def redact(doc: dict) -> dict:
         ev = s["evidence"]
         ev.pop("orbits", None); ev.pop("stack", None)
         s["screen"]["hits"] = [dict(rank=h["rank"], z=h["z"]) for h in s["screen"].get("hits", [])]
+        if s.get("attribution"):
+            s["attribution"]["voters"] = [dict(sector=v["sector"], km=v["km"]) for v in s["attribution"]["voters"]]
         rv = s["review"]
         s["review"] = dict(state=rv["state"], label=rv["label"], date=(rv.get("last") or {}).get("date"),
                            organisation=(rv.get("last") or {}).get("organisation"))

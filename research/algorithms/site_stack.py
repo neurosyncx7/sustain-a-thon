@@ -57,6 +57,7 @@ class StackConfig:
     albedo_correct: bool = True     # ABD (validated R5: mean z 3.7->4.1, floor 5.4->5.0 t/h): remove the part of XCH4 explained by SWIR albedo + AOT (fit on annulus)
     field: str = "xch4"             # "xch4" (ppb) or "xco_col" (mol m^-2, co-retrieved CO) for EIV-CRF
     inject: object = None           # OBC: callable(g, x_km, y_km, u10, v10) -> ppb to ADD (validation only)
+    phase_weight: bool = True       # KPW (validated R5: mean z 4.06->4.37, floor 4.96->4.76 t/h): equalise the site's sub-pixel phase coverage across overpasses
 
 
 def _local_xy(lat, lon, lat0, lon0):
@@ -187,7 +188,21 @@ def stack_site(pix: pd.DataFrame, lat0: float, lon0: float, cfg: StackConfig = S
         np.add.at(op_w, (iy[ok], ix[ok]), w)
         sum_phi += op_phi; sum_w += op_w
         per_overpass.append(dict(orbit=orbit, time=g.time.iloc[0], U10=U, u10=u10, v10=v10,
-                                 n_pix=len(g), phi=op_phi, w=op_w))
+                                 n_pix=len(g), phi=op_phi, w=op_w, phase=_site_phase(g, x, y, lat0, lon0)))
+
+    if cfg.phase_weight and per_overpass:
+        # KPW: where in its pixel the site fell differs overpass to overpass (the orbit's repeat
+        # congruence decides it). Over-represented phases bias the stacked footprint; weight each
+        # overpass by 1 / (count of overpasses in its 3x3 phase bin) so every phase counts equally.
+        bins = [None if o["phase"] is None else (min(2, int((o["phase"][0] + 0.5) * 3)), min(2, int((o["phase"][1] + 0.5) * 3)))
+                for o in per_overpass]
+        counts = {b: bins.count(b) for b in set(bins) if b is not None}
+        mean_c = np.mean(list(counts.values())) if counts else 1.0
+        sum_phi = np.zeros((ny, nx)); sum_w = np.zeros((ny, nx))
+        for o, b in zip(per_overpass, bins):
+            f = mean_c / counts[b] if b is not None else 1.0
+            o["phi"] = o["phi"] * f; o["w"] = o["w"] * f
+            sum_phi += o["phi"]; sum_w += o["w"]
 
     with np.errstate(invalid="ignore", divide="ignore"):
         mean_phi = np.where(sum_w > 0, sum_phi / sum_w, np.nan)
@@ -195,6 +210,21 @@ def stack_site(pix: pd.DataFrame, lat0: float, lon0: float, cfg: StackConfig = S
     yc = cfg.y_range[0] + (np.arange(ny) + 0.5) * cfg.cell_km
     return dict(label=seed_label, phi=mean_phi, weight=sum_w, xc=xc, yc=yc, cfg=cfg,
                 overpasses=per_overpass, n_overpasses=len(per_overpass))
+
+
+def _site_phase(g, x, y, lat0, lon0):
+    """Fractional position (-0.5..0.5 along each pixel edge) of the site inside its nearest pixel."""
+    i = int(np.argmin(np.hypot(x, y)))
+    if not all(f"lat_c{k}" in g for k in range(4)):
+        return None
+    c = [np.array(_local_xy(np.array([g[f"lat_c{k}"].values[i]]), np.array([g[f"lon_c{k}"].values[i]]), lat0, lon0)).ravel() for k in range(4)]
+    centre = np.array([x[i], y[i]])
+    e1, e2 = c[1] - c[0], c[3] - c[0]
+    M = np.c_[e1, e2]
+    if abs(np.linalg.det(M)) < 1e-6:
+        return None
+    a, b = np.linalg.solve(M, -centre)          # site (origin) relative to the pixel centre, in edge units
+    return (float(np.clip(a, -0.5, 0.499)), float(np.clip(b, -0.5, 0.499)))
 
 
 def _fill(a):

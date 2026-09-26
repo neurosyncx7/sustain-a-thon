@@ -58,6 +58,10 @@ jobs:
           if [ "$n" -gt 0 ]; then
             python -c "import json,datetime as d;t=d.date.today();m=[f'{y}-{k:02d}' for y in range(2023,t.year+1) for k in range(1,13) if (y,k)<=(t.year,t.month)];json.dump(dict(months=m,tag='inv-'+t.strftime('%Y%m%d'),sites_file='$f',note='new screen leads added to the tested family'),open('.github/extract-sites-request.json','w'),indent=1)"
           else rm -f $f; fi
+      - name: OpenStreetMap facilities near every site (EFA input; new sites only)
+        run: python research/pipeline/fetch_osm.py research/pipeline/inventory_sites.json data-pipeline/inventory/osm.json
+      - name: R5 tests that need live inputs (EFA, VOIT)
+        run: python research/validation/r5_algorithms.py databranch data-pipeline/r5 efa voit
       - name: Inventory (validated algorithms only)
         env:
           INVENTORY_KEY: ${{ secrets.INVENTORY_KEY }}

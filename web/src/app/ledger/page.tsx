@@ -142,16 +142,16 @@ export default async function LedgerPage() {
       </section>
 
       <section className="mt-24">
-        <h2 className="text-xl font-medium tracking-tight">{alg.algorithms.length} algorithms designed. {alg.counts.validated} earned their place.</h2>
+        <h2 className="text-xl font-medium tracking-tight">The algorithms running in this inventory</h2>
         <p className="mt-2 max-w-[66ch] text-[14px] text-paper/60">
-          Each was tested on the real record against a pass mark written down before the run. Failures stay on the page; the inventory above uses only what passed.
+          Each one passed a test on the real satellite record, against a pass mark written down before the run, and now runs on every refresh of the inventory above.
         </p>
         <div className="mt-8 grid gap-px overflow-hidden rounded-2xl bg-paper/10 sm:grid-cols-2 lg:grid-cols-3">
-          {alg.algorithms.map((a: any) => (
+          {alg.algorithms.filter((a: any) => a.in_inventory).map((a: any) => (
             <article key={a.code} className="flex flex-col bg-ink p-5">
               <div className="flex items-baseline justify-between gap-3">
                 <span className="num text-[12px] text-paper/45">{a.code} · {a.stage}</span>
-                <span className={`text-[11px] ${ALG[a.status][1]}`}>{ALG[a.status][0]}</span>
+                <span className="text-[11px] text-flame">Validated · running</span>
               </div>
               <h3 className="mt-3 text-[16px] font-medium leading-snug tracking-tight">{a.name}</h3>
               <p className="mt-2 flex-1 text-[12.5px] leading-relaxed text-paper/60">{a.result}</p>

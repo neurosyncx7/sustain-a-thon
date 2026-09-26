@@ -5,7 +5,7 @@ numbers to data-pipeline/r5/<test>.json. Only algorithms that pass are allowed i
 inventory (research/pipeline/run_inventory.py). Failures are recorded, not hidden.
 
 usage: python r5_algorithms.py <data_dir> <out_dir> [test ...]
-tests: abd obc wit eiv byfdr diversr pwhhp
+tests: abd obc wit eiv byfdr_site kpw | byfdr diversr pwhhp pssi voit
 """
 from __future__ import annotations
 
@@ -61,7 +61,7 @@ def t_abd(df):
     """PASS iff adding ABD raises the mean z over the 5 detected sites AND does not raise the mean
     1-sigma floor by more than 5%."""
     res = {}
-    for name, cfg in (("final", FINAL), ("final+ABD", replace(FINAL, albedo_correct=True))):
+    for name, cfg in (("final", replace(FINAL, albedo_correct=False, phase_weight=False)), ("final+ABD", replace(FINAL, albedo_correct=True, phase_weight=False))):
         res[name] = {k: evaluate(df[df.site == k], s, cfg) for k, s in KNOWN_SITES.items()}
     mz = {n: float(np.mean([res[n][k]["z"] for k in DETECTED])) for n in res}
     fl = {n: float(np.mean([res[n][k]["null_sd"] for k in KNOWN_SITES])) for n in res}
@@ -308,33 +308,159 @@ def t_pwhhp(data_dir):
 
 
 def t_byfdr_site(df):
-    """Site-family BY-FDR (the form the inventory uses). Size: fake candidates = 6 fresh pseudo-sites per
-    window (different ring/seed), each scored against the standard 24-site null exactly like a real
-    site -> BY at 5% must declare <= 1 of them. Power: the 5 detected references in the same family
-    must mostly (>= 4) survive. PASS iff both."""
+    """The inventory's confirmed-tier gate, scored on a family of 6 references + 36 fake candidates
+    (fresh pseudo-sites, scored against the standard 24-site null exactly like real sites).
+    Two gates are reported: BY-FDR alone, and the gate the inventory uses for "confirmed"
+    (BY q <= 0.05 AND the independent second estimator, cross-sectional flux, z > 2; the
+    disjoint-years check needs 2025-26 data and is scored in the inventory itself).
+    PASS (for the gate in use) iff <= 1 of 36 fakes confirmed AND >= 4 of 5 references confirmed."""
     from scipy import stats as st_
     rows = []
     for k, s in KNOWN_SITES.items():
         pix = df[df.site == k]
-        m, sd = null_stats(pix, s, FINAL)
+        nq = [quantify(stack_site(pix, la, lo, FINAL)) for la, lo in pseudo_sites(s["lat"], s["lon"], n=N_NULL, seed=NULL_SEED)]
+        dv = np.array([x["DIV"] for x in nq]); cs = np.array([x["CSF"] for x in nq])
+        dv, cs = dv[np.isfinite(dv)], cs[np.isfinite(cs)]
         def score(la, lo):
-            z = (quantify(stack_site(pix, la, lo, FINAL))["DIV"] - m) / sd
-            return z, float(st_.t.sf(z / np.sqrt(1 + 1 / N_NULL), N_NULL - 1))
-        z, p = score(s["lat"], s["lon"]); rows.append(dict(site=k, fake=False, z=z, p=p))
+            q_ = quantify(stack_site(pix, la, lo, FINAL))
+            z = (q_["DIV"] - dv.mean()) / dv.std(ddof=1)
+            zc = (q_["CSF"] - cs.mean()) / cs.std(ddof=1)
+            return z, float(zc), float(st_.t.sf(z / np.sqrt(1 + 1 / N_NULL), N_NULL - 1))
+        z, zc, p = score(s["lat"], s["lon"]); rows.append(dict(site=k, fake=False, z=z, z_csf=zc, p=p))
         for la, lo in pseudo_sites(s["lat"], s["lon"], n=6, ring_km=(40.0, 110.0), seed=101):
-            z, p = score(la, lo); rows.append(dict(site=k, fake=True, lat=la, lon=lo, z=z, p=p))
+            z, zc, p = score(la, lo); rows.append(dict(site=k, fake=True, lat=la, lon=lo, z=z, z_csf=zc, p=p))
     r = pd.DataFrame(rows)
     r["q"] = benjamini_yekutieli(r.p.values)
-    fake_disc = int(((r.q <= 0.05) & r.fake).sum()); real_disc = [x for x in r[~r.fake & (r.q <= 0.05)].site]
-    ok = fake_disc <= 1 and len([x for x in real_disc if x in DETECTED]) >= 4
-    return dict(criterion="<= 1 of 36 fake candidates discovered; >= 4 of 5 references survive",
-                fake_discoveries=fake_disc, n_fake=int(r.fake.sum()), real_discoveries=real_disc,
+    r["confirmed"] = (r.q <= 0.05) & (r.z_csf > 2)
+    by_fake = int(((r.q <= 0.05) & r.fake).sum())
+    fake_conf = int((r.confirmed & r.fake).sum())
+    real_conf = [x for x in r[~r.fake & r.confirmed].site]
+    ok = fake_conf <= 1 and len([x for x in real_conf if x in DETECTED]) >= 4
+    return dict(criterion="confirmed gate (BY q<=0.05 + second estimator): <= 1 of 36 fakes, >= 4 of 5 references",
+                fake_discoveries=by_fake, fake_confirmed=fake_conf, n_fake=int(r.fake.sum()),
+                real_discoveries=[x for x in r[~r.fake & (r.q <= 0.05)].site], real_confirmed=real_conf,
                 fake_p_ks_uniform=float(st_.kstest(r[r.fake].p, "uniform").pvalue),
                 rows=r.to_dict("records"), status="validated" if ok else "failed")
 
 
-TESTS = dict(abd=t_abd, obc=t_obc, wit=t_wit, eiv=t_eiv, byfdr_site=t_byfdr_site)
-FIELD_TESTS = dict(byfdr=t_byfdr, diversr=t_diversr, pwhhp=t_pwhhp)
+def t_kpw(df):
+    """KPW phase-weighted stacking vs the final method. PASS iff mean z over the 5 detected sites rises
+    AND the mean floor is not >5% worse (the same bar ABD passed)."""
+    res = {}
+    for name, cfg in (("final", replace(FINAL, phase_weight=False)), ("final+KPW", replace(FINAL, phase_weight=True))):
+        res[name] = {k: evaluate(df[df.site == k], s, cfg) for k, s in KNOWN_SITES.items()}
+    mz = {n: float(np.mean([res[n][k]["z"] for k in DETECTED])) for n in res}
+    fl = {n: float(np.mean([res[n][k]["null_sd"] for k in KNOWN_SITES])) for n in res}
+    ok = mz["final+KPW"] > mz["final"] and fl["final+KPW"] <= 1.05 * fl["final"]
+    return dict(criterion="mean z(5 detected) rises and mean floor not >5% worse", mean_z=mz,
+                mean_floor_kg_h=fl, sites=res, status="validated" if ok else "failed")
+
+
+def pssi_decompose(D, nD, lam_sigma=3.0, iters=60, bg_sigma=8.0, psf_sigma=1.0):
+    """PSSI-lite on the mean divergence field: D ~ K*S + B with S >= 0 sparse (point sources blurred by
+    the footprint PSF K) and B smooth (the diffuse agricultural / regional field). Alternating: B = wide
+    NaN-aware smooth of (D - K*S); S = ISTA step with a positive soft threshold at lam_sigma robust sigma."""
+    m = np.isfinite(D) & (nD >= 20)
+    Df = np.where(m, D, 0.0)
+    K = lambda a: ndimage.gaussian_filter(a, psf_sigma, mode="nearest")  # noqa: E731  (symmetric PSF)
+    S = np.zeros_like(Df)
+    med = np.nanmedian(D[m]); sig = 1.4826 * np.nanmedian(np.abs(D[m] - med))
+    lam = lam_sigma * sig
+    for _ in range(iters):
+        B = ns.nan_gauss(np.where(m, D - K(S), np.nan), bg_sigma)
+        B = np.nan_to_num(B, nan=0.0)
+        R = np.where(m, Df - B - K(S), 0.0)
+        S = np.maximum(S + K(R) - lam * 0.25, 0.0)            # step 1 (PSF norm <= 1), shrink toward 0
+    return np.where(m, S, np.nan), B
+
+
+def _pssi_candidates(S, F, size=9):
+    a = np.nan_to_num(S, nan=0.0)
+    mx = ndimage.maximum_filter(a, size=size)
+    pk = np.argwhere((a == mx) & (a > 0) & (F["nD"] >= 40))
+    order = np.argsort(-a[pk[:, 0], pk[:, 1]])
+    return [dict(lat=float(F["lat_c"][iy]), lon=float(F["lon_c"][ix]), s=float(a[iy, ix])) for iy, ix in pk[order]]
+
+
+def t_pssi(data_dir):
+    """PSSI-lite vs the 3-robust-sigma screen on the same mean divergence field (full archive fields
+    from the inventory workflow). PASS iff (a) blind recovery (references within 25 km) is not worse,
+    AND (b) on the sign-flipped field (no real sinks exist, so every detection there is false) PSSI
+    returns fewer detections than the screen does, at a matched number of real-field candidates."""
+    z = np.load(ROOT.parent / "data-pipeline/screen/fields.npz")
+    F = {k: z[k] for k in z.files}
+    dx = (np.deg2rad(0.1) * 6.371e6 * np.cos(np.deg2rad(F["lat_c"])))[:, None]; dy = np.deg2rad(0.1) * 6.371e6
+    base, *_ = ns.find_candidates(F["meanD"], F["nD"], F["lat_c"], F["lon_c"], dx, dy)
+    base_flip, *_ = ns.find_candidates(-F["meanD"], F["nD"], F["lat_c"], F["lon_c"], dx, dy)
+    S, _ = pssi_decompose(F["meanD"], F["nD"])
+    Sf, _ = pssi_decompose(-F["meanD"], F["nD"])
+    pc = _pssi_candidates(S, F)[:len(base)]
+    # matched-count comparison on the flipped field: count flipped detections above the weakest kept real one
+    thr = pc[-1]["s"] if pc else np.inf
+    pf = [c for c in _pssi_candidates(Sf, F) if c["s"] >= thr]
+    rb, rp = _recovery(base), _recovery(pc)
+    nb, npp = sum(v["recovered"] for v in rb.values()), sum(v["recovered"] for v in rp.values())
+    ok = npp >= nb and len(pf) < len(base_flip)
+    return dict(criterion="blind recovery not worse AND fewer detections on the sign-flipped field at matched count",
+                screen=dict(n=len(base), recovered=nb, flipped_detections=len(base_flip), references=rb),
+                pssi=dict(n=len(pc), recovered=npp, flipped_detections=len(pf), references=rp, candidates=pc[:40]),
+                status="validated" if ok else "failed")
+
+
+def t_voit(data_dir):
+    """VOIT backtest on real data: score each not-yet-significant site (z_early < 3) by value of
+    information from 2023-24 only, VOI = p(1 - p) x rate, where p = P(real) from z_early. If VOIT is
+    useful, the sites it would have sent for tasking are re-detected in 2025-26 (z_late > 2) more often
+    than the rest. PASS iff hit rate(top third by VOI) > hit rate(bottom two thirds) and the one-sided
+    Fisher exact p < 0.2 (small family, stated up front)."""
+    from scipy import stats as st_
+    inv = json.loads((ROOT.parent / "data-pipeline/inventory/inventory_full.json").read_text())
+    rows = []
+    for s in inv["sites"]:
+        t = s["corroboration"]["temporal"]
+        if t.get("z_early") is None or t.get("z_late") is None or t["z_early"] >= 3:
+            continue
+        p = float(st_.norm.cdf(t["z_early"] - 1.5))          # P(real) ramp: 0.5 at z = 1.5
+        voi = p * (1 - p) * max(s["rate_t_h"]["p50"], 0.0)
+        rows.append(dict(slug=s["slug"], z_early=t["z_early"], z_late=t["z_late"], voi=voi, hit=t["z_late"] > 2))
+    r = pd.DataFrame(rows).sort_values("voi", ascending=False)
+    k = max(1, len(r) // 3)
+    top, rest = r.iloc[:k], r.iloc[k:]
+    table = [[int(top.hit.sum()), int((~top.hit).sum())], [int(rest.hit.sum()), int((~rest.hit).sum())]]
+    p = float(st_.fisher_exact(table, alternative="greater")[1])
+    ok = top.hit.mean() > rest.hit.mean() and p < 0.2
+    return dict(criterion="re-detection rate of VOI top third > rest, Fisher p < 0.2", n=len(r), top_hit_rate=float(top.hit.mean()),
+                rest_hit_rate=float(rest.hit.mean()), fisher_p=p, rows=r.to_dict("records"), status="validated" if ok else "failed")
+
+
+def t_efa(data_dir):
+    """EFA land-use attribution against the sectors cited for the 7 reference sites (5 landfills, 2 coal
+    fields), using only OpenStreetMap facilities within 25 km. PASS iff the top sector is correct for
+    >= 6 of 7 AND no reference is confidently (posterior >= 0.6) attributed to a wrong sector."""
+    sys.path.insert(0, str(ROOT / "algorithms"))
+    from efa import attribute
+    from india_bbox import SECTOR
+    osm_p = ROOT.parent / "data-pipeline/inventory/osm.json"
+    if not osm_p.exists():
+        return dict(status="not_run", reason="osm.json not fetched yet (runs on GitHub Actions)")
+    osm = json.loads(osm_p.read_text())
+    rows = {}
+    for slug, sec in SECTOR.items():
+        s = BLIND_REFERENCES[slug]
+        if osm.get(slug) is None:
+            rows[slug] = dict(truth=sec, error="no OSM response"); continue
+        a = attribute(s["lat"], s["lon"], osm[slug])
+        rows[slug] = dict(truth=sec, top=a["top"], posterior=a["posterior"], attributed=a["attributed"], n_facilities=a["n_facilities"],
+                          correct=a["top"] == sec, confident_wrong=a["attributed"] not in (None, sec))
+    n_ok = sum(r.get("correct", False) for r in rows.values())
+    n_bad = sum(r.get("confident_wrong", False) for r in rows.values())
+    ok = n_ok >= 6 and n_bad == 0
+    return dict(criterion="top sector correct for >= 6 of 7 references and none confidently wrong", correct=n_ok,
+                confident_wrong=n_bad, sites=rows, status="validated" if ok else "failed")
+
+
+TESTS = dict(abd=t_abd, obc=t_obc, wit=t_wit, eiv=t_eiv, byfdr_site=t_byfdr_site, kpw=t_kpw)
+FIELD_TESTS = dict(byfdr=t_byfdr, diversr=t_diversr, pwhhp=t_pwhhp, pssi=t_pssi, voit=t_voit, efa=t_efa)
 
 
 def main(data_dir, out_dir, which):
@@ -351,6 +477,8 @@ def main(data_dir, out_dir, which):
         r["runtime_s"] = round(time.time() - t0, 1)
         r["run_utc"] = pd.Timestamp.now("UTC").isoformat()
         (out / f"{t}.json").write_text(json.dumps(r, indent=1, default=lambda o: o.item() if hasattr(o, "item") else str(o)))
+        if r.get("status") == "not_run":
+            print(f"== {t}: not run ({r['reason']})"); continue
         print(f"== {t}: {r['status']}  ({r['runtime_s']} s)", {k: v for k, v in r.items()
               if k in ("mean_z", "mean_floor_kg_h", "slope", "r2", "site_cv", "p_detect_z3", "false_reject_rate",
                        "power", "informative_sites", "n_discoveries", "n_control_discoveries",

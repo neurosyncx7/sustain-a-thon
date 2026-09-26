@@ -29,11 +29,13 @@ from by_fdr import benjamini_yekutieli  # noqa: E402
 from wrpi import wrpi_mc  # noqa: E402
 from india_bbox import SECTOR  # noqa: E402
 from corroborate import corroborate  # noqa: E402
+from efa import attribute  # noqa: E402
+from eiv_crf import co_ch4_ratio  # noqa: E402
 sys.path.insert(0, str(ROOT / "pipeline"))
 from protect import encrypt, load_reviews, redact, review_state  # noqa: E402
 
 N_NULL, NULL_SEED, N_BOOT, N_MC = 24, 7, 300, 4000
-CFG = StackConfig()   # defaults ARE the validated final method (R4 + R5 ABD)
+CFG = StackConfig()   # defaults ARE the validated final method (R4 + R5: ABD, KPW)
 
 
 def load_windows(data_dir: str, slugs: set[str]) -> pd.DataFrame:
@@ -79,11 +81,30 @@ def analyse_site(pix: pd.DataFrame, s: dict) -> dict | None:
     times = pd.to_datetime([o["time"] for o in ops]).tz_localize(None) if pd.to_datetime([o["time"] for o in ops]).tz is not None else pd.to_datetime([o["time"] for o in ops])
     months = pd.Series(1, index=times.to_period("M").astype(str)).groupby(level=0).sum()
     corr = corroborate(pix, s["lat"], s["lon"], CFG, site_q, null_q, s.get("_screen_km"), N_NULL, NULL_SEED)
-    return dict(stack=st, corroboration=corr, rate_div_kg_h=float(q), null_mean=m, null_sd=sd, z=float(z), p=p, boot=boot,
+    chem = chemistry(pix, s, corr) if z >= 2 else None
+    return dict(stack=st, corroboration=corr, chemistry=chem, rate_div_kg_h=float(q), null_mean=m, null_sd=sd, z=float(z), p=p, boot=boot,
                 n_overpasses=len(ops), orbits=[str(o["orbit"]) for o in ops],
                 first=str(times.min().date()), last=str(times.max().date()),
                 overpasses_per_month=months.to_dict(),
                 mean_wind10_ms=float(np.mean([o["U10"] for o in ops])))
+
+
+def chemistry(pix, s, corr):
+    """EIV-CRF (validated R5 with the final method): CO/CH4 molar emission ratio from the same overpasses.
+    Reported as process evidence only when its 68% interval clears the combustion boundary (ratio 1)."""
+    r = co_ch4_ratio(pix, s["lat"], s["lon"], CFG, n_boot=150)
+    if r.get("status") != "ok" or not np.all(np.isfinite(r["ratio_ci68"])):
+        return dict(status="inconclusive", reason="too few paired overpasses or unstable ratio")
+    lo, hi = r["ratio_ci68"]
+    co_ok = corr["co"]["passed"]
+    if hi < 1:
+        cls = "non-combustion: anaerobic decay, coal seam or gas release (CO/CH4 < 1)"
+    elif lo > 1 and co_ok:
+        cls = "combustion-influenced: fires or burning alongside the methane (CO/CH4 > 1)"
+    else:
+        cls = None
+    return dict(status="classified" if cls else "inconclusive", ratio=r["ratio_median"], ci68=[lo, hi], process=cls,
+                n_overpasses=r["n"])
 
 
 def export_stack(st: dict) -> dict:
@@ -124,6 +145,11 @@ def main():
     obc = json.loads((REPO / "data-pipeline/r5/obc.json").read_text())
     slope = float(obc["slope"])
 
+    osm_p = REPO / "data-pipeline/inventory/osm.json"
+    osm = json.loads(osm_p.read_text()) if osm_p.exists() else {}
+    efa_p = REPO / "data-pipeline/r5/efa.json"
+    efa_ok = efa_p.exists() and json.loads(efa_p.read_text()).get("status") == "validated"
+
     rows = []
     for slug, s in fam.items():
         pix = df[df.site == slug]
@@ -151,7 +177,13 @@ def main():
         corr = r["corroboration"]
         status = ("confirmed" if qq <= 0.05 and corr["confirming"] else "detected" if (qq <= 0.05 or r["z"] >= 3) else
                   "tentative" if r["z"] >= 2 else "not detected")
-        sector = SECTOR.get(slug, "unattributed")
+        efa = attribute(s["lat"], s["lon"], osm[slug]) if osm.get(slug) is not None else None
+        if slug in SECTOR:
+            sector, basis = SECTOR[slug], "cited facility (reference site)"
+        elif efa_ok and efa and efa["attributed"]:
+            sector, basis = efa["attributed"], f"EFA: OpenStreetMap facilities within 25 km (posterior {efa['posterior'][efa['attributed']]:.2f})"
+        else:
+            sector, basis = "unattributed", ("EFA: no sector reaches posterior 0.6 from mapped facilities" if efa else "no facility data yet")
         p_real = float(max(0.0, 1.0 - qq)) if status != "not detected" else 0.0
         w = wrpi_mc(rate_t_h, sector, p_real, a.fx, seed=zlib.crc32(slug.encode()))
         inv.append(dict(
@@ -163,11 +195,20 @@ def main():
             rate_gamma1_kg_h=r["rate_div_kg_h"], null_floor_1sigma_kg_h=r["null_sd"],
             rate_t_h=dict(p16=pct[0], p50=pct[1], p84=pct[2], upper_limit_p84=pct[2] if status == "not detected" else None),
             gamma=dict(value=g_mu, sd=g_sd, source="site ERA5" if g.get("gamma") else "mean of sites / prior"),
-            obc_slope=slope, sector=sector, sector_basis="cited facility (reference site)" if slug in SECTOR else
-            "not attributed: no facility registry match yet", priority=w,
+            obc_slope=slope, sector=sector, sector_basis=basis, attribution=efa, chemistry=r["chemistry"], priority=w,
             evidence=dict(n_overpasses=r["n_overpasses"], first_overpass=r["first"], last_overpass=r["last"],
                           orbits=r["orbits"], overpasses_per_month=r["overpasses_per_month"],
                           mean_wind10_ms=r["mean_wind10_ms"], stack=export_stack(r["stack"]))))
+
+    # VOIT (validated R5 backtest): where would one high-resolution overpass (Carbon Mapper / EMIT /
+    # GHGSat) settle the most? VOI = p(1 - p) x rate, p = P(real) from z; only unconfirmed sites.
+    from scipy.stats import norm
+    for d in inv:
+        p_ = float(norm.cdf(d["z"] - 1.5))
+        d["tasking"] = dict(voi=(p_ * (1 - p_) * max(d["rate_t_h"]["p50"], 0.0)) if d["status"] != "confirmed" else 0.0, p_real_ramp=p_)
+    ranked = sorted([d for d in inv if d["tasking"]["voi"] > 0], key=lambda d: -d["tasking"]["voi"])
+    for i, d in enumerate(ranked, 1):
+        d["tasking"]["rank"] = i; d["tasking"]["recommend"] = i <= 5
 
     # rank: detected first, then by median WRPI, then by median avoidable warming
     order = {"confirmed": 0, "detected": 1, "tentative": 2, "not detected": 3}

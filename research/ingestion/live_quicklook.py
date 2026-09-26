@@ -20,7 +20,29 @@ import numpy as np
 import requests
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "algorithms"))
 import extract_month as em  # noqa: E402
+from dataclasses import replace  # noqa: E402
+from site_stack import StackConfig, quantify, stack_site  # noqa: E402
+
+REPO = Path(__file__).resolve().parents[2]
+STEPS = ["qa >= 0.5", "Copernicus checksum", "plane background (60-140 km)", "ABD albedo/aerosol correction",
+         "wind rotation", "footprint drizzle", "noise weight", "KPW phase weight", "flux divergence (20 km)"]
+
+
+def live_method(d, s, floors):
+    """The validated final method (wind rotation, footprint drizzle, plane background, noise weight,
+    ABD, KPW) applied to this pass alone. Monsoon months are not masked here because this is a
+    snapshot; the inventory never uses them. One pass is noisy: the expected single-pass 1-sigma is
+    the site's stacked floor x sqrt(number of stacked overpasses)."""
+    st = stack_site(d, s["lat"], s["lon"], replace(StackConfig(), season_mask=()))
+    if st["n_overpasses"] == 0:
+        return None
+    q = quantify(st)["DIV"]
+    f = floors.get(s.get("_slug"))
+    sd1 = f[0] * f[1] ** 0.5 if f else None
+    return dict(rate_kg_h_gamma1=float(q), single_pass_sigma_kg_h=sd1, z_single=(float(q) / sd1) if sd1 else None,
+                wind_ms=st["overpasses"][0]["U10"], orbits=[str(o["orbit"]) for o in st["overpasses"]])
 
 
 def list_prefix(prefix):
@@ -52,6 +74,9 @@ def newest_india_granules():
 def main(out_dir, sites_path):
     out = Path(out_dir) / "live"; out.mkdir(parents=True, exist_ok=True)
     sites = json.loads(Path(sites_path).read_text())
+    inv_p = REPO / "data-pipeline/inventory/inventory_public.json"
+    floors = ({x["slug"]: (x["null_floor_1sigma_kg_h"], x["evidence"]["n_overpasses"]) for x in json.loads(inv_p.read_text())["sites"]}
+              if inv_p.exists() else {})
     stream, day, keys = newest_india_granules()
     if not keys:
         print("no granules found"); return
@@ -89,7 +114,12 @@ def main(out_dir, sites_path):
             if near.sum() == 0:
                 continue
             bg = float(np.nanmedian(d.xch4.values[ann])) if ann.sum() >= 20 else None
-            per_site[slug] = dict(name=s["name"], pixels=int(near.sum()),
+            s = {**s, "_slug": slug}
+            try:
+                lm = live_method(d, s, floors) if (dist <= 15).sum() >= 6 else None
+            except Exception as e:   # a snapshot must never break the pass record
+                lm = dict(error=repr(e)[:160])
+            per_site[slug] = dict(name=s["name"], pixels=int(near.sum()), method=lm,
                                   xch4_ppb=float(np.nanmean(d.xch4.values[near])),
                                   enhancement_ppb=(float(np.nanmean(d.xch4.values[near])) - bg) if bg else None,
                                   wind_ms=float(np.hypot(np.nanmean(d.u.values[near]), np.nanmean(d.v.values[near]))),
@@ -98,6 +128,7 @@ def main(out_dir, sites_path):
         summary = dict(stream=stream, day=str(day), granules=len(keys), orbits=sorted(set(orbits)), pixels=int(len(d)),
                        sensing_start=str(d.time.min())[:19], sensing_end=str(d.time.max())[:19],
                        mean_xch4_ppb=float(np.nanmean(d.xch4.values)), observed_cells=int(np.isfinite(x).sum()),
+                       method_steps=STEPS,
                        texture=dict(file="latest.png", lo=lo, hi=hi, nodata=0,
                                     lat_edges=[float(em.LAT_EDGES[0]), float(em.LAT_EDGES[-1])],
                                     lon_edges=[float(em.LON_EDGES[0]), float(em.LON_EDGES[-1])]),

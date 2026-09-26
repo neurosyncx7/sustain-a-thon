@@ -15,7 +15,7 @@ from india_bbox import KNOWN_SITES  # noqa
 
 MONSOON = (6, 7, 8, 9)
 BASE = StackConfig(rotate=False, background="global", drizzle=False, season_mask=(), quality_weight=False,
-                   albedo_correct=False)   # explicit: StackConfig defaults are the final method
+                   albedo_correct=False, phase_weight=False)   # explicit: StackConfig defaults are the final method
 VARIANTS = {
     "1_raw":            BASE,
     "2_+detrend":       replace(BASE, background="plane"),
@@ -24,6 +24,8 @@ VARIANTS = {
     "5_combined":       replace(BASE, background="plane", season_mask=MONSOON, quality_weight=True, rotate=True, drizzle=True),
     "6_+ABD":           replace(BASE, background="plane", season_mask=MONSOON, quality_weight=True, rotate=True, drizzle=True,
                                 albedo_correct=True),
+    "7_+KPW":           replace(BASE, background="plane", season_mask=MONSOON, quality_weight=True, rotate=True, drizzle=True,
+                                albedo_correct=True, phase_weight=True),
 }
 
 def evaluate(pix, s, cfg, n_null=24):

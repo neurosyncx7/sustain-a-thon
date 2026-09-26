@@ -36,12 +36,12 @@ Rates in t/h at gamma=1 (TROPOMI's ECMWF 10 m wind; ERA5 suggests gamma ~1.2-1.3
 
 | Site (20 km radius) | overpasses | IME t/h [68%] | CSF t/h [68%] | Divergence t/h [68%] | floor 1 sigma |
 |---|---|---|---|---|---|
-| Jawaharnagar landfill, Hyderabad | 80 | 8.7 [7.3, 10.3] (z 2.0) | 7.9 [5.3, 10.4] (z 1.7) | 11.1 [8.9, 13.2] (z 3.2) | 3.8 |
-| Pirana landfill, Ahmedabad | 206 | 7.7 [6.8, 8.5] (z 1.3) | 13.3 [11.4, 15.1] (z 4.1) | 9.3 [8.0, 10.7] (z 3.6) | 2.9 |
-| Khajod landfill, Surat | 193 | 11.4 [10.0, 12.6] (z 1.3) | 18.4 [15.9, 20.6] (z 3.3) | 14.1 [11.7, 16.1] (z 3.3) | 5.4 |
-| Deonar/Mumbai landfill | 164 | 42.0 [38.6, 44.6] (z 5.2) | 58.9 [52.5, 66.6] (z 3.8) | 52.8 [48.0, 59.8] (z 5.0) | 11.2 |
-| Jharia coal field, Jharkhand | 101 | 3.0 [1.4, 4.8] (z 0.9) | 20.7 [18.9, 22.2] (z 3.7) | 17.2 [15.6, 18.9] (z 5.3) | 3.4 |
-| Korba coalfield, Chhattisgarh | 84 | 1.9 [1.1, 2.8] (z 0.7) | -2.0 [-4.0, -0.5] (z -0.4) | -2.9 [-4.7, -1.3] (z -0.8) | 3.1 |
+| Jawaharnagar landfill, Hyderabad | 80 | 8.6 [7.3, 10.3] (z 2.0) | 9.6 [6.7, 12.1] (z 1.9) | 12.2 [9.9, 14.4] (z 3.6) | 3.7 |
+| Pirana landfill, Ahmedabad | 206 | 7.6 [6.6, 8.4] (z 1.3) | 13.9 [11.9, 15.6] (z 4.3) | 9.6 [8.4, 11.1] (z 4.1) | 2.7 |
+| Khajod landfill, Surat | 193 | 11.6 [10.3, 12.9] (z 1.6) | 18.2 [15.6, 20.5] (z 3.0) | 14.4 [12.0, 16.7] (z 3.9) | 4.6 |
+| Deonar/Mumbai landfill | 164 | 43.3 [39.8, 46.5] (z 5.3) | 60.1 [52.9, 67.8] (z 3.7) | 53.2 [47.9, 60.7] (z 5.2) | 11.0 |
+| Jharia coal field, Jharkhand | 101 | 4.2 [2.9, 5.6] (z 1.2) | 20.4 [18.4, 22.5] (z 3.5) | 17.1 [15.5, 19.1] (z 5.2) | 3.5 |
+| Korba coalfield, Chhattisgarh | 84 | 2.0 [1.2, 2.9] (z 0.6) | -1.8 [-3.9, -0.3] (z -0.4) | -2.8 [-4.7, -1.1] (z -0.8) | 3.0 |
 
 Findings:
 - **Divergence detects all five known landfill/coal emitters above 3 sigma** (Jawaharnagar 3.2,
@@ -71,6 +71,7 @@ weighting. The baseline now switches every component off explicitly; the table b
 | +wind | 1.7 | 5.8 | 3.0 | 1.8 | 2.8 | 5.9 |
 | combined | 3.3 | 4.6 | 4.4 | 3.2 | 3.1 | 5.4 |
 | +ABD | 3.2 | 5.0 | 5.3 | 3.6 | 3.3 | 5.0 |
+| +KPW | 3.6 | 5.2 | 5.2 | 4.1 | 3.9 | 4.8 |
 
 Conclusions (what earns its keep):
 - The floor falls at every step: 7.3 (raw) -> 7.1 (plane background) -> 6.9 (monsoon exclusion +
@@ -96,27 +97,31 @@ Top candidates also include documented hotspots outside India (Dhaka, Lahore), a
 Upper Assam oil fields near Dibrugarh (z 6.6), Lucknow, Ranchi, Guwahati, Aligarh, Shivamogga.
 Candidates in paddy regions (e.g. Bahraich) and coastal Kutch need attribution/artifact checks (R5).
 
-## R5: the invented algorithms, tested one by one on real data (done, 2026-09-26)
-`research/validation/r5_algorithms.py` -> `data-pipeline/r5/*.json`. Each test's pass criterion is written
-in the code before the run. Status of all 18 designs, generated from these files:
-`data-pipeline/inventory/algorithms.json` (5 validated, 2 partial, 3 failed, 8 not implemented).
+## R5: the invented algorithms, tested one by one on real data (updated 2026-09-27)
+`research/validation/r5_algorithms.py` -> `data-pipeline/r5/*.json`. Each test's pass mark is in the code
+before the run; status of every design is generated into `data-pipeline/inventory/algorithms.json`
+(10 validated and running, 1 partial, 4 failed, 4 not built).
 
 | Algorithm | Test on real TROPOMI | Result | Status |
 |---|---|---|---|
-| ABD albedo/aerosol bias decorrelation | final vs final+ABD, 6 sites, same 24-site null | mean z 3.74 -> 4.06; floor 5.4 -> 5.0 t/h | **validated, in method** |
-| OBC injection-recovery calibration | Gaussian plumes of 5-40 t/h added to real pixels of 24 pseudo-sites in 4 windows | recovery slope 0.989 (R^2 0.9998, site CV 0.5%); P(z>3) = 8% at 5 t/h, 46% at 10, 100% at 20 | **validated, in method** |
-| BY-FDR (site family) | 36 fake candidates (pseudo-sites) + 6 references in one family | 0 of 36 fakes admitted, fake p-values uniform (KS p 0.43); only 2 of 5 references survive (BY is conservative) | **validated for size**, weak power |
-| BY-FDR (national grid) | local maxima vs mirrored local minima | 0 discoveries: minima are as deep as maxima | failed -> screen stays a lead list |
-| WIT wind-invariance test | centred vs edge-offset injected sources | false-reject 21% (needs <= 15%), power 8% (needs >= 50%) | failed |
-| EIV-CRF CO/CH4 fingerprint | CO stacked like CH4, same overpasses | CO detected above its own null at all 5 (z 2.3-8.1); ratio separated from the combustion boundary at 2 of 5 (Deonar 0.45 [0.41, 0.50], Jharia 2.2 [2.0, 2.4] - Jharia's coal fires) | failed gate (needs 3) |
-| DiverSR off-grid refinement | quadratic sub-cell peak fit on the national field | mean blind distance 7.9 -> 8.7 km | failed |
-| PW-HHP Helmholtz wind projection | national screen with non-divergent winds | noise -29%, but blind recovery 4 -> 3 (Jawaharnagar lost, Jharia 6.6 -> 3.8 km) | failed |
+| ABD albedo/aerosol bias decorrelation | final vs final+ABD, 6 sites, 24-site null | mean z 3.74 -> 4.06; floor 5.4 -> 5.0 t/h | **validated, running** |
+| KPW phase-weighted stacking | final vs final+KPW | mean z 4.06 -> 4.37; floor 4.96 -> 4.76 t/h | **validated, running** |
+| OBC injection-recovery | 5-40 t/h plumes added to real pixels of 24 pseudo-sites | slope 0.992 (R^2 0.9999); P(z>3) 5 t/h 8%, 10 t/h 46%, 20 t/h 100%, 40 t/h 100% | **validated, running** |
+| Confirmed-tier gate (BY-FDR + corroboration) | 6 references + 36 fake candidates | BY alone admits 2/36 fakes; with the second-estimator check 1/36; 4/5 emitters confirmed | **validated, running** |
+| EIV-CRF CO/CH4 ratio | CO stacked like CH4, same overpasses | ratio clears the combustion boundary at 3/5 (khajod, deonar, jharia); passed narrowly with the KPW method (2/5 before) | **validated, running** (process evidence only) |
+| VOIT tasking | backtest: 2023-24 VOI vs re-detection in 2025-26 | top third 54% vs rest 18% (Fisher p 0.025, n 41) | **validated, running** |
+| WIT wind-invariance | centred vs edge-offset injected sources | false-reject 25%, power 4% | failed |
+| PSSI-lite sparse + smooth | 3.4-year divergence field | recovery 0 vs screen 3; sign-flipped detections 40 vs 35 | failed |
+| DiverSR off-grid refinement | sub-cell peak fit | blind distance 7.9 -> 8.7 km | failed |
+| PW-HHP wind projection | national screen | noise down, recovery 4 -> 3 | failed |
+| EFA land-use attribution | OSM facilities vs cited sectors of 7 references | runs on GitHub Actions (Overpass API) | pending first run |
 
 Lessons kept on purpose:
-- The single-site z >= 3 rule is not a 0.13% test: the largest of 36 fake candidates reached z 3.19. That
-  is why the inventory's citable tier uses BY-FDR q-values, and z >= 3 alone is labelled "detected", not "confirmed".
-- Detection limit (OBC): ~10 t/h for 50% detection over two years of stacking; below ~5 t/h a site is invisible
-  to TROPOMI with this method. Single-facility sources of 1-5 t/h need Carbon Mapper/EMIT/GHGSat (VOIT, planned).
+- The national 3-sigma screen is a lead list, not evidence: on the 3.4-year field the sign-flipped map gives
+  35 "detections" against 37 real ones. Significance comes only from each site's own stack and null.
+- Single-site z >= 3 is not a 0.13% test (coastal pseudo-sites near Surat reach z ~4). Hence "confirmed"
+  needs BY-FDR plus an independent check.
+- Detection limit (OBC): ~10 t/h for 50% detection over the stacked record.
 
 ## R6: the integrated inventory (done; refreshed by `.github/workflows/inventory.yml`)
 `research/pipeline/run_inventory.py` chains only validated components: final stack -> divergence ->
