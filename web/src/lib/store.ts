@@ -1,36 +1,41 @@
 import { create } from "zustand";
+import { STAGES } from "@/content/stages";
 
-export type CameraTargetRequest = {
-  stationSlug: string;
-  hotspotId?: string;
-  nonce: number; // bump to re-trigger the same target (e.g. re-focus)
-};
+// `progress` changes every scroll frame, so components read it with useWorld.getState() inside
+// useFrame (no React re-render). Only `stageIndex` and UI flags are subscribed by React.
+export type Mode = "story" | "evidence";
 
 interface WorldState {
-  activeStation: string;
-  hoveredHotspot: string | null;
-  isTweening: boolean;
-  isLoading: boolean;
-  cameraTarget: CameraTargetRequest | null;
-  setActiveStation: (slug: string) => void;
-  setHoveredHotspot: (id: string | null) => void;
-  setTweening: (v: boolean) => void;
-  setLoading: (v: boolean) => void;
-  requestCameraTarget: (stationSlug: string, hotspotId?: string) => void;
+  progress: number;          // 0..1 across all stages
+  stageIndex: number;        // nearest stage
+  mode: Mode;
+  ready: boolean;            // scene assets compiled, loader may leave
+  hovered: string | null;    // hovered instrument slug
+  setProgress: (p: number) => void;
+  setMode: (m: Mode) => void;
+  setReady: (r: boolean) => void;
+  setHovered: (h: string | null) => void;
 }
 
-export const useWorldStore = create<WorldState>((set, get) => ({
-  activeStation: "orbit-overview",
-  hoveredHotspot: null,
-  isTweening: false,
-  isLoading: true,
-  cameraTarget: null,
-  setActiveStation: (slug) => set({ activeStation: slug }),
-  setHoveredHotspot: (id) => set({ hoveredHotspot: id }),
-  setTweening: (v) => set({ isTweening: v }),
-  setLoading: (v) => set({ isLoading: v }),
-  requestCameraTarget: (stationSlug, hotspotId) =>
-    set({
-      cameraTarget: { stationSlug, hotspotId, nonce: (get().cameraTarget?.nonce ?? 0) + 1 },
-    }),
+const N = STAGES.length;
+
+export const useWorld = create<WorldState>((set, get) => ({
+  progress: 0,
+  stageIndex: 0,
+  mode: "story",
+  ready: false,
+  hovered: null,
+  setProgress: (p) => {
+    const stageIndex = Math.round(p * (N - 1));
+    if (stageIndex !== get().stageIndex) set({ progress: p, stageIndex });
+    else get().progress = p; // silent write, no subscribers notified
+  },
+  setMode: (mode) => set({ mode }),
+  setReady: (ready) => set({ ready }),
+  setHovered: (hovered) => set({ hovered }),
 }));
+
+// Scroll controller registered by the page so 3D clicks and nav can request a stage.
+let scrollToStage: ((i: number) => void) | null = null;
+export const registerScrollToStage = (fn: (i: number) => void) => (scrollToStage = fn);
+export const goToStage = (i: number) => scrollToStage?.(i);

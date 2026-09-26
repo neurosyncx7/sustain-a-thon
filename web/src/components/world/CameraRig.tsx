@@ -1,71 +1,41 @@
 "use client";
 
 import { useFrame, useThree } from "@react-three/fiber";
-import gsap from "gsap";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import * as THREE from "three";
-import { useWorldStore } from "@/lib/store";
-import { STATIONS } from "@/content/stations";
+import { useWorld } from "@/lib/store";
+import { evaluate, frame } from "@/lib/timeline";
 
-// r3f-scene skill: this is the ONLY component allowed to touch camera.position/quaternion.
-// Station components request a target via useWorldStore.requestCameraTarget(); everything
-// here reacts to that, never the other way around.
+// r3f-scene skill: the ONLY writer of camera transforms. Pose comes from the scroll timeline
+// (eased Bezier flights with holds); we add critically damped smoothing so wheel ticks never
+// jerk, plus a small mouse parallax that fades out during flights.
+
+const smPos = new THREE.Vector3(), smTgt = new THREE.Vector3(), par = new THREE.Vector2();
+let initialised = false;
+
 export function CameraRig() {
   const { camera } = useThree();
-  const cameraTarget = useWorldStore((s) => s.cameraTarget);
-  const setTweening = useWorldStore((s) => s.setTweening);
-  const isTweening = useWorldStore((s) => s.isTweening);
+  const mouse = useRef(new THREE.Vector2());
 
-  const proxy = useRef({ x: 0, y: 1.6, z: 6, lx: 0, ly: 1, lz: 0 }).current;
-  const mouse = useRef({ x: 0, y: 0 });
-  const idleOffset = useRef({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const onMove = (e: PointerEvent) => {
-      mouse.current.x = (e.clientX / window.innerWidth) * 2 - 1;
-      mouse.current.y = (e.clientY / window.innerHeight) * 2 - 1;
-    };
-    window.addEventListener("pointermove", onMove);
-    return () => window.removeEventListener("pointermove", onMove);
-  }, []);
-
-  useEffect(() => {
-    if (!cameraTarget) return;
-    const station = STATIONS[cameraTarget.stationSlug];
-    if (!station) return;
-    setTweening(true);
-    const tl = gsap.timeline({
-      defaults: { duration: 1.6, ease: "power3.inOut" },
-      onComplete: () => setTweening(false),
-    });
-    tl.to(proxy, {
-      x: station.cameraWaypoint[0],
-      y: station.cameraWaypoint[1],
-      z: station.cameraWaypoint[2],
-      ease: "back.out(1.2)",
-      duration: 1.9,
-    }, 0);
-    tl.to(proxy, {
-      lx: station.lookAt[0],
-      ly: station.lookAt[1],
-      lz: station.lookAt[2],
-    }, 0);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cameraTarget?.nonce]);
-
-  useFrame(() => {
-    let px = proxy.x;
-    let py = proxy.y;
-    if (!isTweening) {
-      // idle parallax: lerp toward a small mouse-driven offset, gated off during any active tween
-      idleOffset.current.x += (mouse.current.x * 0.15 - idleOffset.current.x) * 0.04;
-      idleOffset.current.y += (-mouse.current.y * 0.1 - idleOffset.current.y) * 0.04;
-      px += idleOffset.current.x;
-      py += idleOffset.current.y;
+  useFrame((state, dt) => {
+    const p = useWorld.getState().progress;
+    evaluate(p);
+    mouse.current.set(state.pointer.x, state.pointer.y);
+    const k = 1 - Math.exp(-dt * 4.5);
+    if (!initialised) { smPos.copy(frame.pos); smTgt.copy(frame.target); initialised = true; }
+    smPos.lerp(frame.pos, k);
+    smTgt.lerp(frame.target, k);
+    par.lerp(mouse.current, 1 - Math.exp(-dt * 2));
+    const hold = 1 - frame.flight;
+    const cam = camera as THREE.PerspectiveCamera;
+    cam.position.copy(smPos);
+    cam.position.x += par.x * 0.6 * hold;
+    cam.position.y += par.y * 0.3 * hold;
+    cam.lookAt(smTgt);
+    if (Math.abs(cam.fov - frame.fov) > 0.01) {
+      cam.fov += (frame.fov - cam.fov) * k;
+      cam.updateProjectionMatrix();
     }
-    camera.position.set(px, py, proxy.z);
-    camera.lookAt(proxy.lx, proxy.ly, proxy.lz);
   });
-
   return null;
 }

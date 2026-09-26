@@ -1,12 +1,5 @@
-import { Experience } from "@/components/world/Experience";
-import { SmoothScrollProvider } from "@/components/SmoothScrollProvider";
+import { Observatory } from "@/components/Observatory";
 
 export default function Home() {
-  return (
-    <SmoothScrollProvider>
-      <main className="relative h-screen w-screen overflow-hidden bg-[#08070a]">
-        <Experience />
-      </main>
-    </SmoothScrollProvider>
-  );
+  return <Observatory />;
 }
