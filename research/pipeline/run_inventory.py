@@ -150,17 +150,22 @@ def main():
     efa_p = REPO / "data-pipeline/r5/efa.json"
     efa_ok = efa_p.exists() and json.loads(efa_p.read_text()).get("status") == "validated"
 
+    # sites are independent: analyse them in parallel (GitHub runners have 4 cores); results are
+    # collected in the family's order so the output is identical to a serial run.
+    from concurrent.futures import ProcessPoolExecutor
+    jobs = [(slug, s, df[df.site == slug]) for slug, s in fam.items()]
     rows = []
-    for slug, s in fam.items():
-        pix = df[df.site == slug]
-        if pix.empty:
-            print("no data", slug); continue
-        r = analyse_site(pix, s)
-        if r is None:
-            print("too few overpasses", slug); continue
-        r["slug"] = slug; r["meta"] = s
-        rows.append(r)
-        print(f"{slug:14s} n={r['n_overpasses']:3d} DIV={r['rate_div_kg_h']/1e3:6.1f} t/h z={r['z']:5.2f} p={r['p']:.2g}", flush=True)
+    with ProcessPoolExecutor(max_workers=max(1, min(4, os.cpu_count() or 1))) as ex:
+        futs = [(slug, s, ex.submit(analyse_site, pix, s)) if not pix.empty else (slug, s, None) for slug, s, pix in jobs]
+        for slug, s, f in futs:
+            if f is None:
+                print("no data", slug); continue
+            r = f.result()
+            if r is None:
+                print("too few overpasses", slug); continue
+            r["slug"] = slug; r["meta"] = s
+            rows.append(r)
+            print(f"{slug:14s} n={r['n_overpasses']:3d} DIV={r['rate_div_kg_h']/1e3:6.1f} t/h z={r['z']:5.2f} p={r['p']:.2g}", flush=True)
 
     q = benjamini_yekutieli(np.array([r["p"] for r in rows]))
     rng = np.random.default_rng(42)
@@ -177,7 +182,10 @@ def main():
         corr = r["corroboration"]
         status = ("confirmed" if qq <= 0.05 and corr["confirming"] else "detected" if (qq <= 0.05 or r["z"] >= 3) else
                   "tentative" if r["z"] >= 2 else "not detected")
-        efa = attribute(s["lat"], s["lon"], osm[slug]) if osm.get(slug) is not None else None
+        try:
+            efa = attribute(s["lat"], s["lon"], osm[slug]) if osm.get(slug) is not None else None
+        except Exception as ex:                     # facility data must never sink the inventory
+            print("EFA skipped for", slug, repr(ex)[:120]); efa = None
         if slug in SECTOR:
             sector, basis = SECTOR[slug], "cited facility (reference site)"
         elif efa_ok and efa and efa["attributed"]:

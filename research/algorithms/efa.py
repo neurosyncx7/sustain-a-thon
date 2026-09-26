@@ -48,10 +48,12 @@ def attribute(lat: float, lon: float, elements: list[dict]) -> dict:
     score = {s: 0.0 for s in SECTORS}; agri = 0.0
     voters = []
     for e in elements:
-        sec = classify(e.get("tags", {}))
+        sec = classify(e.get("tags") or {})
         if not sec:
             continue
-        la = e.get("lat", e.get("center", {}).get("lat")); lo = e.get("lon", e.get("center", {}).get("lon"))
+        ctr = e.get("center") or {}
+        la = e.get("lat") if e.get("lat") is not None else ctr.get("lat")
+        lo = e.get("lon") if e.get("lon") is not None else ctr.get("lon")
         if la is None or lo is None:
             continue
         d = km(lat, lon, la, lo)
@@ -59,7 +61,7 @@ def attribute(lat: float, lon: float, elements: list[dict]) -> dict:
         if sec == "agriculture":
             agri += w; continue
         score[sec] += w
-        voters.append(dict(sector=sec, name=e.get("tags", {}).get("name"), osm=f"{e['type']}/{e['id']}", km=round(d, 1),
+        voters.append(dict(sector=sec, name=(e.get("tags") or {}).get("name"), osm=f"{e['type']}/{e['id']}", km=round(d, 1),
                            lat=round(la, 4), lon=round(lo, 4), weight=round(w, 3)))
     tot = sum(v + PRIOR for v in score.values())
     post = {s: (score[s] + PRIOR) / tot for s in SECTORS}
