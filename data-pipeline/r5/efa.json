@@ -1,0 +1,92 @@
+{
+ "criterion": "top sector correct for >= 6 of 7 references and none confidently wrong",
+ "correct": 5,
+ "confident_wrong": 0,
+ "sites": {
+  "jawaharnagar": {
+   "truth": "landfill",
+   "top": "landfill",
+   "posterior": {
+    "landfill": 0.6727187570739279,
+    "coal": 0.08851780310692009,
+    "oil_gas": 0.23876343981915216
+   },
+   "attributed": "landfill",
+   "n_facilities": 15,
+   "correct": true,
+   "confident_wrong": false
+  },
+  "pirana": {
+   "truth": "landfill",
+   "top": "landfill",
+   "posterior": {
+    "landfill": 0.7357755832454956,
+    "coal": 0.151974637507317,
+    "oil_gas": 0.1122497792471873
+   },
+   "attributed": "landfill",
+   "n_facilities": 15,
+   "correct": true,
+   "confident_wrong": false
+  },
+  "khajod": {
+   "truth": "landfill",
+   "top": "oil_gas",
+   "posterior": {
+    "landfill": 0.41553114340723224,
+    "coal": 0.1575894953204856,
+    "oil_gas": 0.4268793612722822
+   },
+   "attributed": null,
+   "n_facilities": 8,
+   "correct": false,
+   "confident_wrong": false
+  },
+  "deonar": {
+   "truth": "landfill",
+   "top": "landfill",
+   "posterior": {
+    "landfill": 0.830873870526762,
+    "coal": 0.04937946315146489,
+    "oil_gas": 0.11974666632177315
+   },
+   "attributed": "landfill",
+   "n_facilities": 74,
+   "correct": true,
+   "confident_wrong": false
+  },
+  "ghazipur": {
+   "truth": "landfill",
+   "top": "landfill",
+   "posterior": {
+    "landfill": 0.8923197775089954,
+    "coal": 0.009703358411408437,
+    "oil_gas": 0.09797686407959627
+   },
+   "attributed": "landfill",
+   "n_facilities": 93,
+   "correct": true,
+   "confident_wrong": false
+  },
+  "jharia": {
+   "truth": "coal",
+   "top": "coal",
+   "posterior": {
+    "landfill": 0.08072438611311102,
+    "coal": 0.9042069790768607,
+    "oil_gas": 0.015068634810028372
+   },
+   "attributed": "coal",
+   "n_facilities": 60,
+   "correct": true,
+   "confident_wrong": false
+  },
+  "korba": {
+   "truth": "coal",
+   "error": "no OSM response"
+  }
+ },
+ "status": "failed",
+ "runtime_s": 0.0,
+ "run_utc": "2026-09-26T22:55:39.185410+00:00"
+}
