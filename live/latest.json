@@ -1,15 +1,16 @@
 {
  "stream": "NRTI",
  "day": "2026-09-27",
- "granules": 26,
+ "granules": 48,
  "orbits": [
-  "46405"
+  "46405",
+  "46406"
  ],
- "pixels": 76,
+ "pixels": 6253,
  "sensing_start": "2026-09-27 06:28:41",
- "sensing_end": "2026-09-27 06:29:49",
- "mean_xch4_ppb": 1992.1781005859375,
- "observed_cells": 62,
+ "sensing_end": "2026-09-27 08:14:26",
+ "mean_xch4_ppb": 1958.0008544921875,
+ "observed_cells": 3510,
  "method_steps": [
   "qa >= 0.5",
   "Copernicus checksum",
@@ -23,8 +24,8 @@
  ],
  "texture": {
   "file": "latest.png",
-  "lo": 1917.750966796875,
-  "hi": 2057.628896484375,
+  "lo": 1906.7191748046876,
+  "hi": 1999.8565307617187,
   "nodata": 0,
   "lat_edges": [
    6.5,
@@ -36,6 +37,76 @@
   ]
  },
  "sites": {
+  "jawaharnagar": {
+   "name": "Jawaharnagar landfill, Hyderabad",
+   "pixels": 18,
+   "method": null,
+   "xch4_ppb": 1980.1431884765625,
+   "enhancement_ppb": 8.52880859375,
+   "wind_ms": 3.4254887104034424,
+   "wind_to_deg": 142.0615997314453,
+   "time_utc": "2026-09-27T08:08:18"
+  },
+  "ghazipur": {
+   "name": "Ghazipur landfill, Delhi",
+   "pixels": 7,
+   "method": null,
+   "xch4_ppb": 1968.015869140625,
+   "enhancement_ppb": -5.70654296875,
+   "wind_ms": 2.1509358882904053,
+   "wind_to_deg": 259.9500427246094,
+   "time_utc": "2026-09-27T08:11:24"
+  },
+  "c02": {
+   "name": "near Lahore",
+   "pixels": 1,
+   "method": null,
+   "xch4_ppb": 1955.137939453125,
+   "enhancement_ppb": 0.6490478515625,
+   "wind_ms": 1.6107103824615479,
+   "wind_to_deg": 19.616846084594727,
+   "time_utc": "2026-09-27T08:12:27"
+  },
+  "c04": {
+   "name": "near Ghaziabad",
+   "pixels": 5,
+   "method": null,
+   "xch4_ppb": 1962.086669921875,
+   "enhancement_ppb": -11.49658203125,
+   "wind_ms": 2.197575807571411,
+   "wind_to_deg": 260.229248046875,
+   "time_utc": "2026-09-27T08:11:24"
+  },
+  "c11": {
+   "name": "55 km from Hosapete",
+   "pixels": 12,
+   "method": null,
+   "xch4_ppb": 1952.6085205078125,
+   "enhancement_ppb": -6.9019775390625,
+   "wind_ms": 0.6301937699317932,
+   "wind_to_deg": 153.72869873046875,
+   "time_utc": "2026-09-27T08:08:00"
+  },
+  "c14": {
+   "name": "59 km from Proddatur",
+   "pixels": 2,
+   "method": null,
+   "xch4_ppb": 1951.789306640625,
+   "enhancement_ppb": null,
+   "wind_ms": 2.806873083114624,
+   "wind_to_deg": 154.8539276123047,
+   "time_utc": "2026-09-27T08:07:28"
+  },
+  "c20": {
+   "name": "48 km from Sadiqabad",
+   "pixels": 2,
+   "method": null,
+   "xch4_ppb": 1951.362548828125,
+   "enhancement_ppb": -2.639892578125,
+   "wind_ms": 3.521576166152954,
+   "wind_to_deg": 13.871458053588867,
+   "time_utc": "2026-09-27T08:11:50"
+  },
   "c26": {
    "name": "26 km from Shwebo",
    "pixels": 5,
@@ -43,8 +114,18 @@
    "xch4_ppb": 2008.645751953125,
    "enhancement_ppb": 21.8050537109375,
    "wind_ms": 3.095271110534668,
-   "wind_to_deg": 161.08705139160156,
+   "wind_to_deg": 161.0870361328125,
    "time_utc": "2026-09-27T06:28:51"
+  },
+  "c28": {
+   "name": "near Hyderabad",
+   "pixels": 21,
+   "method": null,
+   "xch4_ppb": 1979.39208984375,
+   "enhancement_ppb": 7.049560546875,
+   "wind_ms": 3.4518680572509766,
+   "wind_to_deg": 142.20950317382812,
+   "time_utc": "2026-09-27T08:08:18"
   },
   "c43": {
    "name": "82 km from Shwebo",
@@ -55,6 +136,16 @@
    "wind_ms": 1.9372549057006836,
    "wind_to_deg": 202.0579376220703,
    "time_utc": "2026-09-27T06:29:07"
+  },
+  "c48": {
+   "name": "near Hosapete",
+   "pixels": 12,
+   "method": null,
+   "xch4_ppb": 1967.1920166015625,
+   "enhancement_ppb": 15.4610595703125,
+   "wind_ms": 0.8788823485374451,
+   "wind_to_deg": 89.8561782836914,
+   "time_utc": "2026-09-27T08:07:54"
   }
  },
  "log": [
@@ -187,15 +278,125 @@
    "key": "NRTI/L2__CH4___/2026/09/27/S5P_NRTI_L2__CH4____20260927T063116_20260927T063616_46405_03_020901_20260927T070934.nc",
    "pixels": 0,
    "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/09/27/S5P_NRTI_L2__CH4____20260927T063616_20260927T064116_46405_03_020901_20260927T083334.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/09/27/S5P_NRTI_L2__CH4____20260927T064116_20260927T064616_46405_03_020901_20260927T083149.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/09/27/S5P_NRTI_L2__CH4____20260927T064616_20260927T065116_46405_03_020901_20260927T082949.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/09/27/S5P_NRTI_L2__CH4____20260927T065116_20260927T065616_46405_03_020901_20260927T082559.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/09/27/S5P_NRTI_L2__CH4____20260927T073116_20260927T073616_46406_03_020901_20260927T083017.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/09/27/S5P_NRTI_L2__CH4____20260927T074116_20260927T074616_46406_03_020901_20260927T083728.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/09/27/S5P_NRTI_L2__CH4____20260927T074616_20260927T075116_46406_03_020901_20260927T083923.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/09/27/S5P_NRTI_L2__CH4____20260927T075116_20260927T075616_46406_03_020901_20260927T083932.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/09/27/S5P_NRTI_L2__CH4____20260927T075616_20260927T080116_46406_03_020901_20260927T084116.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/09/27/S5P_NRTI_L2__CH4____20260927T080116_20260927T080616_46406_03_020901_20260927T084231.nc",
+   "pixels": 100,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/09/27/S5P_NRTI_L2__CH4____20260927T080616_20260927T081116_46406_03_020901_20260927T084434.nc",
+   "pixels": 3752,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/09/27/S5P_NRTI_L2__CH4____20260927T081116_20260927T081616_46406_03_020901_20260927T084845.nc",
+   "pixels": 2325,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/09/27/S5P_NRTI_L2__CH4____20260927T082116_20260927T082616_46406_03_020901_20260927T101317.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/09/27/S5P_NRTI_L2__CH4____20260927T082616_20260927T083116_46406_03_020901_20260927T101027.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/09/27/S5P_NRTI_L2__CH4____20260927T091116_20260927T091616_46407_03_020901_20260927T101002.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/09/27/S5P_NRTI_L2__CH4____20260927T091616_20260927T092116_46407_03_020901_20260927T101615.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/09/27/S5P_NRTI_L2__CH4____20260927T092116_20260927T092616_46407_03_020901_20260927T101820.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/09/27/S5P_NRTI_L2__CH4____20260927T092616_20260927T093116_46407_03_020901_20260927T102016.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/09/27/S5P_NRTI_L2__CH4____20260927T093116_20260927T093616_46407_03_020901_20260927T102200.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/09/27/S5P_NRTI_L2__CH4____20260927T093616_20260927T094116_46407_03_020901_20260927T102251.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/09/27/S5P_NRTI_L2__CH4____20260927T094116_20260927T094616_46407_03_020901_20260927T102314.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/09/27/S5P_NRTI_L2__CH4____20260927T094616_20260927T095116_46407_03_020901_20260927T102437.nc",
+   "pixels": 0,
+   "integrity": "verified"
   }
  ],
  "integrity": {
-  "verified": 26,
+  "verified": 48,
   "unverifiable": 0,
   "mismatch": 0,
   "download_failed": 0,
   "policy": "each granule's MD5 is checked against the Copernicus Data Space catalogue; mismatches are rejected, unverifiable granules are accepted only when the mirror ETag matches"
  },
- "processed_utc": "2026-09-27T08:33:44",
+ "processed_utc": "2026-09-27T12:06:07",
  "source": "Copernicus Sentinel-5P TROPOMI NRTI L2 CH4, s3://meeo-s5p (public mirror)"
 }
