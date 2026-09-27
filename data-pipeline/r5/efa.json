@@ -1,6 +1,6 @@
 {
  "criterion": "top sector correct for >= 6 of 7 references and none confidently wrong",
- "correct": 5,
+ "correct": 6,
  "confident_wrong": 0,
  "sites": {
   "jawaharnagar": {
@@ -83,10 +83,19 @@
   },
   "korba": {
    "truth": "coal",
-   "error": "no OSM response"
+   "top": "coal",
+   "posterior": {
+    "landfill": 0.0244436599677767,
+    "coal": 0.9732714039170876,
+    "oil_gas": 0.0022849361151357733
+   },
+   "attributed": "coal",
+   "n_facilities": 304,
+   "correct": true,
+   "confident_wrong": false
   }
  },
- "status": "failed",
+ "status": "validated",
  "runtime_s": 0.0,
- "run_utc": "2026-09-26T22:55:39.185410+00:00"
+ "run_utc": "2026-09-27T10:54:34.106729+00:00"
 }

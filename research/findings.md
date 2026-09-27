@@ -133,17 +133,17 @@ first/last overpass, wind, the stack image, z/p/q, calibrated t/h (16/50/84%), a
 Tiers: confirmed (q <= 0.05), detected (z >= 3), tentative (2 <= z < 3), not detected (upper limit).
 
 <!-- R6-TABLE -->
-Generated 2026-09-26T23:16 UTC from TROPOMI 2023-01-01..2026-05-31, 17,278,006 pixels, 54 sites tested: 12 confirmed, 14 at z >= 3.
+Generated 2026-09-27T11:15 UTC from TROPOMI 2023-01-01..2026-05-31, 17,285,911 pixels, 54 sites tested: 12 confirmed, 14 at z >= 3.
 
 | # | Site | Tier | t CH4/h [68%] | z | q (BY) | Sector | t CO2e20 per INR lakh |
 |---|---|---|---|---|---|---|---|
 | 1 | Ghazipur landfill, Delhi | confirmed | 30.1 [25.6, 35.0] | 8.9 | 0.000 | landfill | 633 |
-| 2 | Deonar/Mumbai landfill | confirmed | 67.2 [52.4, 82.4] | 5.1 | 0.001 | landfill | 625 |
-| 3 | Pirana landfill, Ahmedabad | confirmed | 14.9 [11.4, 18.8] | 4.7 | 0.002 | landfill | 623 |
-| 4 | Jawaharnagar landfill, Hyderabad | confirmed | 18.1 [13.1, 23.3] | 4.0 | 0.008 | landfill | 623 |
-| 5 | Khajod landfill, Surat | confirmed | 21.0 [15.1, 27.2] | 3.8 | 0.013 | landfill | 621 |
-| 6 | near Lahore | confirmed | 36.4 [30.7, 42.7] | 8.0 | 0.000 | unattributed | 617 |
-| 7 | near Dhaka | confirmed | 79.4 [69.1, 90.4] | 10.3 | 0.000 | unattributed | 613 |
+| 2 | near Lahore | confirmed | 36.4 [30.7, 42.7] | 8.0 | 0.000 | landfill | 631 |
+| 3 | Deonar/Mumbai landfill | confirmed | 67.2 [52.4, 82.4] | 5.1 | 0.001 | landfill | 625 |
+| 4 | Pirana landfill, Ahmedabad | confirmed | 14.9 [11.4, 18.8] | 4.7 | 0.002 | landfill | 623 |
+| 5 | Jawaharnagar landfill, Hyderabad | confirmed | 18.1 [13.1, 23.3] | 4.0 | 0.008 | landfill | 623 |
+| 6 | near Dhaka | confirmed | 79.4 [69.1, 90.4] | 10.3 | 0.000 | landfill | 622 |
+| 7 | Khajod landfill, Surat | confirmed | 21.0 [15.1, 27.2] | 3.8 | 0.013 | landfill | 621 |
 | 8 | 48 km from Sadiqabad | confirmed | 20.4 [16.9, 24.2] | 8.6 | 0.000 | unattributed | 601 |
 | 9 | near Dhaka | confirmed | 75.3 [64.5, 87.0] | 14.2 | 0.000 | unattributed | 598 |
 | 10 | near Chattogram | confirmed | 50.6 [34.1, 68.2] | 3.3 | 0.045 | unattributed | 595 |
@@ -151,11 +151,11 @@ Generated 2026-09-26T23:16 UTC from TROPOMI 2023-01-01..2026-05-31, 17,278,006 p
 | 12 | Jharia coal field, Jharkhand | confirmed | 21.8 [16.6, 27.3] | 4.5 | 0.003 | coal | 334 |
 | 13 | near Nawabganj | detected | 11.0 [7.0, 15.3] | 3.0 | 0.061 | unattributed | 578 |
 | 14 | 80 km from Panaji | detected | 24.3 [12.4, 37.6] | 3.1 | 0.055 | unattributed | 567 |
-| 15 | near Nawabganj | tentative | 14.2 [9.2, 19.6] | 2.9 | 0.068 | unattributed | 562 |
-| 16 | 98 km from Burhanpur | tentative | 8.7 [4.6, 12.8] | 2.8 | 0.097 | unattributed | 539 |
-| 17 | 38 km from Dibrugarh | tentative | 28.4 [18.0, 39.7] | 2.8 | 0.141 | unattributed | 538 |
-| 18 | 58 km from Panaji | tentative | 22.3 [11.6, 33.4] | 2.5 | 0.161 | unattributed | 512 |
-| 19 | near Lucknow | tentative | 13.9 [7.9, 20.2] | 2.5 | 0.143 | unattributed | 499 |
+| 15 | 38 km from Dibrugarh | tentative | 28.4 [18.0, 39.7] | 2.8 | 0.141 | oil_gas | 30921 |
+| 16 | near Nawabganj | tentative | 14.2 [9.2, 19.6] | 2.9 | 0.068 | unattributed | 562 |
+| 17 | 98 km from Burhanpur | tentative | 8.7 [4.6, 12.8] | 2.8 | 0.097 | unattributed | 539 |
+| 18 | near Lucknow | tentative | 13.9 [7.9, 20.2] | 2.5 | 0.143 | landfill | 537 |
+| 19 | 58 km from Panaji | tentative | 22.3 [11.6, 33.4] | 2.5 | 0.161 | unattributed | 512 |
 | 20 | 133 km from Bhuj | tentative | 27.6 [14.2, 41.4] | 2.3 | 0.205 | unattributed | 484 |
 | 21 | 26 km from Shwebo | tentative | 9.6 [5.1, 14.1] | 2.3 | 0.205 | unattributed | 472 |
 | 22 | 81 km from Nawabganj | tentative | 13.9 [6.7, 21.4] | 2.2 | 0.229 | unattributed | 460 |

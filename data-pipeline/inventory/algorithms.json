@@ -154,9 +154,9 @@
    "code": "F2",
    "name": "EFA (evidence-fusion attribution, land-use leg)",
    "stage": "attribution",
-   "status": "failed",
-   "in_inventory": false,
-   "result": "top sector correct for 5 of 7 reference sites from OpenStreetMap facilities within 25 km; 0 confidently wrong",
+   "status": "validated",
+   "in_inventory": true,
+   "result": "top sector correct for 6 of 7 reference sites from OpenStreetMap facilities within 25 km; 0 confidently wrong",
    "evidence": "data-pipeline/r5/efa.json",
    "novelty": "new"
   },
@@ -194,9 +194,9 @@
    "code": "H1",
    "name": "VOIT (value-of-information tasking)",
    "stage": "closing the loop",
-   "status": "validated",
-   "in_inventory": true,
-   "result": "backtest: of sites not yet significant in 2023-24, the top third by VOI were re-detected in 2025-26 54% of the time vs 18% for the rest (Fisher p 0.025, n 41); the inventory recommends its top 5 for a high-resolution overpass",
+   "status": "failed",
+   "in_inventory": false,
+   "result": "backtest: of sites not yet significant in 2023-24, the top third by VOI were re-detected in 2025-26 23% of the time vs 18% for the rest (Fisher p 0.499, n 41); the inventory recommends its top 5 for a high-resolution overpass",
    "evidence": "data-pipeline/r5/voit.json",
    "novelty": "new"
   }

@@ -1,12 +1,12 @@
 {
- "generated_utc": "2026-09-26T23:16:09.869341+00:00",
- "code_version": "d4ab755",
- "runtime_s": 1229.5,
+ "generated_utc": "2026-09-27T11:15:10.730474+00:00",
+ "code_version": "5c7a191",
+ "runtime_s": 1235.5,
  "data_span": {
   "first": "2023-01-01",
   "last": "2026-05-31"
  },
- "n_pixels": 17278006,
+ "n_pixels": 17285911,
  "n_tested": 54,
  "n_confirmed": 12,
  "n_detected": 14,
@@ -119,7 +119,51 @@
    "obc_slope": 0.991822814958306,
    "sector": "landfill",
    "sector_basis": "cited facility (reference site)",
-   "attribution": null,
+   "attribution": {
+    "posterior": {
+     "landfill": 0.8923197775089954,
+     "coal": 0.009703358411408437,
+     "oil_gas": 0.09797686407959627
+    },
+    "top": "landfill",
+    "attributed": "landfill",
+    "agriculture_signal": 0.0,
+    "voters": [
+     {
+      "sector": "landfill",
+      "km": 0.2
+     },
+     {
+      "sector": "oil_gas",
+      "km": 0.2
+     },
+     {
+      "sector": "landfill",
+      "km": 0.6
+     },
+     {
+      "sector": "landfill",
+      "km": 0.8
+     },
+     {
+      "sector": "landfill",
+      "km": 1.4
+     },
+     {
+      "sector": "landfill",
+      "km": 1.8
+     },
+     {
+      "sector": "landfill",
+      "km": 3.1
+     },
+     {
+      "sector": "landfill",
+      "km": 3.6
+     }
+    ],
+    "n_facilities": 93
+   },
    "chemistry": {
     "status": "classified",
     "ratio": 0.5424132424688849,
@@ -192,6 +236,200 @@
     "p_real_ramp": 0.9999999999999238
    },
    "priority_rank": 1
+  },
+  {
+   "slug": "c02",
+   "name": "near Lahore",
+   "lat": 31.5,
+   "lon": 74.25,
+   "kind": "screen_candidate",
+   "source_reference": null,
+   "in_india": false,
+   "screen": {
+    "rank": 2,
+    "z": 8.804568334675865,
+    "hits": [],
+    "nearest_km": 0.0
+   },
+   "corroboration": {
+    "second_method": {
+     "check": "cross-sectional flux agrees (z > 2)",
+     "z": 6.447223763601218,
+     "passed": true,
+     "false_pass_rate": 0.0,
+     "independence": "same data, different estimator"
+    },
+    "temporal": {
+     "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
+     "z_early": 8.65804806647246,
+     "z_late": 5.7882914617196235,
+     "passed": true,
+     "status": "evaluated",
+     "false_pass_rate": 0.0,
+     "independence": "independent data"
+    },
+    "co": {
+     "check": "co-emitted CO detected (z > 2)",
+     "z": 7.360997143232434,
+     "passed": true,
+     "false_pass_rate": 0.041666666666666664,
+     "independence": "independent species, same overpasses"
+    },
+    "blind_screen": {
+     "check": "found by the national screen with no site list (<= 25 km)",
+     "km": 0.0,
+     "passed": true,
+     "false_pass_rate": null,
+     "independence": "independent algorithm, daily grids"
+    },
+    "not_used": {
+     "wind_invariance": "not used: the wind-direction test failed validation on real data (R5: 21% false rejects, 8% power)"
+    },
+    "n_passed": 4,
+    "confirming": true
+   },
+   "review": {
+    "state": "machine_candidate",
+    "label": "Machine candidate: awaiting analyst review",
+    "date": null,
+    "organisation": null
+   },
+   "status": "confirmed",
+   "z": 7.979835620714002,
+   "p": 3.171356433887283e-08,
+   "q": 1.5671146266364653e-06,
+   "rate_gamma1_kg_h": 26817.726332088314,
+   "null_floor_1sigma_kg_h": 3523.653714946145,
+   "rate_t_h": {
+    "p16": 30.675285834298233,
+    "p50": 36.39174828650329,
+    "p84": 42.69852699657137,
+    "upper_limit_p84": null
+   },
+   "gamma": {
+    "value": 1.29945425264859,
+    "sd": 0.12005061804562257,
+    "source": "site ERA5"
+   },
+   "obc_slope": 0.991822814958306,
+   "sector": "landfill",
+   "sector_basis": "EFA: OpenStreetMap facilities within 25 km (posterior 0.80)",
+   "attribution": {
+    "posterior": {
+     "landfill": 0.8015513938442085,
+     "coal": 0.09922430307789579,
+     "oil_gas": 0.09922430307789579
+    },
+    "top": "landfill",
+    "attributed": "landfill",
+    "agriculture_signal": 0.061,
+    "voters": [
+     {
+      "sector": "landfill",
+      "km": 9.7
+     },
+     {
+      "sector": "landfill",
+      "km": 11.0
+     },
+     {
+      "sector": "landfill",
+      "km": 13.4
+     },
+     {
+      "sector": "landfill",
+      "km": 14.4
+     },
+     {
+      "sector": "landfill",
+      "km": 16.0
+     },
+     {
+      "sector": "landfill",
+      "km": 18.1
+     },
+     {
+      "sector": "landfill",
+      "km": 18.6
+     },
+     {
+      "sector": "landfill",
+      "km": 18.6
+     }
+    ],
+    "n_facilities": 9
+   },
+   "chemistry": {
+    "status": "classified",
+    "ratio": 0.6188499618872467,
+    "ci68": [
+     0.5934158962624981,
+     0.6489734286172872
+    ],
+    "process": "non-combustion: anaerobic decay, coal seam or gas release (CO/CH4 < 1)",
+    "n_overpasses": 248
+   },
+   "priority": {
+    "avoidable_tco2e20_per_yr": [
+     12235323.867109554,
+     16769551.368543323,
+     22342785.001312263
+    ],
+    "abatement_cost_inr_per_yr": [
+     1699536087.48563,
+     2618807685.696768,
+     3819033932.711733
+    ],
+    "wrpi_tco2e20_per_lakh_inr": [
+     437.17866269052945,
+     631.187375422495,
+     963.6168546001404
+    ],
+    "p_real": 0.9999984328853734,
+    "sector": "landfill",
+    "fx_inr_per_usd": 95.82
+   },
+   "evidence": {
+    "n_overpasses": 248,
+    "first_overpass": "2023-01-16",
+    "last_overpass": "2026-05-05",
+    "overpasses_per_month": {
+     "2023-01": 5,
+     "2023-02": 9,
+     "2023-03": 6,
+     "2023-04": 10,
+     "2023-05": 5,
+     "2023-10": 15,
+     "2023-11": 7,
+     "2023-12": 12,
+     "2024-01": 1,
+     "2024-02": 9,
+     "2024-03": 10,
+     "2024-04": 7,
+     "2024-05": 3,
+     "2024-10": 16,
+     "2024-11": 12,
+     "2024-12": 11,
+     "2025-01": 9,
+     "2025-02": 12,
+     "2025-03": 11,
+     "2025-04": 9,
+     "2025-10": 16,
+     "2025-11": 16,
+     "2025-12": 7,
+     "2026-01": 2,
+     "2026-02": 14,
+     "2026-03": 7,
+     "2026-04": 6,
+     "2026-05": 1
+    },
+    "mean_wind10_ms": 2.070955561484114
+   },
+   "tasking": {
+    "voi": 0.0,
+    "p_real_ramp": 0.9999999999540887
+   },
+   "priority_rank": 2
   },
   {
    "slug": "deonar",
@@ -275,7 +513,51 @@
    "obc_slope": 0.991822814958306,
    "sector": "landfill",
    "sector_basis": "cited facility (reference site)",
-   "attribution": null,
+   "attribution": {
+    "posterior": {
+     "landfill": 0.830873870526762,
+     "coal": 0.04937946315146489,
+     "oil_gas": 0.11974666632177315
+    },
+    "top": "landfill",
+    "attributed": "landfill",
+    "agriculture_signal": 0.0,
+    "voters": [
+     {
+      "sector": "landfill",
+      "km": 1.1
+     },
+     {
+      "sector": "landfill",
+      "km": 1.3
+     },
+     {
+      "sector": "landfill",
+      "km": 2.7
+     },
+     {
+      "sector": "landfill",
+      "km": 2.7
+     },
+     {
+      "sector": "landfill",
+      "km": 3.0
+     },
+     {
+      "sector": "landfill",
+      "km": 3.9
+     },
+     {
+      "sector": "oil_gas",
+      "km": 4.2
+     },
+     {
+      "sector": "oil_gas",
+      "km": 4.3
+     }
+    ],
+    "n_facilities": 74
+   },
    "chemistry": {
     "status": "classified",
     "ratio": 0.5012153025227408,
@@ -345,7 +627,7 @@
     "voi": 0.0,
     "p_real_ramp": 0.9998652223641161
    },
-   "priority_rank": 2
+   "priority_rank": 3
   },
   {
    "slug": "pirana",
@@ -429,7 +711,51 @@
    "obc_slope": 0.991822814958306,
    "sector": "landfill",
    "sector_basis": "cited facility (reference site)",
-   "attribution": null,
+   "attribution": {
+    "posterior": {
+     "landfill": 0.7357755832454956,
+     "coal": 0.151974637507317,
+     "oil_gas": 0.1122497792471873
+    },
+    "top": "landfill",
+    "attributed": "landfill",
+    "agriculture_signal": 0.0,
+    "voters": [
+     {
+      "sector": "landfill",
+      "km": 5.7
+     },
+     {
+      "sector": "landfill",
+      "km": 5.7
+     },
+     {
+      "sector": "landfill",
+      "km": 6.0
+     },
+     {
+      "sector": "landfill",
+      "km": 7.5
+     },
+     {
+      "sector": "coal",
+      "km": 7.5
+     },
+     {
+      "sector": "oil_gas",
+      "km": 10.2
+     },
+     {
+      "sector": "landfill",
+      "km": 11.8
+     },
+     {
+      "sector": "landfill",
+      "km": 13.8
+     }
+    ],
+    "n_facilities": 15
+   },
    "chemistry": {
     "status": "inconclusive",
     "ratio": 1.019727153997059,
@@ -501,7 +827,7 @@
     "voi": 0.0,
     "p_real_ramp": 0.9992303935346911
    },
-   "priority_rank": 3
+   "priority_rank": 4
   },
   {
    "slug": "jawaharnagar",
@@ -585,7 +911,51 @@
    "obc_slope": 0.991822814958306,
    "sector": "landfill",
    "sector_basis": "cited facility (reference site)",
-   "attribution": null,
+   "attribution": {
+    "posterior": {
+     "landfill": 0.6727187570739279,
+     "coal": 0.08851780310692009,
+     "oil_gas": 0.23876343981915216
+    },
+    "top": "landfill",
+    "attributed": "landfill",
+    "agriculture_signal": 0.615,
+    "voters": [
+     {
+      "sector": "landfill",
+      "km": 13.6
+     },
+     {
+      "sector": "oil_gas",
+      "km": 14.9
+     },
+     {
+      "sector": "landfill",
+      "km": 15.5
+     },
+     {
+      "sector": "landfill",
+      "km": 15.6
+     },
+     {
+      "sector": "oil_gas",
+      "km": 16.7
+     },
+     {
+      "sector": "landfill",
+      "km": 16.8
+     },
+     {
+      "sector": "landfill",
+      "km": 16.9
+     },
+     {
+      "sector": "landfill",
+      "km": 17.1
+     }
+    ],
+    "n_facilities": 15
+   },
    "chemistry": {
     "status": "classified",
     "ratio": 0.6789855770659681,
@@ -653,7 +1023,198 @@
     "voi": 0.0,
     "p_real_ramp": 0.9945971442995981
    },
-   "priority_rank": 4
+   "priority_rank": 5
+  },
+  {
+   "slug": "c01",
+   "name": "near Dhaka",
+   "lat": 23.75,
+   "lon": 90.5,
+   "kind": "screen_candidate",
+   "source_reference": null,
+   "in_india": false,
+   "screen": {
+    "rank": 1,
+    "z": 13.851840061405065,
+    "hits": [],
+    "nearest_km": 0.0
+   },
+   "corroboration": {
+    "second_method": {
+     "check": "cross-sectional flux agrees (z > 2)",
+     "z": 8.399168271548486,
+     "passed": true,
+     "false_pass_rate": 0.0,
+     "independence": "same data, different estimator"
+    },
+    "temporal": {
+     "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
+     "z_early": 8.929291967289815,
+     "z_late": 8.810324290102608,
+     "passed": true,
+     "status": "evaluated",
+     "false_pass_rate": 0.0,
+     "independence": "independent data"
+    },
+    "co": {
+     "check": "co-emitted CO detected (z > 2)",
+     "z": 4.9013883841523755,
+     "passed": true,
+     "false_pass_rate": 0.041666666666666664,
+     "independence": "independent species, same overpasses"
+    },
+    "blind_screen": {
+     "check": "found by the national screen with no site list (<= 25 km)",
+     "km": 0.0,
+     "passed": true,
+     "false_pass_rate": null,
+     "independence": "independent algorithm, daily grids"
+    },
+    "not_used": {
+     "wind_invariance": "not used: the wind-direction test failed validation on real data (R5: 21% false rejects, 8% power)"
+    },
+    "n_passed": 4,
+    "confirming": true
+   },
+   "review": {
+    "state": "machine_candidate",
+    "label": "Machine candidate: awaiting analyst review",
+    "date": null,
+    "organisation": null
+   },
+   "status": "confirmed",
+   "z": 10.30606531555561,
+   "p": 3.1798206712360747e-10,
+   "q": 3.928242999374056e-08,
+   "rate_gamma1_kg_h": 56988.93923898384,
+   "null_floor_1sigma_kg_h": 5815.156692420966,
+   "rate_t_h": {
+    "p16": 69.06320524664955,
+    "p50": 79.38783462619841,
+    "p84": 90.43293451722674,
+    "upper_limit_p84": null
+   },
+   "gamma": {
+    "value": 1.3210455009208832,
+    "sd": 0.1,
+    "source": "site ERA5"
+   },
+   "obc_slope": 0.991822814958306,
+   "sector": "landfill",
+   "sector_basis": "EFA: OpenStreetMap facilities within 25 km (posterior 0.75)",
+   "attribution": {
+    "posterior": {
+     "landfill": 0.7534357027615555,
+     "coal": 0.01827889603368114,
+     "oil_gas": 0.22828540120476334
+    },
+    "top": "landfill",
+    "attributed": "landfill",
+    "agriculture_signal": 0.195,
+    "voters": [
+     {
+      "sector": "landfill",
+      "km": 2.5
+     },
+     {
+      "sector": "landfill",
+      "km": 3.3
+     },
+     {
+      "sector": "landfill",
+      "km": 3.4
+     },
+     {
+      "sector": "landfill",
+      "km": 5.1
+     },
+     {
+      "sector": "landfill",
+      "km": 5.4
+     },
+     {
+      "sector": "landfill",
+      "km": 5.4
+     },
+     {
+      "sector": "landfill",
+      "km": 5.4
+     },
+     {
+      "sector": "landfill",
+      "km": 5.5
+     }
+    ],
+    "n_facilities": 33
+   },
+   "chemistry": {
+    "status": "classified",
+    "ratio": 0.2334142382248228,
+    "ci68": [
+     0.21560116289621534,
+     0.2566009841693504
+    ],
+    "process": "non-combustion: anaerobic decay, coal seam or gas release (CO/CH4 < 1)",
+    "n_overpasses": 157
+   },
+   "priority": {
+    "avoidable_tco2e20_per_yr": [
+     26973607.539868873,
+     36654331.774978966,
+     48276497.21163892
+    ],
+    "abatement_cost_inr_per_yr": [
+     3790028163.2602286,
+     5832477448.002472,
+     8238989808.749105
+    ],
+    "wrpi_tco2e20_per_lakh_inr": [
+     441.44922250109454,
+     622.1739363628062,
+     964.1473859509723
+    ],
+    "p_real": 0.99999996071757,
+    "sector": "landfill",
+    "fx_inr_per_usd": 95.82
+   },
+   "evidence": {
+    "n_overpasses": 157,
+    "first_overpass": "2023-01-02",
+    "last_overpass": "2026-05-18",
+    "overpasses_per_month": {
+     "2023-01": 6,
+     "2023-02": 9,
+     "2023-03": 3,
+     "2023-04": 6,
+     "2023-05": 1,
+     "2023-10": 2,
+     "2023-11": 3,
+     "2023-12": 7,
+     "2024-01": 9,
+     "2024-02": 7,
+     "2024-03": 9,
+     "2024-04": 3,
+     "2024-05": 1,
+     "2024-11": 5,
+     "2024-12": 13,
+     "2025-01": 13,
+     "2025-02": 9,
+     "2025-03": 13,
+     "2025-04": 1,
+     "2025-11": 10,
+     "2025-12": 4,
+     "2026-01": 8,
+     "2026-02": 11,
+     "2026-04": 3,
+     "2026-05": 1
+    },
+    "mean_wind10_ms": 2.2400117891161933
+   },
+   "tasking": {
+    "voi": 0.0,
+    "p_real_ramp": 1.0
+   },
+   "priority_rank": 6
   },
   {
    "slug": "khajod",
@@ -732,7 +1293,51 @@
    "obc_slope": 0.991822814958306,
    "sector": "landfill",
    "sector_basis": "cited facility (reference site)",
-   "attribution": null,
+   "attribution": {
+    "posterior": {
+     "landfill": 0.41553114340723224,
+     "coal": 0.1575894953204856,
+     "oil_gas": 0.4268793612722822
+    },
+    "top": "oil_gas",
+    "attributed": null,
+    "agriculture_signal": 0.0,
+    "voters": [
+     {
+      "sector": "landfill",
+      "km": 9.3
+     },
+     {
+      "sector": "oil_gas",
+      "km": 12.0
+     },
+     {
+      "sector": "landfill",
+      "km": 16.2
+     },
+     {
+      "sector": "oil_gas",
+      "km": 20.8
+     },
+     {
+      "sector": "oil_gas",
+      "km": 23.2
+     },
+     {
+      "sector": "oil_gas",
+      "km": 23.4
+     },
+     {
+      "sector": "oil_gas",
+      "km": 23.3
+     },
+     {
+      "sector": "coal",
+      "km": 25.0
+     }
+    ],
+    "n_facilities": 8
+   },
    "chemistry": {
     "status": "classified",
     "ratio": 0.7794073673947937,
@@ -803,303 +1408,6 @@
    "tasking": {
     "voi": 0.0,
     "p_real_ramp": 0.9897327947686426
-   },
-   "priority_rank": 5
-  },
-  {
-   "slug": "c02",
-   "name": "near Lahore",
-   "lat": 31.5,
-   "lon": 74.25,
-   "kind": "screen_candidate",
-   "source_reference": null,
-   "in_india": false,
-   "screen": {
-    "rank": 2,
-    "z": 8.804568334675865,
-    "hits": [],
-    "nearest_km": 0.0
-   },
-   "corroboration": {
-    "second_method": {
-     "check": "cross-sectional flux agrees (z > 2)",
-     "z": 6.447223763601218,
-     "passed": true,
-     "false_pass_rate": 0.0,
-     "independence": "same data, different estimator"
-    },
-    "temporal": {
-     "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
-     "z_early": 8.65804806647246,
-     "z_late": 5.7882914617196235,
-     "passed": true,
-     "status": "evaluated",
-     "false_pass_rate": 0.0,
-     "independence": "independent data"
-    },
-    "co": {
-     "check": "co-emitted CO detected (z > 2)",
-     "z": 7.360997143232434,
-     "passed": true,
-     "false_pass_rate": 0.041666666666666664,
-     "independence": "independent species, same overpasses"
-    },
-    "blind_screen": {
-     "check": "found by the national screen with no site list (<= 25 km)",
-     "km": 0.0,
-     "passed": true,
-     "false_pass_rate": null,
-     "independence": "independent algorithm, daily grids"
-    },
-    "not_used": {
-     "wind_invariance": "not used: the wind-direction test failed validation on real data (R5: 21% false rejects, 8% power)"
-    },
-    "n_passed": 4,
-    "confirming": true
-   },
-   "review": {
-    "state": "machine_candidate",
-    "label": "Machine candidate: awaiting analyst review",
-    "date": null,
-    "organisation": null
-   },
-   "status": "confirmed",
-   "z": 7.979835620714002,
-   "p": 3.171356433887283e-08,
-   "q": 1.5671146266364653e-06,
-   "rate_gamma1_kg_h": 26817.726332088314,
-   "null_floor_1sigma_kg_h": 3523.653714946145,
-   "rate_t_h": {
-    "p16": 30.675285834298233,
-    "p50": 36.39174828650329,
-    "p84": 42.69852699657137,
-    "upper_limit_p84": null
-   },
-   "gamma": {
-    "value": 1.29945425264859,
-    "sd": 0.12005061804562257,
-    "source": "site ERA5"
-   },
-   "obc_slope": 0.991822814958306,
-   "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
-   "attribution": null,
-   "chemistry": {
-    "status": "classified",
-    "ratio": 0.6188499618872467,
-    "ci68": [
-     0.5934158962624981,
-     0.6489734286172872
-    ],
-    "process": "non-combustion: anaerobic decay, coal seam or gas release (CO/CH4 < 1)",
-    "n_overpasses": 248
-   },
-   "priority": {
-    "avoidable_tco2e20_per_yr": [
-     11950596.634341598,
-     15944266.24689984,
-     20888680.047363374
-    ],
-    "abatement_cost_inr_per_yr": [
-     0.0,
-     2650033064.7063003,
-     7096026833.782008
-    ],
-    "wrpi_tco2e20_per_lakh_inr": [
-     219.0544878958144,
-     616.7066080061844,
-     7368077.576732602
-    ],
-    "p_real": 0.9999984328853734,
-    "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
-   },
-   "evidence": {
-    "n_overpasses": 248,
-    "first_overpass": "2023-01-16",
-    "last_overpass": "2026-05-05",
-    "overpasses_per_month": {
-     "2023-01": 5,
-     "2023-02": 9,
-     "2023-03": 6,
-     "2023-04": 10,
-     "2023-05": 5,
-     "2023-10": 15,
-     "2023-11": 7,
-     "2023-12": 12,
-     "2024-01": 1,
-     "2024-02": 9,
-     "2024-03": 10,
-     "2024-04": 7,
-     "2024-05": 3,
-     "2024-10": 16,
-     "2024-11": 12,
-     "2024-12": 11,
-     "2025-01": 9,
-     "2025-02": 12,
-     "2025-03": 11,
-     "2025-04": 9,
-     "2025-10": 16,
-     "2025-11": 16,
-     "2025-12": 7,
-     "2026-01": 2,
-     "2026-02": 14,
-     "2026-03": 7,
-     "2026-04": 6,
-     "2026-05": 1
-    },
-    "mean_wind10_ms": 2.070955561484114
-   },
-   "tasking": {
-    "voi": 0.0,
-    "p_real_ramp": 0.9999999999540887
-   },
-   "priority_rank": 6
-  },
-  {
-   "slug": "c01",
-   "name": "near Dhaka",
-   "lat": 23.75,
-   "lon": 90.5,
-   "kind": "screen_candidate",
-   "source_reference": null,
-   "in_india": false,
-   "screen": {
-    "rank": 1,
-    "z": 13.851840061405065,
-    "hits": [],
-    "nearest_km": 0.0
-   },
-   "corroboration": {
-    "second_method": {
-     "check": "cross-sectional flux agrees (z > 2)",
-     "z": 8.399168271548486,
-     "passed": true,
-     "false_pass_rate": 0.0,
-     "independence": "same data, different estimator"
-    },
-    "temporal": {
-     "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
-     "z_early": 8.929291967289815,
-     "z_late": 8.810324290102608,
-     "passed": true,
-     "status": "evaluated",
-     "false_pass_rate": 0.0,
-     "independence": "independent data"
-    },
-    "co": {
-     "check": "co-emitted CO detected (z > 2)",
-     "z": 4.9013883841523755,
-     "passed": true,
-     "false_pass_rate": 0.041666666666666664,
-     "independence": "independent species, same overpasses"
-    },
-    "blind_screen": {
-     "check": "found by the national screen with no site list (<= 25 km)",
-     "km": 0.0,
-     "passed": true,
-     "false_pass_rate": null,
-     "independence": "independent algorithm, daily grids"
-    },
-    "not_used": {
-     "wind_invariance": "not used: the wind-direction test failed validation on real data (R5: 21% false rejects, 8% power)"
-    },
-    "n_passed": 4,
-    "confirming": true
-   },
-   "review": {
-    "state": "machine_candidate",
-    "label": "Machine candidate: awaiting analyst review",
-    "date": null,
-    "organisation": null
-   },
-   "status": "confirmed",
-   "z": 10.30606531555561,
-   "p": 3.1798206712360747e-10,
-   "q": 3.928242999374056e-08,
-   "rate_gamma1_kg_h": 56988.93923898384,
-   "null_floor_1sigma_kg_h": 5815.156692420966,
-   "rate_t_h": {
-    "p16": 69.06320524664955,
-    "p50": 79.38783462619841,
-    "p84": 90.43293451722674,
-    "upper_limit_p84": null
-   },
-   "gamma": {
-    "value": 1.3210455009208832,
-    "sd": 0.1,
-    "source": "site ERA5"
-   },
-   "obc_slope": 0.991822814958306,
-   "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
-   "attribution": null,
-   "chemistry": {
-    "status": "classified",
-    "ratio": 0.2334142382248228,
-    "ci68": [
-     0.21560116289621534,
-     0.2566009841693504
-    ],
-    "process": "non-combustion: anaerobic decay, coal seam or gas release (CO/CH4 < 1)",
-    "n_overpasses": 157
-   },
-   "priority": {
-    "avoidable_tco2e20_per_yr": [
-     26412541.024142317,
-     34449874.61663273,
-     44357702.504738286
-    ],
-    "abatement_cost_inr_per_yr": [
-     0.0,
-     5894504897.284151,
-     15084801484.318071
-    ],
-    "wrpi_tco2e20_per_lakh_inr": [
-     225.62033206944807,
-     612.8817904055952,
-     7217226.426875744
-    ],
-    "p_real": 0.99999996071757,
-    "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
-   },
-   "evidence": {
-    "n_overpasses": 157,
-    "first_overpass": "2023-01-02",
-    "last_overpass": "2026-05-18",
-    "overpasses_per_month": {
-     "2023-01": 6,
-     "2023-02": 9,
-     "2023-03": 3,
-     "2023-04": 6,
-     "2023-05": 1,
-     "2023-10": 2,
-     "2023-11": 3,
-     "2023-12": 7,
-     "2024-01": 9,
-     "2024-02": 7,
-     "2024-03": 9,
-     "2024-04": 3,
-     "2024-05": 1,
-     "2024-11": 5,
-     "2024-12": 13,
-     "2025-01": 13,
-     "2025-02": 9,
-     "2025-03": 13,
-     "2025-04": 1,
-     "2025-11": 10,
-     "2025-12": 4,
-     "2026-01": 8,
-     "2026-02": 11,
-     "2026-04": 3,
-     "2026-05": 1
-    },
-    "mean_wind10_ms": 2.2400117891161933
-   },
-   "tasking": {
-    "voi": 0.0,
-    "p_real_ramp": 1.0
    },
    "priority_rank": 7
   },
@@ -1179,7 +1487,7 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
+   "sector_basis": "no facility data yet",
    "attribution": null,
    "chemistry": {
     "status": "classified",
@@ -1330,7 +1638,7 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
+   "sector_basis": "no facility data yet",
    "attribution": null,
    "chemistry": {
     "status": "classified",
@@ -1477,7 +1785,7 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
+   "sector_basis": "no facility data yet",
    "attribution": null,
    "chemistry": {
     "status": "classified",
@@ -1624,7 +1932,7 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
+   "sector_basis": "no facility data yet",
    "attribution": null,
    "chemistry": {
     "status": "classified",
@@ -1779,7 +2087,51 @@
    "obc_slope": 0.991822814958306,
    "sector": "coal",
    "sector_basis": "cited facility (reference site)",
-   "attribution": null,
+   "attribution": {
+    "posterior": {
+     "landfill": 0.08072438611311102,
+     "coal": 0.9042069790768607,
+     "oil_gas": 0.015068634810028372
+    },
+    "top": "coal",
+    "attributed": "coal",
+    "agriculture_signal": 0.0,
+    "voters": [
+     {
+      "sector": "coal",
+      "km": 2.3
+     },
+     {
+      "sector": "coal",
+      "km": 3.5
+     },
+     {
+      "sector": "coal",
+      "km": 4.0
+     },
+     {
+      "sector": "coal",
+      "km": 4.2
+     },
+     {
+      "sector": "landfill",
+      "km": 4.9
+     },
+     {
+      "sector": "coal",
+      "km": 6.0
+     },
+     {
+      "sector": "coal",
+      "km": 6.2
+     },
+     {
+      "sector": "coal",
+      "km": 6.3
+     }
+    ],
+    "n_facilities": 60
+   },
    "chemistry": {
     "status": "classified",
     "ratio": 2.186910594876295,
@@ -1928,7 +2280,7 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
+   "sector_basis": "no facility data yet",
    "attribution": null,
    "chemistry": {
     "status": "classified",
@@ -2078,7 +2430,7 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
+   "sector_basis": "no facility data yet",
    "attribution": null,
    "chemistry": {
     "status": "classified",
@@ -2152,6 +2504,182 @@
     "recommend": false
    },
    "priority_rank": 14
+  },
+  {
+   "slug": "c03",
+   "name": "38 km from Dibrugarh",
+   "lat": 27.25,
+   "lon": 95.25,
+   "kind": "screen_candidate",
+   "source_reference": null,
+   "in_india": true,
+   "screen": {
+    "rank": 3,
+    "z": 6.55695504939756,
+    "hits": [],
+    "nearest_km": 0.0
+   },
+   "corroboration": {
+    "second_method": {
+     "check": "cross-sectional flux agrees (z > 2)",
+     "z": 2.730121131939068,
+     "passed": true,
+     "false_pass_rate": 0.0,
+     "independence": "same data, different estimator"
+    },
+    "temporal": {
+     "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
+     "z_early": 2.2663937037776325,
+     "z_late": 2.7479172230672124,
+     "passed": true,
+     "status": "evaluated",
+     "false_pass_rate": 0.0,
+     "independence": "independent data"
+    },
+    "co": {
+     "check": "co-emitted CO detected (z > 2)",
+     "z": 1.6271212679716134,
+     "passed": false,
+     "false_pass_rate": 0.0,
+     "independence": "independent species, same overpasses"
+    },
+    "blind_screen": {
+     "check": "found by the national screen with no site list (<= 25 km)",
+     "km": 0.0,
+     "passed": true,
+     "false_pass_rate": null,
+     "independence": "independent algorithm, daily grids"
+    },
+    "not_used": {
+     "wind_invariance": "not used: the wind-direction test failed validation on real data (R5: 21% false rejects, 8% power)"
+    },
+    "n_passed": 3,
+    "confirming": true
+   },
+   "review": {
+    "state": "machine_candidate",
+    "label": "Machine candidate: awaiting analyst review",
+    "date": null,
+    "organisation": null
+   },
+   "status": "tentative",
+   "z": 2.798240920401602,
+   "p": 0.00971825060896919,
+   "q": 0.1412423339621338,
+   "rate_gamma1_kg_h": 19095.255640716077,
+   "null_floor_1sigma_kg_h": 7791.4843717159465,
+   "rate_t_h": {
+    "p16": 17.970250379586002,
+    "p50": 28.439630611929374,
+    "p84": 39.71276084501673,
+    "upper_limit_p84": null
+   },
+   "gamma": {
+    "value": 1.2983020216596761,
+    "sd": 0.1,
+    "source": "site ERA5"
+   },
+   "obc_slope": 0.991822814958306,
+   "sector": "oil_gas",
+   "sector_basis": "EFA: OpenStreetMap facilities within 25 km (posterior 0.80)",
+   "attribution": {
+    "posterior": {
+     "landfill": 0.0998267789517561,
+     "coal": 0.0998267789517561,
+     "oil_gas": 0.8003464420964879
+    },
+    "top": "oil_gas",
+    "attributed": "oil_gas",
+    "agriculture_signal": 0.0,
+    "voters": [
+     {
+      "sector": "oil_gas",
+      "km": 1.4
+     },
+     {
+      "sector": "oil_gas",
+      "km": 11.2
+     },
+     {
+      "sector": "oil_gas",
+      "km": 15.5
+     },
+     {
+      "sector": "oil_gas",
+      "km": 19.2
+     },
+     {
+      "sector": "oil_gas",
+      "km": 20.3
+     }
+    ],
+    "n_facilities": 5
+   },
+   "chemistry": {
+    "status": "classified",
+    "ratio": 0.18304665887009391,
+    "ci68": [
+     0.16250463667230852,
+     0.21906265970221134
+    ],
+    "process": "non-combustion: anaerobic decay, coal seam or gas release (CO/CH4 < 1)",
+    "n_overpasses": 69
+   },
+   "priority": {
+    "avoidable_tco2e20_per_yr": [
+     7205386.584251791,
+     11750040.389253683,
+     17870730.658848118
+    ],
+    "abatement_cost_inr_per_yr": [
+     0.0,
+     14917013.27860709,
+     5468827225.587303
+    ],
+    "wrpi_tco2e20_per_lakh_inr": [
+     180.45914707041774,
+     30920.543458121458,
+     7675186.771229782
+    ],
+    "p_real": 0.8587576660378662,
+    "sector": "oil_gas",
+    "fx_inr_per_usd": 95.82
+   },
+   "evidence": {
+    "n_overpasses": 69,
+    "first_overpass": "2023-01-21",
+    "last_overpass": "2026-04-23",
+    "overpasses_per_month": {
+     "2023-01": 2,
+     "2023-02": 6,
+     "2023-04": 1,
+     "2023-05": 2,
+     "2024-01": 1,
+     "2024-03": 3,
+     "2024-04": 1,
+     "2024-10": 1,
+     "2024-11": 4,
+     "2024-12": 8,
+     "2025-01": 8,
+     "2025-02": 4,
+     "2025-03": 1,
+     "2025-10": 1,
+     "2025-11": 6,
+     "2025-12": 3,
+     "2026-01": 6,
+     "2026-02": 8,
+     "2026-03": 2,
+     "2026-04": 1
+    },
+    "mean_wind10_ms": 1.4558996785697331
+   },
+   "tasking": {
+    "voi": 2.493399892981988,
+    "p_real_ramp": 0.9028977196335659,
+    "rank": 21,
+    "recommend": false
+   },
+   "priority_rank": 15
   },
   {
    "slug": "c18",
@@ -2229,7 +2757,7 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
+   "sector_basis": "no facility data yet",
    "attribution": null,
    "chemistry": {
     "status": "classified",
@@ -2301,7 +2829,7 @@
     "rank": 35,
     "recommend": false
    },
-   "priority_rank": 15
+   "priority_rank": 16
   },
   {
    "slug": "c41",
@@ -2379,7 +2907,7 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
+   "sector_basis": "no facility data yet",
    "attribution": null,
    "chemistry": {
     "status": "classified",
@@ -2445,44 +2973,44 @@
     "rank": 36,
     "recommend": false
    },
-   "priority_rank": 16
+   "priority_rank": 17
   },
   {
-   "slug": "c03",
-   "name": "38 km from Dibrugarh",
-   "lat": 27.25,
-   "lon": 95.25,
+   "slug": "c10",
+   "name": "near Lucknow",
+   "lat": 27.0,
+   "lon": 80.75,
    "kind": "screen_candidate",
    "source_reference": null,
    "in_india": true,
    "screen": {
-    "rank": 3,
-    "z": 6.55695504939756,
+    "rank": 10,
+    "z": 4.58890391302693,
     "hits": [],
     "nearest_km": 0.0
    },
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": 2.730121131939068,
-     "passed": true,
-     "false_pass_rate": 0.0,
+     "z": 1.843910814589881,
+     "passed": false,
+     "false_pass_rate": 0.041666666666666664,
      "independence": "same data, different estimator"
     },
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
-     "z_early": 2.2663937037776325,
-     "z_late": 2.7479172230672124,
-     "passed": true,
+     "z_early": 2.6730469404578394,
+     "z_late": 1.8958943991114332,
+     "passed": false,
      "status": "evaluated",
-     "false_pass_rate": 0.0,
+     "false_pass_rate": 0.041666666666666664,
      "independence": "independent data"
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": 1.6271212679716134,
-     "passed": false,
-     "false_pass_rate": 0.0,
+     "z": 2.186946510852693,
+     "passed": true,
+     "false_pass_rate": 0.041666666666666664,
      "independence": "independent species, same overpasses"
     },
     "blind_screen": {
@@ -2495,8 +3023,8 @@
     "not_used": {
      "wind_invariance": "not used: the wind-direction test failed validation on real data (R5: 21% false rejects, 8% power)"
     },
-    "n_passed": 3,
-    "confirming": true
+    "n_passed": 2,
+    "confirming": false
    },
    "review": {
     "state": "machine_candidate",
@@ -2505,91 +3033,144 @@
     "organisation": null
    },
    "status": "tentative",
-   "z": 2.798240920401602,
-   "p": 0.00971825060896919,
-   "q": 0.1412423339621338,
-   "rate_gamma1_kg_h": 19095.255640716077,
-   "null_floor_1sigma_kg_h": 7791.4843717159465,
+   "z": 2.531088191229264,
+   "p": 0.010448376839819605,
+   "q": 0.1434174628746129,
+   "rate_gamma1_kg_h": 10848.615191744573,
+   "null_floor_1sigma_kg_h": 4271.629786653086,
    "rate_t_h": {
-    "p16": 17.970250379586002,
-    "p50": 28.439630611929374,
-    "p84": 39.71276084501673,
+    "p16": 7.892532577688706,
+    "p50": 13.923918336338385,
+    "p84": 20.157215917962937,
     "upper_limit_p84": null
    },
    "gamma": {
-    "value": 1.2983020216596761,
+    "value": 1.2893468287670953,
     "sd": 0.1,
     "source": "site ERA5"
    },
    "obc_slope": 0.991822814958306,
-   "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
-   "attribution": null,
+   "sector": "landfill",
+   "sector_basis": "EFA: OpenStreetMap facilities within 25 km (posterior 0.79)",
+   "attribution": {
+    "posterior": {
+     "landfill": 0.7943184887456338,
+     "coal": 0.10284075562718309,
+     "oil_gas": 0.10284075562718309
+    },
+    "top": "landfill",
+    "attributed": "landfill",
+    "agriculture_signal": 0.0,
+    "voters": [
+     {
+      "sector": "landfill",
+      "km": 8.5
+     },
+     {
+      "sector": "landfill",
+      "km": 9.0
+     },
+     {
+      "sector": "landfill",
+      "km": 12.3
+     },
+     {
+      "sector": "landfill",
+      "km": 15.7
+     },
+     {
+      "sector": "landfill",
+      "km": 16.7
+     },
+     {
+      "sector": "landfill",
+      "km": 20.5
+     },
+     {
+      "sector": "landfill",
+      "km": 22.4
+     },
+     {
+      "sector": "landfill",
+      "km": 22.8
+     }
+    ],
+    "n_facilities": 8
+   },
    "chemistry": {
     "status": "classified",
-    "ratio": 0.18304665887009391,
+    "ratio": 0.42554239851078535,
     "ci68": [
-     0.16250463667230852,
-     0.21906265970221134
+     0.3437469068855815,
+     0.5156399105547088
     ],
     "process": "non-combustion: anaerobic decay, coal seam or gas release (CO/CH4 < 1)",
-    "n_overpasses": 69
+    "n_overpasses": 311
    },
    "priority": {
     "avoidable_tco2e20_per_yr": [
-     7133387.512924981,
-     12294691.357468504,
-     18531918.825990215
+     3397592.4397657975,
+     6167681.00686845,
+     9964560.906060115
     ],
     "abatement_cost_inr_per_yr": [
-     0.0,
-     1824883047.36909,
-     5133622594.722084
+     498055499.3475241,
+     949680766.8287606,
+     1628795643.5224674
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     191.15822459578752,
-     538.1339352078362,
-     6312062.837346929
+     377.9006121351602,
+     536.8986400258968,
+     827.7349645306822
     ],
-    "p_real": 0.8587576660378662,
-    "sector": "unattributed",
+    "p_real": 0.8565825371253871,
+    "sector": "landfill",
     "fx_inr_per_usd": 95.82
    },
    "evidence": {
-    "n_overpasses": 69,
-    "first_overpass": "2023-01-21",
-    "last_overpass": "2026-04-23",
+    "n_overpasses": 311,
+    "first_overpass": "2023-01-05",
+    "last_overpass": "2026-05-26",
     "overpasses_per_month": {
-     "2023-01": 2,
-     "2023-02": 6,
-     "2023-04": 1,
-     "2023-05": 2,
-     "2024-01": 1,
-     "2024-03": 3,
-     "2024-04": 1,
-     "2024-10": 1,
-     "2024-11": 4,
-     "2024-12": 8,
-     "2025-01": 8,
-     "2025-02": 4,
-     "2025-03": 1,
-     "2025-10": 1,
-     "2025-11": 6,
-     "2025-12": 3,
-     "2026-01": 6,
-     "2026-02": 8,
-     "2026-03": 2,
-     "2026-04": 1
+     "2023-01": 10,
+     "2023-02": 17,
+     "2023-03": 9,
+     "2023-04": 6,
+     "2023-05": 7,
+     "2023-10": 15,
+     "2023-11": 6,
+     "2023-12": 12,
+     "2024-01": 4,
+     "2024-02": 6,
+     "2024-03": 13,
+     "2024-04": 11,
+     "2024-05": 4,
+     "2024-10": 10,
+     "2024-11": 14,
+     "2024-12": 16,
+     "2025-01": 13,
+     "2025-02": 14,
+     "2025-03": 15,
+     "2025-04": 11,
+     "2025-05": 3,
+     "2025-10": 7,
+     "2025-11": 17,
+     "2025-12": 12,
+     "2026-01": 12,
+     "2026-02": 16,
+     "2026-03": 9,
+     "2026-04": 13,
+     "2026-05": 9
     },
-    "mean_wind10_ms": 1.4558996785697331
+    "mean_wind10_ms": 3.068713212347417
    },
    "tasking": {
-    "voi": 2.493399892981988,
-    "p_real_ramp": 0.9028977196335659,
-    "rank": 21,
+    "voi": 1.7874586620163027,
+    "p_real_ramp": 0.8487502675355905,
+    "rank": 28,
     "recommend": false
    },
-   "priority_rank": 17
+   "priority_rank": 18
   },
   {
    "slug": "c36",
@@ -2667,7 +3248,7 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
+   "sector_basis": "no facility data yet",
    "attribution": null,
    "chemistry": {
     "status": "classified",
@@ -2737,159 +3318,6 @@
     "voi": 3.1079937245298854,
     "p_real_ramp": 0.8322363300076809,
     "rank": 10,
-    "recommend": false
-   },
-   "priority_rank": 18
-  },
-  {
-   "slug": "c10",
-   "name": "near Lucknow",
-   "lat": 27.0,
-   "lon": 80.75,
-   "kind": "screen_candidate",
-   "source_reference": null,
-   "in_india": true,
-   "screen": {
-    "rank": 10,
-    "z": 4.58890391302693,
-    "hits": [],
-    "nearest_km": 0.0
-   },
-   "corroboration": {
-    "second_method": {
-     "check": "cross-sectional flux agrees (z > 2)",
-     "z": 1.843910814589881,
-     "passed": false,
-     "false_pass_rate": 0.041666666666666664,
-     "independence": "same data, different estimator"
-    },
-    "temporal": {
-     "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
-     "z_early": 2.6730469404578394,
-     "z_late": 1.8958943991114332,
-     "passed": false,
-     "status": "evaluated",
-     "false_pass_rate": 0.041666666666666664,
-     "independence": "independent data"
-    },
-    "co": {
-     "check": "co-emitted CO detected (z > 2)",
-     "z": 2.186946510852693,
-     "passed": true,
-     "false_pass_rate": 0.041666666666666664,
-     "independence": "independent species, same overpasses"
-    },
-    "blind_screen": {
-     "check": "found by the national screen with no site list (<= 25 km)",
-     "km": 0.0,
-     "passed": true,
-     "false_pass_rate": null,
-     "independence": "independent algorithm, daily grids"
-    },
-    "not_used": {
-     "wind_invariance": "not used: the wind-direction test failed validation on real data (R5: 21% false rejects, 8% power)"
-    },
-    "n_passed": 2,
-    "confirming": false
-   },
-   "review": {
-    "state": "machine_candidate",
-    "label": "Machine candidate: awaiting analyst review",
-    "date": null,
-    "organisation": null
-   },
-   "status": "tentative",
-   "z": 2.531088191229264,
-   "p": 0.010448376839819605,
-   "q": 0.1434174628746129,
-   "rate_gamma1_kg_h": 10848.615191744573,
-   "null_floor_1sigma_kg_h": 4271.629786653086,
-   "rate_t_h": {
-    "p16": 7.892532577688706,
-    "p50": 13.923918336338385,
-    "p84": 20.157215917962937,
-    "upper_limit_p84": null
-   },
-   "gamma": {
-    "value": 1.2893468287670953,
-    "sd": 0.1,
-    "source": "site ERA5"
-   },
-   "obc_slope": 0.991822814958306,
-   "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
-   "attribution": null,
-   "chemistry": {
-    "status": "classified",
-    "ratio": 0.42554239851078535,
-    "ci68": [
-     0.3437469068855815,
-     0.5156399105547088
-    ],
-    "process": "non-combustion: anaerobic decay, coal seam or gas release (CO/CH4 < 1)",
-    "n_overpasses": 311
-   },
-   "priority": {
-    "avoidable_tco2e20_per_yr": [
-     3257933.7616242147,
-     5967203.570679985,
-     9249436.064660758
-    ],
-    "abatement_cost_inr_per_yr": [
-     0.0,
-     943131808.8918114,
-     2592625886.202034
-    ],
-    "wrpi_tco2e20_per_lakh_inr": [
-     184.62964102887042,
-     499.0935980508914,
-     6225570.563221594
-    ],
-    "p_real": 0.8565825371253871,
-    "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
-   },
-   "evidence": {
-    "n_overpasses": 311,
-    "first_overpass": "2023-01-05",
-    "last_overpass": "2026-05-26",
-    "overpasses_per_month": {
-     "2023-01": 10,
-     "2023-02": 17,
-     "2023-03": 9,
-     "2023-04": 6,
-     "2023-05": 7,
-     "2023-10": 15,
-     "2023-11": 6,
-     "2023-12": 12,
-     "2024-01": 4,
-     "2024-02": 6,
-     "2024-03": 13,
-     "2024-04": 11,
-     "2024-05": 4,
-     "2024-10": 10,
-     "2024-11": 14,
-     "2024-12": 16,
-     "2025-01": 13,
-     "2025-02": 14,
-     "2025-03": 15,
-     "2025-04": 11,
-     "2025-05": 3,
-     "2025-10": 7,
-     "2025-11": 17,
-     "2025-12": 12,
-     "2026-01": 12,
-     "2026-02": 16,
-     "2026-03": 9,
-     "2026-04": 13,
-     "2026-05": 9
-    },
-    "mean_wind10_ms": 3.068713212347417
-   },
-   "tasking": {
-    "voi": 1.7874586620163027,
-    "p_real_ramp": 0.8487502675355905,
-    "rank": 28,
     "recommend": false
    },
    "priority_rank": 19
@@ -2970,8 +3398,24 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
-   "attribution": null,
+   "sector_basis": "EFA: no sector reaches posterior 0.6 from mapped facilities",
+   "attribution": {
+    "posterior": {
+     "landfill": 0.2507284381391414,
+     "coal": 0.49854312372171716,
+     "oil_gas": 0.2507284381391414
+    },
+    "top": "coal",
+    "attributed": null,
+    "agriculture_signal": 0.0,
+    "voters": [
+     {
+      "sector": "coal",
+      "km": 13.0
+     }
+    ],
+    "n_facilities": 1
+   },
    "chemistry": {
     "status": "classified",
     "ratio": -0.18921301725270123,
@@ -3121,7 +3565,7 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
+   "sector_basis": "no facility data yet",
    "attribution": null,
    "chemistry": {
     "status": "classified",
@@ -3268,7 +3712,7 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
+   "sector_basis": "no facility data yet",
    "attribution": null,
    "chemistry": {
     "status": "classified",
@@ -3420,8 +3864,24 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
-   "attribution": null,
+   "sector_basis": "EFA: no sector reaches posterior 0.6 from mapped facilities",
+   "attribution": {
+    "posterior": {
+     "landfill": 0.4481837511961357,
+     "coal": 0.2759081244019322,
+     "oil_gas": 0.2759081244019322
+    },
+    "top": "landfill",
+    "attributed": null,
+    "agriculture_signal": 0.0,
+    "voters": [
+     {
+      "sector": "landfill",
+      "km": 16.6
+     }
+    ],
+    "n_facilities": 1
+   },
    "chemistry": {
     "status": "classified",
     "ratio": 0.03410879851119195,
@@ -3570,7 +4030,7 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
+   "sector_basis": "no facility data yet",
    "attribution": null,
    "chemistry": {
     "status": "inconclusive",
@@ -3721,7 +4181,7 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
+   "sector_basis": "no facility data yet",
    "attribution": null,
    "chemistry": {
     "status": "classified",
@@ -3872,7 +4332,7 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
+   "sector_basis": "no facility data yet",
    "attribution": null,
    "chemistry": null,
    "priority": {
@@ -4015,7 +4475,7 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
+   "sector_basis": "no facility data yet",
    "attribution": null,
    "chemistry": null,
    "priority": {
@@ -4159,8 +4619,19 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
-   "attribution": null,
+   "sector_basis": "EFA: no sector reaches posterior 0.6 from mapped facilities",
+   "attribution": {
+    "posterior": {
+     "landfill": 0.3333333333333333,
+     "coal": 0.3333333333333333,
+     "oil_gas": 0.3333333333333333
+    },
+    "top": "landfill",
+    "attributed": null,
+    "agriculture_signal": 0.0,
+    "voters": [],
+    "n_facilities": 0
+   },
    "chemistry": null,
    "priority": {
     "avoidable_tco2e20_per_yr": [
@@ -4296,7 +4767,7 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
+   "sector_basis": "no facility data yet",
    "attribution": null,
    "chemistry": null,
    "priority": {
@@ -4437,7 +4908,7 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
+   "sector_basis": "no facility data yet",
    "attribution": null,
    "chemistry": null,
    "priority": {
@@ -4579,8 +5050,19 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
-   "attribution": null,
+   "sector_basis": "EFA: no sector reaches posterior 0.6 from mapped facilities",
+   "attribution": {
+    "posterior": {
+     "landfill": 0.3333333333333333,
+     "coal": 0.3333333333333333,
+     "oil_gas": 0.3333333333333333
+    },
+    "top": "landfill",
+    "attributed": null,
+    "agriculture_signal": 0.0,
+    "voters": [],
+    "n_facilities": 0
+   },
    "chemistry": null,
    "priority": {
     "avoidable_tco2e20_per_yr": [
@@ -4722,7 +5204,7 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
+   "sector_basis": "no facility data yet",
    "attribution": null,
    "chemistry": null,
    "priority": {
@@ -4858,8 +5340,19 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
-   "attribution": null,
+   "sector_basis": "EFA: no sector reaches posterior 0.6 from mapped facilities",
+   "attribution": {
+    "posterior": {
+     "landfill": 0.3333333333333333,
+     "coal": 0.3333333333333333,
+     "oil_gas": 0.3333333333333333
+    },
+    "top": "landfill",
+    "attributed": null,
+    "agriculture_signal": 0.0,
+    "voters": [],
+    "n_facilities": 0
+   },
    "chemistry": null,
    "priority": {
     "avoidable_tco2e20_per_yr": [
@@ -5001,8 +5494,24 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
-   "attribution": null,
+   "sector_basis": "EFA: no sector reaches posterior 0.6 from mapped facilities",
+   "attribution": {
+    "posterior": {
+     "landfill": 0.497066909207303,
+     "coal": 0.2514665453963485,
+     "oil_gas": 0.2514665453963485
+    },
+    "top": "landfill",
+    "attributed": null,
+    "agriculture_signal": 0.0,
+    "voters": [
+     {
+      "sector": "landfill",
+      "km": 13.1
+     }
+    ],
+    "n_facilities": 1
+   },
    "chemistry": null,
    "priority": {
     "avoidable_tco2e20_per_yr": [
@@ -5135,7 +5644,7 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
+   "sector_basis": "no facility data yet",
    "attribution": null,
    "chemistry": null,
    "priority": {
@@ -5278,8 +5787,19 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
-   "attribution": null,
+   "sector_basis": "EFA: no sector reaches posterior 0.6 from mapped facilities",
+   "attribution": {
+    "posterior": {
+     "landfill": 0.3333333333333333,
+     "coal": 0.3333333333333333,
+     "oil_gas": 0.3333333333333333
+    },
+    "top": "landfill",
+    "attributed": null,
+    "agriculture_signal": 0.0,
+    "voters": [],
+    "n_facilities": 0
+   },
    "chemistry": null,
    "priority": {
     "avoidable_tco2e20_per_yr": [
@@ -5419,7 +5939,7 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
+   "sector_basis": "no facility data yet",
    "attribution": null,
    "chemistry": null,
    "priority": {
@@ -5559,7 +6079,7 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
+   "sector_basis": "no facility data yet",
    "attribution": null,
    "chemistry": null,
    "priority": {
@@ -5703,7 +6223,7 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
+   "sector_basis": "no facility data yet",
    "attribution": null,
    "chemistry": null,
    "priority": {
@@ -5845,7 +6365,7 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
+   "sector_basis": "no facility data yet",
    "attribution": null,
    "chemistry": null,
    "priority": {
@@ -5989,7 +6509,7 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
+   "sector_basis": "no facility data yet",
    "attribution": null,
    "chemistry": null,
    "priority": {
@@ -6131,7 +6651,7 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
+   "sector_basis": "no facility data yet",
    "attribution": null,
    "chemistry": null,
    "priority": {
@@ -6272,7 +6792,7 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
+   "sector_basis": "no facility data yet",
    "attribution": null,
    "chemistry": null,
    "priority": {
@@ -6415,7 +6935,7 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
+   "sector_basis": "no facility data yet",
    "attribution": null,
    "chemistry": null,
    "priority": {
@@ -6551,8 +7071,19 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
-   "attribution": null,
+   "sector_basis": "EFA: no sector reaches posterior 0.6 from mapped facilities",
+   "attribution": {
+    "posterior": {
+     "landfill": 0.3333333333333333,
+     "coal": 0.3333333333333333,
+     "oil_gas": 0.3333333333333333
+    },
+    "top": "landfill",
+    "attributed": null,
+    "agriculture_signal": 0.0,
+    "voters": [],
+    "n_facilities": 0
+   },
    "chemistry": null,
    "priority": {
     "avoidable_tco2e20_per_yr": [
@@ -6695,7 +7226,7 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
+   "sector_basis": "no facility data yet",
    "attribution": null,
    "chemistry": null,
    "priority": {
@@ -6837,7 +7368,7 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
+   "sector_basis": "no facility data yet",
    "attribution": null,
    "chemistry": null,
    "priority": {
@@ -6976,7 +7507,7 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
+   "sector_basis": "no facility data yet",
    "attribution": null,
    "chemistry": null,
    "priority": {
@@ -7118,7 +7649,7 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
+   "sector_basis": "no facility data yet",
    "attribution": null,
    "chemistry": null,
    "priority": {
@@ -7257,7 +7788,7 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
+   "sector_basis": "no facility data yet",
    "attribution": null,
    "chemistry": null,
    "priority": {
@@ -7402,7 +7933,51 @@
    "obc_slope": 0.991822814958306,
    "sector": "coal",
    "sector_basis": "cited facility (reference site)",
-   "attribution": null,
+   "attribution": {
+    "posterior": {
+     "landfill": 0.0244436599677767,
+     "coal": 0.9732714039170876,
+     "oil_gas": 0.0022849361151357733
+    },
+    "top": "coal",
+    "attributed": "coal",
+    "agriculture_signal": 0.0,
+    "voters": [
+     {
+      "sector": "coal",
+      "km": 3.1
+     },
+     {
+      "sector": "coal",
+      "km": 3.3
+     },
+     {
+      "sector": "coal",
+      "km": 3.3
+     },
+     {
+      "sector": "coal",
+      "km": 3.3
+     },
+     {
+      "sector": "coal",
+      "km": 3.3
+     },
+     {
+      "sector": "coal",
+      "km": 3.3
+     },
+     {
+      "sector": "coal",
+      "km": 3.4
+     },
+     {
+      "sector": "coal",
+      "km": 3.4
+     }
+    ],
+    "n_facilities": 304
+   },
    "chemistry": null,
    "priority": {
     "avoidable_tco2e20_per_yr": [
@@ -7543,7 +8118,7 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
+   "sector_basis": "no facility data yet",
    "attribution": null,
    "chemistry": null,
    "priority": {
@@ -7677,7 +8252,7 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
+   "sector_basis": "no facility data yet",
    "attribution": null,
    "chemistry": null,
    "priority": {
@@ -7816,7 +8391,7 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "not attributed: land-use attribution (EFA) has not passed its validation test yet",
+   "sector_basis": "no facility data yet",
    "attribution": null,
    "chemistry": null,
    "priority": {
