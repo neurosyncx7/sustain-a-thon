@@ -79,7 +79,7 @@ export const STAGES: Stage[] = [
     step: "Step 3 · Separate the seasons",
     title: "Twelve dials, twelve months of background.",
     story:
-      "Paddy flooding, monsoon cloud and livestock set India's diffuse methane rhythm. Each dial is one month: how much of India was actually seen. July is almost blind, about 70 times fewer clear pixels than December, so monsoon months are left out and reported as unobserved, never as zero. What remains of the seasonal field is removed site by site with a local background plane fitted 60 to 140 km out.",
+      "Paddy flooding, monsoon cloud and livestock set India's diffuse methane rhythm. Each dial is one month: how much of India was actually seen. July is almost blind, about 44 times fewer clear pixels a day than December (2023-2026 average), so monsoon months are left out and reported as unobserved, never as zero. What remains of the seasonal field is removed site by site with a local background plane fitted 60 to 140 km out.",
     algorithms: ["Monsoon exclusion", "Local plane background"],
     link: { href: "/ledger", label: "Coverage in the inventory" },
     camera: { pos: [70, 16, 40], target: [70, 2, -4], fov: 58 },

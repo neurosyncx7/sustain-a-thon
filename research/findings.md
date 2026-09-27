@@ -25,7 +25,7 @@ numbers/claims from — never hardcode a figure in a component that isn't tracea
 GitHub Actions extraction (`.github/workflows/extract-tropomi.yml`, data on the `data` branch):
 2023-01..2024-12, **1,365 OFFL L2 CH4 granules, 9,600,099 pixels with qa>=0.5** inside the India box.
 10 granules failed to open (HDF errors) and are logged in `tropomi/logs/*.json`, not silently dropped.
-Monsoon coverage collapse, measured: July 2023 = 11,966 usable pixels vs December 2024 = 859,115 (~70x).
+Monsoon coverage collapse, measured: July 2023 = 11,966 usable pixels vs December 2024 = 859,115. Per-day average over 2023-2026: July 600 vs December 26,554 (~44x).
 
 ## R3: quantifier comparison on real stacks (done; final method)
 Wind-rotated, footprint-drizzled stacks with monsoon months excluded, overpasses weighted by their

@@ -19,7 +19,7 @@ Nothing is mocked or synthetic.
 | Night | Jantar Mantar | 19,054 catalogue stars placed for Jaipur's real sky | d3-celestial (Hipparcos), BSD |
 | 13:30 | Samrat Yantra | the computed sun's shadow reads TROPOMI's overpass time on the dial | solar ephemeris for 2024-01-15, the real sample date |
 | Observe | floor map | 2-year mean XCH4 over India, revealed by the scan-line sweep | 9.6 M TROPOMI pixels |
-| Seasons | Rashivalaya (12 dials) | real monthly coverage: July has ~70x fewer usable pixels than December | extraction logs |
+| Seasons | Rashivalaya (12 dials) | real monthly coverage: July has ~44x fewer usable pixels a day than December | extraction logs |
 | Anomalies | Jai Prakash bowl | national 2-year flux-divergence map and screened candidates | `research/screening/national_screen.py` |
 | Attribution | Digamsha + Rama | 10 real overpasses turning by their real winds onto the real stack | `research/algorithms/site_stack.py` |
 | Ledger | steles + book | known-site results and the national candidate list | `/ledger`, `/api/export` |
