@@ -133,35 +133,35 @@ first/last overpass, wind, the stack image, z/p/q, calibrated t/h (16/50/84%), a
 Tiers: confirmed (q <= 0.05), detected (z >= 3), tentative (2 <= z < 3), not detected (upper limit).
 
 <!-- R6-TABLE -->
-Generated 2026-09-28T12:26 UTC from TROPOMI 2023-01-01..2026-05-31, 17,658,353 pixels, 55 sites tested: 12 confirmed, 14 at z >= 3.
+Generated 2026-09-29T12:05 UTC from TROPOMI 2023-01-01..2026-05-31, 17,665,895 pixels, 55 sites tested: 12 confirmed, 14 at z >= 3.
 
 | # | Site | Tier | t CH4/h [68%] | z | q (BY) | Sector | t CO2e20 per INR lakh |
 |---|---|---|---|---|---|---|---|
-| 1 | Ghazipur landfill, Delhi | confirmed | 30.1 [25.6, 35.0] | 8.9 | 0.000 | landfill | 633 |
-| 2 | near Lahore | confirmed | 36.4 [30.7, 42.7] | 8.0 | 0.000 | landfill | 631 |
-| 3 | Deonar/Mumbai landfill | confirmed | 67.2 [52.4, 82.4] | 5.1 | 0.001 | landfill | 625 |
-| 4 | Pirana landfill, Ahmedabad | confirmed | 14.9 [11.4, 18.8] | 4.7 | 0.002 | landfill | 623 |
-| 5 | Jawaharnagar landfill, Hyderabad | confirmed | 18.1 [13.1, 23.3] | 4.0 | 0.009 | landfill | 623 |
-| 6 | near Dhaka | confirmed | 79.4 [69.1, 90.4] | 10.3 | 0.000 | landfill | 622 |
-| 7 | Khajod landfill, Surat | confirmed | 21.0 [15.1, 27.2] | 3.8 | 0.014 | landfill | 621 |
-| 8 | 48 km from Sadiqabad | confirmed | 20.4 [16.9, 24.2] | 8.6 | 0.000 | unattributed | 601 |
-| 9 | near Dhaka | confirmed | 75.3 [64.5, 87.0] | 14.2 | 0.000 | unattributed | 598 |
-| 10 | near Chattogram | confirmed | 50.6 [34.1, 68.2] | 3.3 | 0.046 | unattributed | 594 |
-| 11 | 129 km from Rajkot | confirmed | 13.5 [9.0, 18.3] | 3.2 | 0.046 | unattributed | 580 |
-| 12 | Jharia coal field, Jharkhand | confirmed | 21.8 [16.6, 27.3] | 4.5 | 0.004 | coal | 334 |
-| 13 | near Nawabganj | detected | 11.0 [7.0, 15.3] | 3.0 | 0.062 | unattributed | 577 |
-| 14 | 80 km from Panaji | detected | 24.3 [12.4, 37.6] | 3.1 | 0.056 | unattributed | 567 |
-| 15 | 38 km from Dibrugarh | tentative | 28.4 [18.0, 39.7] | 2.8 | 0.144 | oil_gas | 30806 |
-| 16 | near Nawabganj | tentative | 14.2 [9.2, 19.6] | 2.9 | 0.070 | unattributed | 561 |
+| 1 | Ghazipur landfill, Delhi | confirmed | 30.1 [25.6, 35.0] | 8.9 | 0.000 | landfill | 632 |
+| 2 | near Lahore | confirmed | 36.4 [30.7, 42.7] | 8.0 | 0.000 | landfill | 630 |
+| 3 | near Dhaka | confirmed | 75.3 [64.5, 87.0] | 14.2 | 0.000 | landfill | 629 |
+| 4 | Deonar/Mumbai landfill | confirmed | 67.2 [52.4, 82.4] | 5.1 | 0.001 | landfill | 624 |
+| 5 | Pirana landfill, Ahmedabad | confirmed | 14.9 [11.4, 18.8] | 4.7 | 0.002 | landfill | 622 |
+| 6 | Jawaharnagar landfill, Hyderabad | confirmed | 18.1 [13.1, 23.3] | 4.0 | 0.009 | landfill | 621 |
+| 7 | near Dhaka | confirmed | 79.4 [69.1, 90.4] | 10.3 | 0.000 | landfill | 621 |
+| 8 | Khajod landfill, Surat | confirmed | 21.0 [15.1, 27.2] | 3.8 | 0.014 | landfill | 620 |
+| 9 | 48 km from Sadiqabad | confirmed | 20.4 [16.9, 24.2] | 8.6 | 0.000 | unattributed | 600 |
+| 10 | near Chattogram | confirmed | 50.6 [34.1, 68.2] | 3.3 | 0.046 | unattributed | 593 |
+| 11 | 129 km from Rajkot | confirmed | 13.5 [9.0, 18.3] | 3.2 | 0.046 | unattributed | 579 |
+| 12 | Jharia coal field, Jharkhand | confirmed | 21.8 [16.6, 27.3] | 4.5 | 0.004 | coal | 333 |
+| 13 | near Nawabganj | detected | 11.0 [7.0, 15.3] | 3.0 | 0.062 | unattributed | 576 |
+| 14 | 80 km from Panaji | detected | 24.3 [12.4, 37.6] | 3.1 | 0.056 | unattributed | 566 |
+| 15 | 38 km from Dibrugarh | tentative | 28.4 [18.0, 39.7] | 2.8 | 0.144 | oil_gas | 30754 |
+| 16 | near Nawabganj | tentative | 14.2 [9.2, 19.6] | 2.9 | 0.070 | unattributed | 560 |
 | 17 | 98 km from Burhanpur | tentative | 8.7 [4.6, 12.8] | 2.8 | 0.099 | unattributed | 537 |
-| 18 | near Lucknow | tentative | 13.9 [7.9, 20.2] | 2.5 | 0.147 | landfill | 535 |
-| 19 | 58 km from Panaji | tentative | 22.3 [11.6, 33.4] | 2.5 | 0.164 | unattributed | 510 |
-| 20 | 133 km from Bhuj | tentative | 27.6 [14.2, 41.4] | 2.3 | 0.210 | unattributed | 482 |
-| 21 | 26 km from Shwebo | tentative | 9.6 [5.1, 14.1] | 2.3 | 0.210 | unattributed | 470 |
-| 22 | 81 km from Nawabganj | tentative | 13.9 [6.7, 21.4] | 2.2 | 0.234 | unattributed | 457 |
-| 23 | near Shivamogga | tentative | 21.8 [11.6, 32.1] | 2.2 | 0.234 | unattributed | 455 |
-| 24 | 60 km from Bhuj | tentative | 14.1 [4.5, 24.1] | 2.2 | 0.234 | unattributed | 452 |
-| 25 | 187 km from Bhuj | tentative | 11.9 [4.3, 19.6] | 2.1 | 0.284 | unattributed | 428 |
+| 18 | near Lucknow | tentative | 13.9 [7.9, 20.2] | 2.5 | 0.147 | landfill | 534 |
+| 19 | 58 km from Panaji | tentative | 22.3 [11.6, 33.4] | 2.5 | 0.164 | unattributed | 509 |
+| 20 | 133 km from Bhuj | tentative | 27.6 [14.2, 41.4] | 2.3 | 0.210 | unattributed | 481 |
+| 21 | 26 km from Shwebo | tentative | 9.6 [5.1, 14.1] | 2.3 | 0.210 | unattributed | 469 |
+| 22 | 81 km from Nawabganj | tentative | 13.9 [6.7, 21.4] | 2.2 | 0.234 | unattributed | 456 |
+| 23 | near Shivamogga | tentative | 21.8 [11.6, 32.1] | 2.2 | 0.234 | unattributed | 454 |
+| 24 | 60 km from Bhuj | tentative | 14.1 [4.5, 24.1] | 2.2 | 0.234 | unattributed | 451 |
+| 25 | 187 km from Bhuj | tentative | 11.9 [4.3, 19.6] | 2.1 | 0.284 | unattributed | 427 |
 | 26 | 65 km from Ranchi | not detected | < 28.3 | 2.0 | 0.304 | unattributed | - |
 | 27 | 105 km from Pune | not detected | < 32.0 | 1.6 | 0.496 | unattributed | - |
 | 28 | 30 km from Davangere | not detected | < 26.2 | 1.7 | 0.406 | unattributed | - |

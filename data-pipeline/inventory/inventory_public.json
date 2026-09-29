@@ -1,12 +1,12 @@
 {
- "generated_utc": "2026-09-28T12:26:43.419667+00:00",
- "code_version": "fcd91bd",
- "runtime_s": 1241.8,
+ "generated_utc": "2026-09-29T12:05:47.886546+00:00",
+ "code_version": "1b72164",
+ "runtime_s": 1266.3,
  "data_span": {
   "first": "2023-01-01",
   "last": "2026-05-31"
  },
- "n_pixels": 17658353,
+ "n_pixels": 17665895,
  "n_tested": 55,
  "n_confirmed": 12,
  "n_detected": 14,
@@ -26,8 +26,8 @@
   "n_reviewed": 0
  },
  "fx": {
-  "inr_per_usd": 95.82,
-  "source": "ECB reference rate via frankfurter.dev, 2026-09-25"
+  "inr_per_usd": 95.98,
+  "source": "ECB reference rate via frankfurter.dev, 2026-09-28"
  },
  "method": {
   "stack": "wind-rotated, footprint-drizzled, plane background, monsoon (Jun-Sep) excluded, noise-weighted, albedo/AOT bias removed (ABD)",
@@ -181,18 +181,18 @@
      18281241.3064018
     ],
     "abatement_cost_inr_per_yr": [
-     1400843344.2440715,
-     2139121602.6454306,
-     3099972511.3882375
+     1403182469.0100813,
+     2142693502.6289754,
+     3105148837.8526726
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     446.53847551053724,
-     632.7230380677744,
-     968.8197115675616
+     445.79408963762944,
+     631.6682799297159,
+     967.204675582452
     ],
     "p_real": 0.9999995889785788,
     "sector": "landfill",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 281,
@@ -376,18 +376,18 @@
      22342785.001312263
     ],
     "abatement_cost_inr_per_yr": [
-     1699536087.48563,
-     2618807685.696768,
-     3819033932.711733
+     1702373968.6586392,
+     2623180564.3203487,
+     3825410946.1664805
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     437.17864723040134,
-     631.1873531015574,
-     963.616820523363
+     436.44986432191143,
+     630.1351549717775,
+     962.010457830263
     ],
     "p_real": 0.9999983975220192,
     "sector": "landfill",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 248,
@@ -430,6 +430,197 @@
     "p_real_ramp": 0.9999999999540887
    },
    "priority_rank": 2
+  },
+  {
+   "slug": "c32",
+   "name": "near Dhaka",
+   "lat": 23.75,
+   "lon": 90.25,
+   "kind": "screen_candidate",
+   "source_reference": null,
+   "in_india": false,
+   "screen": {
+    "rank": 2,
+    "z": 10.614622223484147,
+    "hits": [],
+    "nearest_km": 0.0
+   },
+   "corroboration": {
+    "second_method": {
+     "check": "cross-sectional flux agrees (z > 2)",
+     "z": 10.943112153510869,
+     "passed": true,
+     "false_pass_rate": 0.0,
+     "independence": "same data, different estimator"
+    },
+    "temporal": {
+     "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
+     "z_early": 10.319137986464552,
+     "z_late": 10.629613273433872,
+     "passed": true,
+     "status": "evaluated",
+     "false_pass_rate": 0.0,
+     "independence": "independent data"
+    },
+    "co": {
+     "check": "co-emitted CO detected (z > 2)",
+     "z": 5.5479984559543,
+     "passed": true,
+     "false_pass_rate": 0.041666666666666664,
+     "independence": "independent species, same overpasses"
+    },
+    "blind_screen": {
+     "check": "found by the national screen with no site list (<= 25 km)",
+     "km": 0.0,
+     "passed": true,
+     "false_pass_rate": null,
+     "independence": "independent algorithm, daily grids"
+    },
+    "not_used": {
+     "wind_invariance": "not used: the wind-direction test failed validation on real data (R5: 21% false rejects, 8% power)"
+    },
+    "n_passed": 4,
+    "confirming": true
+   },
+   "review": {
+    "state": "machine_candidate",
+    "label": "Machine candidate: awaiting analyst review",
+    "date": null,
+    "organisation": null
+   },
+   "status": "confirmed",
+   "z": 14.156337702126624,
+   "p": 5.829989431795802e-13,
+   "q": 1.4729390857113473e-10,
+   "rate_gamma1_kg_h": 57002.08808551777,
+   "null_floor_1sigma_kg_h": 4125.2214754082115,
+   "rate_t_h": {
+    "p16": 64.53515402139438,
+    "p50": 75.2856508138415,
+    "p84": 87.03369711264705,
+    "upper_limit_p84": null
+   },
+   "gamma": {
+    "value": 1.2897274440401028,
+    "sd": 0.15291672331806183,
+    "source": "mean of sites / prior"
+   },
+   "obc_slope": 0.991822814958306,
+   "sector": "landfill",
+   "sector_basis": "EFA: OpenStreetMap facilities within 25 km (posterior 0.85)",
+   "attribution": {
+    "posterior": {
+     "landfill": 0.8521953587567681,
+     "coal": 0.02225022793941465,
+     "oil_gas": 0.12555441330381714
+    },
+    "top": "landfill",
+    "attributed": "landfill",
+    "agriculture_signal": 0.498,
+    "voters": [
+     {
+      "sector": "landfill",
+      "km": 1.7
+     },
+     {
+      "sector": "landfill",
+      "km": 3.6
+     },
+     {
+      "sector": "landfill",
+      "km": 5.1
+     },
+     {
+      "sector": "landfill",
+      "km": 5.1
+     },
+     {
+      "sector": "landfill",
+      "km": 5.2
+     },
+     {
+      "sector": "landfill",
+      "km": 5.2
+     },
+     {
+      "sector": "landfill",
+      "km": 5.2
+     },
+     {
+      "sector": "landfill",
+      "km": 7.3
+     }
+    ],
+    "n_facilities": 35
+   },
+   "chemistry": {
+    "status": "classified",
+    "ratio": 0.24771933016550202,
+    "ci68": [
+     0.2327281600510559,
+     0.27015385477328735
+    ],
+    "process": "non-combustion: anaerobic decay, coal seam or gas release (CO/CH4 < 1)",
+    "n_overpasses": 164
+   },
+   "priority": {
+    "avoidable_tco2e20_per_yr": [
+     25956259.100652326,
+     34561618.583086446,
+     46012931.20758236
+    ],
+    "abatement_cost_inr_per_yr": [
+     3555385069.5805187,
+     5487422875.395624,
+     7846377145.826082
+    ],
+    "wrpi_tco2e20_per_lakh_inr": [
+     447.7069263033969,
+     629.2378240003296,
+     964.5503678362169
+    ],
+    "p_real": 0.999999999852706,
+    "sector": "landfill",
+    "fx_inr_per_usd": 95.98
+   },
+   "evidence": {
+    "n_overpasses": 164,
+    "first_overpass": "2023-01-02",
+    "last_overpass": "2026-05-18",
+    "overpasses_per_month": {
+     "2023-01": 7,
+     "2023-02": 10,
+     "2023-03": 5,
+     "2023-04": 5,
+     "2023-05": 2,
+     "2023-10": 1,
+     "2023-11": 4,
+     "2023-12": 6,
+     "2024-01": 10,
+     "2024-02": 8,
+     "2024-03": 8,
+     "2024-04": 2,
+     "2024-05": 2,
+     "2024-11": 4,
+     "2024-12": 13,
+     "2025-01": 12,
+     "2025-02": 10,
+     "2025-03": 11,
+     "2025-04": 1,
+     "2025-11": 11,
+     "2025-12": 6,
+     "2026-01": 12,
+     "2026-02": 11,
+     "2026-04": 2,
+     "2026-05": 1
+    },
+    "mean_wind10_ms": 2.2059191338642825
+   },
+   "tasking": {
+    "voi": 0.0,
+    "p_real_ramp": 1.0
+   },
+   "priority_rank": 3
   },
   {
    "slug": "deonar",
@@ -575,18 +766,18 @@
      42159309.886651956
     ],
     "abatement_cost_inr_per_yr": [
-     3057308935.8365746,
-     4789857618.433006,
-     7197137263.578899
+     3062414022.7676315,
+     4797855710.887079,
+     7209155025.655425
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     439.7706225187582,
-     624.8177836450141,
-     942.2447592417237
+     439.03751875127534,
+     623.7762036764456,
+     940.6740240731605
     ],
     "p_real": 0.998824004680877,
     "sector": "landfill",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 318,
@@ -627,7 +818,7 @@
     "voi": 0.0,
     "p_real_ramp": 0.9998652223641161
    },
-   "priority_rank": 3
+   "priority_rank": 4
   },
   {
    "slug": "pirana",
@@ -773,18 +964,18 @@
      9498087.969740417
     ],
     "abatement_cost_inr_per_yr": [
-     670850805.3496863,
-     1061119903.6507034,
-     1610924599.8108907
+     671970990.3721864,
+     1062891759.0523326,
+     1613614517.740026
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     443.8463870313894,
-     622.8765382791479,
-     940.7477418242454
+     443.1064889075613,
+     621.8381943937064,
+     939.1795022046175
     ],
     "p_real": 0.9975643969332536,
     "sector": "landfill",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 395,
@@ -827,7 +1018,7 @@
     "voi": 0.0,
     "p_real_ramp": 0.9992303935346911
    },
-   "priority_rank": 4
+   "priority_rank": 5
   },
   {
    "slug": "jawaharnagar",
@@ -973,18 +1164,18 @@
      11779862.277329523
     ],
     "abatement_cost_inr_per_yr": [
-     769108414.6065784,
-     1274352175.6685748,
-     1959381339.8584824
+     770392669.9430119,
+     1276480085.7928386,
+     1962653109.9939172
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     443.0597163768994,
-     622.5350546268944,
-     961.5527352240467
+     442.3211296440352,
+     621.4972799994689,
+     959.9498133899576
     ],
     "p_real": 0.9914325452674618,
     "sector": "landfill",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 138,
@@ -1023,7 +1214,7 @@
     "voi": 0.0,
     "p_real_ramp": 0.9945971442995981
    },
-   "priority_rank": 5
+   "priority_rank": 6
   },
   {
    "slug": "c01",
@@ -1164,18 +1355,18 @@
      48276497.21163892
     ],
     "abatement_cost_inr_per_yr": [
-     3790028163.2602286,
-     5832477448.002472,
-     8238989808.749105
+     3796356742.952586,
+     5842216504.48004,
+     8252747253.639524
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     441.4492221097747,
-     622.1739358112841,
-     964.1473850963101
+     440.71332009333827,
+     621.1367631739658,
+     962.5401379446597
     ],
     "p_real": 0.9999999598311266,
     "sector": "landfill",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 157,
@@ -1214,7 +1405,7 @@
     "voi": 0.0,
     "p_real_ramp": 1.0
    },
-   "priority_rank": 6
+   "priority_rank": 7
   },
   {
    "slug": "khajod",
@@ -1355,18 +1546,18 @@
      13647314.7691151
     ],
     "abatement_cost_inr_per_yr": [
-     895883589.3590117,
-     1456027370.2574172,
-     2259385346.102207
+     897379533.5700058,
+     1458458641.1741486,
+     2263158062.1883726
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     438.4289163375873,
-     620.6497994618148,
-     959.7449967838172
+     437.6980492130402,
+     619.61516758107,
+     958.1450884749464
     ],
     "p_real": 0.9864547459936597,
     "sector": "landfill",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 370,
@@ -1409,7 +1600,7 @@
     "voi": 0.0,
     "p_real_ramp": 0.9897327947686426
    },
-   "priority_rank": 7
+   "priority_rank": 8
   },
   {
    "slug": "c20",
@@ -1487,8 +1678,28 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "no facility data yet",
-   "attribution": null,
+   "sector_basis": "EFA: no sector reaches posterior 0.6 from mapped facilities",
+   "attribution": {
+    "posterior": {
+     "landfill": 0.2604852688931886,
+     "coal": 0.2604852688931886,
+     "oil_gas": 0.4790294622136228
+    },
+    "top": "oil_gas",
+    "attributed": null,
+    "agriculture_signal": 0.0,
+    "voters": [
+     {
+      "sector": "oil_gas",
+      "km": 17.7
+     },
+     {
+      "sector": "oil_gas",
+      "km": 22.8
+     }
+    ],
+    "n_facilities": 2
+   },
    "chemistry": {
     "status": "classified",
     "ratio": 0.043796967275599466,
@@ -1507,17 +1718,17 @@
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     1498215389.8589373,
-     3867279029.808306
+     1500717106.2268922,
+     3873736602.8073606
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     222.20857829406637,
-     600.9965910343986,
-     7206762.453826395
+     221.83815349174242,
+     599.9947213264854,
+     7206762.453826393
     ],
     "p_real": 0.9999994043112245,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 238,
@@ -1559,153 +1770,6 @@
    "tasking": {
     "voi": 0.0,
     "p_real_ramp": 0.9999999999991717
-   },
-   "priority_rank": 8
-  },
-  {
-   "slug": "c32",
-   "name": "near Dhaka",
-   "lat": 23.75,
-   "lon": 90.25,
-   "kind": "screen_candidate",
-   "source_reference": null,
-   "in_india": false,
-   "screen": {
-    "rank": 2,
-    "z": 10.614622223484147,
-    "hits": [],
-    "nearest_km": 0.0
-   },
-   "corroboration": {
-    "second_method": {
-     "check": "cross-sectional flux agrees (z > 2)",
-     "z": 10.943112153510869,
-     "passed": true,
-     "false_pass_rate": 0.0,
-     "independence": "same data, different estimator"
-    },
-    "temporal": {
-     "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
-     "z_early": 10.319137986464552,
-     "z_late": 10.629613273433872,
-     "passed": true,
-     "status": "evaluated",
-     "false_pass_rate": 0.0,
-     "independence": "independent data"
-    },
-    "co": {
-     "check": "co-emitted CO detected (z > 2)",
-     "z": 5.5479984559543,
-     "passed": true,
-     "false_pass_rate": 0.041666666666666664,
-     "independence": "independent species, same overpasses"
-    },
-    "blind_screen": {
-     "check": "found by the national screen with no site list (<= 25 km)",
-     "km": 0.0,
-     "passed": true,
-     "false_pass_rate": null,
-     "independence": "independent algorithm, daily grids"
-    },
-    "not_used": {
-     "wind_invariance": "not used: the wind-direction test failed validation on real data (R5: 21% false rejects, 8% power)"
-    },
-    "n_passed": 4,
-    "confirming": true
-   },
-   "review": {
-    "state": "machine_candidate",
-    "label": "Machine candidate: awaiting analyst review",
-    "date": null,
-    "organisation": null
-   },
-   "status": "confirmed",
-   "z": 14.156337702126624,
-   "p": 5.829989431795802e-13,
-   "q": 1.4729390857113473e-10,
-   "rate_gamma1_kg_h": 57002.08808551777,
-   "null_floor_1sigma_kg_h": 4125.2214754082115,
-   "rate_t_h": {
-    "p16": 64.53515402139438,
-    "p50": 75.2856508138415,
-    "p84": 87.03369711264705,
-    "upper_limit_p84": null
-   },
-   "gamma": {
-    "value": 1.2897274440401028,
-    "sd": 0.15291672331806183,
-    "source": "mean of sites / prior"
-   },
-   "obc_slope": 0.991822814958306,
-   "sector": "unattributed",
-   "sector_basis": "no facility data yet",
-   "attribution": null,
-   "chemistry": {
-    "status": "classified",
-    "ratio": 0.24771933016550202,
-    "ci68": [
-     0.2327281600510559,
-     0.27015385477328735
-    ],
-    "process": "non-combustion: anaerobic decay, coal seam or gas release (CO/CH4 < 1)",
-    "n_overpasses": 164
-   },
-   "priority": {
-    "avoidable_tco2e20_per_yr": [
-     24736009.94826249,
-     32901287.698660694,
-     43242440.34713458
-    ],
-    "abatement_cost_inr_per_yr": [
-     0.0,
-     5646533453.18886,
-     14281043835.722103
-    ],
-    "wrpi_tco2e20_per_lakh_inr": [
-     217.35495011498816,
-     598.109530002177,
-     7208520.171419676
-    ],
-    "p_real": 0.999999999852706,
-    "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
-   },
-   "evidence": {
-    "n_overpasses": 164,
-    "first_overpass": "2023-01-02",
-    "last_overpass": "2026-05-18",
-    "overpasses_per_month": {
-     "2023-01": 7,
-     "2023-02": 10,
-     "2023-03": 5,
-     "2023-04": 5,
-     "2023-05": 2,
-     "2023-10": 1,
-     "2023-11": 4,
-     "2023-12": 6,
-     "2024-01": 10,
-     "2024-02": 8,
-     "2024-03": 8,
-     "2024-04": 2,
-     "2024-05": 2,
-     "2024-11": 4,
-     "2024-12": 13,
-     "2025-01": 12,
-     "2025-02": 10,
-     "2025-03": 11,
-     "2025-04": 1,
-     "2025-11": 11,
-     "2025-12": 6,
-     "2026-01": 12,
-     "2026-02": 11,
-     "2026-04": 2,
-     "2026-05": 1
-    },
-    "mean_wind10_ms": 2.2059191338642825
-   },
-   "tasking": {
-    "voi": 0.0,
-    "p_real_ramp": 1.0
    },
    "priority_rank": 9
   },
@@ -1805,17 +1869,17 @@
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     3420493393.522207,
-     9280141614.501202
+     3426204924.966202,
+     9295637572.11256
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     217.3112997157836,
-     594.0187408033705,
-     6970582.928311081
+     216.94903874522174,
+     593.0285032692119,
+     6970582.92831108
     ],
     "p_real": 0.9539785958229825,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 200,
@@ -1932,8 +1996,19 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "no facility data yet",
-   "attribution": null,
+   "sector_basis": "EFA: no sector reaches posterior 0.6 from mapped facilities",
+   "attribution": {
+    "posterior": {
+     "landfill": 0.3333333333333333,
+     "coal": 0.3333333333333333,
+     "oil_gas": 0.3333333333333333
+    },
+    "top": "landfill",
+    "attributed": null,
+    "agriculture_signal": 0.0,
+    "voters": [],
+    "n_facilities": 0
+   },
    "chemistry": {
     "status": "classified",
     "ratio": 0.5020839666312957,
@@ -1952,17 +2027,17 @@
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     921124459.9960444,
-     2554599899.69039
+     922662551.3506613,
+     2558865564.3110375
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     210.27274745180762,
-     580.0176420232253,
-     6828917.877175449
+     209.92221984613673,
+     579.0507445162059,
+     6828917.877175448
     ],
     "p_real": 0.9539785958229825,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 366,
@@ -2149,18 +2224,18 @@
      12452579.615573209
     ],
     "abatement_cost_inr_per_yr": [
-     123094113.14956585,
-     2643855707.3583107,
-     5299658011.37774
+     123299655.39652818,
+     2648270411.1067696,
+     5308507367.27234
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     173.11240572835837,
-     334.0455358370021,
-     6827.89557585425
+     172.82382493114503,
+     333.4886772650712,
+     6816.513378603398
     ],
     "p_real": 0.9964415558414657,
     "sector": "coal",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 206,
@@ -2300,17 +2375,17 @@
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     736207730.7382126,
-     1990738704.5988626
+     737437048.5937555,
+     1994062835.1847095
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     213.9084374554785,
-     577.0414765665948,
-     7049567.018505362
+     213.55184910381269,
+     576.0795403689426,
+     7049567.018505361
     ],
     "p_real": 0.9376314508161732,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 229,
@@ -2430,8 +2505,24 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "no facility data yet",
-   "attribution": null,
+   "sector_basis": "EFA: no sector reaches posterior 0.6 from mapped facilities",
+   "attribution": {
+    "posterior": {
+     "landfill": 0.4192769462301851,
+     "coal": 0.29036152688490746,
+     "oil_gas": 0.29036152688490746
+    },
+    "top": "landfill",
+    "attributed": null,
+    "agriculture_signal": 1.555,
+    "voters": [
+     {
+      "sector": "landfill",
+      "km": 19.4
+     }
+    ],
+    "n_facilities": 1
+   },
    "chemistry": {
     "status": "classified",
     "ratio": -0.09599956894382015,
@@ -2450,17 +2541,17 @@
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     1572800249.5055494,
-     4566246111.189523
+     1575426507.4884434,
+     4573870817.699545
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     206.9301931819316,
-     566.5411135345837,
-     6883108.173298684
+     206.5852376608948,
+     565.5966815887039,
+     6883108.173298683
     ],
     "p_real": 0.9435075602200018,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 159,
@@ -2633,17 +2724,17 @@
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     14917013.27860709,
-     5468827225.587303
+     14941921.67063983,
+     5477959059.819134
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     179.78937683362986,
-     30805.782527186362,
-     7646700.480872043
+     179.4896654323652,
+     30754.428857626554,
+     7646700.480872042
     ],
     "p_real": 0.8555704054602621,
     "sector": "oil_gas",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 69,
@@ -2788,17 +2879,17 @@
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     992089379.3980751,
-     2702220348.4278617
+     993745967.8003261,
+     2706732509.31023
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     203.18913950742274,
-     561.2503256026364,
-     6582550.274651712
+     202.8504203750911,
+     560.3147134741051,
+     6582550.274651711
     ],
     "p_real": 0.930347932255753,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 244,
@@ -2938,17 +3029,17 @@
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     575026733.7679081,
-     1588062360.0296943
+     575986911.9916909,
+     1590714102.6471515
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     200.68959985741532,
-     537.454147648491,
-     6533754.171993594
+     200.35504749257692,
+     536.5582040808335,
+     6533754.171993593
     ],
     "p_real": 0.9009163823201974,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 133,
@@ -3125,18 +3216,18 @@
      9964560.906060115
     ],
     "abatement_cost_inr_per_yr": [
-     498055499.3475241,
-     949680766.8287606,
-     1628795643.5224674
+     498887151.19364816,
+     951266541.4341938,
+     1631515402.476377
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     376.4728261981379,
-     534.870126963946,
-     824.6076122481306
+     375.84524074083737,
+     533.9784909948459,
+     823.2329798459664
     ],
     "p_real": 0.8533461928032746,
     "sector": "landfill",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 311,
@@ -3279,17 +3370,17 @@
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     1417705562.960773,
-     4174077054.6130004
+     1420072844.2180653,
+     4181046918.198245
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     183.10322206379277,
-     509.8220390979385,
-     6058111.2646515705
+     182.797986436264,
+     508.9721586410133,
+     6058111.26465157
     ],
     "p_real": 0.8358141568170903,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 267,
@@ -3445,17 +3536,17 @@
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     1802504819.14319,
-     5009127313.79879
+     1805514637.2507138,
+     5017491542.250135
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     176.14746272522834,
-     481.66956324742887,
+     175.853822445628,
+     480.86661336079,
      5671233.968821314
     ],
     "p_real": 0.7901325933176506,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 406,
@@ -3596,17 +3687,17 @@
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     626031726.524555,
-     1804127540.138425
+     627077072.7596201,
+     1807140067.8614702
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     172.45938186051282,
-     469.6139130849184,
-     5628616.090716921
+     172.17188966320418,
+     468.83106013541226,
+     5628616.09071692
     ],
     "p_real": 0.7901325933176506,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 165,
@@ -3759,17 +3850,17 @@
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     917242635.7261542,
-     2632716490.142782
+     918774245.2201658,
+     2637112593.6537704
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     166.45221107083037,
-     457.08660418571606,
-     5563414.691558964
+     166.17473291109567,
+     456.32463443504173,
+     5563414.691558963
     ],
     "p_real": 0.765883496273829,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 230,
@@ -3927,17 +4018,17 @@
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     1466484745.5813313,
-     4116273331.1294885
+     1468933478.1976223,
+     4123146674.199628
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     168.9779390679641,
-     454.9483671603317,
+     168.6962504843959,
+     454.18996188063113,
      5511079.536699442
     ],
     "p_real": 0.765883496273829,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 172,
@@ -4077,17 +4168,17 @@
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     821119548.2977839,
-     2836922208.415758
+     822490651.697154,
+     2841659294.1321697
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     166.01150625950038,
-     451.5972998274052,
+     165.73476276083898,
+     450.84448082373376,
      5350808.157821547
     ],
     "p_real": 0.765883496273829,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 214,
@@ -4239,17 +4330,17 @@
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     684210643.3626571,
-     2283114219.613858
+     685353136.6097666,
+     2286926558.11457
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     155.04880786464102,
-     427.9650008974357,
+     154.79033933725674,
+     427.25157726601674,
      5198992.210772332
     ],
     "p_real": 0.7155891912349817,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 318,
@@ -4381,8 +4472,8 @@
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     1141098140.809517,
-     3369510889.2589912
+     1143003543.6745715,
+     3375137290.2429347
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -4391,7 +4482,7 @@
     ],
     "p_real": 0.0,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 236,
@@ -4524,8 +4615,8 @@
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     1014573364.2765539,
-     3642848997.955962
+     1016267496.3813779,
+     3648931818.2405896
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -4534,7 +4625,7 @@
     ],
     "p_real": 0.0,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 240,
@@ -4679,8 +4770,8 @@
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     982306165.5582936,
-     3050936251.49738
+     983946417.9741707,
+     3056030697.335823
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -4689,7 +4780,7 @@
     ],
     "p_real": 0.0,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 173,
@@ -4827,8 +4918,8 @@
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     873722809.469125,
-     3173656688.5300784
+     875181749.6644399,
+     3178956052.6520243
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -4837,7 +4928,7 @@
     ],
     "p_real": 0.0,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 188,
@@ -4968,8 +5059,8 @@
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     664447481.8837829,
-     3198006461.151498
+     665556974.6525307,
+     3203346484.463794
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -4978,7 +5069,7 @@
     ],
     "p_real": 0.0,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 368,
@@ -5121,8 +5212,8 @@
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     862793802.2490165,
-     2826681337.167266
+     864234493.2149928,
+     2831401322.7020893
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -5131,7 +5222,7 @@
     ],
     "p_real": 0.0,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 228,
@@ -5264,8 +5355,8 @@
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     901668560.1490228,
-     2864439160.613584
+     903174164.089994,
+     2869222194.0690026
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -5274,7 +5365,7 @@
     ],
     "p_real": 0.0,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 125,
@@ -5411,8 +5502,8 @@
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     645657437.2010977,
-     2702577593.3543057
+     646735554.3995134,
+     2707090350.763372
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -5421,7 +5512,7 @@
     ],
     "p_real": 0.0,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 184,
@@ -5570,8 +5661,8 @@
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     762028189.9364809,
-     2288334796.0393076
+     763300622.7311985,
+     2292155851.845677
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -5580,7 +5671,7 @@
     ],
     "p_real": 0.0,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 158,
@@ -5704,8 +5795,8 @@
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     743625978.4172328,
-     2524316263.8355145
+     744867683.2444793,
+     2528531360.9155993
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -5714,7 +5805,7 @@
     ],
     "p_real": 0.0,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 150,
@@ -5858,8 +5949,8 @@
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     742443362.6901779,
-     2462547984.1014833
+     743683092.7885962,
+     2466659940.6602006
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -5868,7 +5959,7 @@
     ],
     "p_real": 0.0,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 114,
@@ -5999,8 +6090,8 @@
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     743228605.7420737,
-     2127034694.8887787
+     744469647.037406,
+     2130586412.1835213
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -6009,7 +6100,7 @@
     ],
     "p_real": 0.0,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 177,
@@ -6139,8 +6230,8 @@
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     632161062.8573508,
-     2330725722.2391915
+     633216643.8431282,
+     2334617562.3097224
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -6149,7 +6240,7 @@
     ],
     "p_real": 0.0,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 267,
@@ -6283,8 +6374,8 @@
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     539691785.9469432,
-     2286207895.9438567
+     540592961.9618828,
+     2290025400.257685
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -6293,7 +6384,7 @@
     ],
     "p_real": 0.0,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 198,
@@ -6425,8 +6516,8 @@
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     669584774.0200778,
-     2014562538.2707348
+     670702845.0265819,
+     2017926449.8353698
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -6435,7 +6526,7 @@
     ],
     "p_real": 0.0,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 252,
@@ -6585,8 +6676,8 @@
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     604458666.8329799,
-     1898184290.2336483
+     605467990.4261053,
+     1901353873.6863449
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -6595,7 +6686,7 @@
     ],
     "p_real": 0.0,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 214,
@@ -6727,8 +6818,8 @@
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     529205143.6518424,
-     1976813301.5986414
+     530088809.0973058,
+     1980114179.5808558
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -6737,7 +6828,7 @@
     ],
     "p_real": 0.0,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 136,
@@ -6868,8 +6959,8 @@
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     591840827.3741189,
-     1861790509.6477876
+     592829081.7299931,
+     1864899322.8552983
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -6878,7 +6969,7 @@
     ],
     "p_real": 0.0,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 187,
@@ -7022,8 +7113,8 @@
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     531796964.19916815,
-     1852566177.7059984
+     532684957.4601979,
+     1855659588.1467516
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -7032,7 +7123,7 @@
     ],
     "p_real": 0.0,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 124,
@@ -7169,8 +7260,8 @@
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     536161197.6218965,
-     1633521462.718893
+     537056478.2691467,
+     1636249112.834057
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -7179,7 +7270,7 @@
     ],
     "p_real": 0.0,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 223,
@@ -7313,8 +7404,8 @@
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     207321298.2879601,
-     1926310964.9370615
+     207667482.8812191,
+     1929527514.2419035
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -7323,7 +7414,7 @@
     ],
     "p_real": 0.0,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 281,
@@ -7455,8 +7546,8 @@
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     302326194.63421965,
-     1734710845.7510808
+     302831018.1694052,
+     1737607461.6488078
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -7465,7 +7556,7 @@
     ],
     "p_real": 0.0,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 139,
@@ -7594,8 +7685,8 @@
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     163608505.47528344,
-     1899999997.5241404
+     163881698.5547663,
+     1903172612.840399
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -7604,7 +7695,7 @@
     ],
     "p_real": 0.0,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 410,
@@ -7727,8 +7818,19 @@
    },
    "obc_slope": 0.991822814958306,
    "sector": "unattributed",
-   "sector_basis": "no facility data yet",
-   "attribution": null,
+   "sector_basis": "EFA: no sector reaches posterior 0.6 from mapped facilities",
+   "attribution": {
+    "posterior": {
+     "landfill": 0.3333333333333333,
+     "coal": 0.3333333333333333,
+     "oil_gas": 0.3333333333333333
+    },
+    "top": "landfill",
+    "attributed": null,
+    "agriculture_signal": 0.575,
+    "voters": [],
+    "n_facilities": 0
+   },
    "chemistry": null,
    "priority": {
     "avoidable_tco2e20_per_yr": [
@@ -7738,8 +7840,8 @@
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     302126985.032296,
-     1483168777.02426
+     302631475.92777896,
+     1485645368.5951629
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -7748,7 +7850,7 @@
     ],
     "p_real": 0.0,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 187,
@@ -7891,8 +7993,8 @@
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     295681902.59780097,
-     1262752997.2634294
+     296175631.51050866,
+     1264861539.1081607
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -7901,7 +8003,7 @@
     ],
     "p_real": 0.0,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 170,
@@ -8055,7 +8157,7 @@
     "abatement_cost_inr_per_yr": [
      0.0,
      0.0,
-     824749846.1495562
+     826127011.411338
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -8064,7 +8166,7 @@
     ],
     "p_real": 0.0,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 323,
@@ -8252,7 +8354,7 @@
     ],
     "p_real": 0.0,
     "sector": "coal",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 194,
@@ -8401,7 +8503,7 @@
     "abatement_cost_inr_per_yr": [
      0.0,
      0.0,
-     188270598.92933807
+     188584972.711729
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -8410,7 +8512,7 @@
     ],
     "p_real": 0.0,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 154,
@@ -8535,7 +8637,7 @@
     "abatement_cost_inr_per_yr": [
      0.0,
      0.0,
-     69366507.51440248
+     69482335.53780371
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -8544,7 +8646,7 @@
     ],
     "p_real": 0.0,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 113,
@@ -8683,7 +8785,7 @@
     ],
     "p_real": 0.0,
     "sector": "unattributed",
-    "fx_inr_per_usd": 95.82
+    "fx_inr_per_usd": 95.98
    },
    "evidence": {
     "n_overpasses": 100,
