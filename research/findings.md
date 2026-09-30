@@ -133,7 +133,7 @@ first/last overpass, wind, the stack image, z/p/q, calibrated t/h (16/50/84%), a
 Tiers: confirmed (q <= 0.05), detected (z >= 3), tentative (2 <= z < 3), not detected (upper limit).
 
 <!-- R6-TABLE -->
-Generated 2026-09-29T12:05 UTC from TROPOMI 2023-01-01..2026-05-31, 17,665,895 pixels, 55 sites tested: 12 confirmed, 14 at z >= 3.
+Generated 2026-09-30T11:41 UTC from TROPOMI 2023-01-01..2026-05-31, 17,670,304 pixels, 55 sites tested: 12 confirmed, 14 at z >= 3.
 
 | # | Site | Tier | t CH4/h [68%] | z | q (BY) | Sector | t CO2e20 per INR lakh |
 |---|---|---|---|---|---|---|---|
@@ -162,8 +162,8 @@ Generated 2026-09-29T12:05 UTC from TROPOMI 2023-01-01..2026-05-31, 17,665,895 p
 | 23 | near Shivamogga | tentative | 21.8 [11.6, 32.1] | 2.2 | 0.234 | unattributed | 454 |
 | 24 | 60 km from Bhuj | tentative | 14.1 [4.5, 24.1] | 2.2 | 0.234 | unattributed | 451 |
 | 25 | 187 km from Bhuj | tentative | 11.9 [4.3, 19.6] | 2.1 | 0.284 | unattributed | 427 |
-| 26 | 65 km from Ranchi | not detected | < 28.3 | 2.0 | 0.304 | unattributed | - |
-| 27 | 105 km from Pune | not detected | < 32.0 | 1.6 | 0.496 | unattributed | - |
+| 26 | 105 km from Pune | not detected | < 32.0 | 1.6 | 0.496 | unattributed | - |
+| 27 | 65 km from Ranchi | not detected | < 28.3 | 2.0 | 0.304 | coal | - |
 | 28 | 30 km from Davangere | not detected | < 26.2 | 1.7 | 0.406 | unattributed | - |
 | 29 | 43 km from Guwahati | not detected | < 27.2 | 1.3 | 0.638 | unattributed | - |
 | 30 | 100 km from Bhuj | not detected | < 31.7 | 0.9 | 1.000 | unattributed | - |
