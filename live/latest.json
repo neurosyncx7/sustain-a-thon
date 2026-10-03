@@ -1,10 +1,142 @@
 {
  "stream": "NRTI",
  "day": "2026-10-03",
- "granules": 25,
- "pixels": 0,
- "orbits": [],
- "note": "no qa>=0.5 pixels over India (cloud/monsoon)",
+ "granules": 46,
+ "orbits": [
+  "46491"
+ ],
+ "pixels": 3980,
+ "sensing_start": "2026-10-03 07:54:43",
+ "sensing_end": "2026-10-03 08:02:08",
+ "mean_xch4_ppb": 1980.273193359375,
+ "observed_cells": 2491,
+ "method_steps": [
+  "qa >= 0.5",
+  "Copernicus checksum",
+  "plane background (60-140 km)",
+  "ABD albedo/aerosol correction",
+  "wind rotation",
+  "footprint drizzle",
+  "noise weight",
+  "KPW phase weight",
+  "flux divergence (20 km)"
+ ],
+ "texture": {
+  "file": "latest.png",
+  "lo": 1908.421630859375,
+  "hi": 2048.862060546875,
+  "nodata": 0,
+  "lat_edges": [
+   6.5,
+   37.5
+  ],
+  "lon_edges": [
+   68.0,
+   97.5
+  ]
+ },
+ "sites": {
+  "korba": {
+   "name": "Korba coalfield, Chhattisgarh",
+   "pixels": 14,
+   "method": null,
+   "xch4_ppb": 1992.876953125,
+   "enhancement_ppb": -17.27197265625,
+   "wind_ms": 2.3335695266723633,
+   "wind_to_deg": 112.69938659667969,
+   "time_utc": "2026-10-03T07:56:55"
+  },
+  "ghazipur": {
+   "name": "Ghazipur landfill, Delhi",
+   "pixels": 6,
+   "method": null,
+   "xch4_ppb": 1962.4320068359375,
+   "enhancement_ppb": 15.1864013671875,
+   "wind_ms": 2.289139747619629,
+   "wind_to_deg": 105.40992736816406,
+   "time_utc": "2026-10-03T07:59:00"
+  },
+  "c02": {
+   "name": "near Lahore",
+   "pixels": 24,
+   "method": null,
+   "xch4_ppb": 1967.8939208984375,
+   "enhancement_ppb": 3.4725341796875,
+   "wind_ms": 1.5609877109527588,
+   "wind_to_deg": 59.007164001464844,
+   "time_utc": "2026-10-03T08:00:01"
+  },
+  "c04": {
+   "name": "near Ghaziabad",
+   "pixels": 5,
+   "method": null,
+   "xch4_ppb": 1967.6763916015625,
+   "enhancement_ppb": 19.876953125,
+   "wind_ms": 2.2394449710845947,
+   "wind_to_deg": 106.04039001464844,
+   "time_utc": "2026-10-03T07:59:00"
+  },
+  "c08": {
+   "name": "near Dera Ghazi Khan",
+   "pixels": 6,
+   "method": null,
+   "xch4_ppb": 1963.7447509765625,
+   "enhancement_ppb": 7.0867919921875,
+   "wind_ms": 0.8052325248718262,
+   "wind_to_deg": 256.420166015625,
+   "time_utc": "2026-10-03T08:00:06"
+  },
+  "c14": {
+   "name": "59 km from Proddatur",
+   "pixels": 1,
+   "method": null,
+   "xch4_ppb": 1953.1798095703125,
+   "enhancement_ppb": null,
+   "wind_ms": 2.5469398498535156,
+   "wind_to_deg": 246.38668823242188,
+   "time_utc": "2026-10-03T07:55:13"
+  },
+  "c25": {
+   "name": "near Ranchi",
+   "pixels": 1,
+   "method": null,
+   "xch4_ppb": 2025.474853515625,
+   "enhancement_ppb": 12.797119140625,
+   "wind_ms": 1.6482857465744019,
+   "wind_to_deg": 86.59952545166016,
+   "time_utc": "2026-10-03T07:57:04"
+  },
+  "c40": {
+   "name": "64 km from Bhagalpur",
+   "pixels": 18,
+   "method": null,
+   "xch4_ppb": 2043.34912109375,
+   "enhancement_ppb": 22.6468505859375,
+   "wind_ms": 2.2923851013183594,
+   "wind_to_deg": 80.61019897460938,
+   "time_utc": "2026-10-03T07:57:38"
+  },
+  "c48": {
+   "name": "near Hosapete",
+   "pixels": 1,
+   "method": null,
+   "xch4_ppb": 2005.427734375,
+   "enhancement_ppb": null,
+   "wind_ms": 3.162231922149658,
+   "wind_to_deg": 232.12344360351562,
+   "time_utc": "2026-10-03T07:55:41"
+  },
+  "c49": {
+   "name": "26 km from Ranchi",
+   "pixels": 4,
+   "method": null,
+   "xch4_ppb": 2001.73583984375,
+   "enhancement_ppb": -10.94189453125,
+   "wind_ms": 2.0455586910247803,
+   "wind_to_deg": 94.1235122680664,
+   "time_utc": "2026-10-03T07:57:02"
+  }
+ },
  "log": [
   {
    "key": "NRTI/L2__CH4___/2026/10/03/S5P_NRTI_L2__CH4____20261003T030407_20261003T030907_46488_03_020901_20261003T045937.nc",
@@ -122,6 +254,16 @@
    "integrity": "verified"
   },
   {
+   "key": "NRTI/L2__CH4___/2026/10/03/S5P_NRTI_L2__CH4____20261003T062407_20261003T062907_46490_03_020901_20261003T082035.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/03/S5P_NRTI_L2__CH4____20261003T062907_20261003T063407_46490_03_020901_20261003T081935.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
    "key": "NRTI/L2__CH4___/2026/10/03/S5P_NRTI_L2__CH4____20261003T063407_20261003T063907_46490_03_020901_20261003T081559.nc",
    "pixels": 0,
    "integrity": "verified"
@@ -130,15 +272,110 @@
    "key": "NRTI/L2__CH4___/2026/10/03/S5P_NRTI_L2__CH4____20261003T071907_20261003T072407_46491_03_020901_20261003T081836.nc",
    "pixels": 0,
    "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/03/S5P_NRTI_L2__CH4____20261003T072407_20261003T072907_46491_03_020901_20261003T082524.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/03/S5P_NRTI_L2__CH4____20261003T072907_20261003T073407_46491_03_020901_20261003T082648.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/03/S5P_NRTI_L2__CH4____20261003T073407_20261003T073907_46491_03_020901_20261003T082641.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/03/S5P_NRTI_L2__CH4____20261003T073907_20261003T074407_46491_03_020901_20261003T082740.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/03/S5P_NRTI_L2__CH4____20261003T074407_20261003T074907_46491_03_020901_20261003T082855.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/03/S5P_NRTI_L2__CH4____20261003T074907_20261003T075407_46491_03_020901_20261003T082833.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/03/S5P_NRTI_L2__CH4____20261003T075407_20261003T075907_46491_03_020901_20261003T083404.nc",
+   "pixels": 2874,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/03/S5P_NRTI_L2__CH4____20261003T075907_20261003T080407_46491_03_020901_20261003T083720.nc",
+   "pixels": 1106,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/03/S5P_NRTI_L2__CH4____20261003T080407_20261003T080907_46491_03_020901_20261003T100058.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/03/S5P_NRTI_L2__CH4____20261003T080907_20261003T081407_46491_03_020901_20261003T095948.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/03/S5P_NRTI_L2__CH4____20261003T081407_20261003T081907_46491_03_020901_20261003T095755.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/03/S5P_NRTI_L2__CH4____20261003T081907_20261003T082407_46491_03_020901_20261003T095406.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/03/S5P_NRTI_L2__CH4____20261003T085907_20261003T090407_46492_03_020901_20261003T095813.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/03/S5P_NRTI_L2__CH4____20261003T090907_20261003T091407_46492_03_020901_20261003T100743.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/03/S5P_NRTI_L2__CH4____20261003T091907_20261003T092407_46492_03_020901_20261003T101008.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/03/S5P_NRTI_L2__CH4____20261003T092407_20261003T092907_46492_03_020901_20261003T100937.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/03/S5P_NRTI_L2__CH4____20261003T092907_20261003T093407_46492_03_020901_20261003T100855.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/03/S5P_NRTI_L2__CH4____20261003T093407_20261003T093907_46492_03_020901_20261003T101051.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/03/S5P_NRTI_L2__CH4____20261003T093907_20261003T094407_46492_03_020901_20261003T101345.nc",
+   "pixels": 0,
+   "integrity": "verified"
   }
  ],
  "integrity": {
-  "verified": 25,
+  "verified": 46,
   "unverifiable": 0,
   "mismatch": 0,
   "download_failed": 0,
   "policy": "each granule's MD5 is checked against the Copernicus Data Space catalogue; mismatches are rejected, unverifiable granules are accepted only when the mirror ETag matches"
  },
- "processed_utc": "2026-10-03T08:33:46",
+ "processed_utc": "2026-10-03T11:42:00",
  "source": "Copernicus Sentinel-5P TROPOMI NRTI L2 CH4, s3://meeo-s5p (public mirror)"
 }
