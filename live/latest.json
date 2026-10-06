@@ -1,556 +1,74 @@
 {
  "stream": "NRTI",
- "day": "2026-10-05",
- "granules": 48,
- "orbits": [
-  "46519",
-  "46520"
- ],
- "pixels": 8323,
- "sensing_start": "2026-10-05 07:16:04",
- "sensing_end": "2026-10-05 09:03:46",
- "mean_xch4_ppb": 1952.6444091796875,
- "observed_cells": 5062,
- "method_steps": [
-  "qa >= 0.5",
-  "Copernicus checksum",
-  "plane background (60-140 km)",
-  "ABD albedo/aerosol correction",
-  "wind rotation",
-  "footprint drizzle",
-  "noise weight",
-  "KPW phase weight",
-  "flux divergence (20 km)"
- ],
- "texture": {
-  "file": "latest.png",
-  "lo": 1891.5480065917968,
-  "hi": 2062.5910668945317,
-  "nodata": 0,
-  "lat_edges": [
-   6.5,
-   37.5
-  ],
-  "lon_edges": [
-   68.0,
-   97.5
-  ]
- },
- "sites": {
-  "pirana": {
-   "name": "Pirana landfill, Ahmedabad",
-   "pixels": 23,
-   "method": null,
-   "xch4_ppb": 1962.1044921875,
-   "enhancement_ppb": 4.50048828125,
-   "wind_ms": 2.6416797637939453,
-   "wind_to_deg": 43.255950927734375,
-   "time_utc": "2026-10-05T09:00:21"
-  },
-  "c02": {
-   "name": "near Lahore",
-   "pixels": 2,
-   "method": null,
-   "xch4_ppb": 1992.749267578125,
-   "enhancement_ppb": 31.13720703125,
-   "wind_ms": 0.9782637357711792,
-   "wind_to_deg": 65.73320770263672,
-   "time_utc": "2026-10-05T09:02:52"
-  },
-  "c08": {
-   "name": "near Dera Ghazi Khan",
-   "pixels": 30,
-   "method": null,
-   "xch4_ppb": 1972.4471435546875,
-   "enhancement_ppb": 11.25830078125,
-   "wind_ms": 0.40989139676094055,
-   "wind_to_deg": 331.3219299316406,
-   "time_utc": "2026-10-05T09:02:25"
-  },
-  "c12": {
-   "name": "187 km from Bhuj",
-   "pixels": 19,
-   "method": null,
-   "xch4_ppb": 1944.1036376953125,
-   "enhancement_ppb": 0.9754638671875,
-   "wind_ms": 3.57785701751709,
-   "wind_to_deg": 24.35702133178711,
-   "time_utc": "2026-10-05T09:00:47"
-  },
-  "c15": {
-   "name": "127 km from Dera Ghazi Khan",
-   "pixels": 35,
-   "method": {
-    "rate_kg_h_gamma1": -7706.338612118221,
-    "single_pass_sigma_kg_h": 133605.36898061796,
-    "z_single": -0.057679857261096854,
-    "wind_ms": 4.586545125548726,
-    "orbits": [
-     "46520"
-    ]
-   },
-   "xch4_ppb": 1938.9149169921875,
-   "enhancement_ppb": -11.2086181640625,
-   "wind_ms": 4.586544990539551,
-   "wind_to_deg": 20.84397315979004,
-   "time_utc": "2026-10-05T09:02:15"
-  },
-  "c18": {
-   "name": "near Nawabganj",
-   "pixels": 1,
-   "method": null,
-   "xch4_ppb": 2022.3282470703125,
-   "enhancement_ppb": -17.4478759765625,
-   "wind_ms": 1.0051209926605225,
-   "wind_to_deg": 305.0084533691406,
-   "time_utc": "2026-10-05T07:19:48"
-  },
-  "c19": {
-   "name": "near Ahmedabad",
-   "pixels": 22,
-   "method": {
-    "rate_kg_h_gamma1": 7682.6101790279145,
-    "single_pass_sigma_kg_h": null,
-    "z_single": null,
-    "wind_ms": 2.592532344580794,
-    "orbits": [
-     "46520"
-    ]
-   },
-   "xch4_ppb": 1961.1968994140625,
-   "enhancement_ppb": 3.5391845703125,
-   "wind_ms": 2.5925323963165283,
-   "wind_to_deg": 42.999267578125,
-   "time_utc": "2026-10-05T09:00:21"
-  },
-  "c20": {
-   "name": "48 km from Sadiqabad",
-   "pixels": 42,
-   "method": {
-    "rate_kg_h_gamma1": 28018.574330114883,
-    "single_pass_sigma_kg_h": 29544.518290857686,
-    "z_single": 0.9483510292596311,
-    "wind_ms": 3.7184772657052982,
-    "orbits": [
-     "46520"
-    ]
-   },
-   "xch4_ppb": 1942.5323486328125,
-   "enhancement_ppb": 1.02783203125,
-   "wind_ms": 3.718477249145508,
-   "wind_to_deg": 12.190465927124023,
-   "time_utc": "2026-10-05T09:01:47"
-  },
-  "c24": {
-   "name": "near Pyay",
-   "pixels": 6,
-   "method": null,
-   "xch4_ppb": 1991.857421875,
-   "enhancement_ppb": 28.1824951171875,
-   "wind_ms": 1.392950177192688,
-   "wind_to_deg": 184.70204162597656,
-   "time_utc": "2026-10-05T07:17:51"
-  },
-  "c26": {
-   "name": "26 km from Shwebo",
-   "pixels": 37,
-   "method": {
-    "rate_kg_h_gamma1": -30905.706374668283,
-    "single_pass_sigma_kg_h": 42317.073457361534,
-    "z_single": -0.7303365722066937,
-    "wind_ms": 2.1986561559385764,
-    "orbits": [
-     "46519"
-    ]
-   },
-   "xch4_ppb": 2053.574951171875,
-   "enhancement_ppb": 45.2701416015625,
-   "wind_ms": 2.1986560821533203,
-   "wind_to_deg": 161.27291870117188,
-   "time_utc": "2026-10-05T07:18:43"
-  },
-  "c30": {
-   "name": "129 km from Rajkot",
-   "pixels": 32,
-   "method": {
-    "rate_kg_h_gamma1": 13204.995426255962,
-    "single_pass_sigma_kg_h": 67935.7950507901,
-    "z_single": 0.19437463588059367,
-    "wind_ms": 3.882599991116953,
-    "orbits": [
-     "46520"
-    ]
-   },
-   "xch4_ppb": 1950.0869140625,
-   "enhancement_ppb": 0.8193359375,
-   "wind_ms": 3.8826000690460205,
-   "wind_to_deg": 36.378929138183594,
-   "time_utc": "2026-10-05T09:00:30"
-  },
-  "c37": {
-   "name": "60 km from Bhuj",
-   "pixels": 20,
-   "method": null,
-   "xch4_ppb": 1951.9248046875,
-   "enhancement_ppb": 8.0667724609375,
-   "wind_ms": 3.8062119483947754,
-   "wind_to_deg": 34.38248825073242,
-   "time_utc": "2026-10-05T09:00:36"
-  },
-  "c38": {
-   "name": "59 km from Zhob",
-   "pixels": 13,
-   "method": null,
-   "xch4_ppb": 1939.365234375,
-   "enhancement_ppb": -8.7509765625,
-   "wind_ms": 3.439202308654785,
-   "wind_to_deg": 40.914222717285156,
-   "time_utc": "2026-10-05T09:02:36"
-  },
-  "c39": {
-   "name": "187 km from Bhuj",
-   "pixels": 29,
-   "method": {
-    "rate_kg_h_gamma1": -19031.556953023883,
-    "single_pass_sigma_kg_h": 71500.46295755758,
-    "z_single": -0.2661738982630217,
-    "wind_ms": 3.570949739352246,
-    "orbits": [
-     "46520"
-    ]
-   },
-   "xch4_ppb": 1943.9847412109375,
-   "enhancement_ppb": 1.263916015625,
-   "wind_ms": 3.5709497928619385,
-   "wind_to_deg": 24.244983673095703,
-   "time_utc": "2026-10-05T09:00:47"
-  },
-  "c42": {
-   "name": "97 km from Dera Ghazi Khan",
-   "pixels": 28,
-   "method": {
-    "rate_kg_h_gamma1": -13077.41443351282,
-    "single_pass_sigma_kg_h": 66016.71705716077,
-    "z_single": -0.1980924683393405,
-    "wind_ms": 4.019673559501869,
-    "orbits": [
-     "46520"
-    ]
-   },
-   "xch4_ppb": 1939.8431396484375,
-   "enhancement_ppb": -11.644775390625,
-   "wind_ms": 4.0196733474731445,
-   "wind_to_deg": 42.94805145263672,
-   "time_utc": "2026-10-05T09:02:26"
-  },
-  "c44": {
-   "name": "100 km from Bhuj",
-   "pixels": 8,
-   "method": null,
-   "xch4_ppb": 1946.6102294921875,
-   "enhancement_ppb": 2.5916748046875,
-   "wind_ms": 5.217404365539551,
-   "wind_to_deg": 51.07058334350586,
-   "time_utc": "2026-10-05T09:00:46"
-  },
-  "c46": {
-   "name": "133 km from Dera Ghazi Khan",
-   "pixels": 38,
-   "method": {
-    "rate_kg_h_gamma1": 15775.51730411925,
-    "single_pass_sigma_kg_h": 82448.78924244552,
-    "z_single": 0.1913371615164707,
-    "wind_ms": 4.6474052516061635,
-    "orbits": [
-     "46520"
-    ]
-   },
-   "xch4_ppb": 1940.1468505859375,
-   "enhancement_ppb": -10.2928466796875,
-   "wind_ms": 4.64740514755249,
-   "wind_to_deg": 19.436519622802734,
-   "time_utc": "2026-10-05T09:02:13"
-  },
-  "c52": {
-   "name": "near Nawabganj",
-   "pixels": 1,
-   "method": null,
-   "xch4_ppb": 2022.3282470703125,
-   "enhancement_ppb": -19.8558349609375,
-   "wind_ms": 1.0051209926605225,
-   "wind_to_deg": 305.0084533691406,
-   "time_utc": "2026-10-05T07:19:48"
-  },
-  "c53": {
-   "name": "31 km from Hyderabad",
-   "pixels": 12,
-   "method": null,
-   "xch4_ppb": 1936.9207763671875,
-   "enhancement_ppb": -7.684326171875,
-   "wind_ms": 5.493721961975098,
-   "wind_to_deg": 45.19084930419922,
-   "time_utc": "2026-10-05T09:01:09"
-  },
-  "c54": {
-   "name": "38 km from Hyderabad",
-   "pixels": 5,
-   "method": null,
-   "xch4_ppb": 1936.500732421875,
-   "enhancement_ppb": -8.302490234375,
-   "wind_ms": 5.626452445983887,
-   "wind_to_deg": 48.82821273803711,
-   "time_utc": "2026-10-05T09:01:09"
-  }
- },
+ "day": "2026-10-06",
+ "granules": 11,
+ "pixels": 0,
+ "orbits": [],
+ "note": "no qa>=0.5 pixels over India (cloud/monsoon)",
  "log": [
   {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T032407_20261005T032907_46517_03_020901_20261005T042701.nc",
+   "key": "NRTI/L2__CH4___/2026/10/06/S5P_NRTI_L2__CH4____20261006T030907_20261006T031407_46531_03_020901_20261006T040901.nc",
    "pixels": 0,
    "integrity": "verified"
   },
   {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T032907_20261005T033407_46517_03_020901_20261005T042844.nc",
+   "key": "NRTI/L2__CH4___/2026/10/06/S5P_NRTI_L2__CH4____20261006T031407_20261006T031907_46531_03_020901_20261006T040833.nc",
    "pixels": 0,
    "integrity": "verified"
   },
   {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T033407_20261005T033907_46517_03_020901_20261005T042825.nc",
+   "key": "NRTI/L2__CH4___/2026/10/06/S5P_NRTI_L2__CH4____20261006T031907_20261006T032407_46531_03_020901_20261006T040815.nc",
    "pixels": 0,
    "integrity": "verified"
   },
   {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T033907_20261005T034407_46517_03_020901_20261005T042850.nc",
+   "key": "NRTI/L2__CH4___/2026/10/06/S5P_NRTI_L2__CH4____20261006T032907_20261006T033407_46531_03_020901_20261006T041119.nc",
    "pixels": 0,
    "integrity": "verified"
   },
   {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T034407_20261005T034907_46517_03_020901_20261005T043055.nc",
+   "key": "NRTI/L2__CH4___/2026/10/06/S5P_NRTI_L2__CH4____20261006T034407_20261006T034907_46531_03_020901_20261006T041904.nc",
    "pixels": 0,
    "integrity": "verified"
   },
   {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T034907_20261005T035407_46517_03_020901_20261005T043007.nc",
+   "key": "NRTI/L2__CH4___/2026/10/06/S5P_NRTI_L2__CH4____20261006T034907_20261006T035407_46531_03_020901_20261006T054358.nc",
    "pixels": 0,
    "integrity": "verified"
   },
   {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T035407_20261005T035907_46517_03_020901_20261005T043109.nc",
+   "key": "NRTI/L2__CH4___/2026/10/06/S5P_NRTI_L2__CH4____20261006T035407_20261006T035907_46531_03_020901_20261006T054045.nc",
    "pixels": 0,
    "integrity": "verified"
   },
   {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T051407_20261005T051907_46518_03_020901_20261005T060838.nc",
+   "key": "NRTI/L2__CH4___/2026/10/06/S5P_NRTI_L2__CH4____20261006T035907_20261006T040407_46531_03_020901_20261006T053738.nc",
    "pixels": 0,
    "integrity": "verified"
   },
   {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T051907_20261005T052407_46518_03_020901_20261005T061002.nc",
+   "key": "NRTI/L2__CH4___/2026/10/06/S5P_NRTI_L2__CH4____20261006T043907_20261006T044407_46532_03_020901_20261006T054111.nc",
    "pixels": 0,
    "integrity": "verified"
   },
   {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T052907_20261005T053407_46518_03_020901_20261005T061030.nc",
+   "key": "NRTI/L2__CH4___/2026/10/06/S5P_NRTI_L2__CH4____20261006T050907_20261006T051407_46532_03_020901_20261006T055122.nc",
    "pixels": 0,
    "integrity": "verified"
   },
   {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T053407_20261005T053907_46518_03_020901_20261005T061135.nc",
-   "pixels": 0,
-   "integrity": "verified"
-  },
-  {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T053907_20261005T054407_46518_03_020901_20261005T061322.nc",
-   "pixels": 0,
-   "integrity": "verified"
-  },
-  {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T054407_20261005T054907_46518_03_020901_20261005T062030.nc",
-   "pixels": 0,
-   "integrity": "verified"
-  },
-  {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T054907_20261005T055407_46518_03_020901_20261005T074214.nc",
-   "pixels": 0,
-   "integrity": "verified"
-  },
-  {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T055407_20261005T055907_46518_03_020901_20261005T073904.nc",
-   "pixels": 0,
-   "integrity": "verified"
-  },
-  {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T063907_20261005T064407_46519_03_020901_20261005T073922.nc",
-   "pixels": 0,
-   "integrity": "verified"
-  },
-  {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T064407_20261005T064907_46519_03_020901_20261005T074313.nc",
-   "pixels": 0,
-   "integrity": "verified"
-  },
-  {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T064907_20261005T065407_46519_03_020901_20261005T074755.nc",
-   "pixels": 0,
-   "integrity": "verified"
-  },
-  {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T065407_20261005T065907_46519_03_020901_20261005T074846.nc",
-   "pixels": 0,
-   "integrity": "verified"
-  },
-  {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T065907_20261005T070407_46519_03_020901_20261005T074951.nc",
-   "pixels": 0,
-   "integrity": "verified"
-  },
-  {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T070407_20261005T070907_46519_03_020901_20261005T075017.nc",
-   "pixels": 0,
-   "integrity": "verified"
-  },
-  {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T070907_20261005T071407_46519_03_020901_20261005T075034.nc",
-   "pixels": 0,
-   "integrity": "verified"
-  },
-  {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T071407_20261005T071907_46519_03_020901_20261005T075055.nc",
-   "pixels": 635,
-   "integrity": "verified"
-  },
-  {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T071907_20261005T072407_46519_03_020901_20261005T075333.nc",
-   "pixels": 1094,
-   "integrity": "verified"
-  },
-  {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T072407_20261005T072907_46519_03_020901_20261005T080029.nc",
-   "pixels": 0,
-   "integrity": "verified"
-  },
-  {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T072907_20261005T073407_46519_03_020901_20261005T092253.nc",
-   "pixels": 0,
-   "integrity": "verified"
-  },
-  {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T073407_20261005T073907_46519_03_020901_20261005T092018.nc",
-   "pixels": 0,
-   "integrity": "verified"
-  },
-  {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T073907_20261005T074407_46519_03_020901_20261005T091726.nc",
-   "pixels": 0,
-   "integrity": "verified"
-  },
-  {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T082407_20261005T082907_46520_03_020901_20261005T092248.nc",
-   "pixels": 0,
-   "integrity": "verified"
-  },
-  {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T082907_20261005T083407_46520_03_020901_20261005T092824.nc",
-   "pixels": 0,
-   "integrity": "verified"
-  },
-  {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T085407_20261005T085907_46520_03_020901_20261005T093105.nc",
-   "pixels": 6,
-   "integrity": "verified"
-  },
-  {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T085907_20261005T090407_46520_03_020901_20261005T093414.nc",
-   "pixels": 6588,
-   "integrity": "verified"
-  },
-  {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T090907_20261005T091407_46520_03_020901_20261005T110358.nc",
-   "pixels": 0,
-   "integrity": "verified"
-  },
-  {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T091907_20261005T092407_46520_03_020901_20261005T105903.nc",
-   "pixels": 0,
-   "integrity": "verified"
-  },
-  {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T100907_20261005T101407_46521_03_020901_20261005T110859.nc",
-   "pixels": 0,
-   "integrity": "verified"
-  },
-  {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T101407_20261005T101907_46521_03_020901_20261005T111116.nc",
-   "pixels": 0,
-   "integrity": "verified"
-  },
-  {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T101907_20261005T102407_46521_03_020901_20261005T111124.nc",
-   "pixels": 0,
-   "integrity": "verified"
-  },
-  {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T102407_20261005T102907_46521_03_020901_20261005T111228.nc",
-   "pixels": 0,
-   "integrity": "verified"
-  },
-  {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T103407_20261005T103907_46521_03_020901_20261005T111253.nc",
-   "pixels": 0,
-   "integrity": "verified"
-  },
-  {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T103907_20261005T104407_46521_03_020901_20261005T111515.nc",
-   "pixels": 0,
-   "integrity": "verified"
-  },
-  {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T104907_20261005T105407_46521_03_020901_20261005T125341.nc",
-   "pixels": 0,
-   "integrity": "verified"
-  },
-  {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T105407_20261005T105907_46521_03_020901_20261005T125255.nc",
-   "pixels": 0,
-   "integrity": "verified"
-  },
-  {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T105907_20261005T110407_46521_03_020901_20261005T124945.nc",
-   "pixels": 0,
-   "integrity": "verified"
-  },
-  {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T110407_20261005T110907_46521_03_020901_20261005T124634.nc",
-   "pixels": 0,
-   "integrity": "verified"
-  },
-  {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T114407_20261005T114907_46522_03_020901_20261005T125057.nc",
-   "pixels": 0,
-   "integrity": "verified"
-  },
-  {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T114907_20261005T115407_46522_03_020901_20261005T125642.nc",
-   "pixels": 0,
-   "integrity": "verified"
-  },
-  {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T115407_20261005T115907_46522_03_020901_20261005T125824.nc",
-   "pixels": 0,
-   "integrity": "verified"
-  },
-  {
-   "key": "NRTI/L2__CH4___/2026/10/05/S5P_NRTI_L2__CH4____20261005T115907_20261005T120407_46522_03_020901_20261005T125832.nc",
+   "key": "NRTI/L2__CH4___/2026/10/06/S5P_NRTI_L2__CH4____20261006T051407_20261006T051907_46532_03_020901_20261006T055218.nc",
    "pixels": 0,
    "integrity": "verified"
   }
  ],
  "integrity": {
-  "verified": 48,
+  "verified": 11,
   "unverifiable": 0,
   "mismatch": 0,
   "download_failed": 0,
   "policy": "each granule's MD5 is checked against the Copernicus Data Space catalogue; mismatches are rejected, unverifiable granules are accepted only when the mirror ETag matches"
  },
- "processed_utc": "2026-10-05T22:03:24",
+ "processed_utc": "2026-10-06T06:22:06",
  "source": "Copernicus Sentinel-5P TROPOMI NRTI L2 CH4, s3://meeo-s5p (public mirror)"
 }
