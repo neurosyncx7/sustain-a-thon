@@ -1,15 +1,16 @@
 {
  "stream": "NRTI",
  "day": "2026-10-07",
- "granules": 30,
+ "granules": 53,
  "orbits": [
-  "46547"
+  "46547",
+  "46548"
  ],
- "pixels": 843,
+ "pixels": 7936,
  "sensing_start": "2026-10-07 06:41:09",
- "sensing_end": "2026-10-07 06:45:25",
- "mean_xch4_ppb": 1994.52490234375,
- "observed_cells": 587,
+ "sensing_end": "2026-10-07 08:26:48",
+ "mean_xch4_ppb": 1951.199462890625,
+ "observed_cells": 4454,
  "method_steps": [
   "qa >= 0.5",
   "Copernicus checksum",
@@ -23,8 +24,8 @@
  ],
  "texture": {
   "file": "latest.png",
-  "lo": 1893.9223022460938,
-  "hi": 2083.2539453125,
+  "lo": 1903.5433154296875,
+  "hi": 2058.02287109375,
   "nodata": 0,
   "lat_edges": [
    6.5,
@@ -36,6 +37,64 @@
   ]
  },
  "sites": {
+  "pirana": {
+   "name": "Pirana landfill, Ahmedabad",
+   "pixels": 45,
+   "method": null,
+   "xch4_ppb": 1994.94091796875,
+   "enhancement_ppb": 28.0076904296875,
+   "wind_ms": 0.13049335777759552,
+   "wind_to_deg": 59.01202392578125,
+   "time_utc": "2026-10-07T08:22:48"
+  },
+  "khajod": {
+   "name": "Khajod landfill, Surat",
+   "pixels": 34,
+   "method": {
+    "rate_kg_h_gamma1": -4091.889105600954,
+    "single_pass_sigma_kg_h": 81883.82310945829,
+    "z_single": -0.04997188638995417,
+    "wind_ms": 1.092822649857877,
+    "orbits": [
+     "46548"
+    ]
+   },
+   "xch4_ppb": 1974.5289306640625,
+   "enhancement_ppb": 7.2061767578125,
+   "wind_ms": 1.0928226709365845,
+   "wind_to_deg": 146.35865783691406,
+   "time_utc": "2026-10-07T08:22:16"
+  },
+  "deonar": {
+   "name": "Deonar/Mumbai landfill",
+   "pixels": 5,
+   "method": null,
+   "xch4_ppb": 1982.7435302734375,
+   "enhancement_ppb": 17.9241943359375,
+   "wind_ms": 0.46185246109962463,
+   "wind_to_deg": 229.7254180908203,
+   "time_utc": "2026-10-07T08:21:45"
+  },
+  "ghazipur": {
+   "name": "Ghazipur landfill, Delhi",
+   "pixels": 7,
+   "method": null,
+   "xch4_ppb": 1977.8931884765625,
+   "enhancement_ppb": 12.5504150390625,
+   "wind_ms": 1.1578316688537598,
+   "wind_to_deg": 335.844970703125,
+   "time_utc": "2026-10-07T08:24:00"
+  },
+  "c02": {
+   "name": "near Lahore",
+   "pixels": 27,
+   "method": null,
+   "xch4_ppb": 1966.0625,
+   "enhancement_ppb": null,
+   "wind_ms": 0.5825093388557434,
+   "wind_to_deg": 325.2163391113281,
+   "time_utc": "2026-10-07T08:24:57"
+  },
   "c03": {
    "name": "38 km from Dibrugarh",
    "pixels": 37,
@@ -45,6 +104,76 @@
    "wind_ms": 0.26555076241493225,
    "wind_to_deg": 114.02010345458984,
    "time_utc": "2026-10-07T06:42:41"
+  },
+  "c04": {
+   "name": "near Ghaziabad",
+   "pixels": 6,
+   "method": null,
+   "xch4_ppb": 1978.9227294921875,
+   "enhancement_ppb": 14.125732421875,
+   "wind_ms": 1.188590407371521,
+   "wind_to_deg": 333.2478942871094,
+   "time_utc": "2026-10-07T08:24:01"
+  },
+  "c08": {
+   "name": "near Dera Ghazi Khan",
+   "pixels": 1,
+   "method": null,
+   "xch4_ppb": 1951.217529296875,
+   "enhancement_ppb": 24.107421875,
+   "wind_ms": 1.8378934860229492,
+   "wind_to_deg": 237.647216796875,
+   "time_utc": "2026-10-07T08:24:59"
+  },
+  "c11": {
+   "name": "55 km from Hosapete",
+   "pixels": 5,
+   "method": null,
+   "xch4_ppb": 1951.2750244140625,
+   "enhancement_ppb": -16.8458251953125,
+   "wind_ms": 3.2464606761932373,
+   "wind_to_deg": 245.35818481445312,
+   "time_utc": "2026-10-07T08:20:37"
+  },
+  "c12": {
+   "name": "187 km from Bhuj",
+   "pixels": 10,
+   "method": null,
+   "xch4_ppb": 1953.578125,
+   "enhancement_ppb": 1.712890625,
+   "wind_ms": 1.6775473356246948,
+   "wind_to_deg": 16.378143310546875,
+   "time_utc": "2026-10-07T08:23:19"
+  },
+  "c14": {
+   "name": "59 km from Proddatur",
+   "pixels": 3,
+   "method": null,
+   "xch4_ppb": 1953.6839599609375,
+   "enhancement_ppb": null,
+   "wind_ms": 2.3996071815490723,
+   "wind_to_deg": 278.2265625,
+   "time_utc": "2026-10-07T08:20:04"
+  },
+  "c15": {
+   "name": "127 km from Dera Ghazi Khan",
+   "pixels": 2,
+   "method": null,
+   "xch4_ppb": 1932.054443359375,
+   "enhancement_ppb": -2.173583984375,
+   "wind_ms": 3.1844472885131836,
+   "wind_to_deg": 355.85699462890625,
+   "time_utc": "2026-10-07T08:24:48"
+  },
+  "c16": {
+   "name": "30 km from Davangere",
+   "pixels": 9,
+   "method": null,
+   "xch4_ppb": 1965.6080322265625,
+   "enhancement_ppb": 4.37158203125,
+   "wind_ms": 2.8403124809265137,
+   "wind_to_deg": 252.43136596679688,
+   "time_utc": "2026-10-07T08:20:21"
   },
   "c17": {
    "name": "43 km from Guwahati",
@@ -56,6 +185,26 @@
    "wind_to_deg": 274.2212829589844,
    "time_utc": "2026-10-07T06:42:55"
   },
+  "c19": {
+   "name": "near Ahmedabad",
+   "pixels": 49,
+   "method": null,
+   "xch4_ppb": 1996.6624755859375,
+   "enhancement_ppb": 31.2366943359375,
+   "wind_ms": 0.12168871611356735,
+   "wind_to_deg": 88.98973846435547,
+   "time_utc": "2026-10-07T08:22:47"
+  },
+  "c20": {
+   "name": "48 km from Sadiqabad",
+   "pixels": 8,
+   "method": null,
+   "xch4_ppb": 1920.0919189453125,
+   "enhancement_ppb": -7.8214111328125,
+   "wind_ms": 1.6916056871414185,
+   "wind_to_deg": 1.4561824798583984,
+   "time_utc": "2026-10-07T08:24:22"
+  },
   "c26": {
    "name": "26 km from Shwebo",
    "pixels": 16,
@@ -65,6 +214,154 @@
    "wind_ms": 1.6657097339630127,
    "wind_to_deg": 143.0610809326172,
    "time_utc": "2026-10-07T06:41:20"
+  },
+  "c27": {
+   "name": "near Aligarh",
+   "pixels": 23,
+   "method": null,
+   "xch4_ppb": 1966.994384765625,
+   "enhancement_ppb": 0.2657470703125,
+   "wind_ms": 0.7493653297424316,
+   "wind_to_deg": 349.7820129394531,
+   "time_utc": "2026-10-07T08:23:46"
+  },
+  "c30": {
+   "name": "129 km from Rajkot",
+   "pixels": 16,
+   "method": null,
+   "xch4_ppb": 1955.1405029296875,
+   "enhancement_ppb": -4.5633544921875,
+   "wind_ms": 1.4015244245529175,
+   "wind_to_deg": 19.136276245117188,
+   "time_utc": "2026-10-07T08:23:03"
+  },
+  "c31": {
+   "name": "80 km from Panaji",
+   "pixels": 1,
+   "method": null,
+   "xch4_ppb": 1958.9910888671875,
+   "enhancement_ppb": null,
+   "wind_ms": 2.8758857250213623,
+   "wind_to_deg": 84.3523941040039,
+   "time_utc": "2026-10-07T08:20:31"
+  },
+  "c35": {
+   "name": "105 km from Pune",
+   "pixels": 4,
+   "method": null,
+   "xch4_ppb": 1961.555419921875,
+   "enhancement_ppb": 3.623291015625,
+   "wind_ms": 1.9129878282546997,
+   "wind_to_deg": 90.37107849121094,
+   "time_utc": "2026-10-07T08:21:24"
+  },
+  "c37": {
+   "name": "60 km from Bhuj",
+   "pixels": 2,
+   "method": null,
+   "xch4_ppb": 1948.720458984375,
+   "enhancement_ppb": 2.4112548828125,
+   "wind_ms": 1.7965306043624878,
+   "wind_to_deg": 9.26067066192627,
+   "time_utc": "2026-10-07T08:23:16"
+  },
+  "c38": {
+   "name": "59 km from Zhob",
+   "pixels": 3,
+   "method": null,
+   "xch4_ppb": 1927.7926025390625,
+   "enhancement_ppb": -15.7862548828125,
+   "wind_ms": 1.889479160308838,
+   "wind_to_deg": 53.690128326416016,
+   "time_utc": "2026-10-07T08:25:08"
+  },
+  "c39": {
+   "name": "187 km from Bhuj",
+   "pixels": 8,
+   "method": null,
+   "xch4_ppb": 1948.257080078125,
+   "enhancement_ppb": -0.715087890625,
+   "wind_ms": 1.9747642278671265,
+   "wind_to_deg": 22.454397201538086,
+   "time_utc": "2026-10-07T08:23:19"
+  },
+  "c40": {
+   "name": "64 km from Bhagalpur",
+   "pixels": 1,
+   "method": null,
+   "xch4_ppb": 2058.794921875,
+   "enhancement_ppb": null,
+   "wind_ms": 1.8207393884658813,
+   "wind_to_deg": 250.3694610595703,
+   "time_utc": "2026-10-07T08:23:08"
+  },
+  "c41": {
+   "name": "98 km from Burhanpur",
+   "pixels": 3,
+   "method": null,
+   "xch4_ppb": 1945.2540283203125,
+   "enhancement_ppb": -10.1226806640625,
+   "wind_ms": 1.2358179092407227,
+   "wind_to_deg": 190.64413452148438,
+   "time_utc": "2026-10-07T08:22:16"
+  },
+  "c42": {
+   "name": "97 km from Dera Ghazi Khan",
+   "pixels": 1,
+   "method": null,
+   "xch4_ppb": 1937.070556640625,
+   "enhancement_ppb": 3.11474609375,
+   "wind_ms": 3.308870792388916,
+   "wind_to_deg": 30.679702758789062,
+   "time_utc": "2026-10-07T08:25:04"
+  },
+  "c44": {
+   "name": "100 km from Bhuj",
+   "pixels": 1,
+   "method": null,
+   "xch4_ppb": 1904.7237548828125,
+   "enhancement_ppb": -41.4703369140625,
+   "wind_ms": 2.7934255599975586,
+   "wind_to_deg": 12.37583065032959,
+   "time_utc": "2026-10-07T08:23:25"
+  },
+  "c46": {
+   "name": "133 km from Dera Ghazi Khan",
+   "pixels": 4,
+   "method": null,
+   "xch4_ppb": 1929.34423828125,
+   "enhancement_ppb": -4.98193359375,
+   "wind_ms": 3.1285574436187744,
+   "wind_to_deg": 353.66009521484375,
+   "time_utc": "2026-10-07T08:24:46"
+  },
+  "c47": {
+   "name": "93 km from Kolhapur",
+   "pixels": 13,
+   "method": null,
+   "xch4_ppb": 1960.714111328125,
+   "enhancement_ppb": 2.607666015625,
+   "wind_ms": 1.4152218103408813,
+   "wind_to_deg": 153.81678771972656,
+   "time_utc": "2026-10-07T08:21:05"
+  },
+  "c48": {
+   "name": "near Hosapete",
+   "pixels": 17,
+   "method": {
+    "rate_kg_h_gamma1": -1707.6010506103346,
+    "single_pass_sigma_kg_h": 65361.91766778942,
+    "z_single": -0.02612532054658253,
+    "wind_ms": 3.369497638295866,
+    "orbits": [
+     "46548"
+    ]
+   },
+   "xch4_ppb": 1961.3134765625,
+   "enhancement_ppb": 8.3404541015625,
+   "wind_ms": 3.369497537612915,
+   "wind_to_deg": 243.96829223632812,
+   "time_utc": "2026-10-07T08:20:30"
   }
  },
  "log": [
@@ -217,15 +514,130 @@
    "key": "NRTI/L2__CH4___/2026/10/07/S5P_NRTI_L2__CH4____20261007T074907_20261007T075407_46548_03_020901_20261007T085019.nc",
    "pixels": 0,
    "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/07/S5P_NRTI_L2__CH4____20261007T075407_20261007T075907_46548_03_020901_20261007T085209.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/07/S5P_NRTI_L2__CH4____20261007T075907_20261007T080407_46548_03_020901_20261007T085257.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/07/S5P_NRTI_L2__CH4____20261007T080407_20261007T080907_46548_03_020901_20261007T085438.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/07/S5P_NRTI_L2__CH4____20261007T080907_20261007T081407_46548_03_020901_20261007T085349.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/07/S5P_NRTI_L2__CH4____20261007T081407_20261007T081907_46548_03_020901_20261007T085341.nc",
+   "pixels": 10,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/07/S5P_NRTI_L2__CH4____20261007T081907_20261007T082407_46548_03_020901_20261007T085601.nc",
+   "pixels": 5364,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/07/S5P_NRTI_L2__CH4____20261007T082407_20261007T082907_46548_03_020901_20261007T085811.nc",
+   "pixels": 1719,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/07/S5P_NRTI_L2__CH4____20261007T083407_20261007T083907_46548_03_020901_20261007T102455.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/07/S5P_NRTI_L2__CH4____20261007T083907_20261007T084407_46548_03_020901_20261007T102255.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/07/S5P_NRTI_L2__CH4____20261007T092407_20261007T092907_46549_03_020901_20261007T102311.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/07/S5P_NRTI_L2__CH4____20261007T092907_20261007T093407_46549_03_020901_20261007T102847.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/07/S5P_NRTI_L2__CH4____20261007T093407_20261007T093907_46549_03_020901_20261007T103204.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/07/S5P_NRTI_L2__CH4____20261007T093907_20261007T094407_46549_03_020901_20261007T103058.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/07/S5P_NRTI_L2__CH4____20261007T094907_20261007T095407_46549_03_020901_20261007T103511.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/07/S5P_NRTI_L2__CH4____20261007T101407_20261007T101907_46549_03_020901_20261007T121552.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/07/S5P_NRTI_L2__CH4____20261007T101907_20261007T102407_46549_03_020901_20261007T121332.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/07/S5P_NRTI_L2__CH4____20261007T102407_20261007T102907_46549_03_020901_20261007T120941.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/07/S5P_NRTI_L2__CH4____20261007T110907_20261007T111407_46550_03_020901_20261007T121645.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/07/S5P_NRTI_L2__CH4____20261007T111407_20261007T111907_46550_03_020901_20261007T122128.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/07/S5P_NRTI_L2__CH4____20261007T111907_20261007T112407_46550_03_020901_20261007T122052.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/07/S5P_NRTI_L2__CH4____20261007T112407_20261007T112907_46550_03_020901_20261007T122211.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/07/S5P_NRTI_L2__CH4____20261007T112907_20261007T113407_46550_03_020901_20261007T122429.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/07/S5P_NRTI_L2__CH4____20261007T113407_20261007T113907_46550_03_020901_20261007T122602.nc",
+   "pixels": 0,
+   "integrity": "verified"
   }
  ],
  "integrity": {
-  "verified": 30,
+  "verified": 53,
   "unverifiable": 0,
   "mismatch": 0,
   "download_failed": 0,
   "policy": "each granule's MD5 is checked against the Copernicus Data Space catalogue; mismatches are rejected, unverifiable granules are accepted only when the mirror ETag matches"
  },
- "processed_utc": "2026-10-07T09:14:13",
+ "processed_utc": "2026-10-07T13:26:42",
  "source": "Copernicus Sentinel-5P TROPOMI NRTI L2 CH4, s3://meeo-s5p (public mirror)"
 }
