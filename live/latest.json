@@ -1,10 +1,41 @@
 {
  "stream": "NRTI",
  "day": "2026-10-20",
- "granules": 17,
- "pixels": 0,
- "orbits": [],
- "note": "no qa>=0.5 pixels over India (cloud/monsoon)",
+ "granules": 28,
+ "orbits": [
+  "46732"
+ ],
+ "pixels": 41,
+ "sensing_start": "2026-10-20 07:35:38",
+ "sensing_end": "2026-10-20 07:38:00",
+ "mean_xch4_ppb": 2026.70166015625,
+ "observed_cells": 33,
+ "method_steps": [
+  "qa >= 0.5",
+  "Copernicus checksum",
+  "plane background (60-140 km)",
+  "ABD albedo/aerosol correction",
+  "wind rotation",
+  "footprint drizzle",
+  "noise weight",
+  "KPW phase weight",
+  "flux divergence (20 km)"
+ ],
+ "texture": {
+  "file": "latest.png",
+  "lo": 1959.317236328125,
+  "hi": 2070.90986328125,
+  "nodata": 0,
+  "lat_edges": [
+   6.5,
+   37.5
+  ],
+  "lon_edges": [
+   68.0,
+   97.5
+  ]
+ },
+ "sites": {},
  "log": [
   {
    "key": "NRTI/L2__CH4___/2026/10/20/S5P_NRTI_L2__CH4____20261020T033754_20261020T034254_46730_03_020901_20261020T044059.nc",
@@ -90,15 +121,70 @@
    "key": "NRTI/L2__CH4___/2026/10/20/S5P_NRTI_L2__CH4____20261020T055254_20261020T055754_46731_03_020901_20261020T063217.nc",
    "pixels": 0,
    "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/20/S5P_NRTI_L2__CH4____20261020T060254_20261020T060754_46731_03_020901_20261020T064040.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/20/S5P_NRTI_L2__CH4____20261020T060754_20261020T061254_46731_03_020901_20261020T080133.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/20/S5P_NRTI_L2__CH4____20261020T061254_20261020T061754_46731_03_020901_20261020T075840.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/20/S5P_NRTI_L2__CH4____20261020T061754_20261020T062254_46731_03_020901_20261020T075458.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/20/S5P_NRTI_L2__CH4____20261020T065754_20261020T070254_46732_03_020901_20261020T075904.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/20/S5P_NRTI_L2__CH4____20261020T070254_20261020T070754_46732_03_020901_20261020T080247.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/20/S5P_NRTI_L2__CH4____20261020T071254_20261020T071754_46732_03_020901_20261020T080724.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/20/S5P_NRTI_L2__CH4____20261020T071754_20261020T072254_46732_03_020901_20261020T080733.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/20/S5P_NRTI_L2__CH4____20261020T072254_20261020T072754_46732_03_020901_20261020T080808.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/20/S5P_NRTI_L2__CH4____20261020T072754_20261020T073254_46732_03_020901_20261020T080930.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/20/S5P_NRTI_L2__CH4____20261020T073254_20261020T073754_46732_03_020901_20261020T080836.nc",
+   "pixels": 41,
+   "integrity": "verified"
   }
  ],
  "integrity": {
-  "verified": 17,
+  "verified": 28,
   "unverifiable": 0,
   "mismatch": 0,
   "download_failed": 0,
   "policy": "each granule's MD5 is checked against the Copernicus Data Space catalogue; mismatches are rejected, unverifiable granules are accepted only when the mirror ETag matches"
  },
- "processed_utc": "2026-10-20T07:55:36",
+ "processed_utc": "2026-10-20T08:34:15",
  "source": "Copernicus Sentinel-5P TROPOMI NRTI L2 CH4, s3://meeo-s5p (public mirror)"
 }
