@@ -1,10 +1,101 @@
 {
  "stream": "NRTI",
  "day": "2026-10-21",
- "granules": 15,
- "pixels": 0,
- "orbits": [],
- "note": "no qa>=0.5 pixels over India (cloud/monsoon)",
+ "granules": 43,
+ "orbits": [
+  "46746",
+  "46747"
+ ],
+ "pixels": 3148,
+ "sensing_start": "2026-10-21 07:17:58",
+ "sensing_end": "2026-10-21 09:05:18",
+ "mean_xch4_ppb": 1964.2442626953125,
+ "observed_cells": 1914,
+ "method_steps": [
+  "qa >= 0.5",
+  "Copernicus checksum",
+  "plane background (60-140 km)",
+  "ABD albedo/aerosol correction",
+  "wind rotation",
+  "footprint drizzle",
+  "noise weight",
+  "KPW phase weight",
+  "flux divergence (20 km)"
+ ],
+ "texture": {
+  "file": "latest.png",
+  "lo": 1900.6547888183593,
+  "hi": 2000.162041015625,
+  "nodata": 0,
+  "lat_edges": [
+   6.5,
+   37.5
+  ],
+  "lon_edges": [
+   68.0,
+   97.5
+  ]
+ },
+ "sites": {
+  "c02": {
+   "name": "near Lahore",
+   "pixels": 25,
+   "method": {
+    "rate_kg_h_gamma1": -397.8586975327934,
+    "single_pass_sigma_kg_h": 55053.66212430506,
+    "z_single": -0.0072267435476766765,
+    "wind_ms": 1.800849727659637,
+    "orbits": [
+     "46747"
+    ]
+   },
+   "xch4_ppb": 1977.539794921875,
+   "enhancement_ppb": 2.153076171875,
+   "wind_ms": 1.8005809783935547,
+   "wind_to_deg": 97.72506713867188,
+   "time_utc": "2026-10-21T09:03:30"
+  },
+  "c08": {
+   "name": "near Dera Ghazi Khan",
+   "pixels": 16,
+   "method": null,
+   "xch4_ppb": 1974.584228515625,
+   "enhancement_ppb": 2.7071533203125,
+   "wind_ms": 2.1387367248535156,
+   "wind_to_deg": 197.830078125,
+   "time_utc": "2026-10-21T09:03:11"
+  },
+  "c15": {
+   "name": "127 km from Dera Ghazi Khan",
+   "pixels": 12,
+   "method": null,
+   "xch4_ppb": 1945.9671630859375,
+   "enhancement_ppb": -12.796142578125,
+   "wind_ms": 3.127145528793335,
+   "wind_to_deg": 2.683593273162842,
+   "time_utc": "2026-10-21T09:03:01"
+  },
+  "c38": {
+   "name": "59 km from Zhob",
+   "pixels": 8,
+   "method": null,
+   "xch4_ppb": 1942.3927001953125,
+   "enhancement_ppb": 3.43994140625,
+   "wind_ms": 3.020354986190796,
+   "wind_to_deg": 16.902374267578125,
+   "time_utc": "2026-10-21T09:03:22"
+  },
+  "c46": {
+   "name": "133 km from Dera Ghazi Khan",
+   "pixels": 9,
+   "method": null,
+   "xch4_ppb": 1948.3875732421875,
+   "enhancement_ppb": -12.131103515625,
+   "wind_ms": 3.1150078773498535,
+   "wind_to_deg": 355.5130310058594,
+   "time_utc": "2026-10-21T09:03:00"
+  }
+ },
  "log": [
   {
    "key": "NRTI/L2__CH4___/2026/10/21/S5P_NRTI_L2__CH4____20261021T031754_20261021T032254_46744_03_020901_20261021T042133.nc",
@@ -80,15 +171,155 @@
    "key": "NRTI/L2__CH4___/2026/10/21/S5P_NRTI_L2__CH4____20261021T053754_20261021T054254_46745_03_020901_20261021T061306.nc",
    "pixels": 0,
    "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/21/S5P_NRTI_L2__CH4____20261021T054254_20261021T054754_46745_03_020901_20261021T062239.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/21/S5P_NRTI_L2__CH4____20261021T054754_20261021T055254_46745_03_020901_20261021T074401.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/21/S5P_NRTI_L2__CH4____20261021T055254_20261021T055754_46745_03_020901_20261021T074036.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/21/S5P_NRTI_L2__CH4____20261021T055754_20261021T060254_46745_03_020901_20261021T073721.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/21/S5P_NRTI_L2__CH4____20261021T063754_20261021T064254_46746_03_020901_20261021T074042.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/21/S5P_NRTI_L2__CH4____20261021T064254_20261021T064754_46746_03_020901_20261021T074353.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/21/S5P_NRTI_L2__CH4____20261021T065254_20261021T065754_46746_03_020901_20261021T075017.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/21/S5P_NRTI_L2__CH4____20261021T065754_20261021T070254_46746_03_020901_20261021T074843.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/21/S5P_NRTI_L2__CH4____20261021T070754_20261021T071254_46746_03_020901_20261021T075224.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/21/S5P_NRTI_L2__CH4____20261021T071254_20261021T071754_46746_03_020901_20261021T075157.nc",
+   "pixels": 2,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/21/S5P_NRTI_L2__CH4____20261021T072754_20261021T073254_46746_03_020901_20261021T092356.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/21/S5P_NRTI_L2__CH4____20261021T073254_20261021T073754_46746_03_020901_20261021T092106.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/21/S5P_NRTI_L2__CH4____20261021T073754_20261021T074254_46746_03_020901_20261021T091754.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/21/S5P_NRTI_L2__CH4____20261021T082254_20261021T082754_46747_03_020901_20261021T092220.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/21/S5P_NRTI_L2__CH4____20261021T082754_20261021T083254_46747_03_020901_20261021T092826.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/21/S5P_NRTI_L2__CH4____20261021T083754_20261021T084254_46747_03_020901_20261021T092955.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/21/S5P_NRTI_L2__CH4____20261021T084254_20261021T084754_46747_03_020901_20261021T093028.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/21/S5P_NRTI_L2__CH4____20261021T084754_20261021T085254_46747_03_020901_20261021T093156.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/21/S5P_NRTI_L2__CH4____20261021T085254_20261021T085754_46747_03_020901_20261021T093102.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/21/S5P_NRTI_L2__CH4____20261021T090254_20261021T090754_46747_03_020901_20261021T094117.nc",
+   "pixels": 3146,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/21/S5P_NRTI_L2__CH4____20261021T091254_20261021T091754_46747_03_020901_20261021T110321.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/21/S5P_NRTI_L2__CH4____20261021T091754_20261021T092254_46747_03_020901_20261021T105958.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/21/S5P_NRTI_L2__CH4____20261021T100254_20261021T100754_46748_03_020901_20261021T110239.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/21/S5P_NRTI_L2__CH4____20261021T100754_20261021T101254_46748_03_020901_20261021T110921.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/21/S5P_NRTI_L2__CH4____20261021T101754_20261021T102254_46748_03_020901_20261021T110934.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/21/S5P_NRTI_L2__CH4____20261021T102254_20261021T102754_46748_03_020901_20261021T111204.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/21/S5P_NRTI_L2__CH4____20261021T102754_20261021T103254_46748_03_020901_20261021T111340.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/21/S5P_NRTI_L2__CH4____20261021T103254_20261021T103754_46748_03_020901_20261021T111537.nc",
+   "pixels": 0,
+   "integrity": "verified"
   }
  ],
  "integrity": {
-  "verified": 15,
+  "verified": 43,
   "unverifiable": 0,
   "mismatch": 0,
   "download_failed": 0,
   "policy": "each granule's MD5 is checked against the Copernicus Data Space catalogue; mismatches are rejected, unverifiable granules are accepted only when the mirror ETag matches"
  },
- "processed_utc": "2026-10-21T07:59:22",
+ "processed_utc": "2026-10-21T11:51:32",
  "source": "Copernicus Sentinel-5P TROPOMI NRTI L2 CH4, s3://meeo-s5p (public mirror)"
 }
