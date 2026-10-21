@@ -1,12 +1,12 @@
 {
- "generated_utc": "2026-10-20T11:13:23.158451+00:00",
- "code_version": "74ad1ee",
- "runtime_s": 1320.0,
+ "generated_utc": "2026-10-21T10:43:13.145791+00:00",
+ "code_version": "57bf946",
+ "runtime_s": 1316.9,
  "data_span": {
   "first": "2023-01-01",
-  "last": "2026-10-16"
+  "last": "2026-10-17"
  },
- "n_pixels": 18285047,
+ "n_pixels": 18297774,
  "n_tested": 56,
  "n_confirmed": 12,
  "n_detected": 13,
@@ -27,7 +27,7 @@
  },
  "fx": {
   "inr_per_usd": 94.93,
-  "source": "ECB reference rate via frankfurter.dev, 2026-10-19"
+  "source": "ECB reference rate via frankfurter.dev, 2026-10-20"
  },
  "method": {
   "stack": "wind-rotated, footprint-drizzled, plane background, monsoon (Jun-Sep) excluded, noise-weighted, albedo/AOT bias removed (ABD)",
@@ -59,7 +59,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": 7.8471094804001975,
+     "z": 7.848107077915002,
      "passed": true,
      "false_pass_rate": 0.08333333333333333,
      "independence": "same data, different estimator"
@@ -67,7 +67,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": 7.9690648293328366,
-     "z_late": 9.190335060406055,
+     "z_late": 9.180357835698603,
      "passed": true,
      "status": "evaluated",
      "false_pass_rate": 0.041666666666666664,
@@ -75,7 +75,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": 3.8223121852011595,
+     "z": 3.8347206532808644,
      "passed": true,
      "false_pass_rate": 0.041666666666666664,
      "independence": "independent species, same overpasses"
@@ -100,15 +100,15 @@
     "organisation": null
    },
    "status": "confirmed",
-   "z": 8.825118990545162,
-   "p": 5.508128970944528e-09,
-   "q": 4.741439350984817e-07,
+   "z": 8.827905147941921,
+   "p": 5.477263065424888e-09,
+   "q": 4.7148697445346796e-07,
    "rate_gamma1_kg_h": 20968.846825493863,
-   "null_floor_1sigma_kg_h": 2554.463051379685,
+   "null_floor_1sigma_kg_h": 2553.406959059283,
    "rate_t_h": {
-    "p16": 25.728581886671346,
-    "p50": 30.19197020506727,
-    "p84": 35.30378963223782,
+    "p16": 25.726429907842743,
+    "p50": 30.187953652216073,
+    "p84": 35.30023003554044,
     "upper_limit_p84": null
    },
    "gamma": {
@@ -176,21 +176,21 @@
    },
    "priority": {
     "avoidable_tco2e20_per_yr": [
-     10078780.02757028,
-     13902373.75574544,
-     18468191.670028914
+     10077770.186941274,
+     13900835.076605378,
+     18466638.26258506
     ],
     "abatement_cost_inr_per_yr": [
-     1399591765.3580966,
-     2121591078.806477,
-     3089906714.271881
+     1399446946.8629463,
+     2121338531.4040103,
+     3089513476.295745
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     450.7248922635159,
-     638.6549845221846,
-     977.9026535614964
+     450.7248934610747,
+     638.6549862190666,
+     977.9026561597466
     ],
-    "p_real": 0.9999995258560649,
+    "p_real": 0.9999995285130255,
     "sector": "landfill",
     "fx_inr_per_usd": 94.93
    },
@@ -234,7 +234,7 @@
    },
    "tasking": {
     "voi": 0.0,
-    "p_real_ramp": 0.9999999999998807
+    "p_real_ramp": 0.9999999999998831
    },
    "priority_rank": 1
   },
@@ -450,7 +450,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": 10.923053002858515,
+     "z": 10.957130259572976,
      "passed": true,
      "false_pass_rate": 0.0,
      "independence": "same data, different estimator"
@@ -458,7 +458,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": 10.319137986464552,
-     "z_late": 10.635783193264329,
+     "z_late": 10.634167610833508,
      "passed": true,
      "status": "evaluated",
      "false_pass_rate": 0.0,
@@ -466,7 +466,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": 5.547618839313242,
+     "z": 5.546509486055572,
      "passed": true,
      "false_pass_rate": 0.041666666666666664,
      "independence": "independent species, same overpasses"
@@ -491,15 +491,15 @@
     "organisation": null
    },
    "status": "confirmed",
-   "z": 14.133906580106249,
-   "p": 6.023946789875001e-13,
-   "q": 1.555637776915789e-10,
+   "z": 14.19240186845786,
+   "p": 5.531633968053046e-13,
+   "q": 1.4285017894310562e-10,
    "rate_gamma1_kg_h": 57002.08808551777,
-   "null_floor_1sigma_kg_h": 4130.904305899483,
+   "null_floor_1sigma_kg_h": 4113.341093431476,
    "rate_t_h": {
-    "p16": 68.51963395274828,
-    "p50": 77.3788857754337,
-    "p84": 87.08260767590615,
+    "p16": 68.53032666309579,
+    "p50": 77.358424855822,
+    "p84": 87.06404378855083,
     "upper_limit_p84": null
    },
    "gamma": {
@@ -567,21 +567,21 @@
    },
    "priority": {
     "avoidable_tco2e20_per_yr": [
-     27109004.340841226,
-     35705133.157919034,
-     46588254.58859102
+     27099367.016201545,
+     35705720.31706042,
+     46578084.00738831
     ],
     "abatement_cost_inr_per_yr": [
-     3646323863.936761,
-     5596084166.652187,
-     7913968198.31751
+     3645713862.869324,
+     5594264389.259491,
+     7912899407.67048
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     452.65891484509297,
-     636.1976861587716,
-     975.2190488165438
+     452.6589148508479,
+     636.1976861668597,
+     975.2190488289422
     ],
-    "p_real": 0.9999999998444362,
+    "p_real": 0.9999999998571498,
     "sector": "landfill",
     "fx_inr_per_usd": 94.93
    },
@@ -646,7 +646,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": 4.181520587984592,
+     "z": 4.183649237095483,
      "passed": true,
      "false_pass_rate": 0.0,
      "independence": "same data, different estimator"
@@ -654,7 +654,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": 5.163699513861974,
-     "z_late": 3.5322227389391068,
+     "z_late": 3.5484705620169303,
      "passed": true,
      "status": "evaluated",
      "false_pass_rate": 0.0,
@@ -662,7 +662,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": 2.8991523990772206,
+     "z": 2.879080791895579,
      "passed": true,
      "false_pass_rate": 0.0,
      "independence": "independent species, same overpasses"
@@ -687,15 +687,15 @@
     "organisation": null
    },
    "status": "confirmed",
-   "z": 5.073553493029246,
-   "p": 3.278130120295899e-05,
-   "q": 0.0014109196818020639,
-   "rate_gamma1_kg_h": 45210.275694444324,
-   "null_floor_1sigma_kg_h": 9946.3237632342,
+   "z": 5.089599306264349,
+   "p": 3.158774856969298e-05,
+   "q": 0.0013595487221468785,
+   "rate_gamma1_kg_h": 45235.682021873574,
+   "null_floor_1sigma_kg_h": 9913.026004558977,
    "rate_t_h": {
-    "p16": 51.33858420279086,
-    "p50": 65.6783034855539,
-    "p84": 81.03083572933485,
+    "p16": 51.153500518689825,
+    "p50": 65.95152103985097,
+    "p84": 81.89680871905018,
     "upper_limit_p84": null
    },
    "gamma": {
@@ -753,38 +753,38 @@
    },
    "chemistry": {
     "status": "classified",
-    "ratio": 0.4947202078200449,
+    "ratio": 0.5047351341883619,
     "ci68": [
-     0.46573506666898934,
-     0.5506777623122214
+     0.4631265535987209,
+     0.5477113714613187
     ],
     "process": "non-combustion: anaerobic decay, coal seam or gas release (CO/CH4 < 1)",
-    "n_overpasses": 325
+    "n_overpasses": 326
    },
    "priority": {
     "avoidable_tco2e20_per_yr": [
-     20634473.88960893,
-     29983897.445614643,
-     41043898.41121777
+     20783619.116169278,
+     30145974.03556776,
+     41487489.65180269
     ],
     "abatement_cost_inr_per_yr": [
-     2937268449.444532,
-     4651345412.380255,
-     6894887178.751079
+     2951202637.619457,
+     4675380622.570042,
+     6935263198.739411
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     443.78921266903546,
-     630.5273205319779,
-     950.8549194360364
+     443.8120427581971,
+     630.5597570909019,
+     950.9038347813641
     ],
-    "p_real": 0.9985890803181979,
+    "p_real": 0.9986404512778532,
     "sector": "landfill",
     "fx_inr_per_usd": 94.93
    },
    "evidence": {
-    "n_overpasses": 325,
+    "n_overpasses": 326,
     "first_overpass": "2023-03-19",
-    "last_overpass": "2026-10-15",
+    "last_overpass": "2026-10-17",
     "overpasses_per_month": {
      "2023-03": 9,
      "2023-04": 10,
@@ -813,13 +813,13 @@
      "2026-03": 13,
      "2026-04": 13,
      "2026-05": 4,
-     "2026-10": 7
+     "2026-10": 8
     },
-    "mean_wind10_ms": 3.679395701572601
+    "mean_wind10_ms": 3.675169131476599
    },
    "tasking": {
     "voi": 0.0,
-    "p_real_ramp": 0.999823915371232
+    "p_real_ramp": 0.99983440667636
    },
    "priority_rank": 4
   },
@@ -1237,7 +1237,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": 4.377336231635123,
+     "z": 4.379054734234023,
      "passed": true,
      "false_pass_rate": 0.0,
      "independence": "same data, different estimator"
@@ -1245,7 +1245,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": 4.069910287324204,
-     "z_late": 4.370602971578554,
+     "z_late": 4.3614744629328355,
      "passed": true,
      "status": "evaluated",
      "false_pass_rate": 0.041666666666666664,
@@ -1253,7 +1253,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": 8.67125599565018,
+     "z": 8.681313465941027,
      "passed": true,
      "false_pass_rate": 0.041666666666666664,
      "independence": "independent species, same overpasses"
@@ -1278,15 +1278,15 @@
     "organisation": null
    },
    "status": "confirmed",
-   "z": 4.604594079622542,
-   "p": 7.863434131693399e-05,
-   "q": 0.0029009588417328474,
+   "z": 4.606360638399501,
+   "p": 7.829559327619508e-05,
+   "q": 0.002888461832061964,
    "rate_gamma1_kg_h": 10150.211514102877,
-   "null_floor_1sigma_kg_h": 2450.699986713917,
+   "null_floor_1sigma_kg_h": 2449.6165122682223,
    "rate_t_h": {
-    "p16": 11.343469675306146,
-    "p50": 14.826267722636935,
-    "p84": 18.665018651655203,
+    "p16": 11.344060813820304,
+    "p50": 14.824725461343153,
+    "p84": 18.662468138751215,
     "upper_limit_p84": null
    },
    "gamma": {
@@ -1354,21 +1354,21 @@
    },
    "priority": {
     "avoidable_tco2e20_per_yr": [
-     4615978.0435924735,
-     6744203.220403638,
-     9405763.265070476
+     4615910.192188313,
+     6743605.740271877,
+     9404766.714273918
     ],
     "abatement_cost_inr_per_yr": [
-     672540278.5932261,
-     1045892624.5853062,
-     1582048649.3735485
+     672552112.7111562,
+     1045771728.3033187,
+     1581995961.149427
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     447.7986010775051,
-     628.4229198100368,
-     949.1245959515413
+     447.8042135023669,
+     628.4307960660376,
+     949.136491679814
     ],
-    "p_real": 0.9970990411582672,
+    "p_real": 0.9971115381679381,
     "sector": "landfill",
     "fx_inr_per_usd": 94.93
    },
@@ -1412,7 +1412,7 @@
    },
    "tasking": {
     "voi": 0.0,
-    "p_real_ramp": 0.9990472983974293
+    "p_real_ramp": 0.9990529721828432
    },
    "priority_rank": 7
   },
@@ -1624,7 +1624,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": 5.341424994859942,
+     "z": 5.338845707355677,
      "passed": true,
      "false_pass_rate": 0.0,
      "independence": "same data, different estimator"
@@ -1632,7 +1632,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": 7.1394061538558296,
-     "z_late": 5.106007924835405,
+     "z_late": 5.1070001924124195,
      "passed": true,
      "status": "evaluated",
      "false_pass_rate": 0.0,
@@ -1640,7 +1640,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": 0.43517881427181393,
+     "z": 0.4313078035279424,
      "passed": false,
      "false_pass_rate": 0.0,
      "independence": "independent species, same overpasses"
@@ -1665,15 +1665,15 @@
     "organisation": null
    },
    "status": "confirmed",
-   "z": 8.668718651205198,
-   "p": 7.562849154030794e-09,
-   "q": 4.882618595212579e-07,
-   "rate_gamma1_kg_h": 15932.13415194042,
-   "null_floor_1sigma_kg_h": 1878.598031101107,
+   "z": 8.660033114760784,
+   "p": 7.697876221174281e-09,
+   "q": 4.969792840720362e-07,
+   "rate_gamma1_kg_h": 15930.199342188178,
+   "null_floor_1sigma_kg_h": 1880.0549283936102,
    "rate_t_h": {
-    "p16": 17.072427192405407,
-    "p50": 20.551542939224653,
-    "p84": 24.262150339903695,
+    "p16": 16.689722158848234,
+    "p50": 20.43213315858049,
+    "p84": 24.34291645356687,
     "upper_limit_p84": null
    },
    "gamma": {
@@ -1707,38 +1707,38 @@
    },
    "chemistry": {
     "status": "classified",
-    "ratio": 0.053439999175342284,
+    "ratio": 0.05002453707742325,
     "ci68": [
-     0.0030392196860429474,
-     0.10658807016563027
+     0.002044976279977152,
+     0.0973609613889153
     ],
     "process": "non-combustion: anaerobic decay, coal seam or gas release (CO/CH4 < 1)",
-    "n_overpasses": 245
+    "n_overpasses": 246
    },
    "priority": {
     "avoidable_tco2e20_per_yr": [
-     6649327.361937797,
-     8890958.179234013,
-     11788955.86849179
+     6536717.503195145,
+     8770728.587845154,
+     11746264.277156644
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     1496410318.0185988,
-     3917461031.4858723
+     1493456459.4721103,
+     3884013821.7442913
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     224.29188095939628,
-     606.6311970859219,
-     7206763.228027118
+     224.29187900414777,
+     606.6311917976577,
+     7206763.1652026735
     ],
-    "p_real": 0.9999995117381405,
+    "p_real": 0.9999995030207159,
     "sector": "unattributed",
     "fx_inr_per_usd": 94.93
    },
    "evidence": {
-    "n_overpasses": 245,
+    "n_overpasses": 246,
     "first_overpass": "2023-01-04",
-    "last_overpass": "2026-10-16",
+    "last_overpass": "2026-10-17",
     "overpasses_per_month": {
      "2023-01": 6,
      "2023-02": 3,
@@ -1769,13 +1769,13 @@
      "2026-03": 4,
      "2026-04": 6,
      "2026-05": 9,
-     "2026-10": 7
+     "2026-10": 8
     },
-    "mean_wind10_ms": 2.7092485479255872
+    "mean_wind10_ms": 2.7045657987048477
    },
    "tasking": {
     "voi": 0.0,
-    "p_real_ramp": 0.9999999999996215
+    "p_real_ramp": 0.9999999999995968
    },
    "priority_rank": 9
   },
@@ -1796,7 +1796,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": 4.447928681959996,
+     "z": 4.449077121577276,
      "passed": true,
      "false_pass_rate": 0.041666666666666664,
      "independence": "same data, different estimator"
@@ -1804,7 +1804,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": 2.885457455097215,
-     "z_late": 4.073935879279736,
+     "z_late": 4.0744840477853455,
      "passed": true,
      "status": "evaluated",
      "false_pass_rate": 0.0,
@@ -1812,7 +1812,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": 1.4233311374655873,
+     "z": 1.4228121269929415,
      "passed": false,
      "false_pass_rate": 0.041666666666666664,
      "independence": "independent species, same overpasses"
@@ -1837,15 +1837,15 @@
     "organisation": null
    },
    "status": "confirmed",
-   "z": 3.2616421178667983,
-   "p": 0.0020096690329377705,
-   "q": 0.04718013826221502,
+   "z": 3.26143619544327,
+   "p": 0.002010637763856318,
+   "q": 0.047202880742656765,
    "rate_gamma1_kg_h": 34100.12106977996,
-   "null_floor_1sigma_kg_h": 12157.90234123699,
+   "null_floor_1sigma_kg_h": 12161.868824569692,
    "rate_t_h": {
-    "p16": 34.98128302224787,
-    "p50": 50.83182975079835,
-    "p84": 67.96157385345965,
+    "p16": 34.990286890272806,
+    "p50": 50.84569102194062,
+    "p84": 67.97949192390227,
     "upper_limit_p84": null
    },
    "gamma": {
@@ -1913,21 +1913,21 @@
    },
    "priority": {
     "avoidable_tco2e20_per_yr": [
-     13785791.8508378,
-     21993309.33123416,
-     32239650.95379242
+     13789299.297109421,
+     21999065.20572117,
+     32247947.69574988
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     3414699534.5070457,
-     9271141552.765476
+     3415605727.546237,
+     9273783905.29534
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     219.08223651436336,
-     598.8595827131587,
-     6962116.22678539
+     219.07700732710657,
+     598.8452887706264,
+     6961950.050786673
     ],
-    "p_real": 0.952819861737785,
+    "p_real": 0.9527971192573432,
     "sector": "unattributed",
     "fx_inr_per_usd": 94.93
    },
@@ -1967,7 +1967,7 @@
    },
    "tasking": {
     "voi": 0.0,
-    "p_real_ramp": 0.9609351084500022
+    "p_real_ramp": 0.9609176983432861
    },
    "priority_rank": 10
   },
@@ -2353,7 +2353,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": 3.538214351337755,
+     "z": 3.543295600978475,
      "passed": true,
      "false_pass_rate": 0.0,
      "independence": "same data, different estimator"
@@ -2361,7 +2361,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": 2.5373681956188125,
-     "z_late": 2.2060547493403346,
+     "z_late": 2.204284901443782,
      "passed": true,
      "status": "evaluated",
      "false_pass_rate": 0.0,
@@ -2369,7 +2369,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": 1.911401552170209,
+     "z": 1.9105964128131085,
      "passed": false,
      "false_pass_rate": 0.041666666666666664,
      "independence": "independent species, same overpasses"
@@ -2394,15 +2394,15 @@
     "organisation": null
    },
    "status": "detected",
-   "z": 3.13125393180405,
-   "p": 0.0027223744277059202,
-   "q": 0.054079399211864436,
+   "z": 3.12940400188279,
+   "p": 0.0027340573113378446,
+   "q": 0.05431147725426985,
    "rate_gamma1_kg_h": 9081.296471012382,
-   "null_floor_1sigma_kg_h": 3609.7340523763273,
+   "null_floor_1sigma_kg_h": 3610.0719571179857,
    "rate_t_h": {
-    "p16": 8.759905107992202,
-    "p50": 13.332713141635136,
-    "p84": 18.354109772778752,
+    "p16": 8.75380273574364,
+    "p50": 13.326652089751754,
+    "p84": 18.34678976490465,
     "upper_limit_p84": null
    },
    "gamma": {
@@ -2437,21 +2437,21 @@
    },
    "priority": {
     "avoidable_tco2e20_per_yr": [
-     3543323.2707556468,
-     5718173.268088346,
-     8538935.754546179
+     3540829.4806633806,
+     5714898.505858483,
+     8535040.384552384
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     902957630.7342112,
-     2524676642.248714
+     902407560.557256,
+     2522791432.8890476
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     210.4513558932013,
-     580.5103166483397,
-     6771235.884530544
+     210.39972244885453,
+     580.3678906373493,
+     6769574.587411696
     ],
-    "p_real": 0.9459206007881356,
+    "p_real": 0.9456885227457301,
     "sector": "unattributed",
     "fx_inr_per_usd": 94.93
    },
@@ -2492,8 +2492,8 @@
     "mean_wind10_ms": 3.3019673335671915
    },
    "tasking": {
-    "voi": 0.6502967577825108,
-    "p_real_ramp": 0.9485816251805511,
+    "voi": 0.6523366979980333,
+    "p_real_ramp": 0.9483862389107304,
     "rank": 39,
     "recommend": false
    },
@@ -2516,7 +2516,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": 2.6814928824192026,
+     "z": 2.6807314815201297,
      "passed": true,
      "false_pass_rate": 0.0,
      "independence": "same data, different estimator"
@@ -2524,7 +2524,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": 2.2663937037776325,
-     "z_late": 2.744736781317232,
+     "z_late": 2.7813045585419567,
      "passed": true,
      "status": "evaluated",
      "false_pass_rate": 0.0,
@@ -2532,7 +2532,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": 1.6181591465076945,
+     "z": 1.6157711428453505,
      "passed": false,
      "false_pass_rate": 0.0,
      "independence": "independent species, same overpasses"
@@ -2557,15 +2557,15 @@
     "organisation": null
    },
    "status": "tentative",
-   "z": 2.7962571382699375,
-   "p": 0.00975267380132604,
-   "q": 0.14673640696873827,
+   "z": 2.8339740721885165,
+   "p": 0.009118280623925811,
+   "q": 0.13851327136886266,
    "rate_gamma1_kg_h": 18989.438814537138,
-   "null_floor_1sigma_kg_h": 7780.637777734504,
+   "null_floor_1sigma_kg_h": 7691.590106701328,
    "rate_t_h": {
-    "p16": 17.95186685550847,
-    "p50": 28.467642547261853,
-    "p84": 39.748211757174865,
+    "p16": 18.09977704104197,
+    "p50": 28.525306475416535,
+    "p84": 39.669100218024695,
     "upper_limit_p84": null
    },
    "gamma": {
@@ -2621,21 +2621,21 @@
    },
    "priority": {
     "avoidable_tco2e20_per_yr": [
-     7057151.392128199,
-     11784527.891732758,
-     17944046.16710339
+     7117809.716312413,
+     11810264.82213777,
+     17943115.06621853
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     12530441.610904947,
-     5389896489.116724
+     15095290.542311497,
+     5396717946.979875
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     180.98566365033548,
-     31010.75877308366,
-     7626083.236987093
+     182.7298721997042,
+     31309.61797266603,
+     7699577.895690275
     ],
-    "p_real": 0.8532635930312618,
+    "p_real": 0.8614867286311374,
     "sector": "oil_gas",
     "fx_inr_per_usd": 94.93
    },
@@ -2669,9 +2669,9 @@
     "mean_wind10_ms": 1.4509279119880705
    },
    "tasking": {
-    "voi": 2.503678720031686,
-    "p_real_ramp": 0.9025565449802913,
-    "rank": 20,
+    "voi": 2.362062006675902,
+    "p_real_ramp": 0.9088938230180623,
+    "rank": 22,
     "recommend": false
    },
    "priority_rank": 14
@@ -2855,7 +2855,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": 0.4609992991381073,
+     "z": 0.46212579493970335,
      "passed": false,
      "false_pass_rate": 0.0,
      "independence": "same data, different estimator"
@@ -2863,7 +2863,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": 2.7727925614317646,
-     "z_late": 2.105178198138532,
+     "z_late": 2.1041801248972076,
      "passed": true,
      "status": "evaluated",
      "false_pass_rate": 0.0,
@@ -2871,7 +2871,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": 0.9271385527699836,
+     "z": 0.9248504520876107,
      "passed": false,
      "false_pass_rate": 0.0,
      "independence": "independent species, same overpasses"
@@ -2896,15 +2896,15 @@
     "organisation": null
    },
    "status": "tentative",
-   "z": 2.7617655749842824,
-   "p": 0.00630352021016614,
-   "q": 0.10173971596753265,
+   "z": 2.76132100759153,
+   "p": 0.006309758461000712,
+   "q": 0.10184040222646143,
    "rate_gamma1_kg_h": 5925.378881666473,
-   "null_floor_1sigma_kg_h": 2446.9372678724717,
+   "null_floor_1sigma_kg_h": 2447.885986773161,
    "rate_t_h": {
-    "p16": 4.41663633661658,
-    "p50": 8.248171159171196,
-    "p84": 12.017661082089742,
+    "p16": 4.41863337352237,
+    "p50": 8.25000006346508,
+    "p84": 12.020384032749245,
     "upper_limit_p84": null
    },
    "gamma": {
@@ -2956,21 +2956,21 @@
    },
    "priority": {
     "avoidable_tco2e20_per_yr": [
-     1840046.2842086656,
-     3681348.618034484,
-     5948998.059148651
+     1840563.2386500982,
+     3682518.651983913,
+     5950093.008680557
     ],
     "abatement_cost_inr_per_yr": [
-     273184772.58840436,
-     562445346.3114247,
-     967885673.7403547
+     273191717.5495956,
+     562586975.5402143,
+     968138910.3513445
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     398.46967083818885,
-     562.3690904140543,
-     865.2457868528874
+     398.4250062558105,
+     562.3060542976218,
+     865.148801198639
     ],
-    "p_real": 0.8982602840324674,
+    "p_real": 0.8981595977735386,
     "sector": "landfill",
     "fx_inr_per_usd": 94.93
    },
@@ -3003,8 +3003,8 @@
     "mean_wind10_ms": 2.25776974273888
    },
    "tasking": {
-    "voi": 0.7654376643554623,
-    "p_real_ramp": 0.8964834235640928,
+    "voi": 0.766130898138328,
+    "p_real_ramp": 0.8964033922974004,
     "rank": 37,
     "recommend": false
    },
@@ -3549,7 +3549,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": 2.384866440719877,
+     "z": 2.383039093153421,
      "passed": true,
      "false_pass_rate": 0.0,
      "independence": "same data, different estimator"
@@ -3557,7 +3557,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": 1.8073221061223832,
-     "z_late": 1.3860304738933302,
+     "z_late": 1.3860404338402803,
      "passed": false,
      "status": "evaluated",
      "false_pass_rate": 0.0,
@@ -3565,7 +3565,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": -0.333957859187587,
+     "z": -0.3325302470008274,
      "passed": false,
      "false_pass_rate": 0.0,
      "independence": "independent species, same overpasses"
@@ -3590,15 +3590,15 @@
     "organisation": null
    },
    "status": "tentative",
-   "z": 2.409913869897519,
-   "p": 0.01480960391536028,
-   "q": 0.19122329691405265,
-   "rate_gamma1_kg_h": 22237.519510290356,
-   "null_floor_1sigma_kg_h": 10663.833591473238,
+   "z": 2.412581016347949,
+   "p": 0.014730184306524315,
+   "q": 0.19019782185556808,
+   "rate_gamma1_kg_h": 22243.2714369868,
+   "null_floor_1sigma_kg_h": 10656.718359751321,
    "rate_t_h": {
-    "p16": 15.365112762938848,
-    "p50": 28.69865970321967,
-    "p84": 42.262066328290935,
+    "p16": 15.133544159055845,
+    "p50": 28.3371620770466,
+    "p84": 41.73677804964445,
     "upper_limit_p84": null
    },
    "gamma": {
@@ -3628,38 +3628,38 @@
    },
    "chemistry": {
     "status": "classified",
-    "ratio": -0.15506846533887642,
+    "ratio": -0.14505925579646023,
     "ci68": [
-     -0.23143940844181823,
-     -0.09897501610845812
+     -0.25108363422473856,
+     -0.07585096318681407
     ],
     "process": "non-combustion: anaerobic decay, coal seam or gas release (CO/CH4 < 1)",
-    "n_overpasses": 418
+    "n_overpasses": 419
    },
    "priority": {
     "avoidable_tco2e20_per_yr": [
-     6242899.05927521,
-     12171969.496368278,
-     19421206.08772142
+     6201443.639472911,
+     11958903.777471097,
+     19021305.187702253
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     1832002722.1166306,
-     5295302359.20374
+     1794057307.3774765,
+     5138699631.678724
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     181.99427784363706,
-     497.6574908672857,
-     5805053.41827907
+     182.2250344814129,
+     498.2884874607894,
+     5812413.839852667
     ],
-    "p_real": 0.8087767030859474,
+    "p_real": 0.8098021781444319,
     "sector": "unattributed",
     "fx_inr_per_usd": 94.93
    },
    "evidence": {
-    "n_overpasses": 418,
+    "n_overpasses": 419,
     "first_overpass": "2023-03-18",
-    "last_overpass": "2026-10-16",
+    "last_overpass": "2026-10-17",
     "overpasses_per_month": {
      "2023-03": 5,
      "2023-04": 12,
@@ -3688,13 +3688,13 @@
      "2026-03": 11,
      "2026-04": 11,
      "2026-05": 15,
-     "2026-10": 12
+     "2026-10": 13
     },
-    "mean_wind10_ms": 4.541912550450514
+    "mean_wind10_ms": 4.534046701660116
    },
    "tasking": {
-    "voi": 4.262201040816535,
-    "p_real_ramp": 0.8185660327400728,
+    "voi": 4.195815762892546,
+    "p_real_ramp": 0.8192685288754425,
     "rank": 2,
     "recommend": true
    },
@@ -4028,6 +4028,169 @@
    "priority_rank": 22
   },
   {
+   "slug": "c37",
+   "name": "60 km from Bhuj",
+   "lat": 23.75,
+   "lon": 70.0,
+   "kind": "screen_candidate",
+   "source_reference": null,
+   "in_india": true,
+   "screen": {
+    "rank": 9,
+    "z": 5.277684539108114,
+    "hits": [],
+    "nearest_km": 0.0
+   },
+   "corroboration": {
+    "second_method": {
+     "check": "cross-sectional flux agrees (z > 2)",
+     "z": 0.35262236982354417,
+     "passed": false,
+     "false_pass_rate": 0.0,
+     "independence": "same data, different estimator"
+    },
+    "temporal": {
+     "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
+     "z_early": 2.342727088574909,
+     "z_late": 0.04766824737625999,
+     "passed": false,
+     "status": "evaluated",
+     "false_pass_rate": 0.0,
+     "independence": "independent data"
+    },
+    "co": {
+     "check": "co-emitted CO detected (z > 2)",
+     "z": 1.376306253626179,
+     "passed": false,
+     "false_pass_rate": 0.08333333333333333,
+     "independence": "independent species, same overpasses"
+    },
+    "blind_screen": {
+     "check": "found by the national screen with no site list (<= 25 km)",
+     "km": 0.0,
+     "passed": true,
+     "false_pass_rate": null,
+     "independence": "independent algorithm, daily grids"
+    },
+    "not_used": {
+     "wind_invariance": "not used: the wind-direction test failed validation on real data (R5: 21% false rejects, 8% power)"
+    },
+    "n_passed": 1,
+    "confirming": false
+   },
+   "review": {
+    "state": "machine_candidate",
+    "label": "Machine candidate: awaiting analyst review",
+    "date": null,
+    "organisation": null
+   },
+   "status": "tentative",
+   "z": 2.2356468898739323,
+   "p": 0.01944378270170485,
+   "q": 0.22823667508721213,
+   "rate_gamma1_kg_h": 12434.440707151121,
+   "null_floor_1sigma_kg_h": 5229.453459739064,
+   "rate_t_h": {
+    "p16": 4.519000233699771,
+    "p50": 13.879794078404288,
+    "p84": 23.4000575319739,
+    "upper_limit_p84": null
+   },
+   "gamma": {
+    "value": 1.1856334160434931,
+    "sd": 0.1,
+    "source": "site ERA5"
+   },
+   "obc_slope": 0.991822814958306,
+   "sector": "unattributed",
+   "sector_basis": "EFA: no sector reaches posterior 0.6 from mapped facilities",
+   "attribution": {
+    "posterior": {
+     "landfill": 0.3333333333333333,
+     "coal": 0.3333333333333333,
+     "oil_gas": 0.3333333333333333
+    },
+    "top": "landfill",
+    "attributed": null,
+    "agriculture_signal": 0.0,
+    "voters": [],
+    "n_facilities": 0
+   },
+   "chemistry": {
+    "status": "classified",
+    "ratio": 0.4084287609135477,
+    "ci68": [
+     0.2121133213933309,
+     0.8461013786558323
+    ],
+    "process": "non-combustion: anaerobic decay, coal seam or gas release (CO/CH4 < 1)",
+    "n_overpasses": 224
+   },
+   "priority": {
+    "avoidable_tco2e20_per_yr": [
+     1830717.8573929295,
+     5915902.159131261,
+     10635818.904041452
+    ],
+    "abatement_cost_inr_per_yr": [
+     0.0,
+     811540847.1879215,
+     2690739423.3499327
+    ],
+    "wrpi_tco2e20_per_lakh_inr": [
+     168.85436855024085,
+     459.33067303271037,
+     5391887.297404788
+    ],
+    "p_real": 0.7717633249127879,
+    "sector": "unattributed",
+    "fx_inr_per_usd": 94.93
+   },
+   "evidence": {
+    "n_overpasses": 224,
+    "first_overpass": "2023-03-16",
+    "last_overpass": "2026-10-17",
+    "overpasses_per_month": {
+     "2023-03": 3,
+     "2023-04": 8,
+     "2023-05": 7,
+     "2023-10": 11,
+     "2023-11": 8,
+     "2023-12": 12,
+     "2024-01": 5,
+     "2024-02": 7,
+     "2024-03": 11,
+     "2024-04": 9,
+     "2024-05": 13,
+     "2024-10": 7,
+     "2024-11": 9,
+     "2024-12": 2,
+     "2025-01": 3,
+     "2025-02": 5,
+     "2025-03": 13,
+     "2025-04": 13,
+     "2025-05": 5,
+     "2025-10": 4,
+     "2025-11": 11,
+     "2025-12": 7,
+     "2026-01": 11,
+     "2026-02": 8,
+     "2026-03": 6,
+     "2026-04": 7,
+     "2026-05": 9,
+     "2026-10": 10
+    },
+    "mean_wind10_ms": 3.512999731935555
+   },
+   "tasking": {
+    "voi": 2.4653896888572193,
+    "p_real_ramp": 0.7690271906017379,
+    "rank": 20,
+    "recommend": false
+   },
+   "priority_rank": 23
+  },
+  {
    "slug": "c07",
    "name": "near Shivamogga",
    "lat": 14.0,
@@ -4191,169 +4354,6 @@
     "p_real_ramp": 0.7541336015564594,
     "rank": 3,
     "recommend": true
-   },
-   "priority_rank": 23
-  },
-  {
-   "slug": "c37",
-   "name": "60 km from Bhuj",
-   "lat": 23.75,
-   "lon": 70.0,
-   "kind": "screen_candidate",
-   "source_reference": null,
-   "in_india": true,
-   "screen": {
-    "rank": 9,
-    "z": 5.277684539108114,
-    "hits": [],
-    "nearest_km": 0.0
-   },
-   "corroboration": {
-    "second_method": {
-     "check": "cross-sectional flux agrees (z > 2)",
-     "z": 0.35120366684618004,
-     "passed": false,
-     "false_pass_rate": 0.0,
-     "independence": "same data, different estimator"
-    },
-    "temporal": {
-     "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
-     "z_early": 2.342727088574909,
-     "z_late": 0.0431585086357087,
-     "passed": false,
-     "status": "evaluated",
-     "false_pass_rate": 0.0,
-     "independence": "independent data"
-    },
-    "co": {
-     "check": "co-emitted CO detected (z > 2)",
-     "z": 1.3729393114976218,
-     "passed": false,
-     "false_pass_rate": 0.08333333333333333,
-     "independence": "independent species, same overpasses"
-    },
-    "blind_screen": {
-     "check": "found by the national screen with no site list (<= 25 km)",
-     "km": 0.0,
-     "passed": true,
-     "false_pass_rate": null,
-     "independence": "independent algorithm, daily grids"
-    },
-    "not_used": {
-     "wind_invariance": "not used: the wind-direction test failed validation on real data (R5: 21% false rejects, 8% power)"
-    },
-    "n_passed": 1,
-    "confirming": false
-   },
-   "review": {
-    "state": "machine_candidate",
-    "label": "Machine candidate: awaiting analyst review",
-    "date": null,
-    "organisation": null
-   },
-   "status": "tentative",
-   "z": 2.233460342965902,
-   "p": 0.019530979521287073,
-   "q": 0.229260216261527,
-   "rate_gamma1_kg_h": 12435.85944764982,
-   "null_floor_1sigma_kg_h": 5232.593872951865,
-   "rate_t_h": {
-    "p16": 4.290819565799503,
-    "p50": 13.602276229742138,
-    "p84": 22.90784785228171,
-    "upper_limit_p84": null
-   },
-   "gamma": {
-    "value": 1.1856334160434931,
-    "sd": 0.1,
-    "source": "site ERA5"
-   },
-   "obc_slope": 0.991822814958306,
-   "sector": "unattributed",
-   "sector_basis": "EFA: no sector reaches posterior 0.6 from mapped facilities",
-   "attribution": {
-    "posterior": {
-     "landfill": 0.3333333333333333,
-     "coal": 0.3333333333333333,
-     "oil_gas": 0.3333333333333333
-    },
-    "top": "landfill",
-    "attributed": null,
-    "agriculture_signal": 0.0,
-    "voters": [],
-    "n_facilities": 0
-   },
-   "chemistry": {
-    "status": "classified",
-    "ratio": 0.42507780562199676,
-    "ci68": [
-     0.24303824929693638,
-     0.7839591660047882
-    ],
-    "process": "non-combustion: anaerobic decay, coal seam or gas release (CO/CH4 < 1)",
-    "n_overpasses": 223
-   },
-   "priority": {
-    "avoidable_tco2e20_per_yr": [
-     1764477.2058760957,
-     5866797.74281247,
-     10389764.218138566
-    ],
-    "abatement_cost_inr_per_yr": [
-     0.0,
-     795782555.2588763,
-     2639122418.939434
-    ],
-    "wrpi_tco2e20_per_lakh_inr": [
-     168.63042761770998,
-     458.72149164082725,
-     5384736.376289455
-    ],
-    "p_real": 0.770739783738473,
-    "sector": "unattributed",
-    "fx_inr_per_usd": 94.93
-   },
-   "evidence": {
-    "n_overpasses": 223,
-    "first_overpass": "2023-03-16",
-    "last_overpass": "2026-10-16",
-    "overpasses_per_month": {
-     "2023-03": 3,
-     "2023-04": 8,
-     "2023-05": 7,
-     "2023-10": 11,
-     "2023-11": 8,
-     "2023-12": 12,
-     "2024-01": 5,
-     "2024-02": 7,
-     "2024-03": 11,
-     "2024-04": 9,
-     "2024-05": 13,
-     "2024-10": 7,
-     "2024-11": 9,
-     "2024-12": 2,
-     "2025-01": 3,
-     "2025-02": 5,
-     "2025-03": 13,
-     "2025-04": 13,
-     "2025-05": 5,
-     "2025-10": 4,
-     "2025-11": 11,
-     "2025-12": 7,
-     "2026-01": 11,
-     "2026-02": 8,
-     "2026-03": 6,
-     "2026-04": 7,
-     "2026-05": 9,
-     "2026-10": 9
-    },
-    "mean_wind10_ms": 3.5215423755633926
-   },
-   "tasking": {
-    "voi": 2.4209643403111767,
-    "p_real_ramp": 0.7683611466303424,
-    "rank": 22,
-    "recommend": false
    },
    "priority_rank": 24
   },
@@ -4561,7 +4561,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": -0.9524694010155238,
+     "z": -0.9523121606380237,
      "passed": false,
      "false_pass_rate": 0.0,
      "independence": "same data, different estimator"
@@ -4569,7 +4569,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": 0.6974068150310287,
-     "z_late": 1.4068358984110445,
+     "z_late": 1.4036059283080067,
      "passed": false,
      "status": "evaluated",
      "false_pass_rate": 0.0,
@@ -4577,7 +4577,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": -1.4039640671171152,
+     "z": -1.4051358409167902,
      "passed": false,
      "false_pass_rate": 0.0,
      "independence": "independent species, same overpasses"
@@ -4602,16 +4602,16 @@
     "organisation": null
    },
    "status": "not detected",
-   "z": 1.5334544224799538,
-   "p": 0.07693975134099314,
-   "q": 0.5228709764874573,
+   "z": 1.5346450987670448,
+   "p": 0.07678946528052201,
+   "q": 0.5218496550272056,
    "rate_gamma1_kg_h": 12056.68153981475,
-   "null_floor_1sigma_kg_h": 9065.818673301823,
+   "null_floor_1sigma_kg_h": 9050.954083029103,
    "rate_t_h": {
-    "p16": 4.579925319315542,
-    "p50": 17.20446544367349,
-    "p84": 30.49404131422308,
-    "upper_limit_p84": 30.49404131422308
+    "p16": 4.576817350490891,
+    "p50": 17.19288606963692,
+    "p84": 30.456289326857284,
+    "upper_limit_p84": 30.456289326857284
    },
    "gamma": {
     "value": 1.2637312768738873,
@@ -4636,14 +4636,14 @@
    "chemistry": null,
    "priority": {
     "avoidable_tco2e20_per_yr": [
-     1889199.2647668484,
-     7329077.218862206,
-     13800702.978637038
+     1883729.9092598092,
+     7324274.359980282,
+     13787927.420343429
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     963212236.3451366,
-     3383077642.2750764
+     962739629.5347786,
+     3379108780.737052
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -4693,8 +4693,8 @@
     "mean_wind10_ms": 3.6727141749621657
    },
    "tasking": {
-    "voi": 4.298052942066166,
-    "p_real_ramp": 0.5133438944697298,
+    "voi": 4.294938457712957,
+    "p_real_ramp": 0.5138186302740436,
     "rank": 1,
     "recommend": true
    },
@@ -5322,7 +5322,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": 0.9821726482663861,
+     "z": 0.9809022433487953,
      "passed": false,
      "false_pass_rate": 0.041666666666666664,
      "independence": "same data, different estimator"
@@ -5330,7 +5330,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": 0.5740060049045278,
-     "z_late": 1.042844679788962,
+     "z_late": 1.0376970962124368,
      "passed": false,
      "status": "evaluated",
      "false_pass_rate": 0.0,
@@ -5338,7 +5338,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": 0.6633621311150433,
+     "z": 0.6543281248388311,
      "passed": false,
      "false_pass_rate": 0.041666666666666664,
      "independence": "independent species, same overpasses"
@@ -5363,16 +5363,16 @@
     "organisation": null
    },
    "status": "not detected",
-   "z": 0.9275655844570978,
-   "p": 0.18643394160541793,
+   "z": 0.9255393335248223,
+   "p": 0.18694744435721466,
    "q": 1.0,
-   "rate_gamma1_kg_h": 10762.634192238937,
-   "null_floor_1sigma_kg_h": 12623.667536481997,
+   "rate_gamma1_kg_h": 10732.815600691281,
+   "null_floor_1sigma_kg_h": 12611.089898133663,
    "rate_t_h": {
-    "p16": -0.9151632850946892,
-    "p50": 14.721984551910346,
-    "p84": 30.729943480406675,
-    "upper_limit_p84": 30.729943480406675
+    "p16": -0.9216727476726883,
+    "p50": 14.650928050692267,
+    "p84": 30.133739768296284,
+    "upper_limit_p84": 30.133739768296284
    },
    "gamma": {
     "value": 1.1887965665395877,
@@ -5398,13 +5398,13 @@
    "priority": {
     "avoidable_tco2e20_per_yr": [
      0.0,
-     6199434.730076328,
-     13952249.32446248
+     6166568.388056977,
+     13874883.750388484
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     679505134.7124238,
-     3042834907.198527
+     665115572.5492047,
+     3014981718.55809
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -5416,9 +5416,9 @@
     "fx_inr_per_usd": 94.93
    },
    "evidence": {
-    "n_overpasses": 376,
+    "n_overpasses": 377,
     "first_overpass": "2023-03-19",
-    "last_overpass": "2026-10-16",
+    "last_overpass": "2026-10-17",
     "overpasses_per_month": {
      "2023-03": 4,
      "2023-04": 13,
@@ -5447,13 +5447,13 @@
      "2026-03": 8,
      "2026-04": 13,
      "2026-05": 18,
-     "2026-10": 8
+     "2026-10": 9
     },
-    "mean_wind10_ms": 3.903451695496956
+    "mean_wind10_ms": 3.896465473685742
    },
    "tasking": {
-    "voi": 2.9905319016016696,
-    "p_real_ramp": 0.2835138528841079,
+    "voi": 2.971740716261962,
+    "p_real_ramp": 0.2828280550759519,
     "rank": 11,
     "recommend": false
    },
@@ -5476,7 +5476,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": 0.7459518066186747,
+     "z": 0.7448366423861399,
      "passed": false,
      "false_pass_rate": 0.0,
      "independence": "same data, different estimator"
@@ -5484,7 +5484,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": 1.0111688201759164,
-     "z_late": 1.5851741710124851,
+     "z_late": 1.5818533244663084,
      "passed": false,
      "status": "evaluated",
      "false_pass_rate": 0.0,
@@ -5492,7 +5492,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": 0.054978360591053536,
+     "z": 0.054851834212727754,
      "passed": false,
      "false_pass_rate": 0.0,
      "independence": "independent species, same overpasses"
@@ -5517,16 +5517,16 @@
     "organisation": null
    },
    "status": "not detected",
-   "z": 1.0109912476630722,
-   "p": 0.16701639863157539,
-   "q": 0.9584599161334023,
+   "z": 1.0106804570567582,
+   "p": 0.1670890490105395,
+   "q": 0.9588768361286814,
    "rate_gamma1_kg_h": 7349.574483899217,
-   "null_floor_1sigma_kg_h": 10121.771547102331,
+   "null_floor_1sigma_kg_h": 10121.350479799963,
    "rate_t_h": {
-    "p16": -0.08020406516106629,
-    "p50": 12.933779379151431,
-    "p84": 25.59164701415378,
-    "upper_limit_p84": 25.59164701415378
+    "p16": -0.08403793697104729,
+    "p50": 12.929357360960692,
+    "p84": 25.586253239113166,
+    "upper_limit_p84": 25.586253239113166
    },
    "gamma": {
     "value": 1.20777455599855,
@@ -5552,13 +5552,13 @@
    "priority": {
     "avoidable_tco2e20_per_yr": [
      0.0,
-     5466605.660564333,
-     11411597.152742961
+     5464916.177462084,
+     11408895.805081796
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     572443815.976311,
-     2653979246.269411
+     572159686.6255789,
+     2653372894.5795617
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -5607,8 +5607,8 @@
     "mean_wind10_ms": 2.636269518201535
    },
    "tasking": {
-    "voi": 2.7783426508619042,
-    "p_real_ramp": 0.31241775023244467,
+    "voi": 2.7768589860408195,
+    "p_real_ramp": 0.31230774366413816,
     "rank": 15,
     "recommend": false
    },
@@ -5933,7 +5933,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": 0.9780039064035491,
+     "z": 0.9756812703093577,
      "passed": false,
      "false_pass_rate": 0.0,
      "independence": "same data, different estimator"
@@ -5941,7 +5941,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": 1.4143657410505133,
-     "z_late": 1.4956768750000282,
+     "z_late": 1.5080699501937997,
      "passed": false,
      "status": "evaluated",
      "false_pass_rate": 0.041666666666666664,
@@ -5949,7 +5949,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": 0.6487350900483548,
+     "z": 0.652987034484946,
      "passed": false,
      "false_pass_rate": 0.0625,
      "independence": "independent species, same overpasses"
@@ -5974,16 +5974,16 @@
     "organisation": null
    },
    "status": "not detected",
-   "z": 1.3238792808000481,
-   "p": 0.10925075996369375,
+   "z": 1.3310278828173523,
+   "p": 0.10807482864095026,
    "q": 0.6614943454669465,
    "rate_gamma1_kg_h": 11173.325559194325,
-   "null_floor_1sigma_kg_h": 7018.588226772903,
+   "null_floor_1sigma_kg_h": 6995.810671380365,
    "rate_t_h": {
-    "p16": 2.623508143411245,
-    "p50": 12.064293508477103,
-    "p84": 21.627701836584414,
-    "upper_limit_p84": 21.627701836584414
+    "p16": 2.6743489501332043,
+    "p50": 12.093157922152725,
+    "p84": 21.625080582251773,
+    "upper_limit_p84": 21.625080582251773
    },
    "gamma": {
     "value": 1.3084234099204741,
@@ -6008,14 +6008,14 @@
    "chemistry": null,
    "priority": {
     "avoidable_tco2e20_per_yr": [
-     1101192.2995496115,
-     5223842.015164813,
-     9842650.455850042
+     1123455.1903843244,
+     5233141.12866761,
+     9840362.830903633
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     640813977.325964,
-     2346560242.635219
+     642874870.5145142,
+     2348836832.2655983
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -6064,8 +6064,8 @@
     "mean_wind10_ms": 2.3259944194117566
    },
    "tasking": {
-    "voi": 2.957126362613951,
-    "p_real_ramp": 0.4300995518897064,
+    "voi": 2.9688561956363038,
+    "p_real_ramp": 0.432909286637922,
     "rank": 12,
     "recommend": false
    },
@@ -6088,7 +6088,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": 0.9660150497454586,
+     "z": 0.9651008703132395,
      "passed": false,
      "false_pass_rate": 0.0,
      "independence": "same data, different estimator"
@@ -6096,7 +6096,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": 1.5104512962819967,
-     "z_late": 1.1844732568781482,
+     "z_late": 1.1849305860449109,
      "passed": false,
      "status": "evaluated",
      "false_pass_rate": 0.0,
@@ -6104,7 +6104,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": -0.1269569183712576,
+     "z": -0.1270650192052443,
      "passed": false,
      "false_pass_rate": 0.08695652173913043,
      "independence": "independent species, same overpasses"
@@ -6129,16 +6129,16 @@
     "organisation": null
    },
    "status": "not detected",
-   "z": 1.3970561562311632,
-   "p": 0.09261724418111895,
-   "q": 0.5979422165719877,
+   "z": 1.3950858748021315,
+   "p": 0.09291528822266316,
+   "q": 0.5998664059215273,
    "rate_gamma1_kg_h": 7680.117908173225,
-   "null_floor_1sigma_kg_h": 6802.746125924636,
+   "null_floor_1sigma_kg_h": 6808.979312586952,
    "rate_t_h": {
-    "p16": 3.1745388053919985,
-    "p50": 11.635174683515734,
-    "p84": 20.401132618032207,
-    "upper_limit_p84": 20.401132618032207
+    "p16": 3.1623633836995966,
+    "p50": 11.630121130445904,
+    "p84": 20.401640244902932,
+    "upper_limit_p84": 20.401640244902932
    },
    "gamma": {
     "value": 1.2129713007511296,
@@ -6163,14 +6163,14 @@
    "chemistry": null,
    "priority": {
     "avoidable_tco2e20_per_yr": [
-     1335712.2589471024,
-     4918415.534957128,
-     9152657.830151934
+     1330393.217842954,
+     4916658.152881552,
+     9152397.636649868
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     666548214.9937508,
-     2308219645.9266477
+     665311354.512023,
+     2307228092.316275
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -6219,8 +6219,8 @@
     "mean_wind10_ms": 2.5787687213376103
    },
    "tasking": {
-    "voi": 2.889238539077207,
-    "p_real_ramp": 0.45900377011397486,
+    "voi": 2.8872310302251334,
+    "p_real_ramp": 0.45822197526959213,
     "rank": 13,
     "recommend": false
    },
@@ -6545,7 +6545,7 @@
    "tasking": {
     "voi": 2.392378076888462,
     "p_real_ramp": 0.6912320868493422,
-    "rank": 23,
+    "rank": 21,
     "recommend": false
    },
    "priority_rank": 38
@@ -6862,160 +6862,6 @@
    "priority_rank": 40
   },
   {
-   "slug": "c12",
-   "name": "187 km from Bhuj",
-   "lat": 24.25,
-   "lon": 71.0,
-   "kind": "screen_candidate",
-   "source_reference": null,
-   "in_india": true,
-   "screen": {
-    "rank": 12,
-    "z": 4.082042383763773,
-    "hits": [],
-    "nearest_km": 0.0
-   },
-   "corroboration": {
-    "second_method": {
-     "check": "cross-sectional flux agrees (z > 2)",
-     "z": 0.10341472939157026,
-     "passed": false,
-     "false_pass_rate": 0.041666666666666664,
-     "independence": "same data, different estimator"
-    },
-    "temporal": {
-     "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
-     "z_early": 1.785580514942495,
-     "z_late": 2.3629585981594246,
-     "passed": false,
-     "status": "evaluated",
-     "false_pass_rate": 0.0,
-     "independence": "independent data"
-    },
-    "co": {
-     "check": "co-emitted CO detected (z > 2)",
-     "z": 0.047256094123582885,
-     "passed": false,
-     "false_pass_rate": 0.0,
-     "independence": "independent species, same overpasses"
-    },
-    "blind_screen": {
-     "check": "found by the national screen with no site list (<= 25 km)",
-     "km": 0.0,
-     "passed": true,
-     "false_pass_rate": null,
-     "independence": "independent algorithm, daily grids"
-    },
-    "not_used": {
-     "wind_invariance": "not used: the wind-direction test failed validation on real data (R5: 21% false rejects, 8% power)"
-    },
-    "n_passed": 1,
-    "confirming": false
-   },
-   "review": {
-    "state": "machine_candidate",
-    "label": "Machine candidate: awaiting analyst review",
-    "date": null,
-    "organisation": null
-   },
-   "status": "not detected",
-   "z": 1.7875621079794126,
-   "p": 0.046597775836901334,
-   "q": 0.37786144668643706,
-   "rate_gamma1_kg_h": 9502.278777311492,
-   "null_floor_1sigma_kg_h": 4826.469483242011,
-   "rate_t_h": {
-    "p16": 2.8349695117425893,
-    "p50": 10.264710312800684,
-    "p84": 18.200798033687462,
-    "upper_limit_p84": 18.200798033687462
-   },
-   "gamma": {
-    "value": 1.194775334731191,
-    "sd": 0.1,
-    "source": "site ERA5"
-   },
-   "obc_slope": 0.991822814958306,
-   "sector": "unattributed",
-   "sector_basis": "EFA: no sector reaches posterior 0.6 from mapped facilities",
-   "attribution": {
-    "posterior": {
-     "landfill": 0.3333333333333333,
-     "coal": 0.3333333333333333,
-     "oil_gas": 0.3333333333333333
-    },
-    "top": "landfill",
-    "attributed": null,
-    "agriculture_signal": 0.0,
-    "voters": [],
-    "n_facilities": 0
-   },
-   "chemistry": null,
-   "priority": {
-    "avoidable_tco2e20_per_yr": [
-     1210624.8259774274,
-     4292253.6799252,
-     8145372.904109289
-    ],
-    "abatement_cost_inr_per_yr": [
-     0.0,
-     568355214.6418846,
-     2024075390.0734038
-    ],
-    "wrpi_tco2e20_per_lakh_inr": [
-     0.0,
-     0.0,
-     0.0
-    ],
-    "p_real": 0.0,
-    "sector": "unattributed",
-    "fx_inr_per_usd": 94.93
-   },
-   "evidence": {
-    "n_overpasses": 326,
-    "first_overpass": "2023-03-19",
-    "last_overpass": "2026-10-16",
-    "overpasses_per_month": {
-     "2023-03": 3,
-     "2023-04": 11,
-     "2023-05": 10,
-     "2023-10": 19,
-     "2023-11": 10,
-     "2023-12": 15,
-     "2024-01": 15,
-     "2024-02": 9,
-     "2024-03": 14,
-     "2024-04": 9,
-     "2024-05": 12,
-     "2024-10": 10,
-     "2024-11": 11,
-     "2024-12": 10,
-     "2025-01": 13,
-     "2025-02": 10,
-     "2025-03": 15,
-     "2025-04": 15,
-     "2025-05": 10,
-     "2025-10": 9,
-     "2025-11": 14,
-     "2025-12": 5,
-     "2026-01": 16,
-     "2026-02": 8,
-     "2026-03": 9,
-     "2026-04": 18,
-     "2026-05": 18,
-     "2026-10": 8
-    },
-    "mean_wind10_ms": 3.146350318403132
-   },
-   "tasking": {
-    "voi": 2.434738326759635,
-    "p_real_ramp": 0.6131590231820061,
-    "rank": 21,
-    "recommend": false
-   },
-   "priority_rank": 41
-  },
-  {
    "slug": "c49",
    "name": "26 km from Ranchi",
    "lat": 23.25,
@@ -7167,6 +7013,160 @@
     "rank": 25,
     "recommend": false
    },
+   "priority_rank": 41
+  },
+  {
+   "slug": "c12",
+   "name": "187 km from Bhuj",
+   "lat": 24.25,
+   "lon": 71.0,
+   "kind": "screen_candidate",
+   "source_reference": null,
+   "in_india": true,
+   "screen": {
+    "rank": 12,
+    "z": 4.082042383763773,
+    "hits": [],
+    "nearest_km": 0.0
+   },
+   "corroboration": {
+    "second_method": {
+     "check": "cross-sectional flux agrees (z > 2)",
+     "z": 0.10146139798411705,
+     "passed": false,
+     "false_pass_rate": 0.041666666666666664,
+     "independence": "same data, different estimator"
+    },
+    "temporal": {
+     "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
+     "z_early": 1.785580514942495,
+     "z_late": 2.3895074475756775,
+     "passed": false,
+     "status": "evaluated",
+     "false_pass_rate": 0.0,
+     "independence": "independent data"
+    },
+    "co": {
+     "check": "co-emitted CO detected (z > 2)",
+     "z": 0.039170317193339015,
+     "passed": false,
+     "false_pass_rate": 0.0,
+     "independence": "independent species, same overpasses"
+    },
+    "blind_screen": {
+     "check": "found by the national screen with no site list (<= 25 km)",
+     "km": 0.0,
+     "passed": true,
+     "false_pass_rate": null,
+     "independence": "independent algorithm, daily grids"
+    },
+    "not_used": {
+     "wind_invariance": "not used: the wind-direction test failed validation on real data (R5: 21% false rejects, 8% power)"
+    },
+    "n_passed": 1,
+    "confirming": false
+   },
+   "review": {
+    "state": "machine_candidate",
+    "label": "Machine candidate: awaiting analyst review",
+    "date": null,
+    "organisation": null
+   },
+   "status": "not detected",
+   "z": 1.7859287004928261,
+   "p": 0.04673854590369688,
+   "q": 0.37786144668643706,
+   "rate_gamma1_kg_h": 9494.831863755566,
+   "null_floor_1sigma_kg_h": 4826.946368830951,
+   "rate_t_h": {
+    "p16": 2.3052869280985786,
+    "p50": 9.90968029866952,
+    "p84": 17.551480364787476,
+    "upper_limit_p84": 17.551480364787476
+   },
+   "gamma": {
+    "value": 1.194775334731191,
+    "sd": 0.1,
+    "source": "site ERA5"
+   },
+   "obc_slope": 0.991822814958306,
+   "sector": "unattributed",
+   "sector_basis": "EFA: no sector reaches posterior 0.6 from mapped facilities",
+   "attribution": {
+    "posterior": {
+     "landfill": 0.3333333333333333,
+     "coal": 0.3333333333333333,
+     "oil_gas": 0.3333333333333333
+    },
+    "top": "landfill",
+    "attributed": null,
+    "agriculture_signal": 0.0,
+    "voters": [],
+    "n_facilities": 0
+   },
+   "chemistry": null,
+   "priority": {
+    "avoidable_tco2e20_per_yr": [
+     974516.118390369,
+     4184812.6668014247,
+     7956498.800239741
+    ],
+    "abatement_cost_inr_per_yr": [
+     0.0,
+     536536426.60181975,
+     1944265152.0899234
+    ],
+    "wrpi_tco2e20_per_lakh_inr": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "p_real": 0.0,
+    "sector": "unattributed",
+    "fx_inr_per_usd": 94.93
+   },
+   "evidence": {
+    "n_overpasses": 327,
+    "first_overpass": "2023-03-19",
+    "last_overpass": "2026-10-17",
+    "overpasses_per_month": {
+     "2023-03": 3,
+     "2023-04": 11,
+     "2023-05": 10,
+     "2023-10": 19,
+     "2023-11": 10,
+     "2023-12": 15,
+     "2024-01": 15,
+     "2024-02": 9,
+     "2024-03": 14,
+     "2024-04": 9,
+     "2024-05": 12,
+     "2024-10": 10,
+     "2024-11": 11,
+     "2024-12": 10,
+     "2025-01": 13,
+     "2025-02": 10,
+     "2025-03": 15,
+     "2025-04": 15,
+     "2025-05": 10,
+     "2025-10": 9,
+     "2025-11": 14,
+     "2025-12": 5,
+     "2026-01": 16,
+     "2026-02": 8,
+     "2026-03": 9,
+     "2026-04": 18,
+     "2026-05": 18,
+     "2026-10": 9
+    },
+    "mean_wind10_ms": 3.142713943954759
+   },
+   "tasking": {
+    "voi": 2.351925678276267,
+    "p_real_ramp": 0.6125336344074161,
+    "rank": 23,
+    "recommend": false
+   },
    "priority_rank": 42
   },
   {
@@ -7186,7 +7186,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": 0.27808464873846545,
+     "z": 0.27895200444631524,
      "passed": false,
      "false_pass_rate": 0.041666666666666664,
      "independence": "same data, different estimator"
@@ -7194,7 +7194,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": 5.283577993397575,
-     "z_late": -0.22541876789879084,
+     "z_late": -0.2249984168001574,
      "passed": false,
      "status": "evaluated",
      "false_pass_rate": 0.041666666666666664,
@@ -7202,7 +7202,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": 3.7629777262456057,
+     "z": 3.7696608472163606,
      "passed": true,
      "false_pass_rate": 0.041666666666666664,
      "independence": "independent species, same overpasses"
@@ -7227,16 +7227,16 @@
     "organisation": null
    },
    "status": "not detected",
-   "z": 1.7037092503787425,
-   "p": 0.054308597413379366,
-   "q": 0.4188872463002091,
+   "z": 1.7066419859354913,
+   "p": 0.05402174986670332,
+   "q": 0.41376657998720234,
    "rate_gamma1_kg_h": 9111.010918740696,
-   "null_floor_1sigma_kg_h": 5032.673330248186,
+   "null_floor_1sigma_kg_h": 5024.748539392517,
    "rate_t_h": {
-    "p16": 0.012506298976084143,
-    "p50": 9.585385763395621,
-    "p84": 19.818818446297175,
-    "upper_limit_p84": 19.818818446297175
+    "p16": 0.02536615834415138,
+    "p50": 9.586380984908043,
+    "p84": 19.81577632145992,
+    "upper_limit_p84": 19.81577632145992
    },
    "gamma": {
     "value": 1.1942096828404558,
@@ -7261,14 +7261,14 @@
    "chemistry": null,
    "priority": {
     "avoidable_tco2e20_per_yr": [
-     4301.960013950384,
-     4108920.574979324,
-     8942268.842293289
+     8349.58055205279,
+     4108455.7537619555,
+     8938011.19448262
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     429237656.7046707,
-     1972971112.4717102
+     429196480.7453183,
+     1972042514.3501165
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -7316,8 +7316,8 @@
     "mean_wind10_ms": 3.1992085794963976
    },
    "tasking": {
-    "voi": 2.3339067917629315,
-    "p_real_ramp": 0.5807096434910501,
+    "voi": 2.3323637654949922,
+    "p_real_ramp": 0.5818552660753087,
     "rank": 24,
     "recommend": false
    },
@@ -7487,7 +7487,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": 1.011671197750977,
+     "z": 1.0105703281469205,
      "passed": false,
      "false_pass_rate": 0.047619047619047616,
      "independence": "same data, different estimator"
@@ -7495,7 +7495,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": 2.691248578287772,
-     "z_late": 0.33152362357416787,
+     "z_late": 0.34322611639528006,
      "passed": false,
      "status": "evaluated",
      "false_pass_rate": 0.041666666666666664,
@@ -7503,7 +7503,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": -0.4668021842345398,
+     "z": -0.4632177103300392,
      "passed": false,
      "false_pass_rate": 0.0,
      "independence": "independent species, same overpasses"
@@ -7528,16 +7528,16 @@
     "organisation": null
    },
    "status": "not detected",
-   "z": 1.7100550629218438,
-   "p": 0.05517464791152755,
-   "q": 0.4188872463002091,
-   "rate_gamma1_kg_h": 6773.272041309393,
-   "null_floor_1sigma_kg_h": 3914.6446163133874,
+   "z": 1.7172472692852596,
+   "p": 0.05447622096915515,
+   "q": 0.41376657998720234,
+   "rate_gamma1_kg_h": 6803.34502936781,
+   "null_floor_1sigma_kg_h": 3916.4501005905186,
    "rate_t_h": {
-    "p16": 3.307417364950947,
-    "p50": 8.615290309106776,
-    "p84": 13.80492272334722,
-    "upper_limit_p84": 13.80492272334722
+    "p16": 3.2406686797985604,
+    "p50": 8.587961620649672,
+    "p84": 13.992500683807721,
+    "upper_limit_p84": 13.992500683807721
    },
    "gamma": {
     "value": 1.2424519694413614,
@@ -7562,14 +7562,14 @@
    "chemistry": null,
    "priority": {
     "avoidable_tco2e20_per_yr": [
-     1383287.0221478378,
-     3611975.6209852165,
-     6378827.957472893
+     1351009.3823686717,
+     3666006.245516847,
+     6371408.994518986
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     506971068.3125945,
-     1609024551.1139052
+     515519650.47398794,
+     1642389403.4322798
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -7581,9 +7581,9 @@
     "fx_inr_per_usd": 94.93
    },
    "evidence": {
-    "n_overpasses": 225,
+    "n_overpasses": 226,
     "first_overpass": "2023-01-04",
-    "last_overpass": "2026-10-16",
+    "last_overpass": "2026-10-17",
     "overpasses_per_month": {
      "2023-01": 11,
      "2023-02": 8,
@@ -7614,13 +7614,13 @@
      "2026-03": 3,
      "2026-04": 3,
      "2026-05": 5,
-     "2026-10": 2
+     "2026-10": 3
     },
-    "mean_wind10_ms": 2.5057978075238143
+    "mean_wind10_ms": 2.500011090869452
    },
    "tasking": {
-    "voi": 2.094203171796284,
-    "p_real_ramp": 0.5831876512162024,
+    "voi": 2.0834853980370593,
+    "p_real_ramp": 0.5859921756707759,
     "rank": 27,
     "recommend": false
    },
@@ -8085,162 +8085,6 @@
    "priority_rank": 48
   },
   {
-   "slug": "c54",
-   "name": "38 km from Hyderabad",
-   "lat": 25.25,
-   "lon": 68.75,
-   "kind": "screen_candidate",
-   "source_reference": null,
-   "in_india": false,
-   "screen": {
-    "rank": 37,
-    "z": 3.0072071754338725,
-    "hits": [],
-    "nearest_km": 0.0
-   },
-   "corroboration": {
-    "second_method": {
-     "check": "cross-sectional flux agrees (z > 2)",
-     "z": 0.36293077890574554,
-     "passed": false,
-     "false_pass_rate": 0.08695652173913043,
-     "independence": "same data, different estimator"
-    },
-    "temporal": {
-     "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
-     "z_early": 0.5669049360320719,
-     "z_late": 0.4270081581839145,
-     "passed": false,
-     "status": "evaluated",
-     "false_pass_rate": 0.08333333333333333,
-     "independence": "independent data"
-    },
-    "co": {
-     "check": "co-emitted CO detected (z > 2)",
-     "z": 0.36855946514116367,
-     "passed": false,
-     "false_pass_rate": 0.043478260869565216,
-     "independence": "independent species, same overpasses"
-    },
-    "blind_screen": {
-     "check": "found by the national screen with no site list (<= 25 km)",
-     "km": 0.0,
-     "passed": true,
-     "false_pass_rate": null,
-     "independence": "independent algorithm, daily grids"
-    },
-    "not_used": {
-     "wind_invariance": "not used: the wind-direction test failed validation on real data (R5: 21% false rejects, 8% power)"
-    },
-    "n_passed": 1,
-    "confirming": false
-   },
-   "review": {
-    "state": "machine_candidate",
-    "label": "Machine candidate: awaiting analyst review",
-    "date": null,
-    "organisation": null
-   },
-   "status": "not detected",
-   "z": 0.6713892884335462,
-   "p": 0.2589179361583802,
-   "q": 1.0,
-   "rate_gamma1_kg_h": 7763.273530730965,
-   "null_floor_1sigma_kg_h": 7635.138001556972,
-   "rate_t_h": {
-    "p16": -3.4673022170993226,
-    "p50": 6.497925862491314,
-    "p84": 16.094974654984977,
-    "upper_limit_p84": 16.094974654984977
-   },
-   "gamma": {
-    "value": 1.2805188711239501,
-    "sd": 0.1,
-    "source": "site ERA5"
-   },
-   "obc_slope": 0.991822814958306,
-   "sector": "unattributed",
-   "sector_basis": "EFA: no sector reaches posterior 0.6 from mapped facilities",
-   "attribution": {
-    "posterior": {
-     "landfill": 0.3333333333333333,
-     "coal": 0.3333333333333333,
-     "oil_gas": 0.3333333333333333
-    },
-    "top": "landfill",
-    "attributed": null,
-    "agriculture_signal": 0.0,
-    "voters": [],
-    "n_facilities": 0
-   },
-   "chemistry": null,
-   "priority": {
-    "avoidable_tco2e20_per_yr": [
-     0.0,
-     2744309.532830893,
-     7152664.607320701
-    ],
-    "abatement_cost_inr_per_yr": [
-     0.0,
-     220903764.97338402,
-     1572012793.432262
-    ],
-    "wrpi_tco2e20_per_lakh_inr": [
-     0.0,
-     0.0,
-     0.0
-    ],
-    "p_real": 0.0,
-    "sector": "unattributed",
-    "fx_inr_per_usd": 94.93
-   },
-   "evidence": {
-    "n_overpasses": 405,
-    "first_overpass": "2023-01-03",
-    "last_overpass": "2026-10-16",
-    "overpasses_per_month": {
-     "2023-01": 13,
-     "2023-02": 9,
-     "2023-03": 6,
-     "2023-04": 4,
-     "2023-05": 12,
-     "2023-10": 19,
-     "2023-11": 11,
-     "2023-12": 16,
-     "2024-01": 14,
-     "2024-02": 14,
-     "2024-03": 12,
-     "2024-04": 9,
-     "2024-05": 16,
-     "2024-10": 18,
-     "2024-11": 17,
-     "2024-12": 22,
-     "2025-01": 21,
-     "2025-02": 12,
-     "2025-03": 14,
-     "2025-04": 13,
-     "2025-05": 8,
-     "2025-10": 12,
-     "2025-11": 18,
-     "2025-12": 14,
-     "2026-01": 17,
-     "2026-02": 15,
-     "2026-03": 12,
-     "2026-04": 12,
-     "2026-05": 18,
-     "2026-10": 7
-    },
-    "mean_wind10_ms": 3.4318587220028953
-   },
-   "tasking": {
-    "voi": 1.0538596375987055,
-    "p_real_ramp": 0.2036623624013249,
-    "rank": 34,
-    "recommend": false
-   },
-   "priority_rank": 49
-  },
-  {
    "slug": "c53",
    "name": "31 km from Hyderabad",
    "lat": 25.25,
@@ -8257,7 +8101,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": 0.6303733571967043,
+     "z": 0.6279037503107243,
      "passed": false,
      "false_pass_rate": 0.08695652173913043,
      "independence": "same data, different estimator"
@@ -8265,7 +8109,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": 0.43549299017621484,
-     "z_late": 0.20851018735464819,
+     "z_late": 0.2041794579782306,
      "passed": false,
      "status": "evaluated",
      "false_pass_rate": 0.041666666666666664,
@@ -8273,7 +8117,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": 0.4701654042643369,
+     "z": 0.47012185229277986,
      "passed": false,
      "false_pass_rate": 0.043478260869565216,
      "independence": "independent species, same overpasses"
@@ -8298,16 +8142,16 @@
     "organisation": null
    },
    "status": "not detected",
-   "z": 0.48240144362532167,
-   "p": 0.3207015253331543,
+   "z": 0.4805741063855448,
+   "p": 0.32133011875493517,
    "q": 1.0,
-   "rate_gamma1_kg_h": 7720.706673499392,
-   "null_floor_1sigma_kg_h": 9865.718523437894,
+   "rate_gamma1_kg_h": 7694.937889043353,
+   "null_floor_1sigma_kg_h": 9861.57733444108,
    "rate_t_h": {
-    "p16": -6.475454650281873,
-    "p50": 6.564596480428106,
-    "p84": 18.680285113972182,
-    "upper_limit_p84": 18.680285113972182
+    "p16": -6.312809859254634,
+    "p50": 6.447307319727921,
+    "p84": 18.69169910339606,
+    "upper_limit_p84": 18.69169910339606
    },
    "gamma": {
     "value": 1.2766678000526406,
@@ -8333,13 +8177,13 @@
    "priority": {
     "avoidable_tco2e20_per_yr": [
      0.0,
-     2742604.774359756,
-     8183385.155401511
+     2750934.215501908,
+     8244906.702647231
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     154087729.73065946,
-     1748119126.9451885
+     126863916.18184203,
+     1731943953.9461033
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -8351,9 +8195,9 @@
     "fx_inr_per_usd": 94.93
    },
    "evidence": {
-    "n_overpasses": 418,
+    "n_overpasses": 419,
     "first_overpass": "2023-01-03",
-    "last_overpass": "2026-10-16",
+    "last_overpass": "2026-10-17",
     "overpasses_per_month": {
      "2023-01": 14,
      "2023-02": 11,
@@ -8384,14 +8228,170 @@
      "2026-03": 12,
      "2026-04": 13,
      "2026-05": 17,
-     "2026-10": 8
+     "2026-10": 9
     },
-    "mean_wind10_ms": 3.4727256913720663
+    "mean_wind10_ms": 3.4676927059889184
    },
    "tasking": {
-    "voi": 0.8572339386263008,
-    "p_real_ramp": 0.15443438684582456,
+    "voi": 0.839982812510356,
+    "p_real_ramp": 0.15400040920161373,
     "rank": 36,
+    "recommend": false
+   },
+   "priority_rank": 49
+  },
+  {
+   "slug": "c54",
+   "name": "38 km from Hyderabad",
+   "lat": 25.25,
+   "lon": 68.75,
+   "kind": "screen_candidate",
+   "source_reference": null,
+   "in_india": false,
+   "screen": {
+    "rank": 37,
+    "z": 3.0072071754338725,
+    "hits": [],
+    "nearest_km": 0.0
+   },
+   "corroboration": {
+    "second_method": {
+     "check": "cross-sectional flux agrees (z > 2)",
+     "z": 0.36136632275332276,
+     "passed": false,
+     "false_pass_rate": 0.08695652173913043,
+     "independence": "same data, different estimator"
+    },
+    "temporal": {
+     "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
+     "z_early": 0.5669049360320719,
+     "z_late": 0.41910089195283773,
+     "passed": false,
+     "status": "evaluated",
+     "false_pass_rate": 0.08333333333333333,
+     "independence": "independent data"
+    },
+    "co": {
+     "check": "co-emitted CO detected (z > 2)",
+     "z": 0.3662734395968603,
+     "passed": false,
+     "false_pass_rate": 0.043478260869565216,
+     "independence": "independent species, same overpasses"
+    },
+    "blind_screen": {
+     "check": "found by the national screen with no site list (<= 25 km)",
+     "km": 0.0,
+     "passed": true,
+     "false_pass_rate": null,
+     "independence": "independent algorithm, daily grids"
+    },
+    "not_used": {
+     "wind_invariance": "not used: the wind-direction test failed validation on real data (R5: 21% false rejects, 8% power)"
+    },
+    "n_passed": 1,
+    "confirming": false
+   },
+   "review": {
+    "state": "machine_candidate",
+    "label": "Machine candidate: awaiting analyst review",
+    "date": null,
+    "organisation": null
+   },
+   "status": "not detected",
+   "z": 0.6674952078512671,
+   "p": 0.26012180641213223,
+   "q": 1.0,
+   "rate_gamma1_kg_h": 7729.784220316051,
+   "null_floor_1sigma_kg_h": 7637.407849521173,
+   "rate_t_h": {
+    "p16": -3.385307565003809,
+    "p50": 6.507373022201964,
+    "p84": 15.984226699499613,
+    "upper_limit_p84": 15.984226699499613
+   },
+   "gamma": {
+    "value": 1.2805188711239501,
+    "sd": 0.1,
+    "source": "site ERA5"
+   },
+   "obc_slope": 0.991822814958306,
+   "sector": "unattributed",
+   "sector_basis": "EFA: no sector reaches posterior 0.6 from mapped facilities",
+   "attribution": {
+    "posterior": {
+     "landfill": 0.3333333333333333,
+     "coal": 0.3333333333333333,
+     "oil_gas": 0.3333333333333333
+    },
+    "top": "landfill",
+    "attributed": null,
+    "agriculture_signal": 0.0,
+    "voters": [],
+    "n_facilities": 0
+   },
+   "chemistry": null,
+   "priority": {
+    "avoidable_tco2e20_per_yr": [
+     0.0,
+     2703684.9262147937,
+     7219821.179593826
+    ],
+    "abatement_cost_inr_per_yr": [
+     0.0,
+     224455826.4591796,
+     1560876858.8665624
+    ],
+    "wrpi_tco2e20_per_lakh_inr": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "p_real": 0.0,
+    "sector": "unattributed",
+    "fx_inr_per_usd": 94.93
+   },
+   "evidence": {
+    "n_overpasses": 406,
+    "first_overpass": "2023-01-03",
+    "last_overpass": "2026-10-17",
+    "overpasses_per_month": {
+     "2023-01": 13,
+     "2023-02": 9,
+     "2023-03": 6,
+     "2023-04": 4,
+     "2023-05": 12,
+     "2023-10": 19,
+     "2023-11": 11,
+     "2023-12": 16,
+     "2024-01": 14,
+     "2024-02": 14,
+     "2024-03": 12,
+     "2024-04": 9,
+     "2024-05": 16,
+     "2024-10": 18,
+     "2024-11": 17,
+     "2024-12": 22,
+     "2025-01": 21,
+     "2025-02": 12,
+     "2025-03": 14,
+     "2025-04": 13,
+     "2025-05": 8,
+     "2025-10": 12,
+     "2025-11": 18,
+     "2025-12": 14,
+     "2026-01": 17,
+     "2026-02": 15,
+     "2026-03": 12,
+     "2026-04": 12,
+     "2026-05": 18,
+     "2026-10": 8
+    },
+    "mean_wind10_ms": 3.4267580788022833
+   },
+   "tasking": {
+    "voi": 1.0511402479497083,
+    "p_real_ramp": 0.20256203719092358,
+    "rank": 34,
     "recommend": false
    },
    "priority_rank": 50
@@ -8563,7 +8563,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": 0.1462326570202905,
+     "z": 0.1432554029093953,
      "passed": false,
      "false_pass_rate": 0.08333333333333333,
      "independence": "same data, different estimator"
@@ -8571,7 +8571,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": 0.5713863099484682,
-     "z_late": -0.19600571348251353,
+     "z_late": -0.20173347773455375,
      "passed": false,
      "status": "evaluated",
      "false_pass_rate": 0.041666666666666664,
@@ -8579,7 +8579,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": -0.09190822818536731,
+     "z": -0.09390419276202024,
      "passed": false,
      "false_pass_rate": 0.08333333333333333,
      "independence": "independent species, same overpasses"
@@ -8604,16 +8604,16 @@
     "organisation": null
    },
    "status": "not detected",
-   "z": 0.2551787013365063,
-   "p": 0.4023946055510566,
+   "z": 0.251380958682089,
+   "p": 0.4038166597360415,
    "q": 1.0,
-   "rate_gamma1_kg_h": 969.0235694308801,
-   "null_floor_1sigma_kg_h": 5099.85179258533,
+   "rate_gamma1_kg_h": 952.2847589619278,
+   "null_floor_1sigma_kg_h": 5097.524886360441,
    "rate_t_h": {
-    "p16": -5.256831805757863,
-    "p50": 1.6236331684650416,
-    "p84": 8.70401989366843,
-    "upper_limit_p84": 8.70401989366843
+    "p16": -5.190852015987112,
+    "p50": 1.7550492802026514,
+    "p84": 8.781900172509863,
+    "upper_limit_p84": 8.781900172509863
    },
    "gamma": {
     "value": 1.2910211937067202,
@@ -8652,13 +8652,13 @@
    "priority": {
     "avoidable_tco2e20_per_yr": [
      0.0,
-     692536.7186002169,
-     3793148.7326159882
+     717197.8475341543,
+     3803902.0355017325
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
      0.0,
-     743458181.3373586
+     772487652.3343257
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -8670,9 +8670,9 @@
     "fx_inr_per_usd": 94.93
    },
    "evidence": {
-    "n_overpasses": 328,
+    "n_overpasses": 329,
     "first_overpass": "2023-01-06",
-    "last_overpass": "2026-10-12",
+    "last_overpass": "2026-10-17",
     "overpasses_per_month": {
      "2023-01": 9,
      "2023-02": 17,
@@ -8703,13 +8703,13 @@
      "2026-03": 9,
      "2026-04": 12,
      "2026-05": 9,
-     "2026-10": 5
+     "2026-10": 6
     },
-    "mean_wind10_ms": 2.8097190357176585
+    "mean_wind10_ms": 2.804912431442884
    },
    "tasking": {
-    "voi": 0.15462741102398575,
-    "p_real_ramp": 0.10659872263297815,
+    "voi": 0.16618024865471215,
+    "p_real_ramp": 0.10590222225237483,
     "rank": 40,
     "recommend": false
    },
@@ -9069,7 +9069,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": -0.5969173917876214,
+     "z": -0.651223137320142,
      "passed": false,
      "false_pass_rate": 0.0,
      "independence": "same data, different estimator"
@@ -9077,7 +9077,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": -0.4667022828207211,
-     "z_late": -0.9764110497796651,
+     "z_late": -1.00285180724456,
      "passed": false,
      "status": "evaluated",
      "false_pass_rate": 0.0,
@@ -9085,7 +9085,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": 1.3215077401864221,
+     "z": 1.353039609746842,
      "passed": false,
      "false_pass_rate": 0.05263157894736842,
      "independence": "independent species, same overpasses"
@@ -9110,16 +9110,16 @@
     "organisation": null
    },
    "status": "not detected",
-   "z": -0.7073370493946649,
-   "p": 0.7503266432777316,
+   "z": -0.7115544091609505,
+   "p": 0.7515873593784972,
    "q": 1.0,
    "rate_gamma1_kg_h": -5342.111919869009,
-   "null_floor_1sigma_kg_h": 4222.562372379923,
+   "null_floor_1sigma_kg_h": 4225.313727247418,
    "rate_t_h": {
-    "p16": -9.437778193222709,
-    "p50": -3.9468198987213414,
-    "p84": 1.5234222507950297,
-    "upper_limit_p84": 1.5234222507950297
+    "p16": -9.462052631200608,
+    "p50": -3.9699079539086624,
+    "p84": 1.5043945846292555,
+    "upper_limit_p84": 1.5043945846292555
    },
    "gamma": {
     "value": 1.2150043616132717,
@@ -9146,12 +9146,12 @@
     "avoidable_tco2e20_per_yr": [
      0.0,
      0.0,
-     647289.4938722234
+     639772.5791876033
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
      0.0,
-     44614171.66922249
+     42480741.27005306
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -9199,7 +9199,7 @@
    },
    "tasking": {
     "voi": 0.0,
-    "p_real_ramp": 0.013645260370161059
+    "p_real_ramp": 0.013498734252289162
    },
    "priority_rank": 55
   },
@@ -9220,7 +9220,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": -1.471756711521753,
+     "z": -1.4707130362683296,
      "passed": false,
      "false_pass_rate": 0.0,
      "independence": "same data, different estimator"
@@ -9228,7 +9228,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": -0.650426527845223,
-     "z_late": -0.6640378986458569,
+     "z_late": -0.6607198287935674,
      "passed": false,
      "status": "evaluated",
      "false_pass_rate": 0.0,
@@ -9236,7 +9236,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": -2.355501481592565,
+     "z": -2.3425401902097884,
      "passed": false,
      "false_pass_rate": 0.047619047619047616,
      "independence": "independent species, same overpasses"
@@ -9261,16 +9261,16 @@
     "organisation": null
    },
    "status": "not detected",
-   "z": -0.8821614037666325,
-   "p": 0.8005148042713923,
+   "z": -0.8786141743151208,
+   "p": 0.7995823514458429,
    "q": 1.0,
    "rate_gamma1_kg_h": -6820.1400163749895,
-   "null_floor_1sigma_kg_h": 6591.755262043455,
+   "null_floor_1sigma_kg_h": 6595.4744110771035,
    "rate_t_h": {
-    "p16": -15.70719118636783,
-    "p50": -7.484017806048382,
-    "p84": 0.9429525550064968,
-    "upper_limit_p84": 0.9429525550064968
+    "p16": -15.682415632743876,
+    "p50": -7.463408935288851,
+    "p84": 0.9707640552371892,
+    "upper_limit_p84": 0.9707640552371892
    },
    "gamma": {
     "value": 1.2105194158747847,
@@ -9297,7 +9297,7 @@
     "avoidable_tco2e20_per_yr": [
      0.0,
      0.0,
-     382776.8968847272
+     395531.48654988926
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
@@ -9349,7 +9349,7 @@
    },
    "tasking": {
     "voi": 0.0,
-    "p_real_ramp": 0.008605675930051555
+    "p_real_ramp": 0.008688927171555014
    },
    "priority_rank": 56
   }
