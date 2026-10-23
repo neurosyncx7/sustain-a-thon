@@ -1,10 +1,92 @@
 {
  "stream": "NRTI",
  "day": "2026-10-23",
- "granules": 24,
- "pixels": 0,
- "orbits": [],
- "note": "no qa>=0.5 pixels over India (cloud/monsoon)",
+ "granules": 43,
+ "orbits": [
+  "46774"
+ ],
+ "pixels": 728,
+ "sensing_start": "2026-10-23 06:40:40",
+ "sensing_end": "2026-10-23 06:46:25",
+ "mean_xch4_ppb": 1954.4564208984375,
+ "observed_cells": 521,
+ "method_steps": [
+  "qa >= 0.5",
+  "Copernicus checksum",
+  "plane background (60-140 km)",
+  "ABD albedo/aerosol correction",
+  "wind rotation",
+  "footprint drizzle",
+  "noise weight",
+  "KPW phase weight",
+  "flux divergence (20 km)"
+ ],
+ "texture": {
+  "file": "latest.png",
+  "lo": 1875.424169921875,
+  "hi": 2059.77373046875,
+  "nodata": 0,
+  "lat_edges": [
+   6.5,
+   37.5
+  ],
+  "lon_edges": [
+   68.0,
+   97.5
+  ]
+ },
+ "sites": {
+  "c03": {
+   "name": "38 km from Dibrugarh",
+   "pixels": 23,
+   "method": null,
+   "xch4_ppb": 1972.6427001953125,
+   "enhancement_ppb": 10.1209716796875,
+   "wind_ms": 0.597396194934845,
+   "wind_to_deg": 177.41319274902344,
+   "time_utc": "2026-10-23T06:43:30"
+  },
+  "c17": {
+   "name": "43 km from Guwahati",
+   "pixels": 8,
+   "method": null,
+   "xch4_ppb": 1983.6845703125,
+   "enhancement_ppb": 10.7940673828125,
+   "wind_ms": 1.651502013206482,
+   "wind_to_deg": 218.15074157714844,
+   "time_utc": "2026-10-23T06:43:38"
+  },
+  "c26": {
+   "name": "26 km from Shwebo",
+   "pixels": 2,
+   "method": null,
+   "xch4_ppb": 2019.68115234375,
+   "enhancement_ppb": 46.6927490234375,
+   "wind_ms": 2.653449773788452,
+   "wind_to_deg": 156.92848205566406,
+   "time_utc": "2026-10-23T06:42:11"
+  },
+  "c43": {
+   "name": "82 km from Shwebo",
+   "pixels": 11,
+   "method": null,
+   "xch4_ppb": 1954.9261474609375,
+   "enhancement_ppb": -31.2926025390625,
+   "wind_ms": 2.2629146575927734,
+   "wind_to_deg": 179.11167907714844,
+   "time_utc": "2026-10-23T06:42:26"
+  },
+  "c55": {
+   "name": "near Myingyan",
+   "pixels": 5,
+   "method": null,
+   "xch4_ppb": 1962.335693359375,
+   "enhancement_ppb": null,
+   "wind_ms": 1.998909592628479,
+   "wind_to_deg": 198.1628875732422,
+   "time_utc": "2026-10-23T06:42:01"
+  }
+ },
  "log": [
   {
    "key": "NRTI/L2__CH4___/2026/10/23/S5P_NRTI_L2__CH4____20261023T030254_20261023T030754_46772_03_020901_20261023T035214.nc",
@@ -112,6 +194,11 @@
    "integrity": "verified"
   },
   {
+   "key": "NRTI/L2__CH4___/2026/10/23/S5P_NRTI_L2__CH4____20261023T061254_20261023T061754_46774_03_020901_20261023T071346.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
    "key": "NRTI/L2__CH4___/2026/10/23/S5P_NRTI_L2__CH4____20261023T061754_20261023T062254_46774_03_020901_20261023T071235.nc",
    "pixels": 0,
    "integrity": "verified"
@@ -125,15 +212,105 @@
    "key": "NRTI/L2__CH4___/2026/10/23/S5P_NRTI_L2__CH4____20261023T062754_20261023T063254_46774_03_020901_20261023T071326.nc",
    "pixels": 0,
    "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/23/S5P_NRTI_L2__CH4____20261023T063754_20261023T064254_46774_03_020901_20261023T071600.nc",
+   "pixels": 239,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/23/S5P_NRTI_L2__CH4____20261023T064254_20261023T064754_46774_03_020901_20261023T071738.nc",
+   "pixels": 489,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/23/S5P_NRTI_L2__CH4____20261023T064754_20261023T065254_46774_03_020901_20261023T071811.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/23/S5P_NRTI_L2__CH4____20261023T065754_20261023T070254_46774_03_020901_20261023T084200.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/23/S5P_NRTI_L2__CH4____20261023T074254_20261023T074754_46775_03_020901_20261023T084349.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/23/S5P_NRTI_L2__CH4____20261023T075254_20261023T075754_46775_03_020901_20261023T085354.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/23/S5P_NRTI_L2__CH4____20261023T075754_20261023T080254_46775_03_020901_20261023T085412.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/23/S5P_NRTI_L2__CH4____20261023T080254_20261023T080754_46775_03_020901_20261023T085146.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/23/S5P_NRTI_L2__CH4____20261023T081254_20261023T081754_46775_03_020901_20261023T085419.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/23/S5P_NRTI_L2__CH4____20261023T082754_20261023T083254_46775_03_020901_20261023T085959.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/23/S5P_NRTI_L2__CH4____20261023T083754_20261023T084254_46775_03_020901_20261023T102339.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/23/S5P_NRTI_L2__CH4____20261023T092254_20261023T092754_46776_03_020901_20261023T102356.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/23/S5P_NRTI_L2__CH4____20261023T092754_20261023T093254_46776_03_020901_20261023T102720.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/23/S5P_NRTI_L2__CH4____20261023T093254_20261023T093754_46776_03_020901_20261023T103359.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/23/S5P_NRTI_L2__CH4____20261023T093754_20261023T094254_46776_03_020901_20261023T103226.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/23/S5P_NRTI_L2__CH4____20261023T094754_20261023T095254_46776_03_020901_20261023T103352.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/23/S5P_NRTI_L2__CH4____20261023T095254_20261023T095754_46776_03_020901_20261023T103540.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/23/S5P_NRTI_L2__CH4____20261023T095754_20261023T100254_46776_03_020901_20261023T103602.nc",
+   "pixels": 0,
+   "integrity": "verified"
   }
  ],
  "integrity": {
-  "verified": 24,
+  "verified": 43,
   "unverifiable": 0,
   "mismatch": 0,
   "download_failed": 0,
   "policy": "each granule's MD5 is checked against the Copernicus Data Space catalogue; mismatches are rejected, unverifiable granules are accepted only when the mirror ETag matches"
  },
- "processed_utc": "2026-10-23T07:55:38",
+ "processed_utc": "2026-10-23T11:41:15",
  "source": "Copernicus Sentinel-5P TROPOMI NRTI L2 CH4, s3://meeo-s5p (public mirror)"
 }
