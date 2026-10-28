@@ -1,10 +1,62 @@
 {
  "stream": "NRTI",
  "day": "2026-10-28",
- "granules": 4,
- "pixels": 0,
- "orbits": [],
- "note": "no qa>=0.5 pixels over India (cloud/monsoon)",
+ "granules": 16,
+ "orbits": [
+  "46845"
+ ],
+ "pixels": 479,
+ "sensing_start": "2026-10-28 06:46:39",
+ "sensing_end": "2026-10-28 06:50:13",
+ "mean_xch4_ppb": 1991.530517578125,
+ "observed_cells": 350,
+ "method_steps": [
+  "qa >= 0.5",
+  "Copernicus checksum",
+  "plane background (60-140 km)",
+  "ABD albedo/aerosol correction",
+  "wind rotation",
+  "footprint drizzle",
+  "noise weight",
+  "KPW phase weight",
+  "flux divergence (20 km)"
+ ],
+ "texture": {
+  "file": "latest.png",
+  "lo": 1900.873790283203,
+  "hi": 2062.8461816406248,
+  "nodata": 0,
+  "lat_edges": [
+   6.5,
+   37.5
+  ],
+  "lon_edges": [
+   68.0,
+   97.5
+  ]
+ },
+ "sites": {
+  "c03": {
+   "name": "38 km from Dibrugarh",
+   "pixels": 40,
+   "method": null,
+   "xch4_ppb": 1995.001953125,
+   "enhancement_ppb": 24.4813232421875,
+   "wind_ms": 0.9927060604095459,
+   "wind_to_deg": 212.0697479248047,
+   "time_utc": "2026-10-28T06:49:56"
+  },
+  "c17": {
+   "name": "43 km from Guwahati",
+   "pixels": 13,
+   "method": null,
+   "xch4_ppb": 2014.6912841796875,
+   "enhancement_ppb": 19.61376953125,
+   "wind_ms": 3.111254930496216,
+   "wind_to_deg": 233.71224975585938,
+   "time_utc": "2026-10-28T06:50:02"
+  }
+ },
  "log": [
   {
    "key": "NRTI/L2__CH4___/2026/10/28/S5P_NRTI_L2__CH4____20261028T030029_20261028T030529_46843_03_020901_20261028T035757.nc",
@@ -25,15 +77,75 @@
    "key": "NRTI/L2__CH4___/2026/10/28/S5P_NRTI_L2__CH4____20261028T033029_20261028T033529_46843_03_020901_20261028T040732.nc",
    "pixels": 0,
    "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/28/S5P_NRTI_L2__CH4____20261028T042529_20261028T043029_46844_03_020901_20261028T052842.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/28/S5P_NRTI_L2__CH4____20261028T044029_20261028T044529_46844_03_020901_20261028T053905.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/28/S5P_NRTI_L2__CH4____20261028T044529_20261028T045029_46844_03_020901_20261028T053829.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/28/S5P_NRTI_L2__CH4____20261028T050529_20261028T051029_46844_03_020901_20261028T054108.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/28/S5P_NRTI_L2__CH4____20261028T052029_20261028T052529_46844_03_020901_20261028T070924.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/28/S5P_NRTI_L2__CH4____20261028T060529_20261028T061029_46845_03_020901_20261028T070847.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/28/S5P_NRTI_L2__CH4____20261028T061029_20261028T061529_46845_03_020901_20261028T071151.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/28/S5P_NRTI_L2__CH4____20261028T061529_20261028T062029_46845_03_020901_20261028T071825.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/28/S5P_NRTI_L2__CH4____20261028T062029_20261028T062529_46845_03_020901_20261028T071947.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/28/S5P_NRTI_L2__CH4____20261028T063029_20261028T063529_46845_03_020901_20261028T071844.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/28/S5P_NRTI_L2__CH4____20261028T064029_20261028T064529_46845_03_020901_20261028T072026.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/10/28/S5P_NRTI_L2__CH4____20261028T064529_20261028T065029_46845_03_020901_20261028T072302.nc",
+   "pixels": 479,
+   "integrity": "verified"
   }
  ],
  "integrity": {
-  "verified": 4,
+  "verified": 16,
   "unverifiable": 0,
   "mismatch": 0,
   "download_failed": 0,
   "policy": "each granule's MD5 is checked against the Copernicus Data Space catalogue; mismatches are rejected, unverifiable granules are accepted only when the mirror ETag matches"
  },
- "processed_utc": "2026-10-28T05:43:10",
+ "processed_utc": "2026-10-28T08:58:05",
  "source": "Copernicus Sentinel-5P TROPOMI NRTI L2 CH4, s3://meeo-s5p (public mirror)"
 }
