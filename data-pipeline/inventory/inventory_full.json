@@ -1,12 +1,12 @@
 {
- "generated_utc": "2026-11-07T12:09:43.945053+00:00",
- "code_version": "877507e",
- "runtime_s": 1118.0,
+ "generated_utc": "2026-11-08T12:25:44.025815+00:00",
+ "code_version": "20fa836",
+ "runtime_s": 1361.4,
  "data_span": {
   "first": "2023-01-01",
-  "last": "2026-11-03"
+  "last": "2026-11-05"
  },
- "n_pixels": 20043821,
+ "n_pixels": 20068167,
  "n_tested": 60,
  "n_confirmed": 10,
  "n_detected": 13,
@@ -61,7 +61,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": 7.999732781744087,
+     "z": 8.007687950654194,
      "passed": true,
      "false_pass_rate": 0.08333333333333333,
      "independence": "same data, different estimator"
@@ -69,7 +69,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": 7.9690648293328366,
-     "z_late": 9.069296044363531,
+     "z_late": 9.013028981789548,
      "passed": true,
      "status": "evaluated",
      "false_pass_rate": 0.041666666666666664,
@@ -77,7 +77,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": 3.8890157897273183,
+     "z": 3.8953251970014846,
      "passed": true,
      "false_pass_rate": 0.041666666666666664,
      "independence": "independent species, same overpasses"
@@ -101,15 +101,15 @@
     "history": []
    },
    "status": "confirmed",
-   "z": 8.855796728735864,
-   "p": 5.1779252601664925e-09,
-   "q": 4.846403845105719e-07,
-   "rate_gamma1_kg_h": 21058.988165516665,
-   "null_floor_1sigma_kg_h": 2557.9052204226045,
+   "z": 8.82978714006721,
+   "p": 5.456514743405067e-09,
+   "q": 4.664301777102034e-07,
+   "rate_gamma1_kg_h": 21006.920918984713,
+   "null_floor_1sigma_kg_h": 2559.7637635549568,
    "rate_t_h": {
-    "p16": 26.006276140722417,
-    "p50": 30.58915772386529,
-    "p84": 35.63286548359634,
+    "p16": 25.98440188438471,
+    "p50": 30.52542296730737,
+    "p84": 35.4148414620969,
     "upper_limit_p84": null
    },
    "gamma": {
@@ -207,38 +207,38 @@
    },
    "chemistry": {
     "status": "classified",
-    "ratio": 0.5385422564781244,
+    "ratio": 0.5397313741467524,
     "ci68": [
-     0.5089999879343726,
-     0.5717355769465667
+     0.5097808442447744,
+     0.5785122790118362
     ],
     "process": "non-combustion: anaerobic decay, coal seam or gas release (CO/CH4 < 1)",
-    "n_overpasses": 294
+    "n_overpasses": 296
    },
    "priority": {
     "avoidable_tco2e20_per_yr": [
-     10324033.835016621,
-     14017958.02353907,
-     18731524.074754316
+     10209638.373925118,
+     13991970.666776437,
+     18607393.975674465
     ],
     "abatement_cost_inr_per_yr": [
-     1409216815.3245075,
-     2132524523.6083179,
-     3089774788.429298
+     1384431091.0470445,
+     2124140232.4340332,
+     3100769217.8705096
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     455.5719077242385,
-     645.5229668262034,
-     988.4188450615726
+     455.57191602030116,
+     645.5229785813158,
+     988.4188630608928
     ],
-    "p_real": 0.9999995153596155,
+    "p_real": 0.9999995335698223,
     "sector": "landfill",
     "fx_inr_per_usd": 93.92
    },
    "evidence": {
-    "n_overpasses": 294,
+    "n_overpasses": 296,
     "first_overpass": "2023-01-07",
-    "last_overpass": "2026-11-03",
+    "last_overpass": "2026-11-05",
     "orbits": [
      "27125",
      "27253",
@@ -533,7 +533,9 @@
      "46832",
      "46903",
      "46917",
-     "46931"
+     "46931",
+     "46945",
+     "46959"
     ],
     "overpasses_per_month": {
      "2023-01": 7,
@@ -566,12 +568,12 @@
      "2026-04": 7,
      "2026-05": 6,
      "2026-10": 10,
-     "2026-11": 3
+     "2026-11": 5
     },
-    "mean_wind10_ms": 2.784125923361927,
+    "mean_wind10_ms": 2.7790084997746898,
     "stack": {
-     "png_b64": "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",
-     "scale_mol_m_s": 0.018339462397335804,
+     "png_b64": "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",
+     "scale_mol_m_s": 0.018325107745459646,
      "x_km": [
       -49.0,
       89.0
@@ -585,7 +587,7 @@
    },
    "tasking": {
     "voi": 0.0,
-    "p_real_ramp": 0.9999999999999051
+    "p_real_ramp": 0.9999999999998848
    },
    "priority_rank": 1
   },
@@ -606,7 +608,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": 6.303660817329733,
+     "z": 6.269274519364764,
      "passed": true,
      "false_pass_rate": 0.0,
      "independence": "same data, different estimator"
@@ -614,7 +616,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": 8.65804806647246,
-     "z_late": 6.174164877065932,
+     "z_late": 6.1171805508943615,
      "passed": true,
      "status": "evaluated",
      "false_pass_rate": 0.0,
@@ -622,7 +624,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": 7.28909950203142,
+     "z": 7.2682978465072665,
      "passed": true,
      "false_pass_rate": 0.041666666666666664,
      "independence": "independent species, same overpasses"
@@ -646,15 +648,15 @@
     "history": []
    },
    "status": "confirmed",
-   "z": 7.913148887738531,
-   "p": 3.655216284047719e-08,
-   "q": 2.0527126248785175e-06,
-   "rate_gamma1_kg_h": 26941.382120441758,
-   "null_floor_1sigma_kg_h": 3575.4889002491245,
+   "z": 7.869025509705636,
+   "p": 4.0165378205673983e-08,
+   "q": 2.2556251810770023e-06,
+   "rate_gamma1_kg_h": 26887.394500881725,
+   "null_floor_1sigma_kg_h": 3589.103102399852,
    "rate_t_h": {
-    "p16": 30.761645943959124,
-    "p50": 36.74961676838434,
-    "p84": 42.98947179572638,
+    "p16": 30.705300725502536,
+    "p50": 36.71889251357616,
+    "p84": 42.92763289801428,
     "upper_limit_p84": null
    },
    "gamma": {
@@ -752,38 +754,38 @@
    },
    "chemistry": {
     "status": "classified",
-    "ratio": 0.6081386347315629,
+    "ratio": 0.6126630583517987,
     "ci68": [
-     0.5878448377568157,
-     0.6347280504426154
+     0.5881232520331883,
+     0.6364661336953501
     ],
     "process": "non-combustion: anaerobic decay, coal seam or gas release (CO/CH4 < 1)",
-    "n_overpasses": 260
+    "n_overpasses": 261
    },
    "priority": {
     "avoidable_tco2e20_per_yr": [
-     12265713.351638723,
-     16853131.727803737,
-     22333929.037693802
+     12237008.054505678,
+     16817899.720036685,
+     22362049.105554998
     ],
     "abatement_cost_inr_per_yr": [
-     1679769442.1858542,
-     2603008989.1282845,
-     3783111964.9369626
+     1674234485.1646168,
+     2583151405.2971992,
+     3767055162.1642623
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     446.02256300097304,
-     643.9559725701527,
-     983.110329755353
+     446.0224724972089,
+     643.9558419031321,
+     983.1101302695135
     ],
-    "p_real": 0.9999979472873751,
+    "p_real": 0.9999977443748189,
     "sector": "landfill",
     "fx_inr_per_usd": 93.92
    },
    "evidence": {
-    "n_overpasses": 260,
+    "n_overpasses": 261,
     "first_overpass": "2023-01-16",
-    "last_overpass": "2026-11-03",
+    "last_overpass": "2026-11-04",
     "orbits": [
      "27253",
      "27338",
@@ -1044,7 +1046,8 @@
      "46860",
      "46903",
      "46917",
-     "46931"
+     "46931",
+     "46945"
     ],
     "overpasses_per_month": {
      "2023-01": 5,
@@ -1076,12 +1079,12 @@
      "2026-04": 6,
      "2026-05": 1,
      "2026-10": 9,
-     "2026-11": 3
+     "2026-11": 4
     },
-    "mean_wind10_ms": 2.0567997810544414,
+    "mean_wind10_ms": 2.053001925197255,
     "stack": {
-     "png_b64": "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",
-     "scale_mol_m_s": 0.0182917743574513,
+     "png_b64": "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",
+     "scale_mol_m_s": 0.018264515951092884,
      "x_km": [
       -49.0,
       89.0
@@ -1095,7 +1098,7 @@
    },
    "tasking": {
     "voi": 0.0,
-    "p_real_ramp": 0.9999999999287279
+    "p_real_ramp": 0.9999999999048835
    },
    "priority_rank": 2
   },
@@ -2120,7 +2123,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": 4.4371543166714655,
+     "z": 4.437102368199964,
      "passed": true,
      "false_pass_rate": 0.0,
      "independence": "same data, different estimator"
@@ -2128,7 +2131,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": 4.069910287324204,
-     "z_late": 4.534593854253481,
+     "z_late": 4.535493211525809,
      "passed": true,
      "status": "evaluated",
      "false_pass_rate": 0.041666666666666664,
@@ -2136,7 +2139,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": 8.943434229334382,
+     "z": 8.943104306009943,
      "passed": true,
      "false_pass_rate": 0.041666666666666664,
      "independence": "independent species, same overpasses"
@@ -2160,15 +2163,15 @@
     "history": []
    },
    "status": "confirmed",
-   "z": 4.725045788456854,
-   "p": 5.85878451861037e-05,
-   "q": 0.002350144484957516,
+   "z": 4.725728099951781,
+   "p": 5.849029886663251e-05,
+   "q": 0.0023462315923770687,
    "rate_gamma1_kg_h": 10077.676140221813,
-   "null_floor_1sigma_kg_h": 2372.377912053707,
+   "null_floor_1sigma_kg_h": 2372.3531491679737,
    "rate_t_h": {
-    "p16": 11.240299008389632,
-    "p50": 14.547039176537993,
-    "p84": 18.421673793486946,
+    "p16": 11.242239262782311,
+    "p50": 14.54912881485804,
+    "p84": 18.42368655590236,
     "upper_limit_p84": null
    },
    "gamma": {
@@ -2276,21 +2279,21 @@
    },
    "priority": {
     "avoidable_tco2e20_per_yr": [
-     4564611.522956765,
-     6630379.713737957,
-     9272224.935607245
+     4565603.883171785,
+     6631278.395028817,
+     9273128.043951366
     ],
     "abatement_cost_inr_per_yr": [
-     648892126.2503945,
-     1018530035.1512456,
-     1537821531.2558901
+     648982939.648143,
+     1018685310.3471576,
+     1537968587.6253476
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     452.8641841781963,
-     635.5317596210969,
-     959.8612742308698
+     452.86596036138957,
+     635.5342522466337,
+     959.8650389124737
     ],
-    "p_real": 0.9976498555150425,
+    "p_real": 0.9976537684076229,
     "sector": "landfill",
     "fx_inr_per_usd": 93.92
    },
@@ -2760,7 +2763,7 @@
    },
    "tasking": {
     "voi": 0.0,
-    "p_real_ramp": 0.9993702373878928
+    "p_real_ramp": 0.9993717366716071
    },
    "priority_rank": 5
   },
@@ -4212,7 +4215,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": 5.336737693484796,
+     "z": 5.356969480014835,
      "passed": true,
      "false_pass_rate": 0.0,
      "independence": "same data, different estimator"
@@ -4220,7 +4223,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": 7.1394061538558296,
-     "z_late": 4.955336905416191,
+     "z_late": 5.3519681178883305,
      "passed": true,
      "status": "evaluated",
      "false_pass_rate": 0.0,
@@ -4228,7 +4231,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": 0.456903756953482,
+     "z": 0.4476793194235687,
      "passed": false,
      "false_pass_rate": 0.0,
      "independence": "independent species, same overpasses"
@@ -4252,15 +4255,15 @@
     "history": []
    },
    "status": "confirmed",
-   "z": 8.61542771943285,
-   "p": 8.43152389316074e-09,
-   "q": 5.918765880554787e-07,
-   "rate_gamma1_kg_h": 15561.391636005592,
-   "null_floor_1sigma_kg_h": 1844.0539255855497,
+   "z": 8.732402093866124,
+   "p": 6.644488508618221e-09,
+   "q": 4.664301777102034e-07,
+   "rate_gamma1_kg_h": 15584.011981325533,
+   "null_floor_1sigma_kg_h": 1824.9255220729513,
    "rate_t_h": {
-    "p16": 16.358470498137603,
-    "p50": 19.95125934668809,
-    "p84": 23.824991401168628,
+    "p16": 16.40297553231033,
+    "p50": 19.963448912935007,
+    "p84": 23.5743583684267,
     "upper_limit_p84": null
    },
    "gamma": {
@@ -4304,38 +4307,38 @@
    },
    "chemistry": {
     "status": "classified",
-    "ratio": 0.05614561737292961,
+    "ratio": 0.053035547318340606,
     "ci68": [
-     0.005892064892698823,
-     0.10658878971391435
+     0.01099131926282756,
+     0.09234999908569179
     ],
     "process": "non-combustion: anaerobic decay, coal seam or gas release (CO/CH4 < 1)",
-    "n_overpasses": 254
+    "n_overpasses": 256
    },
    "priority": {
     "avoidable_tco2e20_per_yr": [
-     6357796.844011416,
-     8632821.000476375,
-     11434047.533764172
+     6393752.51359374,
+     8622868.793892551,
+     11489515.834746365
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     1431916159.1307197,
-     3806735939.2648683
+     1440804721.9987326,
+     3698543137.2989864
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     226.70385491169802,
-     613.1547441700438,
-     7206762.48129994
+     226.7038833508997,
+     613.154821088151,
+     7206763.385362958
     ],
-    "p_real": 0.9999994081234119,
+    "p_real": 0.9999995335698223,
     "sector": "unattributed",
     "fx_inr_per_usd": 93.92
    },
    "evidence": {
-    "n_overpasses": 254,
+    "n_overpasses": 256,
     "first_overpass": "2023-01-04",
-    "last_overpass": "2026-11-02",
+    "last_overpass": "2026-11-05",
     "orbits": [
      "27083",
      "27225",
@@ -4590,7 +4593,9 @@
      "46832",
      "46846",
      "46903",
-     "46917"
+     "46917",
+     "46945",
+     "46960"
     ],
     "overpasses_per_month": {
      "2023-01": 6,
@@ -4623,12 +4628,12 @@
      "2026-04": 6,
      "2026-05": 9,
      "2026-10": 14,
-     "2026-11": 2
+     "2026-11": 4
     },
-    "mean_wind10_ms": 2.673752403077585,
+    "mean_wind10_ms": 2.670423347482876,
     "stack": {
-     "png_b64": "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",
-     "scale_mol_m_s": 0.011421929073983633,
+     "png_b64": "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",
+     "scale_mol_m_s": 0.011409055793906176,
      "x_km": [
       -49.0,
       89.0
@@ -4642,7 +4647,7 @@
    },
    "tasking": {
     "voi": 0.0,
-    "p_real_ramp": 0.9999999999994422
+    "p_real_ramp": 0.9999999999997627
    },
    "priority_rank": 9
   },
@@ -4676,7 +4681,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": 3.2329911989425795,
+     "z": 3.2363884594280385,
      "passed": true,
      "false_pass_rate": 0.0,
      "independence": "same data, different estimator"
@@ -4684,7 +4689,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": 5.159438452779178,
-     "z_late": 3.966333796199749,
+     "z_late": 3.9854840087891863,
      "passed": true,
      "status": "evaluated",
      "false_pass_rate": 0.0,
@@ -4692,7 +4697,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": 5.687925343673668,
+     "z": 5.705810457083054,
      "passed": true,
      "false_pass_rate": 0.08333333333333333,
      "independence": "independent species, same overpasses"
@@ -4716,15 +4721,15 @@
     "history": []
    },
    "status": "confirmed",
-   "z": 4.546428042329956,
-   "p": 9.06465284794743e-05,
-   "q": 0.0031816050500090907,
-   "rate_gamma1_kg_h": 16101.14024417726,
-   "null_floor_1sigma_kg_h": 3637.1007515528736,
+   "z": 4.5552771267005605,
+   "p": 8.870704834738217e-05,
+   "q": 0.003113531182358948,
+   "rate_gamma1_kg_h": 16114.02351678918,
+   "null_floor_1sigma_kg_h": 3632.0716747485303,
    "rate_t_h": {
-    "p16": 16.864870274779946,
-    "p50": 22.010457102007088,
-    "p84": 27.39252024070647,
+    "p16": 16.97958318483067,
+    "p50": 22.18136582697806,
+    "p84": 27.41942781853543,
     "upper_limit_p84": null
    },
    "gamma": {
@@ -4822,38 +4827,38 @@
    },
    "chemistry": {
     "status": "classified",
-    "ratio": 2.193832962180202,
+    "ratio": 2.1742708831120527,
     "ci68": [
-     2.0639981825608547,
-     2.3080734430300773
+     2.025395816754673,
+     2.324196869614886
     ],
     "process": "combustion-influenced: fires or burning alongside the methane (CO/CH4 > 1)",
-    "n_overpasses": 210
+    "n_overpasses": 211
    },
    "priority": {
     "avoidable_tco2e20_per_yr": [
-     6531293.000826901,
-     9251967.631600399,
-     12597333.52695964
+     6517956.313806041,
+     9316164.17756473,
+     12585311.899451582
     ],
     "abatement_cost_inr_per_yr": [
-     122987019.01752217,
-     2582757214.0654593,
-     5333293118.181565
+     125001393.2666092,
+     2612728859.333103,
+     5328489916.615112
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     176.68125966420627,
-     340.9321579731128,
-     6968.658231753579
+     176.69332542939236,
+     340.9554406198989,
+     6969.13412939007
     ],
-    "p_real": 0.9968183949499909,
+    "p_real": 0.9968864688176411,
     "sector": "coal",
     "fx_inr_per_usd": 93.92
    },
    "evidence": {
-    "n_overpasses": 210,
+    "n_overpasses": 211,
     "first_overpass": "2023-01-06",
-    "last_overpass": "2026-10-26",
+    "last_overpass": "2026-11-05",
     "orbits": [
      "27111",
      "27125",
@@ -5064,7 +5069,8 @@
      "46732",
      "46746",
      "46803",
-     "46817"
+     "46817",
+     "46959"
     ],
     "overpasses_per_month": {
      "2023-01": 7,
@@ -5095,12 +5101,13 @@
      "2026-03": 7,
      "2026-04": 8,
      "2026-05": 1,
-     "2026-10": 4
+     "2026-10": 4,
+     "2026-11": 1
     },
-    "mean_wind10_ms": 2.7193585746202222,
+    "mean_wind10_ms": 2.7151808303048,
     "stack": {
-     "png_b64": "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",
-     "scale_mol_m_s": 0.010286638717826688,
+     "png_b64": "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",
+     "scale_mol_m_s": 0.010299245837678314,
      "x_km": [
       -49.0,
       89.0
@@ -5114,7 +5121,7 @@
    },
    "tasking": {
     "voi": 0.0,
-    "p_real_ramp": 0.9988421104916132
+    "p_real_ramp": 0.998875736744509
    },
    "priority_rank": 10
   },
@@ -5135,7 +5142,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": 4.453513888464805,
+     "z": 4.455874549509619,
      "passed": true,
      "false_pass_rate": 0.041666666666666664,
      "independence": "same data, different estimator"
@@ -5143,7 +5150,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": 2.885457455097215,
-     "z_late": 4.07207231775785,
+     "z_late": 4.078802078948953,
      "passed": true,
      "status": "evaluated",
      "false_pass_rate": 0.0,
@@ -5151,7 +5158,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": 1.4238220126373862,
+     "z": 1.4217624787692071,
      "passed": false,
      "false_pass_rate": 0.041666666666666664,
      "independence": "independent species, same overpasses"
@@ -5175,15 +5182,15 @@
     "history": []
    },
    "status": "detected",
-   "z": 3.2603742040859505,
-   "p": 0.0020156409138532604,
-   "q": 0.051452390595692045,
+   "z": 3.2641164398205507,
+   "p": 0.001998064188943853,
+   "q": 0.051003717169182256,
    "rate_gamma1_kg_h": 34100.12106977996,
-   "null_floor_1sigma_kg_h": 12165.469208745588,
+   "null_floor_1sigma_kg_h": 12154.776544631952,
    "rate_t_h": {
-    "p16": 34.98100764714454,
-    "p50": 50.840076124796,
-    "p84": 67.97597164614966,
+    "p16": 35.00776094270588,
+    "p50": 50.85144602593418,
+    "p84": 67.97665694521433,
     "upper_limit_p84": null
    },
    "gamma": {
@@ -5291,21 +5298,21 @@
    },
    "priority": {
     "avoidable_tco2e20_per_yr": [
-     13786691.124743845,
-     21995735.04764745,
-     32245719.862613954
+     13794410.684292067,
+     22003133.8463545,
+     32249218.148447268
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     3379095854.1409416,
-     9174169978.790058
+     3379132428.392605,
+     9172973278.150476
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     220.44532597920954,
-     602.5855771210393,
-     6930899.500003924
+     220.54959903707666,
+     602.8706067104577,
+     6934177.891511773
     ],
-    "p_real": 0.9485476094043079,
+    "p_real": 0.9489962828308177,
     "sector": "unattributed",
     "fx_inr_per_usd": 93.92
    },
@@ -5561,8 +5568,8 @@
     }
    },
    "tasking": {
-    "voi": 1.9135050378611962,
-    "p_real_ramp": 0.9608278099282752,
+    "voi": 1.8991176910657017,
+    "p_real_ramp": 0.9611438114122874,
     "rank": 30,
     "recommend": false
    },
@@ -7622,7 +7629,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": 0.43939770945302775,
+     "z": 0.4384241130274996,
      "passed": false,
      "false_pass_rate": 0.0,
      "independence": "same data, different estimator"
@@ -7630,7 +7637,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": 2.7727925614317646,
-     "z_late": 2.1025661953324337,
+     "z_late": 2.0989370633104305,
      "passed": true,
      "status": "evaluated",
      "false_pass_rate": 0.0,
@@ -7638,7 +7645,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": 0.933278057393607,
+     "z": 0.9327767731583694,
      "passed": false,
      "false_pass_rate": 0.0,
      "independence": "independent species, same overpasses"
@@ -7662,15 +7669,15 @@
     "history": []
    },
    "status": "tentative",
-   "z": 2.743660219119516,
-   "p": 0.006562339518627785,
-   "q": 0.11516586957363795,
+   "z": 2.7434840904646323,
+   "p": 0.0065649058051209346,
+   "q": 0.11521090665450211,
    "rate_gamma1_kg_h": 5950.635740481306,
-   "null_floor_1sigma_kg_h": 2457.1429628308097,
+   "null_floor_1sigma_kg_h": 2455.8586783110695,
    "rate_t_h": {
-    "p16": 4.407351364729413,
-    "p50": 8.155948806146686,
-    "p84": 11.924656990278537,
+    "p16": 4.404805389751883,
+    "p50": 8.149792116020855,
+    "p84": 11.918344841086583,
     "upper_limit_p84": null
    },
    "gamma": {
@@ -7742,21 +7749,21 @@
    },
    "priority": {
     "avoidable_tco2e20_per_yr": [
-     1854446.4532132887,
-     3643080.217573464,
-     5913623.264468865
+     1853213.8772659944,
+     3640934.428779057,
+     5910903.341115403
     ],
     "abatement_cost_inr_per_yr": [
-     276373471.9985931,
-     549693185.6033585,
-     956101046.0573668
+     276166090.6960676,
+     549263949.4017434,
+     955563613.3086379
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     396.7348360020487,
-     559.9206795054738,
-     861.4787284223215
+     396.71464263667525,
+     559.8921801607343,
+     861.434880105648
     ],
-    "p_real": 0.884834130426362,
+    "p_real": 0.8847890933454979,
     "sector": "landfill",
     "fx_inr_per_usd": 93.92
    },
@@ -7939,8 +7946,8 @@
     }
    },
    "tasking": {
-    "voi": 0.7781056493807559,
-    "p_real_ramp": 0.8931876785738291,
+    "voi": 0.7777260995213946,
+    "p_real_ramp": 0.8931552499872032,
     "rank": 41,
     "recommend": false
    },
@@ -7963,7 +7970,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": 1.8724962438999742,
+     "z": 1.8694969236976404,
      "passed": false,
      "false_pass_rate": 0.041666666666666664,
      "independence": "same data, different estimator"
@@ -7971,7 +7978,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": 2.6730469404578394,
-     "z_late": 1.9532677299775212,
+     "z_late": 1.9677499092076756,
      "passed": false,
      "status": "evaluated",
      "false_pass_rate": 0.041666666666666664,
@@ -7979,7 +7986,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": 2.1845027125742065,
+     "z": 2.1782793351935914,
      "passed": true,
      "false_pass_rate": 0.041666666666666664,
      "independence": "independent species, same overpasses"
@@ -8003,15 +8010,15 @@
     "history": []
    },
    "status": "tentative",
-   "z": 2.5434119643709763,
-   "p": 0.010174366484167629,
-   "q": 0.1680519412227666,
-   "rate_gamma1_kg_h": 10836.159617532356,
-   "null_floor_1sigma_kg_h": 4238.950803738384,
+   "z": 2.5444682776521907,
+   "p": 0.010151193538455942,
+   "q": 0.16766918928270638,
+   "rate_gamma1_kg_h": 10860.948761286301,
+   "null_floor_1sigma_kg_h": 4246.985614989134,
    "rate_t_h": {
-    "p16": 8.342439118132562,
-    "p50": 14.068612574315969,
-    "p84": 20.2380868346112,
+    "p16": 8.305338543683884,
+    "p50": 14.038872241497373,
+    "p84": 20.15305737804016,
     "upper_limit_p84": null
    },
    "gamma": {
@@ -8109,38 +8116,38 @@
    },
    "chemistry": {
     "status": "classified",
-    "ratio": 0.436921724461379,
+    "ratio": 0.43515002268173475,
     "ci68": [
-     0.3561243071628916,
-     0.5418221193056447
+     0.34521859319535175,
+     0.5339792637020953
     ],
     "process": "non-combustion: anaerobic decay, coal seam or gas release (CO/CH4 < 1)",
-    "n_overpasses": 319
+    "n_overpasses": 321
    },
    "priority": {
     "avoidable_tco2e20_per_yr": [
-     3452633.0991138504,
-     6291044.138331601,
-     9937357.635740984
+     3452575.8536959686,
+     6295905.475855547,
+     9901306.999224396
     ],
     "abatement_cost_inr_per_yr": [
-     500405566.9869692,
-     959858412.1328528,
-     1607177132.0862663
+     495828578.1090297,
+     948052584.4312956,
+     1598972572.5766754
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     374.4576215120407,
-     532.0070443951556,
-     820.1936067509071
+     374.62989714823215,
+     532.2518033392023,
+     820.5709508541798
     ],
-    "p_real": 0.8319480587772334,
+    "p_real": 0.8323308107172936,
     "sector": "landfill",
     "fx_inr_per_usd": 93.92
    },
    "evidence": {
-    "n_overpasses": 319,
+    "n_overpasses": 321,
     "first_overpass": "2023-01-05",
-    "last_overpass": "2026-11-03",
+    "last_overpass": "2026-11-05",
     "orbits": [
      "27097",
      "27111",
@@ -8460,7 +8467,9 @@
      "46775",
      "46789",
      "46803",
-     "46931"
+     "46931",
+     "46945",
+     "46959"
     ],
     "overpasses_per_month": {
      "2023-01": 10,
@@ -8493,12 +8502,12 @@
      "2026-04": 13,
      "2026-05": 9,
      "2026-10": 7,
-     "2026-11": 1
+     "2026-11": 3
     },
-    "mean_wind10_ms": 3.048967669097144,
+    "mean_wind10_ms": 3.04353844913814,
     "stack": {
-     "png_b64": "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",
-     "scale_mol_m_s": 0.00606249848487343,
+     "png_b64": "iVBORw0KGgoAAAANSUhEUgAAAEYAAAAyCAAAAADE9vKPAAAKpElEQVR42gXBx45l10IA0B3O3vvkeGPfqq6u6mQb2QOMhBkgEOJJCJgyeD/AbzLhC8x7luVuuzpU3Xxy3pG14H9/Sg9fsy61mBa3v73/+Z1LO+krHMzbg40S7lGMaB63VkKVWJjod6TFZCelkK4VVoxWLoOE4oRa0iu9XlkubFC9yBV2g3pCsT1wbIgvHd+RbrEiUiX99S5nvkYuJmEjQKBphdPOod6Mv0PHSY/M4RadEW9uZunsBjcw0s+jOmRLDj0AUUhFl1h6db7Jx4UhM1YQWFRYnpEuviKB32gyQnai7jzbJ887M4qum3Z2OLxvfQsG0h6n7bCqoj4OyGdCMqClCoRVyOWcTUpPcE5Jhb/vTc9O20YnorZTagsK7i5bODEXMa/DkWvgTbnrlsU2n9bK+0wAw6j3TmvHBIb1fm8JUln4YWw8bXoqHBlJTC3cG4AXZEq6GHtyVbjVy8P2vGUasQ5njSPCY9AovBjMaDWuqSxrFmaNRuRK/rKdA60dh/Ua3KDq5bNcdMte5KsvEX/9GB6DvTJZH7cioMOwazYYhiZgtX9ykFvwQJT4u5PjWd0Wmy4IOhgr2w9hn8RuAxXAjut3cZMdYsjQ1wAyEwI4A+EuZtxzuMmX87ZmjYMh/ltc+9fN3q2jCXkUUs9FDrAn6+b8whAQtmkf//rNJVQAUZmNMe2ci4ap308L2W0wcJ5XUI02vp9id77SysEKIhHjrEj4kOEYOmeHuA5sOCcXSkOAWuxanMpT1tvOZEJAqK43H9+OXolHRG7N4wMORSU1mWYtj4yOWRVVh1gNQF4hnesIwW64EitrEoT4/bgDlJNeLtJhd/p2UvQ2XeH3Hdh9siubFpCDdL+O0jxwnjpkTYoUW1PaVm8oKx76hPZuCbiv6PTw5W5a627azk6vY0F0he9952xf2zePY/p1pR0dPvng9+XnEOl4tivqXPDurLn3x/3HXeFhYIuQqm7ZhvMcuNOAlD9h14f4zr3Yyg+fXViG+Lzt65SX3vVB9CF0wVcbLevZ5oWzFO7ojz5S8TjeEYWIWTw5FhpgoEVSrvGP7VagiWrIHu+aO4EC+HTTbSw/dgsLL4yrGQFVcnZAQEU6A+2A5NkBSGaF4hGCsw1suVT4obMnEeyTUsU1TIumXGKSZOMKj290dztyALlzZTIgM+OxBykIcWzUcqq1PwnKPWFefZgsZKKTZ4wl2bSB2efMREXEFx93wI5RuH4GeHTkx5TbpS05+szBkBzj2l0clZ+bxAhLcf1zpCF+L/yvaRMJ2o9vf060ggJSAgUgCwBdLpnbRElhPNwT5qDufUXXjS2EDY9rVr147l0FYFh1+Huj4io+OE2MuzhAIYB9c9lZ6fKwso6JGH08ewJ5fNGRLHKqu+vKcootMk5AXjwtJfPz7HSL0ZxyDC06uuHFZfsP9MibD/BDWcmF7miRx+cIePeYrVkclW3v6mVpm6DjK0gSeTs5ur7t7z4m+K0fHaLGsvB1U/CF3mc/D/1sJzubnR8uyh1cbOvmoWEybIi1KNZe66i7gVlrMXPXssebTy+eXu+RLbr3A1ymCHtqcx5EKzu513XZNy+ud0DM+nJioCUYqJgHhXsA3yi7iQm42Cg6RifvQ3R81y4QbjxgLUvKkr1fc3f8gwEL/MIb4VGTIXKpzPKXH/pv5M4DWU8dNp7DWFJvzUZSe+eHWcibZhzw25Dm64sRQLkmN6CwZDiCdMOWHvM6W5DTCt0bKhajHbH2jjNsbvps8K7J2XI5uxowddhQBKzjarilmC0ihWS9s6MaADHjcTkRK+QLp6vn5h2ksfaeXz29WI9vOwenlTVlAfS07TYLMaQL/G357VnhkIPw4z2oqJRG63iZrZwyvDhX2oXFO9/Ldr0dFg+HJT68PBC7JyDQ0TOCV5q/vSCnBfgn+xPbMI5h+Td/JW7lT3wClnmJN4EcQXz1b0fwGjrXCLbzfDOYuxn75XLwlW7pvgsuwdT4xxuJ/6W+yRFz1bzNF43UYp8oyY1LBk4krTL58XvrvNbGHvBW96susPT5/mT3IhRkVrVLgDbReMY/dhaxmNZO6X/czFUAC+7IzcdgI1dhU42zw6aH3wlmyK9ju7s7hE168KbYfVqafAplg7CZ8x3+aXtaVJCJgQMItFOyXkjQhF5gEmsYJ/7q+gNWKDVhjscRTHoQjaJWeEnKzq1ge6RatWKJ/wErm1ZO5dog6B2iO68CACpl/b0YFGCeSdedDw5kjF9eQnmlRXJOZv+Lqws60QaymlBiBpTkdz1af9ohbDmuwxgWSbI0d692c0NQBS31XUfBGNS9/r/bnPMnckqO9hMqLl4++vbsNu0z9Wv8401JwbS+un6nHdBubfgujRJXpFUGQJSa1w3zTlk73xbk5vlxms5Ek5wZURHVAs6Oq08BxRz/e2MGnexhPLuosRks3o3L18ha0Oql8d40nl0kHZZ9BOiL/027GXh8ceHsiM2BoCEeRbE4tAbhv0PKq+ebJ7valf4AhtgwF64QbOzzMvi6gk8xb4mSfcWegrLwq/Pya0A7Ns0a1qDrhukSwdngf7O6wLdUcLz5LdRcU1M6cihh/tm/eoM9tY1dOJeROzW7IJ5fdfzbwrm2L55XlQIquSaInZw+xX/qQ03kmEpuuznKYS7cvf97vE//Z/Vsxkdkl1Kfkkuiaq4soRfPbuNS0CZFA4G3d4uRRx2V+F9DBKWHB1Giwu+14HRv77OrfbVnvu4XB6edr+noFOsaXy1L7LOc7C1kYG6Ro0JWI2FvjMH/nI4mutAyGTUsR2Hv4aM70G2dpufl0M9QFZnmijmNN7MyGIk8+MEc9XNnfXnzaJr4gDlwr/gfZSQHwvEAcQPVUFn1D6XA081EpjJAi+TqdM6cqRx2oPc+b3X5+joC1TqoZnU0zIYOGZgIIuKLbiIrm11vhRwQR8uvwOKOfFu8eV9G+WfdjZjmrLaI8gsPqeWhF+AYP45k/Iotc4G7Zu4N/s8mlEFvs9RUJkKpNWWGb+ZmXd09g+lT0AnBplgNMRoT4XJJDDNijgvSTS47ukhPbWHCEv8JDEABUtrGJzRsk0mtnDO+/2PjPBFgOn/RzZ65RuGXmHdsNjGBPGcWbCDMsYsgELU9xAT/k578JqmWMw/JnDoqdG2doetGS8x5sbH5q0Z2L0tpPGOKjbRnUER/eDCtSXwJ57CxLaaeE/wTItQ7ZhcbetKjCzBoGtZ2OvIou+iV4tkzm9VC8+//4lmSdTVqNsXuYxAiUROMRgPDL7tO4v8wdp14TQDdUywaqgFm7dvm/Kq3YId74Sn0belJsv2FLaqw9YRMaDltrlOo6vAxI0opApwD/jOCwSEcokkHHXObEMB53fttE8313a9Omm/8z+8Lm+z59mto4U0LLR5WnJBCJNI52VAPmy/M4P9KWl6PSYfsYVBi3RNDuSVkWE+7knWGYJ83TlNbviRLsXn0SAHGYO6py5syDmu/Txoy+Eg3odkxPTsdcs2Ykz6VlwklVeyBPoulY1erp4s4zdMUH/05JhrIIBKbJvcQVMYMUbvDcY78qAnnJQMVJgglI+A1XjGEXxj78w84GJIq+3U3TTcFt6F/VCrsxvnT/lU1X5+jdEAvIcjGiLv/D7TgW7SRDZxDAAAAAElFTkSuQmCC",
+     "scale_mol_m_s": 0.0060830436086077265,
      "x_km": [
       -49.0,
       89.0
@@ -8511,8 +8520,8 @@
     }
    },
    "tasking": {
-    "voi": 1.7777451792986056,
-    "p_real_ramp": 0.8516212326721818,
+    "voi": 1.7715736481508864,
+    "p_real_ramp": 0.8518656057514478,
     "rank": 31,
     "recommend": false
    },
@@ -10719,7 +10728,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": 0.30982855028818224,
+     "z": 0.3096265847024952,
      "passed": false,
      "false_pass_rate": 0.0,
      "independence": "same data, different estimator"
@@ -10727,7 +10736,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": 2.6209907992572496,
-     "z_late": 1.2854222510384958,
+     "z_late": 1.2837041371925382,
      "passed": false,
      "status": "evaluated",
      "false_pass_rate": 0.0,
@@ -10735,7 +10744,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": 7.777708603098782,
+     "z": 7.730505947822075,
      "passed": true,
      "false_pass_rate": 0.041666666666666664,
      "independence": "independent species, same overpasses"
@@ -10759,15 +10768,15 @@
     "history": []
    },
    "status": "tentative",
-   "z": 2.115478776875178,
-   "p": 0.0247930114549412,
-   "q": 0.29007020188988203,
+   "z": 2.115395985398469,
+   "p": 0.024797112025767204,
+   "q": 0.29011817724009414,
    "rate_gamma1_kg_h": 10917.590055331379,
-   "null_floor_1sigma_kg_h": 4844.397177140774,
+   "null_floor_1sigma_kg_h": 4842.24353012053,
    "rate_t_h": {
-    "p16": 6.6272306648045065,
-    "p50": 13.868107334678527,
-    "p84": 21.017145770542385,
+    "p16": 6.6242135833357105,
+    "p50": 13.861589908308558,
+    "p84": 21.00629318290112,
     "upper_limit_p84": null
    },
    "gamma": {
@@ -10812,21 +10821,21 @@
    },
    "priority": {
     "avoidable_tco2e20_per_yr": [
-     2786471.4923985377,
-     5824236.870541497,
-     9659022.568150535
+     2785185.541124562,
+     5821234.124463217,
+     9654605.417842045
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     862206144.3306329,
-     2583834132.6329722
+     861746460.0388472,
+     2582621403.770747
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     157.41290917535858,
-     432.26420152113076,
-     5156964.3268160885
+     157.4022715891272,
+     432.23499014486873,
+     5156615.831556037
     ],
-    "p_real": 0.709929798110118,
+    "p_real": 0.7098818227599059,
     "sector": "unattributed",
     "fx_inr_per_usd": 93.92
    },
@@ -11117,8 +11126,8 @@
     }
    },
    "tasking": {
-    "voi": 2.7277748626653398,
-    "p_real_ramp": 0.7308807095358922,
+    "voi": 2.726667848936168,
+    "p_real_ramp": 0.7308533789893025,
     "rank": 16,
     "recommend": false
    },
@@ -11141,7 +11150,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": 2.28825151966558,
+     "z": 2.28980962648935,
      "passed": true,
      "false_pass_rate": 0.041666666666666664,
      "independence": "same data, different estimator"
@@ -11149,7 +11158,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": 2.078743092095624,
-     "z_late": 1.6321360693597253,
+     "z_late": 1.6379892757497732,
      "passed": false,
      "status": "evaluated",
      "false_pass_rate": 0.041666666666666664,
@@ -11157,7 +11166,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": 1.415520476642257,
+     "z": 1.416056667342966,
      "passed": false,
      "false_pass_rate": 0.0,
      "independence": "independent species, same overpasses"
@@ -11181,15 +11190,15 @@
     "history": []
    },
    "status": "tentative",
-   "z": 2.017680225132424,
-   "p": 0.030079997484376023,
-   "q": 0.33734908071614184,
+   "z": 2.0206744235229,
+   "p": 0.029904365441437302,
+   "q": 0.33587653211394924,
    "rate_gamma1_kg_h": 6606.482910081919,
-   "null_floor_1sigma_kg_h": 4363.043760399168,
+   "null_floor_1sigma_kg_h": 4356.366457249645,
    "rate_t_h": {
-    "p16": 5.515919174099862,
-    "p50": 11.419155694520953,
-    "p84": 17.47700427000426,
+    "p16": 5.5244035656415615,
+    "p50": 11.418619284448791,
+    "p84": 17.46876233956792,
     "upper_limit_p84": null
    },
    "gamma": {
@@ -11224,21 +11233,21 @@
    },
    "priority": {
     "avoidable_tco2e20_per_yr": [
-     2256222.8948449227,
-     4852467.458494957,
-     7944810.24686496
+     2260187.4086628896,
+     4851974.822413372,
+     7942986.643470346
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     693076067.9867378,
-     2028237088.8807287
+     693269372.3176093,
+     2028001625.1685066
     ],
     "wrpi_tco2e20_per_lakh_inr": [
-     152.7635906035475,
-     418.54020086838443,
-     4700752.638713556
+     153.1030631753992,
+     419.47028452150346,
+     4711198.691870583
     ],
-    "p_real": 0.6626509192838581,
+    "p_real": 0.6641234678860508,
     "sector": "unattributed",
     "fx_inr_per_usd": 93.92
    },
@@ -11549,8 +11558,8 @@
     }
    },
    "tasking": {
-    "voi": 2.4086516533107356,
-    "p_real_ramp": 0.6976593012158643,
+    "voi": 2.4038139007546224,
+    "p_real_ramp": 0.6987032027753886,
     "rank": 22,
     "recommend": false
    },
@@ -11573,7 +11582,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": 1.0175125391890565,
+     "z": 1.0191972479711688,
      "passed": false,
      "false_pass_rate": 0.0,
      "independence": "same data, different estimator"
@@ -11581,7 +11590,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": 1.6636336771239555,
-     "z_late": 1.943526121800643,
+     "z_late": 1.9467742677104072,
      "passed": false,
      "status": "evaluated",
      "false_pass_rate": 0.0,
@@ -11589,7 +11598,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": 0.7754802496376964,
+     "z": 0.7777806365476561,
      "passed": false,
      "false_pass_rate": 0.041666666666666664,
      "independence": "independent species, same overpasses"
@@ -11613,16 +11622,16 @@
     "history": []
    },
    "status": "not detected",
-   "z": 1.9983344622301835,
-   "p": 0.031236890927383257,
-   "q": 0.33734908071614184,
-   "rate_gamma1_kg_h": 13400.356240742169,
-   "null_floor_1sigma_kg_h": 7042.4432886446275,
+   "z": 1.9993098215624303,
+   "p": 0.031177637538313263,
+   "q": 0.33670916183373617,
+   "rate_gamma1_kg_h": 13383.696382403989,
+   "null_floor_1sigma_kg_h": 7031.603480923977,
    "rate_t_h": {
-    "p16": 8.952628422211736,
-    "p50": 18.390690599466758,
-    "p84": 28.309227648336897,
-    "upper_limit_p84": 28.309227648336897
+    "p16": 9.230114084891454,
+    "p50": 18.622412871724645,
+    "p84": 28.43201795926456,
+    "upper_limit_p84": 28.43201795926456
    },
    "gamma": {
     "value": 1.337091921114355,
@@ -11720,14 +11729,14 @@
    "chemistry": null,
    "priority": {
     "avoidable_tco2e20_per_yr": [
-     3603199.876601288,
-     7709074.33557124,
-     12534122.406563975
+     3714224.710528452,
+     7781334.820397068,
+     12631928.984412342
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     1769607227.2860734,
-     4844026897.468527
+     1835507967.64698,
+     4864173190.382065
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -11739,9 +11748,9 @@
     "fx_inr_per_usd": 93.92
    },
    "evidence": {
-    "n_overpasses": 241,
+    "n_overpasses": 242,
     "first_overpass": "2023-01-01",
-    "last_overpass": "2026-10-25",
+    "last_overpass": "2026-11-05",
     "orbits": [
      "27040",
      "27111",
@@ -11983,7 +11992,8 @@
      "46746",
      "46775",
      "46789",
-     "46803"
+     "46803",
+     "46959"
     ],
     "overpasses_per_month": {
      "2023-01": 12,
@@ -12014,12 +12024,13 @@
      "2026-03": 4,
      "2026-04": 5,
      "2026-05": 1,
-     "2026-10": 5
+     "2026-10": 5,
+     "2026-11": 1
     },
-    "mean_wind10_ms": 3.2651171421359746,
+    "mean_wind10_ms": 3.257386862801559,
     "stack": {
-     "png_b64": "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",
-     "scale_mol_m_s": 0.009997287533979205,
+     "png_b64": "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",
+     "scale_mol_m_s": 0.009984924413653302,
      "x_km": [
       -49.0,
       89.0
@@ -12032,8 +12043,8 @@
     }
    },
    "tasking": {
-    "voi": 3.9276338423522654,
-    "p_real_ramp": 0.6908758392196095,
+    "voi": 3.9746770941296385,
+    "p_real_ramp": 0.6912194314650855,
     "rank": 4,
     "recommend": true
    },
@@ -12813,7 +12824,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": 2.1373227006763607,
+     "z": 2.1357297544559417,
      "passed": true,
      "false_pass_rate": 0.0,
      "independence": "same data, different estimator"
@@ -12821,7 +12832,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": 1.5071978174048097,
-     "z_late": 0.7674973350289191,
+     "z_late": 0.7684181645064487,
      "passed": false,
      "status": "evaluated",
      "false_pass_rate": 0.0,
@@ -12829,7 +12840,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": 0.8604028144399619,
+     "z": 0.859943337894936,
      "passed": false,
      "false_pass_rate": 0.0,
      "independence": "independent species, same overpasses"
@@ -12853,16 +12864,16 @@
     "history": []
    },
    "status": "not detected",
-   "z": 1.4565103415119114,
-   "p": 0.08507086351606334,
-   "q": 0.5826155373264589,
+   "z": 1.4572410395726343,
+   "p": 0.08496874403307353,
+   "q": 0.5819161627698296,
    "rate_gamma1_kg_h": 6155.382391353589,
-   "null_floor_1sigma_kg_h": 7806.588547918978,
+   "null_floor_1sigma_kg_h": 7805.956649566055,
    "rate_t_h": {
-    "p16": 5.263578303081652,
-    "p50": 15.258381555837406,
-    "p84": 25.159896074751128,
-    "upper_limit_p84": 25.159896074751128
+    "p16": 5.269954019062561,
+    "p50": 15.265518540575506,
+    "p84": 25.165019854760526,
+    "upper_limit_p84": 25.165019854760526
    },
    "gamma": {
     "value": 1.2909651881298896,
@@ -12887,14 +12898,14 @@
    "chemistry": null,
    "priority": {
     "avoidable_tco2e20_per_yr": [
-     2155450.755007113,
-     6473694.968440343,
-     11512490.62672438
+     2158161.460967518,
+     6476004.325443524,
+     11515035.47816313
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     859707212.7169113,
-     2904505591.173728
+     860095200.786208,
+     2905724100.358032
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -13158,8 +13169,8 @@
     }
    },
    "tasking": {
-    "voi": 3.8100052394604575,
-    "p_real_ramp": 0.48265560402950564,
+    "voi": 3.811940265345946,
+    "p_real_ramp": 0.4829468394415871,
     "rank": 6,
     "recommend": false
    },
@@ -13224,7 +13235,7 @@
    "status": "not detected",
    "z": 1.8774533923644816,
    "p": 0.039391342110172,
-   "q": 0.3873905564565453,
+   "q": 0.38734252627030025,
    "rate_gamma1_kg_h": 11560.119173648376,
    "null_floor_1sigma_kg_h": 6101.306100505969,
    "rate_t_h": {
@@ -13471,7 +13482,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": 1.6748844581991449,
+     "z": 1.6786326591398888,
      "passed": false,
      "false_pass_rate": 0.041666666666666664,
      "independence": "same data, different estimator"
@@ -13479,7 +13490,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": 1.2036913560401141,
-     "z_late": 1.4627000241412245,
+     "z_late": 1.4800734936035576,
      "passed": false,
      "status": "evaluated",
      "false_pass_rate": 0.041666666666666664,
@@ -13487,7 +13498,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": 0.8929135025801406,
+     "z": 0.8990370923663755,
      "passed": false,
      "false_pass_rate": 0.0,
      "independence": "independent species, same overpasses"
@@ -13511,16 +13522,16 @@
     "history": []
    },
    "status": "not detected",
-   "z": 1.447931972231423,
-   "p": 0.08470119930782206,
-   "q": 0.5826155373264589,
+   "z": 1.4520902649837486,
+   "p": 0.08411525660001577,
+   "q": 0.5819161627698296,
    "rate_gamma1_kg_h": 9033.66408312168,
-   "null_floor_1sigma_kg_h": 7899.0681668042125,
+   "null_floor_1sigma_kg_h": 7882.8350995144,
    "rate_t_h": {
-    "p16": 4.407949084312465,
-    "p50": 14.90616526851195,
-    "p84": 25.403082803920096,
-    "upper_limit_p84": 25.403082803920096
+    "p16": 4.441560119906887,
+    "p50": 14.915341945269972,
+    "p84": 25.394595328088,
+    "upper_limit_p84": 25.394595328088
    },
    "gamma": {
     "value": 1.292093515825033,
@@ -13545,14 +13556,14 @@
    "chemistry": null,
    "priority": {
     "avoidable_tco2e20_per_yr": [
-     1901547.7149747575,
-     6266707.704768634,
-     11583893.209737536
+     1914758.976044098,
+     6268055.258245746,
+     11581963.012936149
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     847595154.3653891,
-     2810796336.335858
+     850068424.4977596,
+     2810298076.577238
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -13853,8 +13864,8 @@
     }
    },
    "tasking": {
-    "voi": 3.7201153881498263,
-    "p_real_ramp": 0.4792372442698929,
+    "voi": 3.723390852835013,
+    "p_real_ramp": 0.48089409044033726,
     "rank": 7,
     "recommend": false
    },
@@ -15017,7 +15028,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": 0.7306899924994705,
+     "z": 0.7309355438886808,
      "passed": false,
      "false_pass_rate": 0.0,
      "independence": "same data, different estimator"
@@ -15025,7 +15036,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": 1.0111688201759164,
-     "z_late": 1.4917716948319992,
+     "z_late": 1.49200091158317,
      "passed": false,
      "status": "evaluated",
      "false_pass_rate": 0.041666666666666664,
@@ -15033,7 +15044,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": 0.0814288464657558,
+     "z": 0.08145486716454423,
      "passed": false,
      "false_pass_rate": 0.0,
      "independence": "independent species, same overpasses"
@@ -15057,16 +15068,16 @@
     "history": []
    },
    "status": "not detected",
-   "z": 0.9799584096777553,
-   "p": 0.1743785423054871,
+   "z": 0.980051716334257,
+   "p": 0.17435607962051403,
    "q": 1.0,
    "rate_gamma1_kg_h": 7463.519986416215,
-   "null_floor_1sigma_kg_h": 10832.138149225377,
+   "null_floor_1sigma_kg_h": 10832.30007922169,
    "rate_t_h": {
-    "p16": -0.5585425407273028,
-    "p50": 12.772957414438201,
-    "p84": 26.588889142323428,
-    "upper_limit_p84": 26.588889142323428
+    "p16": -0.5572081979369309,
+    "p50": 12.774433546359191,
+    "p84": 26.590567937092615,
+    "upper_limit_p84": 26.590567937092615
    },
    "gamma": {
     "value": 1.207839574237456,
@@ -15092,13 +15103,13 @@
    "priority": {
     "avoidable_tco2e20_per_yr": [
      0.0,
-     5443792.799670927,
-     11946917.07990214
+     5444405.618611211,
+     11947610.441863324
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     550187855.7720402,
-     2647100852.000075
+     550277889.8019116,
+     2647248542.5620103
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -15351,8 +15362,8 @@
     }
    },
    "tasking": {
-    "voi": 2.6900437829539925,
-    "p_real_ramp": 0.30151729378779346,
+    "voi": 2.6905195423853985,
+    "p_real_ramp": 0.30154981054457464,
     "rank": 18,
     "recommend": false
    },
@@ -15982,7 +15993,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": 0.9854677266431318,
+     "z": 0.9857623407724686,
      "passed": false,
      "false_pass_rate": 0.0,
      "independence": "same data, different estimator"
@@ -15990,7 +16001,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": 1.4143657410505133,
-     "z_late": 1.5743711973277217,
+     "z_late": 1.5567314450149004,
      "passed": false,
      "status": "evaluated",
      "false_pass_rate": 0.041666666666666664,
@@ -15998,7 +16009,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": 0.7065894935038931,
+     "z": 0.698801914074778,
      "passed": false,
      "false_pass_rate": 0.0625,
      "independence": "independent species, same overpasses"
@@ -16022,16 +16033,16 @@
     "history": []
    },
    "status": "not detected",
-   "z": 1.361058074989581,
-   "p": 0.10324436680620427,
-   "q": 0.6625997718771549,
-   "rate_gamma1_kg_h": 11148.122028798389,
-   "null_floor_1sigma_kg_h": 6879.677266377313,
+   "z": 1.361043559363726,
+   "p": 0.10324665931175069,
+   "q": 0.6627035033203479,
+   "rate_gamma1_kg_h": 11123.216133225678,
+   "null_floor_1sigma_kg_h": 6861.201050033029,
    "rate_t_h": {
-    "p16": 2.7123639465416565,
-    "p50": 12.368095633307767,
-    "p84": 21.538108281908745,
-    "upper_limit_p84": 21.538108281908745
+    "p16": 2.6625077626321816,
+    "p50": 12.40890481299,
+    "p84": 22.151842187001005,
+    "upper_limit_p84": 22.151842187001005
    },
    "gamma": {
     "value": 1.3091246668671692,
@@ -16056,14 +16067,14 @@
    "chemistry": null,
    "priority": {
     "avoidable_tco2e20_per_yr": [
-     1134272.231679107,
-     5211119.227640141,
-     9823270.137373578
+     1062771.3045617042,
+     5276818.720701039,
+     10000636.632349186
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     627852568.3206747,
-     2397517941.8991046
+     635586258.3650608,
+     2350953008.6956253
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -16075,9 +16086,9 @@
     "fx_inr_per_usd": 93.92
    },
    "evidence": {
-    "n_overpasses": 273,
+    "n_overpasses": 274,
     "first_overpass": "2023-01-02",
-    "last_overpass": "2026-11-03",
+    "last_overpass": "2026-11-04",
     "orbits": [
      "27054",
      "27324",
@@ -16351,7 +16362,8 @@
      "46775",
      "46789",
      "46803",
-     "46931"
+     "46931",
+     "46945"
     ],
     "overpasses_per_month": {
      "2023-01": 3,
@@ -16384,12 +16396,12 @@
      "2026-04": 15,
      "2026-05": 8,
      "2026-10": 5,
-     "2026-11": 1
+     "2026-11": 2
     },
-    "mean_wind10_ms": 2.3219616992316237,
+    "mean_wind10_ms": 2.318610570300741,
     "stack": {
-     "png_b64": "iVBORw0KGgoAAAANSUhEUgAAAEYAAAAyCAAAAADE9vKPAAAK4UlEQVR42gXByY+e50EA8Gd/3v399plvZjxepsRj0sRO6hIrIaRRolSthGglOHChRy5c4ID4VxASxwrBoVxaoQqCRBICSGBj2Z7ixNvMeJZvf9fnfXZ+P/iXCA4lNsnl4GRLkt55NBaRd2QtaJBdDGgZL0A5urB9VIHhi/1h+vwXf/G6PIn1hMflO/XiFSNgw0f4w946CkDfGmZIF9YXYyG936242MLn+zuLiAMKLtvdbZxzfTITf33nV3h2ydQ7dLV15xLWg+xVvbep8UdgDJaosyqQFslwTEndDF/izpkyqE77c6zClR4Iv20G8/N3/w4+uN0f52P3/MXWbyK3daZf3YyPhwlyYUemVlGDYJTCslUS6WcektzmYT749lZNN20Ko22ZlYH/7wufPJWf33ffUH+0W1x8CaKtZnZI5/iTkLqldpxmNNkEELIyI5NCglU+Kv3p9hnoYkRAvhmDuBucDO8dhVX742W4M53asxWdLKq9BVmN8GccGMBDg2qEnUjowluAscLn4eIivPZsr98nwvsIvN6YDX4Lyi/f29z81R9t919W65utfAj2Hve4dviHTAgFK8IY0oGUugemQU78mF5rvj/nEtDFKIkdpGK0ZH4+Fm/YZP+n6VwOYnLsRuGLDsSdQPgTvbYiyoYV86hQqUXMxwOQqBvmrVnEncXnFT/bAwAIkZGK5gN/HTwzARBBs23O1QCsZ6ukQ65gRRo5E1d5R8bKUjDOFUmum7063AbD4ZVh+GSrXpdrHn1z/fiSPY4fmtuSf1spoWjsVpurB5PmKb5XiBQLRuqwlR01MmJS2CBQkHbxJgzjyIDhppzA8EHPPHofrvICPfybl89/98762lkZDePBhUjCGN/h2MvvtEjlbUKrOsC+AopZBgAvEgMASOVqa2e68XErRjobf/X3Bw9vZ//5x5YBFnb/YarDreUjjz8oI88UZV4kJV31arFkQkFBG123qoYmdtFOcrbpqqNecSD/ir3x9dnq5PT378a1O34cuLM3X//fdkTxXQpUzw0MUrqSwfyMtLbAxyXdmEXtiHJKMGBGtOnlbN78XNuTP//lH977k2FWTDsQnQf31q5oZgh/P2gj4HiF5SJrJWoW2DRzKIvCN9gBG5kB1OZi6/RU/fvnJHmx+Ljq7eD9/FvbFqCOh2c35qP5jRTfCTkBqUpqnXbUvbD4hPlmzhzjAIXAKufOhz5i+MReHs4e37o0N6NfS/Z6+qrlJiUGPJWTp+d9/HuxAAhDqRyo4kcDollWxxRqgCiiohkwuFVn7ZoNOobuf1BW5wP27rXlabHal934efNkxE+G2y3KNqllK+vZiVLyyhKiKeKSXlpSdBvbMqeppYZkImwm+vB8dQv46F++viXhNnTtF8Hy7WnQrmccvzvQYDlEK315brWZoF7IXAIDKTnJS9S3eAAqDTfKuFLTZ4mb6hcf3u9cet12WJArz8Rhtk5e44+hdhbVzUxsdpsIox2VchdLOptKWI3XYbrMtbOtRsYttszW1Bacfnb04d+uroGrunh9hY6AmbX4nsAimyEhXl0/sgtXzIMwDIBt+gEe8iZQxFBcOeSgKpLl9uZqiGhZnv3jXfRdtP6fo6+Sz2TAwAL/yMEyaEfHHVtIawLrct90zFwjxVUTc5PLQESdj0jJqe+kwRWUQ9F7IeHTj/5Z3v/ef50fun8yX+IPFMQ6qpXGRe94uHy1t1r0wXJo1ds0ByjUDgbSdoYu+UZUIiQBrI6vRH49ck/R9JNfuN6zB+ePHf5ezxjouuwY5r6M1bhA3LP8yTBd1GQLaBA7pKCiNVAcn+XIw4PZ7rL68dIgdZv/egXcz5r3HlH8qWJ1JDJE9aD15Zw8HP7b4Wzl8dOXIxOhfiUtgkDTjmi1DMVgmG6I7B+eUGPexb95vHtreXf681sCf6ZT6J15sLl2Oobdq/7ies3kWf61D17li9sAxCIBDogWdUjgNKCBrXO5Cl3fRg9+8IR9NBHd3i9r/L5DAL4MV4cnY3AEBqW92Lkv149wV+34Q4A5Smsn2wggIwIQyUTpaJMov9jceHTc/Yx1o2qv90WC38DeJHh28M1bptuGV/7306OD19Pz0Sq7viAHMF5LqeY4XpPK84VXQazyhqZiK7Ar+Gf/Cm8FZm/9+idf4bcQSjPRus2k2O0Hz374D3tHbx+B9n1LbuyneQDhJSX8OCBl3mI0otlEr2+VQYdm5uPP//TqyT5fr1W/wHveWYLp/Pbx9eme+uJ0c/fkd87Twzjv3wiTgXCL4ITPmWJBCS2JkqgmyTrlVdR8t327hLQgjg/v7+I3SAMI4/C3hqFNVFh9+PAPHr65uEkPfjsOUVuxZbaqkMQJa7ZswDlJvWiHa9NsVdM9LGJcda09XeHd2WQ1CIOpJIQsWCDY7vMbNri2nbsGycAxqLW2cGxoG7bQT8oa21yCMIJ7yWbyelCbLcEXz/FBKzjoBgJSD3GyYKc7XbwdRn0nUWkNElBHz3d9D8fQQgIc9AgjbU1WZt5mOGuzLilgh++u1e4ZILZvKTWeLVQ/tBFiyEpW+IoqrF9+Rx2aMEKnI9Mqdjo1gdn020xZVocwUYo19gQfeGSVl32OC8FERtMNmnS9ghqGTFC7DvsB3UnQiFe8vUAy2Hes4cBA5nokzWrUJQtaePweyEyviy1xOKASRZc9B/vAWBIZYCANOUlGCfWunOf3c897EGNuWtDvUseVFwHawFl9it+0S2PmhYNs0vBYIoBBiHXmPabM97CO09RTDGTrFuUkICSIFtyFzDruTanyy0DYAgFkqWczFD4361PlakBQlNJVNAeVBsAwu4V1BWnTzOedudIBjsQmBnpdoEhTmZk2VS7qKYbvSrjhwIRpm4COk4pK7YM2hJbIwDnjqgGptDG6W6YuSQEnkW2ApV0b14QSOdAcXvQBGsRu0mvz6TfRk8ZqR3LPPEksDhSVWMIuLbDBlVwAj+e2g0I5hgwQKMQQeqQ3HhfbFuCPGFqYq+cREy+DvufCO7rKbUIsMqH1mkGmQQ07DEm9r6d1FAsLFCSOtIFlCkCDWIcz/H45z9ksEpvOxtrSwMQSMwQA8YYAjREJAJ6nKlQA9HHLhOceIO2s7yjuMNCEuqak+B3ERU/2E5QmqR2aEgELLCCGWJ16Jn3f0RIaEtoEAWZSjJHoGIWhyzwBUKM6aEMfochz2NNhHQd5MCnbHu9op4sWAh6tSed9UwvbeOhqRAxMPKy7ANEUIKqSFBoGgtpoeoE/9YjL7Ur7Kk4IY7ZmTadtZnUZGmAgqxOBdSpjrNs+YQY4izCgwKehIZZ2gFRplxIkIEp7aV/Pe5dA4cYbLaIyONN1XKE1X4pWIMM0JA3OWMsZVBazBGIjDVUEANDZda0jZCmzdkkABuMZ2SBJDF3nXVohoTeuMM3QeIpcWg2xb8Mz4jEyGArUg9BrT33TYrlnU0RtgCGjuxMYF41vKiZABFlHSUmA8wliHWUF0VR5LyFcsREIcB0Ri7CPAEMyQGheOPwDi5ywdW/OqiHxMb6MbAQ18EW66nUmZmBcem5pjXgXSMJVQ6VPV5lJWk6BAr5rfY9XiHqNYS9U24gAZOsytIGAAGvQhBZEnACfspgpgBSiwC9UP8CuDXzAAJUagtiEvKhPkQMORJKsoRXtGsswRlJg2Tkg+FKKisfS+c5q1kZwrcWo75QCRnHX9YEDBICQlJyM/h8BI4VzkMobNQAAAABJRU5ErkJggg==",
-     "scale_mol_m_s": 0.01006677062425152,
+     "png_b64": "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",
+     "scale_mol_m_s": 0.010074043279491525,
      "x_km": [
       -49.0,
       89.0
@@ -16402,8 +16414,8 @@
     }
    },
    "tasking": {
-    "voi": 3.054266817941682,
-    "p_real_ramp": 0.4447480204430458,
+    "voi": 3.064336666572132,
+    "p_real_ramp": 0.44474228517927067,
     "rank": 11,
     "recommend": false
    },
@@ -16426,7 +16438,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": 0.9276351338093269,
+     "z": 0.9275095729727002,
      "passed": false,
      "false_pass_rate": 0.0,
      "independence": "same data, different estimator"
@@ -16434,7 +16446,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": 1.5104512962819967,
-     "z_late": 1.2579180135981312,
+     "z_late": 1.2570516600115003,
      "passed": false,
      "status": "evaluated",
      "false_pass_rate": 0.0,
@@ -16442,7 +16454,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": -0.14026879706376866,
+     "z": -0.1404843981155268,
      "passed": false,
      "false_pass_rate": 0.0,
      "independence": "independent species, same overpasses"
@@ -16466,16 +16478,16 @@
     "history": []
    },
    "status": "not detected",
-   "z": 1.326139233834798,
-   "p": 0.10382905005912423,
-   "q": 0.6625997718771549,
+   "z": 1.326040860456347,
+   "p": 0.10384530472395377,
+   "q": 0.6627035033203479,
    "rate_gamma1_kg_h": 7662.162715726944,
-   "null_floor_1sigma_kg_h": 7299.789270687967,
+   "null_floor_1sigma_kg_h": 7297.342833945226,
    "rate_t_h": {
-    "p16": 2.600022083829577,
-    "p50": 11.688042121528436,
-    "p84": 20.777185858357935,
-    "upper_limit_p84": 20.777185858357935
+    "p16": 2.59883340280711,
+    "p50": 11.682909010138772,
+    "p84": 20.768242037701665,
+    "upper_limit_p84": 20.768242037701665
    },
    "gamma": {
     "value": 1.213215493655615,
@@ -16500,14 +16512,14 @@
    "chemistry": null,
    "priority": {
     "avoidable_tco2e20_per_yr": [
-     1126276.0955612673,
-     4948544.258292661,
-     9330976.33595593
+     1125242.7800877823,
+     4946084.912228905,
+     9327441.055112563
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     652383931.5976228,
-     2334167026.251516
+     652109267.4875298,
+     2332933936.811318
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -16727,8 +16739,8 @@
     }
    },
    "tasking": {
-    "voi": 2.8663435070178704,
-    "p_real_ramp": 0.43098744351455787,
+    "voi": 2.8650223247464814,
+    "p_real_ramp": 0.43094878723037733,
     "rank": 14,
     "recommend": false
    },
@@ -16793,7 +16805,7 @@
    "status": "not detected",
    "z": 1.8636526226821608,
    "p": 0.04043083561965731,
-   "q": 0.3873905564565453,
+   "q": 0.38734252627030025,
    "rate_gamma1_kg_h": 8821.64371149892,
    "null_floor_1sigma_kg_h": 5012.282843377535,
    "rate_t_h": {
@@ -17134,7 +17146,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": 1.2058039861495753,
+     "z": 1.2070141417287437,
      "passed": false,
      "false_pass_rate": 0.041666666666666664,
      "independence": "same data, different estimator"
@@ -17142,7 +17154,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": 1.7957061115350275,
-     "z_late": 1.3111906805989244,
+     "z_late": 1.3114715641466803,
      "passed": false,
      "status": "evaluated",
      "false_pass_rate": 0.0,
@@ -17150,7 +17162,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": 1.7602623969326554,
+     "z": 1.7576138051201788,
      "passed": false,
      "false_pass_rate": 0.041666666666666664,
      "independence": "independent species, same overpasses"
@@ -17174,16 +17186,16 @@
     "history": []
    },
    "status": "not detected",
-   "z": 1.3345442041860047,
-   "p": 0.10196793844731036,
-   "q": 0.6625997718771549,
+   "z": 1.335288824690882,
+   "p": 0.10184621608184079,
+   "q": 0.6627035033203479,
    "rate_gamma1_kg_h": 6604.047108088586,
-   "null_floor_1sigma_kg_h": 5873.335743065289,
+   "null_floor_1sigma_kg_h": 5872.156564443836,
    "rate_t_h": {
-    "p16": 2.37387641374892,
-    "p50": 10.662109305915335,
-    "p84": 18.841699810670217,
-    "upper_limit_p84": 18.841699810670217
+    "p16": 2.378636666154268,
+    "p50": 10.665792303157353,
+    "p84": 18.844636383348156,
+    "upper_limit_p84": 18.844636383348156
    },
    "gamma": {
     "value": 1.3333657051429906,
@@ -17208,14 +17220,14 @@
    "chemistry": null,
    "priority": {
     "avoidable_tco2e20_per_yr": [
-     1021875.344882062,
-     4513085.329770572,
-     8573333.984402923
+     1023836.4357362858,
+     4514278.53504107,
+     8574532.538474254
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     534647217.3954395,
-     2088556482.4617603
+     534942216.5200182,
+     2088777937.4089715
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -17417,8 +17429,8 @@
     }
    },
    "tasking": {
-    "voi": 2.619494098357126,
-    "p_real_ramp": 0.4342926200324514,
+    "voi": 2.620808768211216,
+    "p_real_ramp": 0.4345856602511822,
     "rank": 20,
     "recommend": false
    },
@@ -17441,7 +17453,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": 1.2422945424450378,
+     "z": 1.2431058699105615,
      "passed": false,
      "false_pass_rate": 0.125,
      "independence": "same data, different estimator"
@@ -17449,7 +17461,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": 2.4301546725350103,
-     "z_late": 0.9902048007840346,
+     "z_late": 0.9912128317576303,
      "passed": false,
      "status": "evaluated",
      "false_pass_rate": 0.041666666666666664,
@@ -17457,7 +17469,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": 1.1571777032651958,
+     "z": 1.156973358843165,
      "passed": false,
      "false_pass_rate": 0.041666666666666664,
      "independence": "independent species, same overpasses"
@@ -17481,16 +17493,16 @@
     "history": []
    },
    "status": "not detected",
-   "z": 1.5889624438139092,
-   "p": 0.0665791847855206,
+   "z": 1.589452618551887,
+   "p": 0.06652225091213076,
    "q": 0.5025318642398344,
    "rate_gamma1_kg_h": 7449.739703317471,
-   "null_floor_1sigma_kg_h": 4573.550642157351,
+   "null_floor_1sigma_kg_h": 4575.364412969264,
    "rate_t_h": {
-    "p16": 3.9688655764150576,
-    "p50": 10.141735965886156,
-    "p84": 16.635253582080217,
-    "upper_limit_p84": 16.635253582080217
+    "p16": 3.9737201539989315,
+    "p50": 10.14865216039742,
+    "p84": 16.64510133781534,
+    "upper_limit_p84": 16.64510133781534
    },
    "gamma": {
     "value": 1.363040910131368,
@@ -17525,14 +17537,14 @@
    "chemistry": null,
    "priority": {
     "avoidable_tco2e20_per_yr": [
-     1641966.5529910037,
-     4250728.650896318,
-     7477042.129131396
+     1644538.5429959265,
+     4254014.198751852,
+     7481541.0025704745
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     557990560.5576757,
-     1808247117.1084027
+     558404393.8129207,
+     1809407117.5586426
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -17819,8 +17831,8 @@
     }
    },
    "tasking": {
-    "voi": 2.5226930731905135,
-    "p_real_ramp": 0.535444121385813,
+    "voi": 2.5242729231267527,
+    "p_real_ramp": 0.5356388962600838,
     "rank": 21,
     "recommend": false
    },
@@ -18633,7 +18645,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": 1.4464503043199166,
+     "z": 1.466611282870233,
      "passed": false,
      "false_pass_rate": 0.041666666666666664,
      "independence": "same data, different estimator"
@@ -18641,7 +18653,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": 1.7123189663516694,
-     "z_late": 1.6875437539958391,
+     "z_late": 1.7134166165612952,
      "passed": false,
      "status": "evaluated",
      "false_pass_rate": 0.041666666666666664,
@@ -18649,7 +18661,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": 0.8896314071216964,
+     "z": 0.8909071071109114,
      "passed": false,
      "false_pass_rate": 0.041666666666666664,
      "independence": "independent species, same overpasses"
@@ -18673,16 +18685,16 @@
     "history": []
    },
    "status": "not detected",
-   "z": 1.8391532113139921,
-   "p": 0.04233469428045557,
-   "q": 0.3873905564565453,
-   "rate_gamma1_kg_h": 7550.643370104725,
-   "null_floor_1sigma_kg_h": 3836.400121986465,
+   "z": 1.8512666641573823,
+   "p": 0.041383894434161426,
+   "q": 0.38734252627030025,
+   "rate_gamma1_kg_h": 7571.3142701707275,
+   "null_floor_1sigma_kg_h": 3824.02293091579,
    "rate_t_h": {
-    "p16": 3.979400156694556,
-    "p50": 9.32326774841739,
-    "p84": 14.71194028196025,
-    "upper_limit_p84": 14.71194028196025
+    "p16": 3.9461095131817796,
+    "p50": 9.392267889065536,
+    "p84": 14.597240136513031,
+    "upper_limit_p84": 14.597240136513031
    },
    "gamma": {
     "value": 1.3080124507058482,
@@ -18707,14 +18719,14 @@
    "chemistry": null,
    "priority": {
     "avoidable_tco2e20_per_yr": [
-     1685973.0876398373,
-     3969602.6969975024,
-     6672888.904639847
+     1691272.4930771152,
+     3942957.4793561427,
+     6735486.399057608
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     542552179.6755309,
-     1788189463.3925622
+     547085344.9609971,
+     1772945667.4965034
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -18726,9 +18738,9 @@
     "fx_inr_per_usd": 93.92
    },
    "evidence": {
-    "n_overpasses": 192,
+    "n_overpasses": 193,
     "first_overpass": "2023-01-06",
-    "last_overpass": "2026-10-26",
+    "last_overpass": "2026-11-05",
     "orbits": [
      "27111",
      "27125",
@@ -18921,7 +18933,8 @@
      "46746",
      "46789",
      "46803",
-     "46817"
+     "46817",
+     "46959"
     ],
     "overpasses_per_month": {
      "2023-01": 6,
@@ -18952,12 +18965,13 @@
      "2026-03": 4,
      "2026-04": 6,
      "2026-05": 2,
-     "2026-10": 5
+     "2026-10": 5,
+     "2026-11": 1
     },
-    "mean_wind10_ms": 2.543143461397754,
+    "mean_wind10_ms": 2.538994707810629,
     "stack": {
-     "png_b64": "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",
-     "scale_mol_m_s": 0.0045382637300220045,
+     "png_b64": "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",
+     "scale_mol_m_s": 0.004532680269126471,
      "x_km": [
       -49.0,
       89.0
@@ -18970,8 +18984,8 @@
     }
    },
    "tasking": {
-    "voi": 2.1665100316614527,
-    "p_real_ramp": 0.6327528427618498,
+    "voi": 2.1709955204324594,
+    "p_real_ramp": 0.6373058492032402,
     "rank": 25,
     "recommend": false
    },
@@ -18994,7 +19008,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": 2.6419504581792883,
+     "z": 2.6400021698206673,
      "passed": true,
      "false_pass_rate": 0.041666666666666664,
      "independence": "same data, different estimator"
@@ -19002,7 +19016,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": 1.4345619195370152,
-     "z_late": 2.105090645716712,
+     "z_late": 2.0978472208264116,
      "passed": false,
      "status": "evaluated",
      "false_pass_rate": 0.041666666666666664,
@@ -19010,7 +19024,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": 1.7265953967649912,
+     "z": 1.7299549675807981,
      "passed": false,
      "false_pass_rate": 0.041666666666666664,
      "independence": "independent species, same overpasses"
@@ -19034,16 +19048,16 @@
     "history": []
    },
    "status": "not detected",
-   "z": 1.9640741720352526,
-   "p": 0.03338213796372008,
-   "q": 0.347164621727748,
+   "z": 1.9608173196319445,
+   "p": 0.03359265204891037,
+   "q": 0.3493539075917293,
    "rate_gamma1_kg_h": 5421.409755422355,
-   "null_floor_1sigma_kg_h": 3484.9472835738156,
+   "null_floor_1sigma_kg_h": 3492.0340207240624,
    "rate_t_h": {
-    "p16": 2.9449372595830194,
-    "p50": 9.131656610731055,
-    "p84": 14.991006055698952,
-    "upper_limit_p84": 14.991006055698952
+    "p16": 2.944790269155506,
+    "p50": 9.138545175674318,
+    "p84": 15.002437271634763,
+    "upper_limit_p84": 15.002437271634763
    },
    "gamma": {
     "value": 1.3584500765660141,
@@ -19068,14 +19082,14 @@
    "chemistry": null,
    "priority": {
     "avoidable_tco2e20_per_yr": [
-     1207844.6908857687,
-     3793425.1892396444,
-     6716217.022940075
+     1206955.6658698295,
+     3794604.007752589,
+     6721540.322610184
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
-     537087757.7866263,
-     1783631811.3831048
+     536782274.3005465,
+     1783319475.6742404
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -19206,8 +19220,8 @@
     }
    },
    "tasking": {
-    "voi": 1.991297858486066,
-    "p_real_ramp": 0.6787026972027468,
+    "voi": 1.9966009195439458,
+    "p_real_ramp": 0.6775351626636458,
     "rank": 29,
     "recommend": false
    },
@@ -21093,6 +21107,368 @@
    "priority_rank": 50
   },
   {
+   "slug": "c25",
+   "name": "near Ranchi",
+   "lat": 23.35,
+   "lon": 85.55,
+   "kind": "screen_candidate",
+   "source_reference": null,
+   "in_india": true,
+   "screen": {
+    "rank": 25,
+    "z": 3.248982234737333,
+    "hits": [],
+    "nearest_km": 0.0
+   },
+   "corroboration": {
+    "second_method": {
+     "check": "cross-sectional flux agrees (z > 2)",
+     "z": 1.151691628331031,
+     "passed": false,
+     "false_pass_rate": 0.041666666666666664,
+     "independence": "same data, different estimator"
+    },
+    "temporal": {
+     "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
+     "z_early": 0.6246153995548943,
+     "z_late": 0.8075520117630097,
+     "passed": false,
+     "status": "evaluated",
+     "false_pass_rate": 0.041666666666666664,
+     "independence": "independent data"
+    },
+    "co": {
+     "check": "co-emitted CO detected (z > 2)",
+     "z": 0.34358128135975796,
+     "passed": false,
+     "false_pass_rate": 0.08333333333333333,
+     "independence": "independent species, same overpasses"
+    },
+    "blind_screen": {
+     "check": "found by the national screen with no site list (<= 25 km)",
+     "km": 0.0,
+     "passed": true,
+     "false_pass_rate": null,
+     "independence": "independent algorithm, daily grids"
+    },
+    "not_used": {
+     "wind_invariance": "not used: the wind-direction test failed validation on real data (R5: 21% false rejects, 8% power)"
+    },
+    "n_passed": 1,
+    "confirming": false
+   },
+   "review": {
+    "state": "machine_candidate",
+    "label": "Machine candidate: awaiting analyst review",
+    "history": []
+   },
+   "status": "not detected",
+   "z": 0.8229712987996971,
+   "p": 0.21415190400117948,
+   "q": 1.0,
+   "rate_gamma1_kg_h": 5305.573888202659,
+   "null_floor_1sigma_kg_h": 5555.109037915302,
+   "rate_t_h": {
+    "p16": -1.0747967877222386,
+    "p50": 6.229792700575469,
+    "p84": 13.789103270106557,
+    "upper_limit_p84": 13.789103270106557
+   },
+   "gamma": {
+    "value": 1.3261007693821014,
+    "sd": 0.1,
+    "source": "site ERA5"
+   },
+   "obc_slope": 0.991822814958306,
+   "sector": "unattributed",
+   "sector_basis": "EFA: no sector reaches posterior 0.6 from mapped facilities",
+   "attribution": {
+    "posterior": {
+     "landfill": 0.3333333333333333,
+     "coal": 0.3333333333333333,
+     "oil_gas": 0.3333333333333333
+    },
+    "top": "landfill",
+    "attributed": null,
+    "agriculture_signal": 0.575,
+    "voters": [],
+    "n_facilities": 0
+   },
+   "chemistry": null,
+   "priority": {
+    "avoidable_tco2e20_per_yr": [
+     0.0,
+     2634017.3739803205,
+     6283282.416374527
+    ],
+    "abatement_cost_inr_per_yr": [
+     0.0,
+     254249669.3902253,
+     1366672343.9684544
+    ],
+    "wrpi_tco2e20_per_lakh_inr": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "p_real": 0.0,
+    "sector": "unattributed",
+    "fx_inr_per_usd": 93.92
+   },
+   "evidence": {
+    "n_overpasses": 193,
+    "first_overpass": "2023-01-06",
+    "last_overpass": "2026-11-05",
+    "orbits": [
+     "27111",
+     "27125",
+     "27139",
+     "27281",
+     "27494",
+     "27508",
+     "27522",
+     "27579",
+     "27593",
+     "27650",
+     "27664",
+     "27806",
+     "27877",
+     "27891",
+     "27948",
+     "27962",
+     "28189",
+     "28359",
+     "28473",
+     "28487",
+     "28501",
+     "28870",
+     "28884",
+     "29026",
+     "31197",
+     "31211",
+     "31310",
+     "31452",
+     "31466",
+     "31495",
+     "31594",
+     "31764",
+     "31892",
+     "31906",
+     "31920",
+     "31949",
+     "31977",
+     "31991",
+     "32105",
+     "32332",
+     "32346",
+     "32360",
+     "32374",
+     "32403",
+     "32431",
+     "32502",
+     "32516",
+     "32559",
+     "32573",
+     "32743",
+     "32885",
+     "32899",
+     "33027",
+     "33055",
+     "33084",
+     "33169",
+     "33183",
+     "33254",
+     "33268",
+     "33424",
+     "33495",
+     "33509",
+     "33538",
+     "33552",
+     "33566",
+     "33765",
+     "33779",
+     "33864",
+     "33949",
+     "33992",
+     "36531",
+     "36730",
+     "36744",
+     "36758",
+     "36787",
+     "36815",
+     "36900",
+     "36943",
+     "37028",
+     "37042",
+     "37099",
+     "37113",
+     "37127",
+     "37170",
+     "37184",
+     "37368",
+     "37411",
+     "37425",
+     "37439",
+     "37496",
+     "37510",
+     "37581",
+     "37652",
+     "37666",
+     "37709",
+     "37780",
+     "37865",
+     "37879",
+     "37893",
+     "37936",
+     "37950",
+     "37964",
+     "38007",
+     "38021",
+     "38035",
+     "38049",
+     "38177",
+     "38262",
+     "38305",
+     "38319",
+     "38333",
+     "38347",
+     "38390",
+     "38404",
+     "38418",
+     "38489",
+     "38546",
+     "38603",
+     "38617",
+     "38631",
+     "38645",
+     "38787",
+     "39000",
+     "39014",
+     "41426",
+     "41497",
+     "41525",
+     "41582",
+     "41795",
+     "41823",
+     "41866",
+     "41880",
+     "41894",
+     "41908",
+     "41937",
+     "41951",
+     "41965",
+     "41979",
+     "42022",
+     "42093",
+     "42107",
+     "42178",
+     "42192",
+     "42206",
+     "42249",
+     "42263",
+     "42277",
+     "42334",
+     "42362",
+     "42476",
+     "42490",
+     "42504",
+     "42518",
+     "42547",
+     "42561",
+     "42646",
+     "42660",
+     "42717",
+     "42731",
+     "42774",
+     "42788",
+     "42802",
+     "42873",
+     "42930",
+     "43086",
+     "43100",
+     "43114",
+     "43157",
+     "43171",
+     "43185",
+     "43228",
+     "43242",
+     "43256",
+     "43327",
+     "43384",
+     "43398",
+     "43412",
+     "43455",
+     "43469",
+     "43483",
+     "43781",
+     "43994",
+     "44008",
+     "44022",
+     "44065",
+     "44093",
+     "44150",
+     "46732",
+     "46746",
+     "46789",
+     "46803",
+     "46817",
+     "46959"
+    ],
+    "overpasses_per_month": {
+     "2023-01": 4,
+     "2023-02": 8,
+     "2023-03": 5,
+     "2023-04": 4,
+     "2023-05": 3,
+     "2023-10": 3,
+     "2023-11": 5,
+     "2023-12": 7,
+     "2024-01": 10,
+     "2024-02": 5,
+     "2024-03": 7,
+     "2024-04": 7,
+     "2024-05": 2,
+     "2024-10": 1,
+     "2024-11": 7,
+     "2024-12": 8,
+     "2025-01": 10,
+     "2025-02": 11,
+     "2025-03": 14,
+     "2025-04": 3,
+     "2025-10": 4,
+     "2025-11": 13,
+     "2025-12": 14,
+     "2026-01": 9,
+     "2026-02": 13,
+     "2026-03": 4,
+     "2026-04": 6,
+     "2026-10": 5,
+     "2026-11": 1
+    },
+    "mean_wind10_ms": 2.658101574822213,
+    "stack": {
+     "png_b64": "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",
+     "scale_mol_m_s": 0.0045692640787788116,
+     "x_km": [
+      -49.0,
+      89.0
+     ],
+     "y_km": [
+      -49.0,
+      49.0
+     ],
+     "frame": "wind-rotated: +x downwind"
+    }
+   },
+   "tasking": {
+    "voi": 1.165571078311724,
+    "p_real_ramp": 0.2491938721606532,
+    "rank": 36,
+    "recommend": false
+   },
+   "priority_rank": 51
+  },
+  {
    "slug": "c53",
    "name": "31 km from Hyderabad",
    "lat": 25.25,
@@ -21690,366 +22066,6 @@
     "voi": 0.7848930296235331,
     "p_real_ramp": 0.15157980062160475,
     "rank": 40,
-    "recommend": false
-   },
-   "priority_rank": 51
-  },
-  {
-   "slug": "c25",
-   "name": "near Ranchi",
-   "lat": 23.35,
-   "lon": 85.55,
-   "kind": "screen_candidate",
-   "source_reference": null,
-   "in_india": true,
-   "screen": {
-    "rank": 25,
-    "z": 3.248982234737333,
-    "hits": [],
-    "nearest_km": 0.0
-   },
-   "corroboration": {
-    "second_method": {
-     "check": "cross-sectional flux agrees (z > 2)",
-     "z": 1.1441155023108882,
-     "passed": false,
-     "false_pass_rate": 0.041666666666666664,
-     "independence": "same data, different estimator"
-    },
-    "temporal": {
-     "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
-     "z_early": 0.6246153995548943,
-     "z_late": 0.803676381141318,
-     "passed": false,
-     "status": "evaluated",
-     "false_pass_rate": 0.041666666666666664,
-     "independence": "independent data"
-    },
-    "co": {
-     "check": "co-emitted CO detected (z > 2)",
-     "z": 0.3475440026122549,
-     "passed": false,
-     "false_pass_rate": 0.08333333333333333,
-     "independence": "independent species, same overpasses"
-    },
-    "blind_screen": {
-     "check": "found by the national screen with no site list (<= 25 km)",
-     "km": 0.0,
-     "passed": true,
-     "false_pass_rate": null,
-     "independence": "independent algorithm, daily grids"
-    },
-    "not_used": {
-     "wind_invariance": "not used: the wind-direction test failed validation on real data (R5: 21% false rejects, 8% power)"
-    },
-    "n_passed": 1,
-    "confirming": false
-   },
-   "review": {
-    "state": "machine_candidate",
-    "label": "Machine candidate: awaiting analyst review",
-    "history": []
-   },
-   "status": "not detected",
-   "z": 0.8147424764239527,
-   "p": 0.21643651067920813,
-   "q": 1.0,
-   "rate_gamma1_kg_h": 5252.981195195168,
-   "null_floor_1sigma_kg_h": 5558.515992821238,
-   "rate_t_h": {
-    "p16": -1.1625910717055408,
-    "p50": 6.108543331887828,
-    "p84": 13.446193806407699,
-    "upper_limit_p84": 13.446193806407699
-   },
-   "gamma": {
-    "value": 1.3261007693821014,
-    "sd": 0.1,
-    "source": "site ERA5"
-   },
-   "obc_slope": 0.991822814958306,
-   "sector": "unattributed",
-   "sector_basis": "EFA: no sector reaches posterior 0.6 from mapped facilities",
-   "attribution": {
-    "posterior": {
-     "landfill": 0.3333333333333333,
-     "coal": 0.3333333333333333,
-     "oil_gas": 0.3333333333333333
-    },
-    "top": "landfill",
-    "attributed": null,
-    "agriculture_signal": 0.575,
-    "voters": [],
-    "n_facilities": 0
-   },
-   "chemistry": null,
-   "priority": {
-    "avoidable_tco2e20_per_yr": [
-     0.0,
-     2550047.907556521,
-     6149544.799014901
-    ],
-    "abatement_cost_inr_per_yr": [
-     0.0,
-     245085743.63508505,
-     1339180074.830815
-    ],
-    "wrpi_tco2e20_per_lakh_inr": [
-     0.0,
-     0.0,
-     0.0
-    ],
-    "p_real": 0.0,
-    "sector": "unattributed",
-    "fx_inr_per_usd": 93.92
-   },
-   "evidence": {
-    "n_overpasses": 192,
-    "first_overpass": "2023-01-06",
-    "last_overpass": "2026-10-26",
-    "orbits": [
-     "27111",
-     "27125",
-     "27139",
-     "27281",
-     "27494",
-     "27508",
-     "27522",
-     "27579",
-     "27593",
-     "27650",
-     "27664",
-     "27806",
-     "27877",
-     "27891",
-     "27948",
-     "27962",
-     "28189",
-     "28359",
-     "28473",
-     "28487",
-     "28501",
-     "28870",
-     "28884",
-     "29026",
-     "31197",
-     "31211",
-     "31310",
-     "31452",
-     "31466",
-     "31495",
-     "31594",
-     "31764",
-     "31892",
-     "31906",
-     "31920",
-     "31949",
-     "31977",
-     "31991",
-     "32105",
-     "32332",
-     "32346",
-     "32360",
-     "32374",
-     "32403",
-     "32431",
-     "32502",
-     "32516",
-     "32559",
-     "32573",
-     "32743",
-     "32885",
-     "32899",
-     "33027",
-     "33055",
-     "33084",
-     "33169",
-     "33183",
-     "33254",
-     "33268",
-     "33424",
-     "33495",
-     "33509",
-     "33538",
-     "33552",
-     "33566",
-     "33765",
-     "33779",
-     "33864",
-     "33949",
-     "33992",
-     "36531",
-     "36730",
-     "36744",
-     "36758",
-     "36787",
-     "36815",
-     "36900",
-     "36943",
-     "37028",
-     "37042",
-     "37099",
-     "37113",
-     "37127",
-     "37170",
-     "37184",
-     "37368",
-     "37411",
-     "37425",
-     "37439",
-     "37496",
-     "37510",
-     "37581",
-     "37652",
-     "37666",
-     "37709",
-     "37780",
-     "37865",
-     "37879",
-     "37893",
-     "37936",
-     "37950",
-     "37964",
-     "38007",
-     "38021",
-     "38035",
-     "38049",
-     "38177",
-     "38262",
-     "38305",
-     "38319",
-     "38333",
-     "38347",
-     "38390",
-     "38404",
-     "38418",
-     "38489",
-     "38546",
-     "38603",
-     "38617",
-     "38631",
-     "38645",
-     "38787",
-     "39000",
-     "39014",
-     "41426",
-     "41497",
-     "41525",
-     "41582",
-     "41795",
-     "41823",
-     "41866",
-     "41880",
-     "41894",
-     "41908",
-     "41937",
-     "41951",
-     "41965",
-     "41979",
-     "42022",
-     "42093",
-     "42107",
-     "42178",
-     "42192",
-     "42206",
-     "42249",
-     "42263",
-     "42277",
-     "42334",
-     "42362",
-     "42476",
-     "42490",
-     "42504",
-     "42518",
-     "42547",
-     "42561",
-     "42646",
-     "42660",
-     "42717",
-     "42731",
-     "42774",
-     "42788",
-     "42802",
-     "42873",
-     "42930",
-     "43086",
-     "43100",
-     "43114",
-     "43157",
-     "43171",
-     "43185",
-     "43228",
-     "43242",
-     "43256",
-     "43327",
-     "43384",
-     "43398",
-     "43412",
-     "43455",
-     "43469",
-     "43483",
-     "43781",
-     "43994",
-     "44008",
-     "44022",
-     "44065",
-     "44093",
-     "44150",
-     "46732",
-     "46746",
-     "46789",
-     "46803",
-     "46817"
-    ],
-    "overpasses_per_month": {
-     "2023-01": 4,
-     "2023-02": 8,
-     "2023-03": 5,
-     "2023-04": 4,
-     "2023-05": 3,
-     "2023-10": 3,
-     "2023-11": 5,
-     "2023-12": 7,
-     "2024-01": 10,
-     "2024-02": 5,
-     "2024-03": 7,
-     "2024-04": 7,
-     "2024-05": 2,
-     "2024-10": 1,
-     "2024-11": 7,
-     "2024-12": 8,
-     "2025-01": 10,
-     "2025-02": 11,
-     "2025-03": 14,
-     "2025-04": 3,
-     "2025-10": 4,
-     "2025-11": 13,
-     "2025-12": 14,
-     "2026-01": 9,
-     "2026-02": 13,
-     "2026-03": 4,
-     "2026-04": 6,
-     "2026-10": 5
-    },
-    "mean_wind10_ms": 2.662361281530368,
-    "stack": {
-     "png_b64": "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",
-     "scale_mol_m_s": 0.00465204256258333,
-     "x_km": [
-      -49.0,
-      89.0
-     ],
-     "y_km": [
-      -49.0,
-      49.0
-     ],
-     "frame": "wind-rotated: +x downwind"
-    }
-   },
-   "tasking": {
-    "voi": 1.1348679919981324,
-    "p_real_ramp": 0.24659071526310172,
-    "rank": 36,
     "recommend": false
    },
    "priority_rank": 52
@@ -22932,7 +22948,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": 0.1445000654650079,
+     "z": 0.1524748860569001,
      "passed": false,
      "false_pass_rate": 0.08333333333333333,
      "independence": "same data, different estimator"
@@ -22940,7 +22956,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": 0.5713863099484682,
-     "z_late": -0.20214758736910024,
+     "z_late": -0.20178212938444093,
      "passed": false,
      "status": "evaluated",
      "false_pass_rate": 0.041666666666666664,
@@ -22948,7 +22964,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": -0.09226756912273672,
+     "z": -0.08896673245250011,
      "passed": false,
      "false_pass_rate": 0.08333333333333333,
      "independence": "independent species, same overpasses"
@@ -22972,16 +22988,16 @@
     "history": []
    },
    "status": "not detected",
-   "z": 0.26856575897745366,
-   "p": 0.39739296130166424,
+   "z": 0.2677311991742346,
+   "p": 0.39770425234502743,
    "q": 1.0,
-   "rate_gamma1_kg_h": 1000.5232900388206,
-   "null_floor_1sigma_kg_h": 5075.660694948266,
+   "rate_gamma1_kg_h": 993.4579512697563,
+   "null_floor_1sigma_kg_h": 5085.819129379748,
    "rate_t_h": {
-    "p16": -5.110202282893788,
-    "p50": 1.7044992193903359,
-    "p84": 8.527763829558232,
-    "upper_limit_p84": 8.527763829558232
+    "p16": -5.161715240529793,
+    "p50": 1.7405229008468446,
+    "p84": 8.641319474134255,
+    "upper_limit_p84": 8.641319474134255
    },
    "gamma": {
     "value": 1.2912729429777503,
@@ -23035,13 +23051,13 @@
    "priority": {
     "avoidable_tco2e20_per_yr": [
      0.0,
-     736757.0967479935,
-     3733321.6520428304
+     731341.4566841302,
+     3767829.748466951
     ],
     "abatement_cost_inr_per_yr": [
      0.0,
      0.0,
-     760226219.7540127
+     774567193.5679619
     ],
     "wrpi_tco2e20_per_lakh_inr": [
      0.0,
@@ -23053,9 +23069,9 @@
     "fx_inr_per_usd": 93.92
    },
    "evidence": {
-    "n_overpasses": 337,
+    "n_overpasses": 339,
     "first_overpass": "2023-01-06",
-    "last_overpass": "2026-11-03",
+    "last_overpass": "2026-11-05",
     "orbits": [
      "27111",
      "27125",
@@ -23393,7 +23409,9 @@
      "46775",
      "46832",
      "46917",
-     "46931"
+     "46931",
+     "46945",
+     "46959"
     ],
     "overpasses_per_month": {
      "2023-01": 9,
@@ -23426,12 +23444,12 @@
      "2026-04": 12,
      "2026-05": 9,
      "2026-10": 12,
-     "2026-11": 2
+     "2026-11": 4
     },
-    "mean_wind10_ms": 2.7929217188221704,
+    "mean_wind10_ms": 2.7891121819008293,
     "stack": {
-     "png_b64": "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",
-     "scale_mol_m_s": 0.012036359293883605,
+     "png_b64": "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",
+     "scale_mol_m_s": 0.01201151247941348,
      "x_km": [
       -49.0,
       89.0
@@ -23444,8 +23462,8 @@
     }
    },
    "tasking": {
-    "voi": 0.1656462134517919,
-    "p_real_ramp": 0.10908024852934628,
+    "voi": 0.1689348605939375,
+    "p_real_ramp": 0.10892434509560855,
     "rank": 45,
     "recommend": false
    },
@@ -23823,7 +23841,7 @@
    "corroboration": {
     "second_method": {
      "check": "cross-sectional flux agrees (z > 2)",
-     "z": -1.5159497078338096,
+     "z": -1.514716471042389,
      "passed": false,
      "false_pass_rate": 0.08333333333333333,
      "independence": "same data, different estimator"
@@ -23831,7 +23849,7 @@
     "temporal": {
      "check": "re-detected in disjoint years (z > 2 before and after 2025-01-01)",
      "z_early": -0.8226244971997556,
-     "z_late": -2.026457641795276,
+     "z_late": -2.0261733151142396,
      "passed": false,
      "status": "evaluated",
      "false_pass_rate": 0.041666666666666664,
@@ -23839,7 +23857,7 @@
     },
     "co": {
      "check": "co-emitted CO detected (z > 2)",
-     "z": 0.08040259619795677,
+     "z": 0.0805727395842944,
      "passed": false,
      "false_pass_rate": 0.041666666666666664,
      "independence": "independent species, same overpasses"
@@ -23863,16 +23881,16 @@
     "history": []
    },
    "status": "not detected",
-   "z": -1.5401795313488464,
-   "p": 0.9275505905756994,
+   "z": -1.5403797677255524,
+   "p": 0.9275755239570443,
    "q": 1.0,
    "rate_gamma1_kg_h": -5438.656105830564,
-   "null_floor_1sigma_kg_h": 3690.8217823534746,
+   "null_floor_1sigma_kg_h": 3690.6362118172424,
    "rate_t_h": {
-    "p16": -12.452519257253897,
-    "p50": -7.385989684552063,
-    "p84": -2.4795321078183163,
-    "upper_limit_p84": -2.4795321078183163
+    "p16": -12.452912338436374,
+    "p50": -7.386626661925783,
+    "p84": -2.4803656330058526,
+    "upper_limit_p84": -2.4803656330058526
    },
    "gamma": {
     "value": 1.3086628915358198,
@@ -24243,7 +24261,7 @@
    },
    "tasking": {
     "voi": 0.0,
-    "p_real_ramp": 0.0011821858164907902
+    "p_real_ramp": 0.0011814000456977026
    },
    "priority_rank": 57
   },
