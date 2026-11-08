@@ -1,15 +1,16 @@
 {
  "stream": "NRTI",
  "day": "2026-11-08",
- "granules": 26,
+ "granules": 29,
  "orbits": [
-  "47001"
+  "47001",
+  "47002"
  ],
- "pixels": 445,
+ "pixels": 6214,
  "sensing_start": "2026-11-08 06:43:17",
- "sensing_end": "2026-11-08 06:48:01",
- "mean_xch4_ppb": 1919.08544921875,
- "observed_cells": 326,
+ "sensing_end": "2026-11-08 08:23:58",
+ "mean_xch4_ppb": 1954.0615234375,
+ "observed_cells": 3429,
  "method_steps": [
   "qa >= 0.5",
   "Copernicus checksum",
@@ -23,8 +24,8 @@
  ],
  "texture": {
   "file": "latest.png",
-  "lo": 1863.3209838867188,
-  "hi": 1967.4199523925781,
+  "lo": 1896.58767578125,
+  "hi": 1988.78466796875,
   "nodata": 0,
   "lat_edges": [
    6.5,
@@ -36,6 +37,46 @@
   ]
  },
  "sites": {
+  "jawaharnagar": {
+   "name": "Jawaharnagar landfill, Hyderabad",
+   "pixels": 11,
+   "method": null,
+   "xch4_ppb": 1965.628173828125,
+   "enhancement_ppb": 8.6695556640625,
+   "wind_ms": 4.692826747894287,
+   "wind_to_deg": 233.5472412109375,
+   "time_utc": "2026-11-08T08:22:33"
+  },
+  "khajod": {
+   "name": "Khajod landfill, Surat",
+   "pixels": 9,
+   "method": null,
+   "xch4_ppb": 1960.3997802734375,
+   "enhancement_ppb": 6.042236328125,
+   "wind_ms": 2.8509416580200195,
+   "wind_to_deg": 247.6772003173828,
+   "time_utc": "2026-11-08T08:23:54"
+  },
+  "deonar": {
+   "name": "Deonar/Mumbai landfill",
+   "pixels": 3,
+   "method": null,
+   "xch4_ppb": 1961.1903076171875,
+   "enhancement_ppb": 9.5679931640625,
+   "wind_ms": 2.0647151470184326,
+   "wind_to_deg": 253.33123779296875,
+   "time_utc": "2026-11-08T08:23:21"
+  },
+  "korba": {
+   "name": "Korba coalfield, Chhattisgarh",
+   "pixels": 13,
+   "method": null,
+   "xch4_ppb": 1961.0174560546875,
+   "enhancement_ppb": -6.407958984375,
+   "wind_ms": 2.178049087524414,
+   "wind_to_deg": 164.92495727539062,
+   "time_utc": "2026-11-08T08:23:46"
+  },
   "c01": {
    "name": "near Dhaka",
    "pixels": 2,
@@ -66,6 +107,16 @@
    "wind_to_deg": 250.29837036132812,
    "time_utc": "2026-11-08T06:44:24"
   },
+  "c28": {
+   "name": "near Hyderabad",
+   "pixels": 11,
+   "method": null,
+   "xch4_ppb": 1961.7830810546875,
+   "enhancement_ppb": 5.234619140625,
+   "wind_ms": 4.684556007385254,
+   "wind_to_deg": 232.7392578125,
+   "time_utc": "2026-11-08T08:22:33"
+  },
   "c32": {
    "name": "near Dhaka",
    "pixels": 2,
@@ -75,6 +126,84 @@
    "wind_ms": 1.3486824035644531,
    "wind_to_deg": 271.4051513671875,
    "time_utc": "2026-11-08T06:43:57"
+  },
+  "c33": {
+   "name": "near Mumbai",
+   "pixels": 1,
+   "method": null,
+   "xch4_ppb": 1948.791748046875,
+   "enhancement_ppb": -2.843994140625,
+   "wind_ms": 2.181074857711792,
+   "wind_to_deg": 256.55523681640625,
+   "time_utc": "2026-11-08T08:23:21"
+  },
+  "c35": {
+   "name": "105 km from Pune",
+   "pixels": 10,
+   "method": null,
+   "xch4_ppb": 1953.2060546875,
+   "enhancement_ppb": -2.2054443359375,
+   "wind_ms": 2.6148319244384766,
+   "wind_to_deg": 224.14585876464844,
+   "time_utc": "2026-11-08T08:23:01"
+  },
+  "c36": {
+   "name": "58 km from Panaji",
+   "pixels": 8,
+   "method": null,
+   "xch4_ppb": 1967.03564453125,
+   "enhancement_ppb": 10.0599365234375,
+   "wind_ms": 2.9810738563537598,
+   "wind_to_deg": 233.54147338867188,
+   "time_utc": "2026-11-08T08:22:31"
+  },
+  "c41": {
+   "name": "98 km from Burhanpur",
+   "pixels": 32,
+   "method": {
+    "rate_kg_h_gamma1": -8423.238744782588,
+    "single_pass_sigma_kg_h": 28443.4861845682,
+    "z_single": -0.29613946371146843,
+    "wind_ms": 1.8436081476199253,
+    "orbits": [
+     "47002"
+    ]
+   },
+   "xch4_ppb": 1957.03271484375,
+   "enhancement_ppb": 2.47265625,
+   "wind_ms": 1.8436081409454346,
+   "wind_to_deg": 191.4158935546875,
+   "time_utc": "2026-11-08T08:23:52"
+  },
+  "c47": {
+   "name": "93 km from Kolhapur",
+   "pixels": 7,
+   "method": null,
+   "xch4_ppb": 1958.1201171875,
+   "enhancement_ppb": -0.608642578125,
+   "wind_ms": 3.905855655670166,
+   "wind_to_deg": 240.93923950195312,
+   "time_utc": "2026-11-08T08:22:41"
+  },
+  "c51": {
+   "name": "120 km from Raurkela",
+   "pixels": 5,
+   "method": null,
+   "xch4_ppb": 1963.9808349609375,
+   "enhancement_ppb": -5.5806884765625,
+   "wind_ms": 1.3074541091918945,
+   "wind_to_deg": 145.4757843017578,
+   "time_utc": "2026-11-08T08:23:53"
+  },
+  "c57": {
+   "name": "73 km from Bilaspur",
+   "pixels": 9,
+   "method": null,
+   "xch4_ppb": 1955.6766357421875,
+   "enhancement_ppb": -6.9058837890625,
+   "wind_ms": 1.092972993850708,
+   "wind_to_deg": 227.48255920410156,
+   "time_utc": "2026-11-08T08:23:49"
   }
  },
  "log": [
@@ -189,6 +318,11 @@
    "integrity": "verified"
   },
   {
+   "key": "NRTI/L2__CH4___/2026/11/08/S5P_NRTI_L2__CH4____20261108T064852_20261108T065352_47001_03_020901_20261108T084547.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
    "key": "NRTI/L2__CH4___/2026/11/08/S5P_NRTI_L2__CH4____20261108T074852_20261108T075352_47002_03_020901_20261108T085144.nc",
    "pixels": 0,
    "integrity": "verified"
@@ -207,15 +341,25 @@
    "key": "NRTI/L2__CH4___/2026/11/08/S5P_NRTI_L2__CH4____20261108T081352_20261108T081852_47002_03_020901_20261108T085423.nc",
    "pixels": 0,
    "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/08/S5P_NRTI_L2__CH4____20261108T081852_20261108T082352_47002_03_020901_20261108T085553.nc",
+   "pixels": 5769,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/08/S5P_NRTI_L2__CH4____20261108T082852_20261108T083352_47002_03_020901_20261108T090539.nc",
+   "pixels": 0,
+   "integrity": "verified"
   }
  ],
  "integrity": {
-  "verified": 26,
+  "verified": 29,
   "unverifiable": 0,
   "mismatch": 0,
   "download_failed": 0,
   "policy": "each granule's MD5 is checked against the Copernicus Data Space catalogue; mismatches are rejected, unverifiable granules are accepted only when the mirror ETag matches"
  },
- "processed_utc": "2026-11-08T09:27:32",
+ "processed_utc": "2026-11-08T10:24:09",
  "source": "Copernicus Sentinel-5P TROPOMI NRTI L2 CH4, s3://meeo-s5p (public mirror)"
 }
