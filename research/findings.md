@@ -133,24 +133,24 @@ first/last overpass, wind, the stack image, z/p/q, calibrated t/h (16/50/84%), a
 Tiers: confirmed (q <= 0.05), detected (z >= 3), tentative (2 <= z < 3), not detected (upper limit).
 
 <!-- R6-TABLE -->
-Generated 2026-11-09T14:31 UTC from TROPOMI 2023-01-01..2026-11-06, 20,087,229 pixels, 60 sites tested: 10 confirmed, 13 at z >= 3.
+Generated 2026-11-10T13:47 UTC from TROPOMI 2023-01-01..2026-11-06, 20,087,229 pixels, 60 sites tested: 10 confirmed, 13 at z >= 3.
 
 | # | Site | Tier | t CH4/h [68%] | z | q (BY) | Sector | t CO2e20 per INR lakh |
 |---|---|---|---|---|---|---|---|
-| 1 | Ghazipur landfill, Delhi | confirmed | 30.5 [26.0, 35.4] | 8.8 | 0.000 | landfill | 646 |
+| 1 | Ghazipur landfill, Delhi | confirmed | 30.5 [26.0, 35.4] | 8.8 | 0.000 | landfill | 645 |
 | 2 | near Lahore | confirmed | 36.8 [30.9, 43.0] | 7.9 | 0.000 | landfill | 644 |
 | 3 | near Dhaka | confirmed | 77.1 [68.6, 86.7] | 14.2 | 0.000 | landfill | 643 |
 | 4 | Deonar/Mumbai landfill | confirmed | 64.6 [50.3, 79.7] | 5.1 | 0.002 | landfill | 637 |
 | 5 | Pirana landfill, Ahmedabad | confirmed | 14.7 [11.3, 18.6] | 4.8 | 0.002 | landfill | 636 |
 | 6 | near Dhaka | confirmed | 78.6 [68.3, 89.5] | 10.4 | 0.000 | landfill | 635 |
-| 7 | Khajod landfill, Surat | confirmed | 20.7 [15.0, 26.6] | 3.9 | 0.013 | landfill | 634 |
+| 7 | Khajod landfill, Surat | confirmed | 20.7 [15.0, 26.6] | 3.9 | 0.013 | landfill | 633 |
 | 8 | Jawaharnagar landfill, Hyderabad | confirmed | 17.8 [12.7, 23.1] | 4.0 | 0.012 | landfill | 633 |
 | 9 | 48 km from Sadiqabad | confirmed | 20.0 [16.4, 23.6] | 8.7 | 0.000 | unattributed | 613 |
 | 10 | Jharia coal field, Jharkhand | confirmed | 21.6 [16.5, 27.0] | 4.4 | 0.004 | coal | 341 |
 | 11 | near Chattogram | detected | 50.9 [35.0, 68.0] | 3.3 | 0.051 | unattributed | 603 |
 | 12 | 129 km from Rajkot | detected | 12.9 [8.5, 17.6] | 3.1 | 0.063 | unattributed | 581 |
 | 13 | 80 km from Panaji | detected | 25.1 [13.1, 38.2] | 3.1 | 0.063 | unattributed | 574 |
-| 14 | 38 km from Dibrugarh | tentative | 27.3 [16.9, 38.5] | 2.7 | 0.182 | oil_gas | 30035 |
+| 14 | 38 km from Dibrugarh | tentative | 27.3 [16.9, 38.5] | 2.7 | 0.182 | oil_gas | 30032 |
 | 15 | near Nawabganj | tentative | 10.9 [7.0, 15.2] | 3.0 | 0.079 | unattributed | 579 |
 | 16 | near Nawabganj | tentative | 13.5 [8.7, 18.7] | 2.9 | 0.081 | unattributed | 565 |
 | 17 | 98 km from Burhanpur | tentative | 8.1 [4.4, 11.9] | 2.7 | 0.114 | landfill | 560 |
