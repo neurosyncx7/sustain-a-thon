@@ -1,7 +1,7 @@
 {
  "stream": "NRTI",
  "day": "2026-11-11",
- "granules": 12,
+ "granules": 14,
  "pixels": 0,
  "orbits": [],
  "note": "no qa>=0.5 pixels over India (cloud/monsoon)",
@@ -64,16 +64,26 @@
   {
    "key": "NRTI/L2__CH4___/2026/11/11/S5P_NRTI_L2__CH4____20261111T050610_20261111T051110_47043_03_020901_20261111T061026.nc",
    "pixels": 0,
-   "integrity": "unverifiable"
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/11/S5P_NRTI_L2__CH4____20261111T052110_20261111T052610_47043_03_020901_20261111T061809.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/11/S5P_NRTI_L2__CH4____20261111T055110_20261111T055610_47043_03_020901_20261111T063113.nc",
+   "pixels": 0,
+   "integrity": "verified"
   }
  ],
  "integrity": {
-  "verified": 11,
-  "unverifiable": 1,
+  "verified": 14,
+  "unverifiable": 0,
   "mismatch": 0,
   "download_failed": 0,
   "policy": "each granule's MD5 is checked against the Copernicus Data Space catalogue; mismatches are rejected, unverifiable granules are accepted only when the mirror ETag matches"
  },
- "processed_utc": "2026-11-11T06:21:27",
+ "processed_utc": "2026-11-11T09:49:46",
  "source": "Copernicus Sentinel-5P TROPOMI NRTI L2 CH4, s3://meeo-s5p (public mirror)"
 }
