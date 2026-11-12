@@ -1,15 +1,16 @@
 {
  "stream": "NRTI",
  "day": "2026-11-12",
- "granules": 36,
+ "granules": 40,
  "orbits": [
-  "47058"
+  "47058",
+  "47059"
  ],
- "pixels": 2006,
+ "pixels": 18480,
  "sensing_start": "2026-11-12 07:08:20",
- "sensing_end": "2026-11-12 07:13:05",
- "mean_xch4_ppb": 1939.3526611328125,
- "observed_cells": 1299,
+ "sensing_end": "2026-11-12 08:51:54",
+ "mean_xch4_ppb": 1956.2354736328125,
+ "observed_cells": 9925,
  "method_steps": [
   "qa >= 0.5",
   "Copernicus checksum",
@@ -23,8 +24,8 @@
  ],
  "texture": {
   "file": "latest.png",
-  "lo": 1869.232265625,
-  "hi": 2002.2442309570313,
+  "lo": 1890.9614453125,
+  "hi": 1992.9666845703125,
   "nodata": 0,
   "lat_edges": [
    6.5,
@@ -36,6 +37,80 @@
   ]
  },
  "sites": {
+  "jawaharnagar": {
+   "name": "Jawaharnagar landfill, Hyderabad",
+   "pixels": 34,
+   "method": {
+    "rate_kg_h_gamma1": 3886.9449816473657,
+    "single_pass_sigma_kg_h": 40651.68050871524,
+    "z_single": 0.09561584989860507,
+    "wind_ms": 3.7774511594792073,
+    "orbits": [
+     "47059"
+    ]
+   },
+   "xch4_ppb": 1972.323486328125,
+   "enhancement_ppb": 5.7442626953125,
+   "wind_ms": 3.777451276779175,
+   "wind_to_deg": 223.09194946289062,
+   "time_utc": "2026-11-12T08:47:54"
+  },
+  "pirana": {
+   "name": "Pirana landfill, Ahmedabad",
+   "pixels": 98,
+   "method": {
+    "rate_kg_h_gamma1": -8265.106727163857,
+    "single_pass_sigma_kg_h": 47950.143441177315,
+    "z_single": -0.17236875917385003,
+    "wind_ms": 1.2699696491467407,
+    "orbits": [
+     "47059"
+    ]
+   },
+   "xch4_ppb": 1972.0435791015625,
+   "enhancement_ppb": 3.8380126953125,
+   "wind_ms": 1.2699697017669678,
+   "wind_to_deg": 247.0960693359375,
+   "time_utc": "2026-11-12T08:49:35"
+  },
+  "khajod": {
+   "name": "Khajod landfill, Surat",
+   "pixels": 8,
+   "method": null,
+   "xch4_ppb": 1968.5538330078125,
+   "enhancement_ppb": 10.388427734375,
+   "wind_ms": 1.3629498481750488,
+   "wind_to_deg": 156.29852294921875,
+   "time_utc": "2026-11-12T08:49:06"
+  },
+  "deonar": {
+   "name": "Deonar/Mumbai landfill",
+   "pixels": 2,
+   "method": null,
+   "xch4_ppb": 2005.2034912109375,
+   "enhancement_ppb": 46.802978515625,
+   "wind_ms": 2.3644509315490723,
+   "wind_to_deg": 99.91423797607422,
+   "time_utc": "2026-11-12T08:48:32"
+  },
+  "ghazipur": {
+   "name": "Ghazipur landfill, Delhi",
+   "pixels": 28,
+   "method": {
+    "rate_kg_h_gamma1": 7207.3059289371195,
+    "single_pass_sigma_kg_h": 44054.56079682345,
+    "z_single": 0.1635995410821756,
+    "wind_ms": 1.0524126232344337,
+    "orbits": [
+     "47059"
+    ]
+   },
+   "xch4_ppb": 1976.995849609375,
+   "enhancement_ppb": 12.0760498046875,
+   "wind_ms": 1.0524126291275024,
+   "wind_to_deg": 100.07453155517578,
+   "time_utc": "2026-11-12T08:51:04"
+  },
   "c01": {
    "name": "near Dhaka",
    "pixels": 4,
@@ -43,7 +118,7 @@
    "xch4_ppb": 1985.7813720703125,
    "enhancement_ppb": -4.13134765625,
    "wind_ms": 1.3278694152832031,
-   "wind_to_deg": 209.03948974609375,
+   "wind_to_deg": 209.0394744873047,
    "time_utc": "2026-11-12T07:08:51"
   },
   "c03": {
@@ -56,6 +131,54 @@
    "wind_to_deg": 136.26040649414062,
    "time_utc": "2026-11-12T07:09:25"
   },
+  "c04": {
+   "name": "near Ghaziabad",
+   "pixels": 24,
+   "method": {
+    "rate_kg_h_gamma1": 8319.765976466933,
+    "single_pass_sigma_kg_h": null,
+    "z_single": null,
+    "wind_ms": 1.1019983018028277,
+    "orbits": [
+     "47059"
+    ]
+   },
+   "xch4_ppb": 1979.3931884765625,
+   "enhancement_ppb": 14.2027587890625,
+   "wind_ms": 1.0882725715637207,
+   "wind_to_deg": 100.70912170410156,
+   "time_utc": "2026-11-12T08:51:05"
+  },
+  "c05": {
+   "name": "133 km from Bhuj",
+   "pixels": 11,
+   "method": null,
+   "xch4_ppb": 1959.8162841796875,
+   "enhancement_ppb": 5.4041748046875,
+   "wind_ms": 4.490090370178223,
+   "wind_to_deg": 68.08191680908203,
+   "time_utc": "2026-11-12T08:50:01"
+  },
+  "c11": {
+   "name": "55 km from Hosapete",
+   "pixels": 1,
+   "method": null,
+   "xch4_ppb": 1950.6856689453125,
+   "enhancement_ppb": -5.3858642578125,
+   "wind_ms": 3.906336784362793,
+   "wind_to_deg": 230.99285888671875,
+   "time_utc": "2026-11-12T08:47:35"
+  },
+  "c12": {
+   "name": "187 km from Bhuj",
+   "pixels": 36,
+   "method": null,
+   "xch4_ppb": 1972.4813232421875,
+   "enhancement_ppb": 10.8677978515625,
+   "wind_ms": 0.8240887522697449,
+   "wind_to_deg": 70.8301010131836,
+   "time_utc": "2026-11-12T08:50:02"
+  },
   "c17": {
    "name": "43 km from Guwahati",
    "pixels": 17,
@@ -65,6 +188,78 @@
    "wind_ms": 2.8353826999664307,
    "wind_to_deg": 234.93667602539062,
    "time_utc": "2026-11-12T07:09:20"
+  },
+  "c19": {
+   "name": "near Ahmedabad",
+   "pixels": 113,
+   "method": {
+    "rate_kg_h_gamma1": -8595.813179207327,
+    "single_pass_sigma_kg_h": null,
+    "z_single": null,
+    "wind_ms": 1.0013429228926123,
+    "orbits": [
+     "47059"
+    ]
+   },
+   "xch4_ppb": 1970.9774169921875,
+   "enhancement_ppb": 1.2255859375,
+   "wind_ms": 1.0013428926467896,
+   "wind_to_deg": 234.21707153320312,
+   "time_utc": "2026-11-12T08:49:34"
+  },
+  "c20": {
+   "name": "48 km from Sadiqabad",
+   "pixels": 43,
+   "method": {
+    "rate_kg_h_gamma1": 51530.14430570991,
+    "single_pass_sigma_kg_h": 29010.393733691115,
+    "z_single": 1.7762649062520501,
+    "wind_ms": 4.7737035781642305,
+    "orbits": [
+     "47059"
+    ]
+   },
+   "xch4_ppb": 1949.3426513671875,
+   "enhancement_ppb": -1.1116943359375,
+   "wind_ms": 4.773703575134277,
+   "wind_to_deg": 9.919380187988281,
+   "time_utc": "2026-11-12T08:51:03"
+  },
+  "c27": {
+   "name": "near Aligarh",
+   "pixels": 22,
+   "method": {
+    "rate_kg_h_gamma1": -2862.3071981092744,
+    "single_pass_sigma_kg_h": 93816.8054750565,
+    "z_single": -0.03050953593671753,
+    "wind_ms": 1.472900798920257,
+    "orbits": [
+     "47059"
+    ]
+   },
+   "xch4_ppb": 1974.490966796875,
+   "enhancement_ppb": 11.533935546875,
+   "wind_ms": 1.4729007482528687,
+   "wind_to_deg": 106.07331848144531,
+   "time_utc": "2026-11-12T08:50:51"
+  },
+  "c28": {
+   "name": "near Hyderabad",
+   "pixels": 32,
+   "method": {
+    "rate_kg_h_gamma1": 3485.142053605099,
+    "single_pass_sigma_kg_h": null,
+    "z_single": null,
+    "wind_ms": 3.80253807504909,
+    "orbits": [
+     "47059"
+    ]
+   },
+   "xch4_ppb": 1971.989501953125,
+   "enhancement_ppb": 5.389404296875,
+   "wind_ms": 3.800619125366211,
+   "wind_to_deg": 222.704345703125,
+   "time_utc": "2026-11-12T08:47:55"
   },
   "c29": {
    "name": "65 km from Ranchi",
@@ -76,6 +271,24 @@
    "wind_to_deg": 156.24603271484375,
    "time_utc": "2026-11-12T07:09:27"
   },
+  "c30": {
+   "name": "129 km from Rajkot",
+   "pixels": 32,
+   "method": {
+    "rate_kg_h_gamma1": 1098.2413539330464,
+    "single_pass_sigma_kg_h": 68878.94106373467,
+    "z_single": 0.015944515652713473,
+    "wind_ms": 1.2996676986802518,
+    "orbits": [
+     "47059"
+    ]
+   },
+   "xch4_ppb": 1964.773681640625,
+   "enhancement_ppb": -2.2469482421875,
+   "wind_ms": 1.2996677160263062,
+   "wind_to_deg": 189.0723876953125,
+   "time_utc": "2026-11-12T08:49:47"
+  },
   "c32": {
    "name": "near Dhaka",
    "pixels": 4,
@@ -83,8 +296,56 @@
    "xch4_ppb": 1985.7813720703125,
    "enhancement_ppb": -4.3126220703125,
    "wind_ms": 1.3278694152832031,
-   "wind_to_deg": 209.03948974609375,
+   "wind_to_deg": 209.0394744873047,
    "time_utc": "2026-11-12T07:08:51"
+  },
+  "c33": {
+   "name": "near Mumbai",
+   "pixels": 2,
+   "method": null,
+   "xch4_ppb": 2005.2034912109375,
+   "enhancement_ppb": 46.1981201171875,
+   "wind_ms": 2.3644509315490723,
+   "wind_to_deg": 99.91423797607422,
+   "time_utc": "2026-11-12T08:48:32"
+  },
+  "c36": {
+   "name": "58 km from Panaji",
+   "pixels": 2,
+   "method": null,
+   "xch4_ppb": 1970.340576171875,
+   "enhancement_ppb": 9.360595703125,
+   "wind_ms": 1.9435182809829712,
+   "wind_to_deg": 219.26376342773438,
+   "time_utc": "2026-11-12T08:47:42"
+  },
+  "c37": {
+   "name": "60 km from Bhuj",
+   "pixels": 14,
+   "method": null,
+   "xch4_ppb": 1957.853759765625,
+   "enhancement_ppb": 1.1441650390625,
+   "wind_ms": 0.8045972585678101,
+   "wind_to_deg": 112.51678466796875,
+   "time_utc": "2026-11-12T08:49:53"
+  },
+  "c39": {
+   "name": "187 km from Bhuj",
+   "pixels": 49,
+   "method": {
+    "rate_kg_h_gamma1": 6782.411400512246,
+    "single_pass_sigma_kg_h": 71399.24570329842,
+    "z_single": 0.09499275984926714,
+    "wind_ms": 1.01525519717823,
+    "orbits": [
+     "47059"
+    ]
+   },
+   "xch4_ppb": 1966.1798095703125,
+   "enhancement_ppb": 5.5941162109375,
+   "wind_ms": 1.0219370126724243,
+   "wind_to_deg": 58.056556701660156,
+   "time_utc": "2026-11-12T08:50:03"
   },
   "c40": {
    "name": "64 km from Bhagalpur",
@@ -96,6 +357,24 @@
    "wind_to_deg": 123.96353149414062,
    "time_utc": "2026-11-12T07:09:40"
   },
+  "c41": {
+   "name": "98 km from Burhanpur",
+   "pixels": 32,
+   "method": {
+    "rate_kg_h_gamma1": -4973.637404337302,
+    "single_pass_sigma_kg_h": 28289.494194069295,
+    "z_single": -0.1758121714802519,
+    "wind_ms": 1.3438855788336657,
+    "orbits": [
+     "47059"
+    ]
+   },
+   "xch4_ppb": 1963.32177734375,
+   "enhancement_ppb": -0.131103515625,
+   "wind_ms": 1.3568559885025024,
+   "wind_to_deg": 217.68679809570312,
+   "time_utc": "2026-11-12T08:49:12"
+  },
   "c43": {
    "name": "82 km from Shwebo",
    "pixels": 2,
@@ -103,8 +382,28 @@
    "xch4_ppb": 1937.1484375,
    "enhancement_ppb": null,
    "wind_ms": 1.9125899076461792,
-   "wind_to_deg": 193.06922912597656,
+   "wind_to_deg": 193.0692138671875,
    "time_utc": "2026-11-12T07:08:20"
+  },
+  "c44": {
+   "name": "100 km from Bhuj",
+   "pixels": 19,
+   "method": null,
+   "xch4_ppb": 1965.06884765625,
+   "enhancement_ppb": 11.0989990234375,
+   "wind_ms": 3.3128786087036133,
+   "wind_to_deg": 60.36896514892578,
+   "time_utc": "2026-11-12T08:50:04"
+  },
+  "c47": {
+   "name": "93 km from Kolhapur",
+   "pixels": 1,
+   "method": null,
+   "xch4_ppb": 1959.496826171875,
+   "enhancement_ppb": 0.9345703125,
+   "wind_ms": 1.5027443170547485,
+   "wind_to_deg": 263.03924560546875,
+   "time_utc": "2026-11-12T08:47:52"
   },
   "c51": {
    "name": "120 km from Raurkela",
@@ -116,6 +415,26 @@
    "wind_to_deg": 222.5371551513672,
    "time_utc": "2026-11-12T07:09:19"
   },
+  "c53": {
+   "name": "31 km from Hyderabad",
+   "pixels": 1,
+   "method": null,
+   "xch4_ppb": 1921.390380859375,
+   "enhancement_ppb": -28.813232421875,
+   "wind_ms": 4.491641521453857,
+   "wind_to_deg": 45.78968811035156,
+   "time_utc": "2026-11-12T08:50:30"
+  },
+  "c54": {
+   "name": "38 km from Hyderabad",
+   "pixels": 1,
+   "method": null,
+   "xch4_ppb": 1921.390380859375,
+   "enhancement_ppb": -29.4400634765625,
+   "wind_ms": 4.491641521453857,
+   "wind_to_deg": 45.78968811035156,
+   "time_utc": "2026-11-12T08:50:30"
+  },
   "c56": {
    "name": "near Dhanbad",
    "pixels": 1,
@@ -125,6 +444,16 @@
    "wind_ms": 1.815253734588623,
    "wind_to_deg": 168.90525817871094,
    "time_utc": "2026-11-12T07:09:10"
+  },
+  "c59": {
+   "name": "90 km from Bhuj",
+   "pixels": 15,
+   "method": null,
+   "xch4_ppb": 1963.060546875,
+   "enhancement_ppb": 9.082275390625,
+   "wind_ms": 2.6958959102630615,
+   "wind_to_deg": 69.32455444335938,
+   "time_utc": "2026-11-12T08:50:00"
   }
  },
  "log": [
@@ -307,15 +636,35 @@
    "key": "NRTI/L2__CH4___/2026/11/12/S5P_NRTI_L2__CH4____20261112T083934_20261112T084434_47059_03_030000_20261112T092100.nc",
    "pixels": 0,
    "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/12/S5P_NRTI_L2__CH4____20261112T084434_20261112T084934_47059_03_030000_20261112T092243.nc",
+   "pixels": 6469,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/12/S5P_NRTI_L2__CH4____20261112T084934_20261112T085434_47059_03_030000_20261112T093924.nc",
+   "pixels": 10005,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/12/S5P_NRTI_L2__CH4____20261112T090434_20261112T090934_47059_03_030000_20261112T104816.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/12/S5P_NRTI_L2__CH4____20261112T094934_20261112T095434_47060_03_030000_20261112T105133.nc",
+   "pixels": 0,
+   "integrity": "verified"
   }
  ],
  "integrity": {
-  "verified": 36,
+  "verified": 40,
   "unverifiable": 0,
   "mismatch": 0,
   "download_failed": 0,
   "policy": "each granule's MD5 is checked against the Copernicus Data Space catalogue; mismatches are rejected, unverifiable granules are accepted only when the mirror ETag matches"
  },
- "processed_utc": "2026-11-12T10:15:28",
+ "processed_utc": "2026-11-12T11:12:11",
  "source": "Copernicus Sentinel-5P TROPOMI NRTI L2 CH4, s3://meeo-s5p (public mirror)"
 }
