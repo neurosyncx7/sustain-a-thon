@@ -1,10 +1,366 @@
 {
  "stream": "NRTI",
  "day": "2026-11-15",
- "granules": 11,
- "pixels": 0,
- "orbits": [],
- "note": "no qa>=0.5 pixels over India (cloud/monsoon)",
+ "granules": 34,
+ "orbits": [
+  "47101"
+ ],
+ "pixels": 14581,
+ "sensing_start": "2026-11-15 07:51:53",
+ "sensing_end": "2026-11-15 07:57:07",
+ "mean_xch4_ppb": 1968.867919921875,
+ "observed_cells": 7964,
+ "method_steps": [
+  "qa >= 0.5",
+  "Copernicus checksum",
+  "plane background (60-140 km)",
+  "ABD albedo/aerosol correction",
+  "wind rotation",
+  "footprint drizzle",
+  "noise weight",
+  "KPW phase weight",
+  "flux divergence (20 km)"
+ ],
+ "texture": {
+  "file": "latest.png",
+  "lo": 1911.6861547851563,
+  "hi": 2025.3444848632812,
+  "nodata": 0,
+  "lat_edges": [
+   6.5,
+   37.5
+  ],
+  "lon_edges": [
+   68.0,
+   97.5
+  ]
+ },
+ "sites": {
+  "pirana": {
+   "name": "Pirana landfill, Ahmedabad",
+   "pixels": 3,
+   "method": null,
+   "xch4_ppb": 1971.271484375,
+   "enhancement_ppb": 9.3585205078125,
+   "wind_ms": 0.9524628520011902,
+   "wind_to_deg": 155.54632568359375,
+   "time_utc": "2026-11-15T07:53:53"
+  },
+  "jharia": {
+   "name": "Jharia coal field, Jharkhand",
+   "pixels": 51,
+   "method": {
+    "rate_kg_h_gamma1": 14012.25628438972,
+    "single_pass_sigma_kg_h": 53089.74647133088,
+    "z_single": 0.26393526463639283,
+    "wind_ms": 2.0167797937769234,
+    "orbits": [
+     "47101"
+    ]
+   },
+   "xch4_ppb": 1982.74658203125,
+   "enhancement_ppb": 4.0025634765625,
+   "wind_ms": 2.016779899597168,
+   "wind_to_deg": 130.83544921875,
+   "time_utc": "2026-11-15T07:52:50"
+  },
+  "ghazipur": {
+   "name": "Ghazipur landfill, Delhi",
+   "pixels": 31,
+   "method": {
+    "rate_kg_h_gamma1": 3328.7510145489982,
+    "single_pass_sigma_kg_h": 44147.334678802996,
+    "z_single": 0.07540095090151099,
+    "wind_ms": 1.6442305138836837,
+    "orbits": [
+     "47101"
+    ]
+   },
+   "xch4_ppb": 1957.7562255859375,
+   "enhancement_ppb": 0.0787353515625,
+   "wind_ms": 1.6442304849624634,
+   "wind_to_deg": 121.58767700195312,
+   "time_utc": "2026-11-15T07:54:46"
+  },
+  "c02": {
+   "name": "near Lahore",
+   "pixels": 27,
+   "method": null,
+   "xch4_ppb": 1972.7332763671875,
+   "enhancement_ppb": 11.0054931640625,
+   "wind_ms": 0.3701028525829315,
+   "wind_to_deg": 138.78936767578125,
+   "time_utc": "2026-11-15T07:55:49"
+  },
+  "c04": {
+   "name": "near Ghaziabad",
+   "pixels": 30,
+   "method": {
+    "rate_kg_h_gamma1": 5172.105288438878,
+    "single_pass_sigma_kg_h": null,
+    "z_single": null,
+    "wind_ms": 1.5778529647431896,
+    "orbits": [
+     "47101"
+    ]
+   },
+   "xch4_ppb": 1956.75048828125,
+   "enhancement_ppb": -0.97265625,
+   "wind_ms": 1.5778529644012451,
+   "wind_to_deg": 123.13609313964844,
+   "time_utc": "2026-11-15T07:54:46"
+  },
+  "c06": {
+   "name": "49 km from Bahraich",
+   "pixels": 60,
+   "method": {
+    "rate_kg_h_gamma1": 21861.494653223883,
+    "single_pass_sigma_kg_h": 120993.06903220093,
+    "z_single": 0.18068385923333918,
+    "wind_ms": 1.7387344240954128,
+    "orbits": [
+     "47101"
+    ]
+   },
+   "xch4_ppb": 1993.779296875,
+   "enhancement_ppb": -11.0150146484375,
+   "wind_ms": 1.7365599870681763,
+   "wind_to_deg": 169.7383575439453,
+   "time_utc": "2026-11-15T07:54:14"
+  },
+  "c08": {
+   "name": "near Dera Ghazi Khan",
+   "pixels": 5,
+   "method": null,
+   "xch4_ppb": 1952.9114990234375,
+   "enhancement_ppb": -10.3779296875,
+   "wind_ms": 2.1851534843444824,
+   "wind_to_deg": 199.7520751953125,
+   "time_utc": "2026-11-15T07:55:53"
+  },
+  "c09": {
+   "name": "near Dhanbad",
+   "pixels": 49,
+   "method": {
+    "rate_kg_h_gamma1": 11621.863544465412,
+    "single_pass_sigma_kg_h": null,
+    "z_single": null,
+    "wind_ms": 2.0255114896911754,
+    "orbits": [
+     "47101"
+    ]
+   },
+   "xch4_ppb": 1981.0604248046875,
+   "enhancement_ppb": 2.525390625,
+   "wind_ms": 2.0255115032196045,
+   "wind_to_deg": 133.01429748535156,
+   "time_utc": "2026-11-15T07:52:51"
+  },
+  "c10": {
+   "name": "near Lucknow",
+   "pixels": 61,
+   "method": {
+    "rate_kg_h_gamma1": -220.7576420781992,
+    "single_pass_sigma_kg_h": 75998.42851961082,
+    "z_single": -0.0029047658797475575,
+    "wind_ms": 2.118617972019378,
+    "orbits": [
+     "47101"
+    ]
+   },
+   "xch4_ppb": 2012.5244140625,
+   "enhancement_ppb": 22.33544921875,
+   "wind_ms": 2.1186180114746094,
+   "wind_to_deg": 148.8074951171875,
+   "time_utc": "2026-11-15T07:54:02"
+  },
+  "c17": {
+   "name": "43 km from Guwahati",
+   "pixels": 6,
+   "method": null,
+   "xch4_ppb": 1951.7181396484375,
+   "enhancement_ppb": null,
+   "wind_ms": 0.5024253129959106,
+   "wind_to_deg": 206.39462280273438,
+   "time_utc": "2026-11-15T07:53:27"
+  },
+  "c18": {
+   "name": "near Nawabganj",
+   "pixels": 3,
+   "method": null,
+   "xch4_ppb": 1992.8216552734375,
+   "enhancement_ppb": 20.2742919921875,
+   "wind_ms": 1.1448522806167603,
+   "wind_to_deg": 71.81956481933594,
+   "time_utc": "2026-11-15T07:53:05"
+  },
+  "c21": {
+   "name": "81 km from Nawabganj",
+   "pixels": 4,
+   "method": null,
+   "xch4_ppb": 1948.343994140625,
+   "enhancement_ppb": -34.456298828125,
+   "wind_ms": 1.0574642419815063,
+   "wind_to_deg": 88.23619079589844,
+   "time_utc": "2026-11-15T07:53:04"
+  },
+  "c23": {
+   "name": "152 km from Bilaspur",
+   "pixels": 46,
+   "method": {
+    "rate_kg_h_gamma1": 5742.640691986369,
+    "single_pass_sigma_kg_h": 69227.26009991307,
+    "z_single": 0.08295345913875884,
+    "wind_ms": 1.7941759121921812,
+    "orbits": [
+     "47101"
+    ]
+   },
+   "xch4_ppb": 1952.98095703125,
+   "enhancement_ppb": -8.28125,
+   "wind_ms": 1.7926905155181885,
+   "wind_to_deg": 134.6877899169922,
+   "time_utc": "2026-11-15T07:53:01"
+  },
+  "c25": {
+   "name": "near Ranchi",
+   "pixels": 59,
+   "method": {
+    "rate_kg_h_gamma1": 6185.996720308716,
+    "single_pass_sigma_kg_h": 76940.96552387968,
+    "z_single": 0.08039926037045646,
+    "wind_ms": 2.5661724093882152,
+    "orbits": [
+     "47101"
+    ]
+   },
+   "xch4_ppb": 1979.4185791015625,
+   "enhancement_ppb": 4.80517578125,
+   "wind_ms": 2.5661723613739014,
+   "wind_to_deg": 152.319091796875,
+   "time_utc": "2026-11-15T07:52:46"
+  },
+  "c29": {
+   "name": "65 km from Ranchi",
+   "pixels": 51,
+   "method": {
+    "rate_kg_h_gamma1": 10202.594692029897,
+    "single_pass_sigma_kg_h": 109105.41093121444,
+    "z_single": 0.09351135388200066,
+    "wind_ms": 3.249275946121987,
+    "orbits": [
+     "47101"
+    ]
+   },
+   "xch4_ppb": 1966.7451171875,
+   "enhancement_ppb": -12.771728515625,
+   "wind_ms": 3.2449004650115967,
+   "wind_to_deg": 135.61087036132812,
+   "time_utc": "2026-11-15T07:52:57"
+  },
+  "c40": {
+   "name": "64 km from Bhagalpur",
+   "pixels": 45,
+   "method": {
+    "rate_kg_h_gamma1": -5789.1201947680165,
+    "single_pass_sigma_kg_h": 69590.4098811926,
+    "z_single": -0.08318847675493539,
+    "wind_ms": 1.9312853277567386,
+    "orbits": [
+     "47101"
+    ]
+   },
+   "xch4_ppb": 1983.1097412109375,
+   "enhancement_ppb": -2.1112060546875,
+   "wind_ms": 1.9312853813171387,
+   "wind_to_deg": 83.87260437011719,
+   "time_utc": "2026-11-15T07:53:21"
+  },
+  "c41": {
+   "name": "98 km from Burhanpur",
+   "pixels": 24,
+   "method": null,
+   "xch4_ppb": 1955.4222412109375,
+   "enhancement_ppb": 1.4989013671875,
+   "wind_ms": 0.2887336313724518,
+   "wind_to_deg": 161.4308319091797,
+   "time_utc": "2026-11-15T07:53:10"
+  },
+  "c49": {
+   "name": "26 km from Ranchi",
+   "pixels": 60,
+   "method": {
+    "rate_kg_h_gamma1": -1301.077963211877,
+    "single_pass_sigma_kg_h": 53288.73926894485,
+    "z_single": -0.02441562666073633,
+    "wind_ms": 2.313977677948457,
+    "orbits": [
+     "47101"
+    ]
+   },
+   "xch4_ppb": 1978.206787109375,
+   "enhancement_ppb": 4.5911865234375,
+   "wind_ms": 2.3139777183532715,
+   "wind_to_deg": 156.84494018554688,
+   "time_utc": "2026-11-15T07:52:45"
+  },
+  "c51": {
+   "name": "120 km from Raurkela",
+   "pixels": 42,
+   "method": {
+    "rate_kg_h_gamma1": 8658.885122570877,
+    "single_pass_sigma_kg_h": 69006.96959115996,
+    "z_single": 0.12547841433802234,
+    "wind_ms": 1.8076000163652437,
+    "orbits": [
+     "47101"
+    ]
+   },
+   "xch4_ppb": 1959.0848388671875,
+   "enhancement_ppb": -2.13671875,
+   "wind_ms": 1.7751495838165283,
+   "wind_to_deg": 146.30691528320312,
+   "time_utc": "2026-11-15T07:52:45"
+  },
+  "c52": {
+   "name": "near Nawabganj",
+   "pixels": 8,
+   "method": null,
+   "xch4_ppb": 1995.2706298828125,
+   "enhancement_ppb": 21.9002685546875,
+   "wind_ms": 1.2410539388656616,
+   "wind_to_deg": 80.85364532470703,
+   "time_utc": "2026-11-15T07:53:02"
+  },
+  "c56": {
+   "name": "near Dhanbad",
+   "pixels": 54,
+   "method": {
+    "rate_kg_h_gamma1": 28025.461091751462,
+    "single_pass_sigma_kg_h": null,
+    "z_single": null,
+    "wind_ms": 1.9531869167799059,
+    "orbits": [
+     "47101"
+    ]
+   },
+   "xch4_ppb": 1985.5224609375,
+   "enhancement_ppb": 7.336669921875,
+   "wind_ms": 1.9531868696212769,
+   "wind_to_deg": 131.92259216308594,
+   "time_utc": "2026-11-15T07:52:49"
+  },
+  "c57": {
+   "name": "73 km from Bilaspur",
+   "pixels": 2,
+   "method": null,
+   "xch4_ppb": 1957.8818359375,
+   "enhancement_ppb": 0.00341796875,
+   "wind_ms": 0.7190590500831604,
+   "wind_to_deg": 105.16768646240234,
+   "time_utc": "2026-11-15T07:52:54"
+  }
+ },
  "log": [
   {
    "key": "NRTI/L2__CH4___/2026/11/15/S5P_NRTI_L2__CH4____20261115T034434_20261115T034934_47099_03_030000_20261115T045156.nc",
@@ -60,15 +416,130 @@
    "key": "NRTI/L2__CH4___/2026/11/15/S5P_NRTI_L2__CH4____20261115T043434_20261115T043934_47099_03_030000_20261115T052038.nc",
    "pixels": 0,
    "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/15/S5P_NRTI_L2__CH4____20261115T043934_20261115T044434_47099_03_030000_20261115T063108.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/15/S5P_NRTI_L2__CH4____20261115T052934_20261115T053434_47100_03_030000_20261115T063359.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/15/S5P_NRTI_L2__CH4____20261115T053434_20261115T053934_47100_03_030000_20261115T063817.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/15/S5P_NRTI_L2__CH4____20261115T053934_20261115T054434_47100_03_030000_20261115T064231.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/15/S5P_NRTI_L2__CH4____20261115T054434_20261115T054934_47100_03_030000_20261115T064212.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/15/S5P_NRTI_L2__CH4____20261115T054934_20261115T055434_47100_03_030000_20261115T064336.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/15/S5P_NRTI_L2__CH4____20261115T055434_20261115T055934_47100_03_030000_20261115T064322.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/15/S5P_NRTI_L2__CH4____20261115T055934_20261115T060434_47100_03_030000_20261115T064315.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/15/S5P_NRTI_L2__CH4____20261115T060434_20261115T060934_47100_03_030000_20261115T064510.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/15/S5P_NRTI_L2__CH4____20261115T060934_20261115T061434_47100_03_030000_20261115T064735.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/15/S5P_NRTI_L2__CH4____20261115T061434_20261115T061934_47100_03_030000_20261115T070811.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/15/S5P_NRTI_L2__CH4____20261115T061934_20261115T062434_47100_03_030000_20261115T081559.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/15/S5P_NRTI_L2__CH4____20261115T062434_20261115T062934_47100_03_030000_20261115T081208.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/15/S5P_NRTI_L2__CH4____20261115T070934_20261115T071434_47101_03_030000_20261115T081337.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/15/S5P_NRTI_L2__CH4____20261115T071434_20261115T071934_47101_03_030000_20261115T081727.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/15/S5P_NRTI_L2__CH4____20261115T071934_20261115T072434_47101_03_030000_20261115T082316.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/15/S5P_NRTI_L2__CH4____20261115T072434_20261115T072934_47101_03_030000_20261115T082412.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/15/S5P_NRTI_L2__CH4____20261115T072934_20261115T073434_47101_03_030000_20261115T082406.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/15/S5P_NRTI_L2__CH4____20261115T073434_20261115T073934_47101_03_030000_20261115T082336.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/15/S5P_NRTI_L2__CH4____20261115T073934_20261115T074434_47101_03_030000_20261115T082509.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/15/S5P_NRTI_L2__CH4____20261115T074434_20261115T074934_47101_03_030000_20261115T082448.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/15/S5P_NRTI_L2__CH4____20261115T074934_20261115T075434_47101_03_030000_20261115T082701.nc",
+   "pixels": 11182,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/15/S5P_NRTI_L2__CH4____20261115T075434_20261115T075934_47101_03_030000_20261115T084717.nc",
+   "pixels": 3399,
+   "integrity": "verified"
   }
  ],
  "integrity": {
-  "verified": 11,
+  "verified": 34,
   "unverifiable": 0,
   "mismatch": 0,
   "download_failed": 0,
   "policy": "each granule's MD5 is checked against the Copernicus Data Space catalogue; mismatches are rejected, unverifiable granules are accepted only when the mirror ETag matches"
  },
- "processed_utc": "2026-11-15T06:32:17",
+ "processed_utc": "2026-11-15T09:53:34",
  "source": "Copernicus Sentinel-5P TROPOMI NRTI L2 CH4, s3://meeo-s5p (public mirror)"
 }
