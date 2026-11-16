@@ -1,10 +1,224 @@
 {
  "stream": "NRTI",
  "day": "2026-11-16",
- "granules": 6,
- "pixels": 0,
- "orbits": [],
- "note": "no qa>=0.5 pixels over India (cloud/monsoon)",
+ "granules": 28,
+ "orbits": [
+  "47115"
+ ],
+ "pixels": 7671,
+ "sensing_start": "2026-11-16 07:29:48",
+ "sensing_end": "2026-11-16 07:38:32",
+ "mean_xch4_ppb": 1965.3140869140625,
+ "observed_cells": 4441,
+ "method_steps": [
+  "qa >= 0.5",
+  "Copernicus checksum",
+  "plane background (60-140 km)",
+  "ABD albedo/aerosol correction",
+  "wind rotation",
+  "footprint drizzle",
+  "noise weight",
+  "KPW phase weight",
+  "flux divergence (20 km)"
+ ],
+ "texture": {
+  "file": "latest.png",
+  "lo": 1891.5067626953125,
+  "hi": 2021.1652343750002,
+  "nodata": 0,
+  "lat_edges": [
+   6.5,
+   37.5
+  ],
+  "lon_edges": [
+   68.0,
+   97.5
+  ]
+ },
+ "sites": {
+  "ghazipur": {
+   "name": "Ghazipur landfill, Delhi",
+   "pixels": 8,
+   "method": null,
+   "xch4_ppb": 1982.7154541015625,
+   "enhancement_ppb": 18.2864990234375,
+   "wind_ms": 2.775890350341797,
+   "wind_to_deg": 119.04124450683594,
+   "time_utc": "2026-11-16T07:36:18"
+  },
+  "c02": {
+   "name": "near Lahore",
+   "pixels": 8,
+   "method": null,
+   "xch4_ppb": 1974.5762939453125,
+   "enhancement_ppb": 21.465087890625,
+   "wind_ms": 1.6584337949752808,
+   "wind_to_deg": 102.51296997070312,
+   "time_utc": "2026-11-16T07:37:22"
+  },
+  "c04": {
+   "name": "near Ghaziabad",
+   "pixels": 8,
+   "method": null,
+   "xch4_ppb": 1981.82861328125,
+   "enhancement_ppb": 18.4097900390625,
+   "wind_ms": 2.8462014198303223,
+   "wind_to_deg": 119.50019073486328,
+   "time_utc": "2026-11-16T07:36:19"
+  },
+  "c06": {
+   "name": "49 km from Bahraich",
+   "pixels": 40,
+   "method": {
+    "rate_kg_h_gamma1": 14000.549297385096,
+    "single_pass_sigma_kg_h": 120993.06903220118,
+    "z_single": 0.11571364714832533,
+    "wind_ms": 4.9912583202132685,
+    "orbits": [
+     "47115"
+    ]
+   },
+   "xch4_ppb": 1962.356689453125,
+   "enhancement_ppb": -0.7806396484375,
+   "wind_ms": 5.003204345703125,
+   "wind_to_deg": 96.00605773925781,
+   "time_utc": "2026-11-16T07:35:38"
+  },
+  "c10": {
+   "name": "near Lucknow",
+   "pixels": 29,
+   "method": {
+    "rate_kg_h_gamma1": 12282.422540467596,
+    "single_pass_sigma_kg_h": 76014.70667435926,
+    "z_single": 0.1615795558231183,
+    "wind_ms": 4.7583126383785,
+    "orbits": [
+     "47115"
+    ]
+   },
+   "xch4_ppb": 1964.3814697265625,
+   "enhancement_ppb": -5.533447265625,
+   "wind_ms": 4.758312702178955,
+   "wind_to_deg": 100.75556945800781,
+   "time_utc": "2026-11-16T07:35:28"
+  },
+  "c17": {
+   "name": "43 km from Guwahati",
+   "pixels": 1,
+   "method": null,
+   "xch4_ppb": 1963.7137451171875,
+   "enhancement_ppb": null,
+   "wind_ms": 1.3819142580032349,
+   "wind_to_deg": 190.6563720703125,
+   "time_utc": "2026-11-16T07:34:35"
+  },
+  "c18": {
+   "name": "near Nawabganj",
+   "pixels": 10,
+   "method": null,
+   "xch4_ppb": 1995.1109619140625,
+   "enhancement_ppb": 12.1431884765625,
+   "wind_ms": 2.8816206455230713,
+   "wind_to_deg": 78.74240112304688,
+   "time_utc": "2026-11-16T07:34:22"
+  },
+  "c21": {
+   "name": "81 km from Nawabganj",
+   "pixels": 4,
+   "method": null,
+   "xch4_ppb": 1981.7177734375,
+   "enhancement_ppb": -8.540771484375,
+   "wind_ms": 3.240591049194336,
+   "wind_to_deg": 88.35428619384766,
+   "time_utc": "2026-11-16T07:34:18"
+  },
+  "c22": {
+   "name": "49 km from Taungoo",
+   "pixels": 3,
+   "method": null,
+   "xch4_ppb": 1863.9014892578125,
+   "enhancement_ppb": null,
+   "wind_ms": 1.1127508878707886,
+   "wind_to_deg": 94.515869140625,
+   "time_utc": "2026-11-16T07:32:28"
+  },
+  "c24": {
+   "name": "near Pyay",
+   "pixels": 1,
+   "method": null,
+   "xch4_ppb": 1939.484619140625,
+   "enhancement_ppb": null,
+   "wind_ms": 0.45410799980163574,
+   "wind_to_deg": 162.24072265625,
+   "time_utc": "2026-11-16T07:32:28"
+  },
+  "c34": {
+   "name": "near Chattogram",
+   "pixels": 17,
+   "method": null,
+   "xch4_ppb": 2016.198486328125,
+   "enhancement_ppb": 14.1331787109375,
+   "wind_ms": 1.5119683742523193,
+   "wind_to_deg": 148.82183837890625,
+   "time_utc": "2026-11-16T07:33:29"
+  },
+  "c40": {
+   "name": "64 km from Bhagalpur",
+   "pixels": 85,
+   "method": {
+    "rate_kg_h_gamma1": 34427.73675595204,
+    "single_pass_sigma_kg_h": 69590.40988119278,
+    "z_single": 0.4947195571161069,
+    "wind_ms": 4.799106320176258,
+    "orbits": [
+     "47115"
+    ]
+   },
+   "xch4_ppb": 1985.351318359375,
+   "enhancement_ppb": -1.156982421875,
+   "wind_ms": 4.8010945320129395,
+   "wind_to_deg": 96.28336334228516,
+   "time_utc": "2026-11-16T07:34:37"
+  },
+  "c45": {
+   "name": "37 km from Dhangarhi",
+   "pixels": 35,
+   "method": {
+    "rate_kg_h_gamma1": -7251.172456380688,
+    "single_pass_sigma_kg_h": 113128.8427828059,
+    "z_single": -0.06409658472598441,
+    "wind_ms": 3.8399218064430873,
+    "orbits": [
+     "47115"
+    ]
+   },
+   "xch4_ppb": 1938.4964599609375,
+   "enhancement_ppb": -26.90576171875,
+   "wind_ms": 3.839921712875366,
+   "wind_to_deg": 100.4492416381836,
+   "time_utc": "2026-11-16T07:35:51"
+  },
+  "c52": {
+   "name": "near Nawabganj",
+   "pixels": 5,
+   "method": null,
+   "xch4_ppb": 1994.4609375,
+   "enhancement_ppb": 11.4677734375,
+   "wind_ms": 2.9089982509613037,
+   "wind_to_deg": 81.23208618164062,
+   "time_utc": "2026-11-16T07:34:15"
+  },
+  "c55": {
+   "name": "near Myingyan",
+   "pixels": 15,
+   "method": null,
+   "xch4_ppb": 1951.7734375,
+   "enhancement_ppb": 0.133056640625,
+   "wind_ms": 0.8856430649757385,
+   "wind_to_deg": 170.1951904296875,
+   "time_utc": "2026-11-16T07:33:08"
+  }
+ },
  "log": [
   {
    "key": "NRTI/L2__CH4___/2026/11/16/S5P_NRTI_L2__CH4____20261116T033934_20261116T034434_47113_03_030000_20261116T044410.nc",
@@ -35,15 +249,125 @@
    "key": "NRTI/L2__CH4___/2026/11/16/S5P_NRTI_L2__CH4____20261116T041434_20261116T041934_47113_03_030000_20261116T050432.nc",
    "pixels": 0,
    "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/16/S5P_NRTI_L2__CH4____20261116T052434_20261116T052934_47114_03_030000_20261116T062410.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/16/S5P_NRTI_L2__CH4____20261116T052934_20261116T053434_47114_03_030000_20261116T062503.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/16/S5P_NRTI_L2__CH4____20261116T053434_20261116T053934_47114_03_030000_20261116T062417.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/16/S5P_NRTI_L2__CH4____20261116T053934_20261116T054434_47114_03_030000_20261116T062640.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/16/S5P_NRTI_L2__CH4____20261116T054934_20261116T055434_47114_03_030000_20261116T063737.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/16/S5P_NRTI_L2__CH4____20261116T055434_20261116T055934_47114_03_030000_20261116T064159.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/16/S5P_NRTI_L2__CH4____20261116T055934_20261116T060434_47114_03_030000_20261116T075702.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/16/S5P_NRTI_L2__CH4____20261116T060434_20261116T060934_47114_03_030000_20261116T075417.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/16/S5P_NRTI_L2__CH4____20261116T064934_20261116T065434_47115_03_030000_20261116T075350.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/16/S5P_NRTI_L2__CH4____20261116T065434_20261116T065934_47115_03_030000_20261116T075716.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/16/S5P_NRTI_L2__CH4____20261116T070434_20261116T070934_47115_03_030000_20261116T080353.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/16/S5P_NRTI_L2__CH4____20261116T071434_20261116T071934_47115_03_030000_20261116T080541.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/16/S5P_NRTI_L2__CH4____20261116T071934_20261116T072434_47115_03_030000_20261116T080517.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/16/S5P_NRTI_L2__CH4____20261116T072434_20261116T072934_47115_03_030000_20261116T080548.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/16/S5P_NRTI_L2__CH4____20261116T072934_20261116T073434_47115_03_030000_20261116T080651.nc",
+   "pixels": 1305,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/16/S5P_NRTI_L2__CH4____20261116T073434_20261116T073934_47115_03_030000_20261116T082533.nc",
+   "pixels": 6366,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/16/S5P_NRTI_L2__CH4____20261116T074434_20261116T074934_47115_03_030000_20261116T093602.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/16/S5P_NRTI_L2__CH4____20261116T074934_20261116T075434_47115_03_030000_20261116T093213.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/16/S5P_NRTI_L2__CH4____20261116T083434_20261116T083934_47116_03_030000_20261116T093704.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/16/S5P_NRTI_L2__CH4____20261116T083934_20261116T084434_47116_03_030000_20261116T094255.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/16/S5P_NRTI_L2__CH4____20261116T084934_20261116T085434_47116_03_030000_20261116T094437.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/16/S5P_NRTI_L2__CH4____20261116T085434_20261116T085934_47116_03_030000_20261116T094651.nc",
+   "pixels": 0,
+   "integrity": "verified"
   }
  ],
  "integrity": {
-  "verified": 6,
+  "verified": 28,
   "unverifiable": 0,
   "mismatch": 0,
   "download_failed": 0,
   "policy": "each granule's MD5 is checked against the Copernicus Data Space catalogue; mismatches are rejected, unverifiable granules are accepted only when the mirror ETag matches"
  },
- "processed_utc": "2026-11-16T06:30:04",
+ "processed_utc": "2026-11-16T10:09:45",
  "source": "Copernicus Sentinel-5P TROPOMI NRTI L2 CH4, s3://meeo-s5p (public mirror)"
 }
