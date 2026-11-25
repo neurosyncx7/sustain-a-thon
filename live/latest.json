@@ -1,15 +1,16 @@
 {
  "stream": "NRTI",
  "day": "2026-11-25",
- "granules": 21,
+ "granules": 37,
  "orbits": [
-  "47242"
+  "47242",
+  "47243"
  ],
- "pixels": 83,
+ "pixels": 4219,
  "sensing_start": "2026-11-25 06:25:09",
- "sensing_end": "2026-11-25 06:29:40",
- "mean_xch4_ppb": 1912.030517578125,
- "observed_cells": 67,
+ "sensing_end": "2026-11-25 08:05:57",
+ "mean_xch4_ppb": 1953.5223388671875,
+ "observed_cells": 2195,
  "method_steps": [
   "qa >= 0.5",
   "Copernicus checksum",
@@ -23,8 +24,8 @@
  ],
  "texture": {
   "file": "latest.png",
-  "lo": 1853.5692114257813,
-  "hi": 1953.9532958984375,
+  "lo": 1902.5803466796874,
+  "hi": 1979.3154931640624,
   "nodata": 0,
   "lat_edges": [
    6.5,
@@ -36,6 +37,34 @@
   ]
  },
  "sites": {
+  "jharia": {
+   "name": "Jharia coal field, Jharkhand",
+   "pixels": 17,
+   "method": null,
+   "xch4_ppb": 1964.534423828125,
+   "enhancement_ppb": 3.2835693359375,
+   "wind_ms": 2.7153706550598145,
+   "wind_to_deg": 143.16427612304688,
+   "time_utc": "2026-11-25T08:05:54"
+  },
+  "korba": {
+   "name": "Korba coalfield, Chhattisgarh",
+   "pixels": 34,
+   "method": {
+    "rate_kg_h_gamma1": -708.1675276731187,
+    "single_pass_sigma_kg_h": 52013.77819885975,
+    "z_single": -0.013614998798311545,
+    "wind_ms": 1.7671660779567457,
+    "orbits": [
+     "47243"
+    ]
+   },
+   "xch4_ppb": 1966.8656005859375,
+   "enhancement_ppb": 12.346435546875,
+   "wind_ms": 1.767166018486023,
+   "wind_to_deg": 158.5787353515625,
+   "time_utc": "2026-11-25T08:05:38"
+  },
   "c03": {
    "name": "38 km from Dibrugarh",
    "pixels": 1,
@@ -45,6 +74,100 @@
    "wind_ms": 0.7872557044029236,
    "wind_to_deg": 273.326416015625,
    "time_utc": "2026-11-25T06:26:40"
+  },
+  "c09": {
+   "name": "near Dhanbad",
+   "pixels": 15,
+   "method": null,
+   "xch4_ppb": 1963.3035888671875,
+   "enhancement_ppb": 2.1865234375,
+   "wind_ms": 2.5642409324645996,
+   "wind_to_deg": 144.69708251953125,
+   "time_utc": "2026-11-25T08:05:54"
+  },
+  "c23": {
+   "name": "152 km from Bilaspur",
+   "pixels": 3,
+   "method": null,
+   "xch4_ppb": 1967.6153564453125,
+   "enhancement_ppb": 11.7105712890625,
+   "wind_ms": 0.40777823328971863,
+   "wind_to_deg": 56.560943603515625,
+   "time_utc": "2026-11-25T08:05:57"
+  },
+  "c25": {
+   "name": "near Ranchi",
+   "pixels": 24,
+   "method": null,
+   "xch4_ppb": 1954.49755859375,
+   "enhancement_ppb": 4.521728515625,
+   "wind_ms": 2.0164613723754883,
+   "wind_to_deg": 147.0747833251953,
+   "time_utc": "2026-11-25T08:05:49"
+  },
+  "c49": {
+   "name": "26 km from Ranchi",
+   "pixels": 20,
+   "method": {
+    "rate_kg_h_gamma1": -2398.870185035005,
+    "single_pass_sigma_kg_h": 53671.26510387649,
+    "z_single": -0.044695614690508624,
+    "wind_ms": 1.8627851206332438,
+    "orbits": [
+     "47243"
+    ]
+   },
+   "xch4_ppb": 1953.2620849609375,
+   "enhancement_ppb": 3.2305908203125,
+   "wind_ms": 1.8627851009368896,
+   "wind_to_deg": 146.5920867919922,
+   "time_utc": "2026-11-25T08:05:48"
+  },
+  "c51": {
+   "name": "120 km from Raurkela",
+   "pixels": 43,
+   "method": {
+    "rate_kg_h_gamma1": 8005.044645080923,
+    "single_pass_sigma_kg_h": 69445.1472326165,
+    "z_single": 0.11527147632457134,
+    "wind_ms": 1.1867447614026323,
+    "orbits": [
+     "47243"
+    ]
+   },
+   "xch4_ppb": 1952.4720458984375,
+   "enhancement_ppb": 0.5560302734375,
+   "wind_ms": 1.1867448091506958,
+   "wind_to_deg": 143.27423095703125,
+   "time_utc": "2026-11-25T08:05:45"
+  },
+  "c56": {
+   "name": "near Dhanbad",
+   "pixels": 25,
+   "method": {
+    "rate_kg_h_gamma1": 15276.674671753448,
+    "single_pass_sigma_kg_h": null,
+    "z_single": null,
+    "wind_ms": 2.8090245521456954,
+    "orbits": [
+     "47243"
+    ]
+   },
+   "xch4_ppb": 1967.18212890625,
+   "enhancement_ppb": 6.1431884765625,
+   "wind_ms": 2.8090245723724365,
+   "wind_to_deg": 144.58985900878906,
+   "time_utc": "2026-11-25T08:05:52"
+  },
+  "c57": {
+   "name": "73 km from Bilaspur",
+   "pixels": 53,
+   "method": null,
+   "xch4_ppb": 1954.757080078125,
+   "enhancement_ppb": -4.5474853515625,
+   "wind_ms": 0.15307018160820007,
+   "wind_to_deg": 169.20729064941406,
+   "time_utc": "2026-11-25T08:05:45"
   }
  },
  "log": [
@@ -152,15 +275,95 @@
    "key": "NRTI/L2__CH4___/2026/11/25/S5P_NRTI_L2__CH4____20261125T063052_20261125T063552_47242_03_030000_20261125T072532.nc",
    "pixels": 0,
    "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/25/S5P_NRTI_L2__CH4____20261125T063552_20261125T064052_47242_03_030000_20261125T082546.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/25/S5P_NRTI_L2__CH4____20261125T064052_20261125T064552_47242_03_030000_20261125T082221.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/25/S5P_NRTI_L2__CH4____20261125T072052_20261125T072552_47243_03_030000_20261125T082525.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/25/S5P_NRTI_L2__CH4____20261125T073052_20261125T073552_47243_03_030000_20261125T083535.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/25/S5P_NRTI_L2__CH4____20261125T073552_20261125T074052_47243_03_030000_20261125T083633.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/25/S5P_NRTI_L2__CH4____20261125T074052_20261125T074552_47243_03_030000_20261125T083640.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/25/S5P_NRTI_L2__CH4____20261125T074552_20261125T075052_47243_03_030000_20261125T083705.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/25/S5P_NRTI_L2__CH4____20261125T080052_20261125T080552_47243_03_030000_20261125T083802.nc",
+   "pixels": 4136,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/25/S5P_NRTI_L2__CH4____20261125T081052_20261125T081552_47243_03_030000_20261125T090426.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/25/S5P_NRTI_L2__CH4____20261125T081552_20261125T082052_47243_03_030000_20261125T100746.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/25/S5P_NRTI_L2__CH4____20261125T082052_20261125T082552_47243_03_030000_20261125T100406.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/25/S5P_NRTI_L2__CH4____20261125T090552_20261125T091052_47244_03_030000_20261125T100824.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/25/S5P_NRTI_L2__CH4____20261125T092052_20261125T092552_47244_03_030000_20261125T101647.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/25/S5P_NRTI_L2__CH4____20261125T093052_20261125T093552_47244_03_030000_20261125T101654.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/25/S5P_NRTI_L2__CH4____20261125T093552_20261125T094052_47244_03_030000_20261125T102012.nc",
+   "pixels": 0,
+   "integrity": "verified"
+  },
+  {
+   "key": "NRTI/L2__CH4___/2026/11/25/S5P_NRTI_L2__CH4____20261125T094052_20261125T094552_47244_03_030000_20261125T103031.nc",
+   "pixels": 0,
+   "integrity": "verified"
   }
  ],
  "integrity": {
-  "verified": 21,
+  "verified": 37,
   "unverifiable": 0,
   "mismatch": 0,
   "download_failed": 0,
   "policy": "each granule's MD5 is checked against the Copernicus Data Space catalogue; mismatches are rejected, unverifiable granules are accepted only when the mirror ETag matches"
  },
- "processed_utc": "2026-11-25T08:35:34",
+ "processed_utc": "2026-11-25T11:42:23",
  "source": "Copernicus Sentinel-5P TROPOMI NRTI L2 CH4, s3://meeo-s5p (public mirror)"
 }
